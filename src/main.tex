@@ -1,0 +1,77 @@
+%! suppress = Makeatletter
+%! suppress = Makeatletter
+\documentclass[11pt]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{polski}
+\usepackage[raggedright]{titlesec}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[backend=biber, bibencoding=utf8, style=ieee, dashed=false, isbn=false, doi=false, sorting=anyvt]{biblatex}
+\usepackage{caption}
+\captionsetup{%
+justification=raggedright,
+labelfont=bf,
+singlelinecheck=off}
+
+\addbibresource{NEW.bib}
+
+\pagestyle{headings}
+
+\renewcommand{\chaptername}{Rozdział}
+\renewcommand{\contentsname}{Spis treści}
+\renewcommand{\figurename}{Rys.}
+\renewcommand{\tablename}{Tab.}
+\renewcommand{\listfigurename}{Spis rysunków}
+\renewcommand{\listtablename}{Spis tabel}
+\renewcommand{\bibname}{Bibliografia}
+
+\makeatletter
+\renewcommand{\l@section}{\@dottedtocline{1}{1.5em}{2.6em}}
+\renewcommand{\l@subsection}{\@dottedtocline{2}{4.0em}{3.6em}}
+\renewcommand{\l@subsubsection}{\@dottedtocline{3}{7.4em}{4.5em}}
+\makeatother
+
+
+\begin{document}
+    \begin{titlepage}
+        \centering
+        \includegraphics[width=\linewidth]{fig/AGH.jpg}
+        \center{WYDZIAŁ INFORMATYKI, ELEKTRONIKI\\ i~TELEKOMUNIKACJI}
+        \vspace{0.04\textheight}
+        \center{PRACA DYPLOMOWA MAGISTERSKA}
+        \vspace{0.03\textheight}
+        \center{\LARGE\bfseries Agentowe środowisko do sterowania procesem identyfikacji i analizy wzorców czasowych w~notkach o zdarzeniach politycznych}
+        \center{Multi-agent environment for managament of the process of identifying and~analyzing time patterns in news about political events}
+        \vspace{0.16\textheight}
+
+        \rightline{Autor: Michał Patyk}
+        \rightline{Kierunek studiów: Informatyka}
+        \rightline{Opiekun pracy: dr hab. inż. Jarosław Koźlak}
+        \vspace{0.1\textheight}
+        \center{Kraków 2021}
+    \end{titlepage}
+
+    \tableofcontents
+
+    \chapter{Wstęp}
+    \chapter{Przeglad dziedziny}
+    \chapter{Koncepcja}
+    \chapter{Realizacja}
+
+    \inputencoding{utf8}
+
+    \newpage
+%    \addcontentsline{toc}{chapter}{Bibliografia}
+%
+%%    TODO remove this line
+%    \nocite{*}
+%    \printbibliography[title={Bibliografia}]
+
+
+\end{document}
+
