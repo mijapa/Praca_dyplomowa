@@ -16,8 +16,10 @@
 \captionsetup{%
 justification=raggedright,
 labelfont=bf,
-singlelinecheck=off}
+singlelinecheck=off
+}
 
+%\addbibresource{library.bib}
 \addbibresource{NEW.bib}
 
 \pagestyle{headings}
@@ -36,41 +38,62 @@ singlelinecheck=off}
 \renewcommand{\l@subsubsection}{\@dottedtocline{3}{7.4em}{4.5em}}
 \makeatother
 
-
 \begin{document}
     \begin{titlepage}
         \centering
         \includegraphics[width=\linewidth]{fig/AGH.jpg}
-        \center{WYDZIAŁ INFORMATYKI, ELEKTRONIKI\\ i~TELEKOMUNIKACJI}
+        \center{\scshape WYDZIAŁ INFORMATYKI, ELEKTRONIKI\\ i~TELEKOMUNIKACJI}
         \vspace{0.04\textheight}
-        \center{PRACA DYPLOMOWA MAGISTERSKA}
+        \center{\textbf PRACA DYPLOMOWA MAGISTERSKA}
         \vspace{0.03\textheight}
         \center{\LARGE\bfseries Agentowe środowisko do sterowania procesem identyfikacji i analizy wzorców czasowych w~notkach o zdarzeniach politycznych}
-        \center{Multi-agent environment for managament of the process of identifying and~analyzing time patterns in news about political events}
-        \vspace{0.16\textheight}
-
-        \rightline{Autor: Michał Patyk}
-        \rightline{Kierunek studiów: Informatyka}
-        \rightline{Opiekun pracy: dr hab. inż. Jarosław Koźlak}
-        \vspace{0.1\textheight}
+        \center{Multi-agent environment for management of the process of identifying and~analyzing time patterns in news about political events}
+        \vspace{0.12\textheight}
+        \begin{tabbing}
+            \hspace{0.3\textwidth}\=\\
+            Autor: \>Michał Patyk\\
+            Kierunek studiów:\> Informatyka\\
+            Opiekun pracy:\> dr hab.
+            inż.
+            Jarosław Koźlak
+        \end{tabbing}
+        \vspace{0.05\textheight}
         \center{Kraków 2021}
     \end{titlepage}
 
     \tableofcontents
 
-    \chapter{Wstęp}
-    \chapter{Przeglad dziedziny}
-    \chapter{Koncepcja}
-    \chapter{Realizacja}
+
+    \chapter{Wstęp}\label{ch:wstęp}
+
+
+    \chapter{Przegląd dziedziny}\label{ch:przegląd-dziedziny}
+    W tym rozdziale w części~\ref{sec:gdelt} opisany został zbiór GDELT\@.
+    W części~\ref{sec:przegląd-istniejących-analiz} przedstawione zostały prace dotyczące zbioru danych GDELT\@.
+
+
+    \section{GDELT}\label{sec:gdelt}
+
+
+    \section{Przegląd istniejących analiz}\label{sec:przegląd-istniejących-analiz}
+    \input{przegląd}
+    \input{wzorce}
+
+
+    \chapter{Koncepcja}\label{ch:koncepcja}
+    \input{miary}
+
+
+    \chapter{Realizacja}\label{ch:realizacja}
 
     \inputencoding{utf8}
 
     \newpage
-%    \addcontentsline{toc}{chapter}{Bibliografia}
-%
-%%    TODO remove this line
-%    \nocite{*}
-%    \printbibliography[title={Bibliografia}]
+    \addcontentsline{toc}{chapter}{Bibliografia}
+
+%    TODO remove this line
+    \nocite{*}
+    \printbibliography[title={Bibliografia}]
 
 
 \end{document}
