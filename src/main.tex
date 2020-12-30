@@ -74,7 +74,14 @@ singlelinecheck=off
     W części~\ref{sec:przegląd-istniejących-analiz} przedstawione zostały prace dotyczące zbioru danych GDELT\@.
 
 
-    \section{GDELT}\label{sec:gdelt}
+    \section{Wzorce}
+
+    \subsection{Ogólne}
+
+    \subsection{GDELT}
+
+
+    \section{Zastosowania}
 
 
     \section{Przegląd istniejących analiz}\label{sec:przegląd-istniejących-analiz}
@@ -115,7 +122,9 @@ singlelinecheck=off
     Do analizy~\cite{Buckingham2020,Levin2018,Yuan2017}.
 
 
-    \section{Metodologia rozwoju Systemu Agentowego}
+    \section{Metodologie rozwoju Systemu Agentowego}
+
+    \subsection{RIO}
     W pracy~\cite{S095741740200070220020101} autorzy proponują metodologię RIO (Roles, Interactions and Organizations) jako właściwe podejście przy analizie i projektowaniu systemów wieloagentowych.
     \begin{figure}[!ht]
         \centering
@@ -125,10 +134,39 @@ singlelinecheck=off
     \end{figure}
     System jest postrzegany jako organizacja która składa się ze zbioru wchodzących w interakcję ról.
     Role złożone powinny być dekomponowane na prostsze.
-    Proces projektowania składa się z dwóch etapów: agentyfikacji i projektowania architektonicznego.
+    Proces projektowania, przedstawiony na rysunku~\ref{fig:rio}, składa się z dwóch etapów: agentyfikacji i projektowania architektonicznego.
     Agentyfikacja to przypisanie roli do agentów.
     Na tym etapie nie robi się założeń co do architektury agentów.
     Dopiero etap projektowania architektonicznego kładzie naciska na wewnętrzną architekturę agenta.
+
+    \subsection{GAIA}
+    w pracy~\cite{Wooldridge2000a} autorzy opisują metodologię analizy i projektowania systemu agentowego Gaia
+    Została ona założona na bazie widzenia systemu wieloagentowego jako organizacji obliczeniowej składającej się z wielu oddziałujących ze sobą ról.
+    Proces analizy i projektowania, przedstawiony na rysunku~\ref{fig:gaia}, może być postrzegany jako przyrostowe budowanie coraz bardziej złożonych modeli systemu który ma być stworzony.
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{fig/gaia models.png}
+        \caption{Zwiazek pomiędzy modelami Gaia. (źródło: The Gaia Methodology for Agent-Oriented Analysis and Design~\cite{Wooldridge2000a})}
+        \label{fig:gaia}
+    \end{figure}
+    Celem etapu analizy jest rozwinięcie zrozumienia systemu i jego struktury.
+    Podczas etapu projektowania Gaia skupia się na tym jak agenci mają kooperować aby zrealizować cele systemu oraz czego wymaga się od każdego agenta aby to osiągnąć.
+
+    \subsection{INGENIAS}
+    W pracy~\cite{Pavon2003} autorzy przedstawiają metodologię rozwoju systemu wieloagentowego INGENIAS.
+    Została ona zaprojektowana z myślą o budowie specyfikacji przyrostowo z zapewnieniem poprawności rozwoju.
+    INGENIAS ulepsza oryginalne podejście z MESSAGE/UML poprzez dodanie nowego widoku oraz dostarczenie narzędzi do generowania kodu i dokumentacji systemu automatycznie ze specyfikacji.
+    Generalnym podejściem INGENIAS do specyfikacji systemu wieloagentowego jest podział problemu na aspekty które tworzą różne widoki systemu.
+    Każdy rodzaj widoku jest opisany z wykorzystaniem języka meta-modelującego.
+    INGENIAS wyróżnia pięć metamodeli opisujących widoki, które muszą zostać wykorzystane przy opisie systemu:
+    \begin{enumerate}
+        \item Model agenta który opisuje pojedynczego agenta, jego zadania, cele, początkowy stan oraz role,
+        \item Model interakcji który opisuje jakie interakcje mogą zajść między agentami,
+        \item Model zadań i celów który opisuje relację między zadaniami i celami oraz ich strukturami,
+        \item Model organizacji który opisuje jak komponenty systemu są ze sobą pogrupowane, jakie ograniczenia istnieją w interakcjach między agentami,
+        \item Model środowiska który definiuje postrzeganie agentów jako elementów systemu oraz identyfikuje zasoby systemu.
+    \end{enumerate}
+
 
     W pracy z 2001 roku~\cite{Smirnov2002} autorzy przedstawiają technologię systemów wieloagentowych jako podstawę systemów Fuzji Wiedzy.
     Fuzje Wiedzy można zdefiniować jako integrację luźno powiązanych źródeł w połączone zasoby w celu uzupełnienia niedostatecznej wiedzy i uzyskania nowej.
@@ -140,6 +178,7 @@ singlelinecheck=off
     Identyfikacja wzorców: opisujących państwa oraz relacje między państwami.
     Stworzenie reguł wspomagających odnajdywanie wzorców.
 
+    Wejściem systemu jest zadanie konfiguracyjne.
     Zadanie konfiguracyjne uruchamia system który szuka wzorców.
     System zajmuje się:
     \begin{enumerate}
@@ -160,6 +199,9 @@ singlelinecheck=off
         \item wykorzystanie dodatkowych źródeł informacji.
     \end{enumerate}
 
+    Na wyjściu systemu otrzymujemy zagregowane dane.
+
+
     \section{Role i Interakcje / Grupy i Hierarchie}
     Role
     \begin{enumerate}
@@ -168,6 +210,7 @@ singlelinecheck=off
                                           \item Agent Szukający Wzorców Dynamicznych
                                           \item \ldots
         \end{enumerate}
+        \item
     \end{enumerate}
 
 
