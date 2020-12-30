@@ -59,6 +59,7 @@ singlelinecheck=off
         \end{tabbing}
         \vspace{0.04\textheight}
         \center{Kraków 2021}
+%        TODO: remove next line
         \center{wersja 0.1.1}
     \end{titlepage}
 
@@ -113,6 +114,7 @@ singlelinecheck=off
     \subsection{inne}\label{subsec:inne}
     Do analizy~\cite{Buckingham2020,Levin2018,Yuan2017}.
 
+
     \section{Metodologia rozwoju Systemu Agentowego}
     W pracy~\cite{S095741740200070220020101} autorzy proponują metodologię RIO (Roles, Interactions and Organizations) jako właściwe podejście przy analizie i projektowaniu systemów wieloagentowych.
     \begin{figure}[!ht]
@@ -132,28 +134,6 @@ singlelinecheck=off
     Fuzje Wiedzy można zdefiniować jako integrację luźno powiązanych źródeł w połączone zasoby w celu uzupełnienia niedostatecznej wiedzy i uzyskania nowej.
     Korzystanie z inteligentnych agentów zwiększa wydajność i interoperacyjność systemu ponieważ agenci mogą działać w środowisku rozproszonym, niezależnie od użytkownika, i wykorzystywać
     ontologie do reprezentacji i wymiany wiedzy.
-
-
-    \chapter{Wybór systemu agentowego}
-
-
-    \section{Mesa}
-    Mesa~\cite{Masad2015} to biblioteka do modelowania agentowego w Pythonie.
-    Pozwala na szybkie stworzenie modelu agentowego przy wykorzystaniu wbudowanych komponentów.
-    \href{https://github.com/projectmesa/mesa}{Project~Mesa~github}
-    Ostatnie zmiany na githubie 28 listopada 2020 (stan na 11XII2020r.).
-
-
-    \section{Python Agent DEvelopment framework}
-    Framework PADE~\cite{Melo2019} umożliwia rozwój, wykonanie i zarządzanie wieloagentowymi systemami w rozproszonym środowisku.
-    \href{https://github.com/grei-ufc/pade}{Smart~Grids~Research~Group~-~UFC~github}
-    Ostatnie zmiany na githubie 22 maja 2020 (stan na 11XII2020r.).
-
-
-    \section{Smart Python multi-Agent Development Environment}
-    Platforma wieloagentowa SPADE jest oparta o XMPP\cite{Saint-Andre2007}.
-    \href{https://github.com/javipalanca/spade}{javipalanca~github}
-    Ostatnie zmiany na githubie 22 maja 2020 (stan na 11XII2020r.).
 
 
     \chapter{Koncepcja}\label{ch:koncepcja}
@@ -180,7 +160,41 @@ singlelinecheck=off
         \item wykorzystanie dodatkowych źródeł informacji.
     \end{enumerate}
 
+    \section{Role i Interakcje / Grupy i Hierarchie}
+    Role
+    \begin{enumerate}
+        \item Agent Szukający Wzorców \begin{enumerate}
+                                          \item Agent Szukający Wzorców Statycznych
+                                          \item Agent Szukający Wzorców Dynamicznych
+                                          \item \ldots
+        \end{enumerate}
+    \end{enumerate}
+
+
     \chapter{Realizacja}\label{ch:realizacja}
+
+
+    \section{Wybór systemu agentowego}
+
+    W języku Python istnieje wiele bibliotek do analizy danych oraz uczenia maszynowego.
+    Aby uniknąć potrzeby generowania powiązań z innymi językami platforma agentowa będzie również w Pythonie.
+    Poniżej przeanalizowano zalety i wady kilku wybranych platform w tym języku.
+
+    \subsection{Mesa}
+    Mesa~\cite{Masad2015} to biblioteka do modelowania agentowego w Pythonie.
+    Pozwala na szybkie stworzenie modelu agentowego przy wykorzystaniu wbudowanych komponentów.
+    \href{https://github.com/projectmesa/mesa}{Project~Mesa~github}
+    Ostatnie zmiany na githubie 28 listopada 2020 (stan na 11XII2020r.).
+
+    \subsection{Python Agent DEvelopment framework}
+    Framework PADE~\cite{Melo2019} umożliwia rozwój, wykonanie i zarządzanie wieloagentowymi systemami w rozproszonym środowisku.
+    \href{https://github.com/grei-ufc/pade}{Smart~Grids~Research~Group~-~UFC~github}
+    Ostatnie zmiany na githubie 22 maja 2020 (stan na 11XII2020r.).
+
+    \subsection{Smart Python multi-Agent Development Environment}
+    Platforma wieloagentowa SPADE jest oparta o XMPP\cite{Saint-Andre2007}.
+    \href{https://github.com/javipalanca/spade}{javipalanca~github}
+    Ostatnie zmiany na githubie 22 maja 2020 (stan na 11XII2020r.).
 
 
     \chapter{Ewaluacja}\label{ch:ewaluacja}
@@ -193,7 +207,7 @@ singlelinecheck=off
     \newpage
     \addcontentsline{toc}{chapter}{Bibliografia}
 
-%    TODO remove this line
+%    TODO remove next line
     \nocite{*}
     \printbibliography[title={Bibliografia}]
 
