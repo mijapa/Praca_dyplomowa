@@ -78,15 +78,17 @@ singlelinecheck=off
 
     \subsection{Ogólne}
 
+    \subsubsection{Wzorce w sieciach społecznościowych}
+    W pracy~\cite{10.1093/jigpal/jzaa042} autorzy identyfikują i kategoryzują wzorce opisujące interakcje między użytkownikami w sieciach społecznościowych.
+    Uwaga została skupiona na wzorcach w których występują częste interakcje dwóch lub więcej użytkowników oraz na pozycji społecznej tych użytkowników w sieci.
+    Zbiór danych został podzielony na N okien czasowych.
+    Lista postów była eksportowana dla każdego okna, a na jej podstawie tworzono słownik.
+    Przy pomocy słownika analizowano relacje miedzy użytkownikami.
+
+    W pracy Odkrywanie ukrytych informacji w mediach społecznościowych~\cite{Skwara2019} autor bada częste lub nietypowe wzorce zachowań użytkowników mediów społecznościowych.
+    Wzorce: wierny komentator, cięty komentator, dwaj komentatorzy, dwóch na jednego, komentator dwóch autorów, czujny komentator, prawo przechodniości.
+
     \subsection{GDELT}
-
-
-    \section{Zastosowania}
-
-
-    \section{Przegląd istniejących analiz}\label{sec:przegląd-istniejących-analiz}
-
-    \subsection{Jarosz}\label{subsec:jarosz}
     Celem pracy~\cite{Jarosz2020} identyfikacja wzorców w GDELT oraz opracowanie i ewaluacja algorytmów oraz metod analizy wzorców z tego zbioru\@.
     Badane wzorce zostały podzielone na statyczne oraz dynamiczne.
     Głównymi wyszczególnionymi elementami relacji sa powtarzalność oraz intensywność.
@@ -94,35 +96,29 @@ singlelinecheck=off
     Wzorce dynamiczne: stabilna relacja, jedyna zmiana, pojedyncze zaburzenie, oscylacja, wzajemność, podobny ciąg dopasowań, zależność w czasie.
     Dodatkowe wzorce dynamiczne COVID-19: spadek nastrojów, nowa normalność, gratulacje, skupienie na walce.
 
-    \subsection{Skwara}\label{subsec:skwara}
-    W pracy Odkrywanie ukrytych informacji w mediach społecznościowych~\cite{Skwara2019} autor bada częste lub nietypowe wzorce zachowań użytkowników mediów społecznościowych.
-    Wzorce: wierny komentator, cięty komentator, dwaj komentatorzy, dwóch na jednego, komentator dwóch autorów, czujny komentator, prawo przechodniości.
 
-    \subsection{Rudek}\label{subsec:rudek}
-    W pracy~\cite{10.1093/jigpal/jzaa042} autorzy identyfikują i kategoryzują wzorce opisujące interakcje między użytkownikami w sieciach społecznościowych.
-    Uwaga została skupiona na wzorcach w których występują częste interakcje dwóch lub więcej użytkowników oraz na pozycji społecznej tych użytkowników w sieci.
-    Zbiór danych został podzielony na N okien czasowych.
-    Lista postów była eksportowana dla każdego okna, a na jej podstawie tworzono słownik.
-    Przy pomocy słownika analizowano relacje miedzy użytkownikami.
-
-    \subsection{Yan}\label{subsec:yan}
+    \section{Zastosowania}
     W pracy~\cite{Yan2012} autorzy proponują framework oparty na ważności dla charakteryzowania i wyodrębniania zmieniających sie wzorców w sieciach przedstawiających notatki prasowe.
     Zdefiniowano dwa wskaźniki istotności, aby scharakteryzować ewolucję i odkryć zmiany topologii o doniosłym znaczeniu.
     Cały proces znajdowania zachowań dynamicznych jest kierowany przez punktację istotności.
-
-    \subsection{Gerhard Weiss}
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/agent_środowisko_weiss.png}
-        \caption{Agent w swoim środowisku. (źródło: Multiagent Systems \cite{55066420130101})}
-        \label{fig:agent}
-    \end{figure}
 
     \subsection{inne}\label{subsec:inne}
     Do analizy~\cite{Buckingham2020,Levin2018,Yuan2017}.
 
 
+    \section{Systemy Agentowe}
+    Gerhard Weiss
+%    \begin{figure}[!htp]
+%        \centering
+%        \includegraphics[width=\linewidth]{fig/agent_środowisko_weiss.png}
+%        \caption{Agent w swoim środowisku. (źródło: Multiagent Systems~\cite{55066420130101})}
+%        \label{fig:agent}
+%    \end{figure}
+
+
     \section{Metodologie rozwoju Systemu Agentowego}
+    Dziedzina inżynierii oprogramowania zorientowanej na agentów zajmuje się opracowywaniem systemów opartych na agentach oraz sposobami wspierania ich rozwoju.
+    W szczególności ma na celu dostarczenie metodologii projektowania systemów agentowych oraz narzędzi pomocniczych.
 
     \subsection{RIO}
     W pracy~\cite{S095741740200070220020101} autorzy proponują metodologię RIO (Roles, Interactions and Organizations) jako właściwe podejście przy analizie i projektowaniu systemów wieloagentowych.
@@ -140,7 +136,7 @@ singlelinecheck=off
     Dopiero etap projektowania architektonicznego kładzie naciska na wewnętrzną architekturę agenta.
 
     \subsection{GAIA}
-    w pracy~\cite{Wooldridge2000a} autorzy opisują metodologię analizy i projektowania systemu agentowego Gaia
+    W pracy~\cite{Wooldridge2000a} autorzy opisują metodologię analizy i projektowania systemu agentowego Gaia
     Została ona założona na bazie widzenia systemu wieloagentowego jako organizacji obliczeniowej składającej się z wielu oddziałujących ze sobą ról.
     Proces analizy i projektowania, przedstawiony na rysunku~\ref{fig:gaia}, może być postrzegany jako przyrostowe budowanie coraz bardziej złożonych modeli systemu który ma być stworzony.
     \begin{figure}[!ht]
@@ -202,16 +198,42 @@ singlelinecheck=off
     Na wyjściu systemu otrzymujemy zagregowane dane.
 
 
+    \section{Wybór wzorców}
+    sojusznik
+    nieprzyjaciel
+    symetria
+    asymetria
+    mocarstwo-klient
+
+    stabilna relacja
+    pojedyncze zaburzenie
+    oscylacja
+
+
     \section{Role i Interakcje / Grupy i Hierarchie}
-    Role
+
+    \subsection{Role}
     \begin{enumerate}
         \item Agent Szukający Wzorców \begin{enumerate}
-                                          \item Agent Szukający Wzorców Statycznych
-                                          \item Agent Szukający Wzorców Dynamicznych
-                                          \item \ldots
+                                          \item Agent Szukający Wzorców Statycznych \begin{enumerate}
+                                                                                        \item sojusznik
+                                                                                        \item nieprzyjaciel
+                                                                                        \item symetria
+                                                                                        \item asymetria
+                                                                                        \item mocarstwo-klient
+                                          \end{enumerate}
+                                          \item Agent Szukający Wzorców Dynamicznych \begin{enumerate}
+                                                                                         \item stabilna relacja
+                                                                                         \item pojedyncze zaburzenie
+                                                                                         \item oscylacja
+                                          \end{enumerate}
+                                          \item Agent Szukający Wzorców Covid?
         \end{enumerate}
-        \item
+        \item Agent Generujący Zestawienia
     \end{enumerate}
+
+    \subsection{Interakcje}
+    \ldots
 
 
     \chapter{Realizacja}\label{ch:realizacja}
