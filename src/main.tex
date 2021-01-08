@@ -60,7 +60,7 @@ singlelinecheck=off
         \vspace{0.04\textheight}
         \center{Kraków 2021}
 %        TODO: remove next line
-        \center{wersja 0.1.1}
+        \center{wersja 0.1.4}
     \end{titlepage}
 
     \tableofcontents
@@ -229,6 +229,9 @@ singlelinecheck=off
 
 
     \section{Wybór wzorców}
+
+    \paragraph{GDELT}
+
     sojusznik
     nieprzyjaciel
     symetria
@@ -239,31 +242,51 @@ singlelinecheck=off
     pojedyncze zaburzenie
     oscylacja
 
+    \paragraph{Bank Światowy}
 
-    \section{Role i Interakcje / Grupy i Hierarchie}
+    kraj rozwijający się
+    bogaty kraj
+    ubogi kraj
+
+
+    \section{Role i Interakcje}
 
     \subsection{Role}
     \begin{enumerate}
         \item Agent Szukający Wzorców \begin{enumerate}
-                                          \item Agent Szukający Wzorców Statycznych \begin{enumerate}
-                                                                                        \item sojusznik
-                                                                                        \item nieprzyjaciel
-                                                                                        \item symetria
-                                                                                        \item asymetria
-                                                                                        \item mocarstwo-klient
+                                          \item Agent szukający wzorców w danych GDELT \begin{enumerate}
+                                                                                           \item Agent Szukający Wzorców Statycznych \begin{enumerate}
+                                                                                                                                         \item sojusznik
+                                                                                                                                         \item nieprzyjaciel
+                                                                                                                                         \item symetria
+                                                                                                                                         \item asymetria
+                                                                                                                                         \item mocarstwo-klient
+                                                                                           \end{enumerate}
+                                                                                           \item Agent Szukający Wzorców Dynamicznych \begin{enumerate}
+                                                                                                                                          \item stabilna relacja
+                                                                                                                                          \item pojedyncze zaburzenie
+                                                                                                                                          \item oscylacja
+                                                                                           \end{enumerate}
+                                                                                           \item Agent Szukający Wzorców Covid?
                                           \end{enumerate}
-                                          \item Agent Szukający Wzorców Dynamicznych \begin{enumerate}
-                                                                                         \item stabilna relacja
-                                                                                         \item pojedyncze zaburzenie
-                                                                                         \item oscylacja
+                                          \item Agent szukający wzorców w danych Banku Światowego \begin{enumerate}
+                                                                                                      \item Agent Szukający Wzorców Statycznych \begin{enumerate}
+                                                                                                                                                    \item kraj rozwijający się
+                                                                                                                                                    \item bogaty kraj
+                                                                                                                                                    \item ubogi kraj
+                                                                                                      \end{enumerate}
                                           \end{enumerate}
-                                          \item Agent Szukający Wzorców Covid?
         \end{enumerate}
+        \item Agent Poszukujący Korelacji
+        \item Agent Poszukujący Trendów
         \item Agent Generujący Zestawienia
     \end{enumerate}
 
     \subsection{Interakcje}
-    \ldots
+    \begin{enumerate}
+        \item Zgłoszenie znalezionej informacji przez agenta szukającego wzorców do agenta poszukującego korelacji i trendów.
+        \item Przekazanie informacji do agenta generującego zestawienia.
+    \end{enumerate}
 
 
     \chapter{Realizacja}\label{ch:realizacja}
