@@ -266,41 +266,89 @@ singlelinecheck=off
     \section{Role i Interakcje}
 
     \subsection{Role}
+    Rola agenta określa, czego oczekuje się od niego zarówno w porozumieniu z innymi agentami, jak i w odniesieniu do całego systemu.
+    Często rola agenta jest po prostu definiowana w kategoriach konkretnego zadania, które ma on wykonać w kontekście systemu.
+    W metodologii GAIA rola jest definiowana przez cztery atrybuty~\cite{Wooldridge2000a}:
     \begin{enumerate}
-        \item Agent Szukający Wzorców \begin{enumerate}
-                                          \item Agent szukający wzorców w danych GDELT \begin{enumerate}
-                                                                                           \item Agent Szukający Wzorców Statycznych \begin{enumerate}
-                                                                                                                                         \item sojusznik
-                                                                                                                                         \item nieprzyjaciel
-                                                                                                                                         \item symetria
-                                                                                                                                         \item asymetria
-                                                                                                                                         \item mocarstwo-klient
-                                                                                           \end{enumerate}
-                                                                                           \item Agent Szukający Wzorców Dynamicznych \begin{enumerate}
-                                                                                                                                          \item stabilna relacja
-                                                                                                                                          \item pojedyncze zaburzenie
-                                                                                                                                          \item oscylacja
-                                                                                           \end{enumerate}
-                                                                                           \item Agent Szukający Wzorców Covid?
-                                          \end{enumerate}
-                                          \item Agent szukający wzorców w danych Banku Światowego \begin{enumerate}
-                                                                                                      \item Agent Szukający Wzorców Statycznych \begin{enumerate}
-                                                                                                                                                    \item kraj rozwijający się
-                                                                                                                                                    \item bogaty kraj
-                                                                                                                                                    \item ubogi kraj
-                                                                                                      \end{enumerate}
-                                          \end{enumerate}
+        \item obowiązki,
+        \item uprawnienia,
+        \item aktywności,
+        \item protokoły.
+    \end{enumerate}
+    Obowiązki determinują funkcjonalność i są podzielone na dwa typy:
+    \begin{enumerate}
+        \item właściwości żywotności - opisują te stany które agent musi wywołać, coś zostanie zrobione,
+        \item właściwości bezpieczeństwa - sprawdzają po każdym wykonaniu czy stan jest akceptowalny.
+    \end{enumerate}
+    Uprawnienia to prawa związane z rolą.
+    Identyfikują zasoby które sa dostępne dla danej roli w celu realizacji obowiązków.
+    Działania to obliczenia związane z rolą, które mogą być przeprowadzone przez agenta bez interakcji z innymi.
+    Protokoły definiują sposób w jaki role wchodzą w interakcję ze sobą.
+
+    \begin{enumerate}
+        \item Poszukiwacz wzorców
+        \begin{enumerate}
+            \item Poszukiwacz wzorców w danych GDELT
+            \begin{enumerate}
+                \item Poszukiwacz Wzorców Statycznych
+                \begin{enumerate}
+                    \item sojusznik
+                    \item nieprzyjaciel
+                    \item symetria
+                    \item asymetria
+                    \item mocarstwo-klient
+                \end{enumerate}
+                \item Poszukiwacz Wzorców Dynamicznych
+                \begin{enumerate}
+                    \item stabilna relacja
+                    \item pojedyncze zaburzenie
+                    \item oscylacja
+                \end{enumerate}
+                \item Poszukiwacz Wzorców Covid?
+            \end{enumerate}
+            \item Poszukiwacz wzorców w danych Banku Światowego
+            \begin{enumerate}
+                \item Poszukiwacz Wzorców Statycznych
+                \begin{enumerate}
+                    \item kraj rozwijający się
+                    \item bogaty kraj
+                    \item ubogi kraj
+                \end{enumerate}
+            \end{enumerate}
         \end{enumerate}
-        \item Agent Poszukujący Korelacji
-        \item Agent Poszukujący Trendów
-        \item Agent Generujący Zestawienia
+        \item Poszukiwacz Korelacji
+        \item Poszukiwacz Trendów
+        \item Generator Zestawień
     \end{enumerate}
 
     \subsection{Interakcje}
+    W systemie zamkniętym wszyscy agenci są znani a priori i mają ze sobą współpracować, a zatem mogą sobie ufać podczas interakcji.
+    W metodologii GAIA model interakcji składa się ze zbioru definicji protokołów.
+    Protokół to wzorzec interakcji który został formalnie zdefiniowany i wyodrębniony.
+
     \begin{enumerate}
         \item Zgłoszenie znalezionej informacji przez agenta szukającego wzorców do agenta poszukującego korelacji i trendów.
         \item Przekazanie informacji do agenta generującego zestawienia.
     \end{enumerate}
+
+
+    \begin{table}[ht!]
+        \begin{tabular}{ll}
+            Schemat roli:          & nazwa roli                                          \\ \hline
+            Opis                   & krotki opis roli w języku polskim                   \\
+            Protokoły i Aktywności & protokoły i aktywności w których rola bierze udział \\
+            Uprawnienia            & prawa związane z rolą                               \\
+            Obowiązki              &                                                     \\
+            ~~żywotność            & obowiązki życiowe                                   \\
+            ~~bezpieczeństwo       & odpowiedzialność za bezpieczeństwo                  \\
+        \end{tabular}
+        \caption{Schemat opisu roli agenta. (źródło: Opracowanie własne)}
+        \label{tab:schemat roli}
+    \end{table}
+
+
+    \section{Współdziałanie agentów}
+    TABELA\ldots
 
 
     \chapter{Realizacja}\label{ch:realizacja}
