@@ -346,7 +346,6 @@ singlelinecheck=off
         \item Przekazanie informacji do agenta generującego zestawienia.
     \end{enumerate}
 
-
     \begin{table}[ht!]
         \begin{tabular}{ll}
             Schemat roli:          & nazwa roli                                          \\ \hline
@@ -357,9 +356,48 @@ singlelinecheck=off
             ~~żywotność            & obowiązki życiowe                                   \\
             ~~bezpieczeństwo       & odpowiedzialność za bezpieczeństwo                  \\
         \end{tabular}
-        \caption{Schemat opisu roli agenta. (źródło: Opracowanie własne)}
+        \caption{Schemat opisu roli agenta w metodologii GAIA. (źródło: Opracowanie własne)}
         \label{tab:schemat roli}
     \end{table}
+
+    \begin{table}[ht!]
+        \begin{tabular}{ll}
+            Schemat roli:          & PoszukiwaczKorelacji                                           \\ \hline
+            Opis                   & Ta rola obejmuje wyszukiwanie korelacji między krajami         \\
+            & na podstawie danych pobranych od poszukiwaczy wzorców.         \\
+            Protokoły i Aktywności & \textbf{sprawdzajWzorce, szukajKorelacji, poinformujGenerator} \\
+            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczWzorcow}          \\
+            & ~~~~~~\textit{wzorzec}                                         \\
+            & \textbf{zmienia} \textit{zestawienie}                          \\
+            Obowiązki              &                                                                \\
+            ~~żywotność            & \textbf{sprawdzajWzorce, szukajKorelacji, poinformujGenerator} \\
+            ~~bezpieczeństwo       & -                                                              \\
+        \end{tabular}
+        \caption{Schemat roli Poszukiwacz Korelacji. (źródło: Opracowanie własne)}
+        \label{tab:schemat roli poszukiwacz korelacji}
+    \end{table}
+
+    \begin{table}[ht!]
+        \begin{tabular}{ll}
+            Schemat roli:          & Generator Zestawień                                                         \\ \hline
+            Opis                   & Ta rola obejmuje tworzenie zestawień na podstawie                           \\
+            & danych zebranych przez poszukiwaczy korelacji i trendów.                    \\
+            Protokoły i Aktywności & \textbf{sprawdzajZestawienia}              \\
+            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczKorelacji, PoszukiwaczTrendow} \\
+            & ~~~~~~\textit{zestawienie}                                                  \\
+            & \textbf{zmienia} \textit{zestawienie}                                       \\
+            Obowiązki              &                                                                             \\
+            ~~żywotność            & \textbf{sprawdzajZestawienia}                                               \\
+            ~~bezpieczeństwo       & -                                                                           \\
+        \end{tabular}
+        \caption{Schemat roli Generator Zestawień. (źródło: Opracowanie własne)}
+        \label{tab:schemat roli Generator Zestawień}
+    \end{table}
+
+    \subsection{Agenci}
+    Zadanie konfiguracyjne będzie określało na jakich krajach będzie skupiona uwaga systemu.
+    Dla każdego kraju powstanie agent mu odpowiadający który obliczy podstawowe miary.
+    Agenci przyjmujący role poszukiwaczy wzorców będą współpracować z agentami - krajami.
 
 
     \section{Współdziałanie agentów}
