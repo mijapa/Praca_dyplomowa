@@ -60,7 +60,7 @@ singlelinecheck=off
         \vspace{0.04\textheight}
         \center{Kraków 2021}
 %        TODO: remove next line
-        \center{wersja 0.1.4}
+        \center{wersja 0.1.5}
     \end{titlepage}
 
     \tableofcontents
@@ -70,8 +70,7 @@ singlelinecheck=off
 
 
     \chapter{Przegląd dziedziny}\label{ch:przegląd-dziedziny}
-    W tym rozdziale w części~\ref{sec:gdelt} opisany został zbiór GDELT\@.
-    W części~\ref{sec:przegląd-istniejących-analiz} przedstawione zostały prace dotyczące zbioru danych GDELT\@.
+    W tym rozdziale w części~\ref{subsec:gdelt} opisany został zbiór GDELT\@.
 
 
     \section{Wzorce}
@@ -88,7 +87,7 @@ singlelinecheck=off
     W pracy Odkrywanie ukrytych informacji w mediach społecznościowych~\cite{Skwara2019} autor bada częste lub nietypowe wzorce zachowań użytkowników mediów społecznościowych.
     Wzorce: wierny komentator, cięty komentator, dwaj komentatorzy, dwóch na jednego, komentator dwóch autorów, czujny komentator, prawo przechodniości.
 
-    \subsection{GDELT}
+    \subsection{GDELT}\label{subsec:gdelt}
     Celem pracy~\cite{Jarosz2020} identyfikacja wzorców w GDELT oraz opracowanie i ewaluacja algorytmów oraz metod analizy wzorców z tego zbioru\@.
     Badane wzorce zostały podzielone na statyczne oraz dynamiczne.
     Głównymi wyszczególnionymi elementami relacji sa powtarzalność oraz intensywność.
@@ -123,13 +122,11 @@ singlelinecheck=off
     \subsection{Zalety Systemu Wieloagentowego}
     Główną zaletą wykorzystania systemu agentowego według Gerharda Weissa~\cite{55066420130101} jest możliwość samodzielnego decydowania przez system o tym co powinien zrobić w celu osiągnięcia celów mu wyznaczonych.
     Agenci którzy mogą działać w zmieniającym się, nieprzewidywalnym środowisku gdzie wykonywane akcje mogą się nie powieść nazywani są agentami inteligentnymi.
-%    Gerhard Weiss podaje jako przykład systemu agentowego poszukiwanie odpowiedzi na pytanie w internecie.
     Kolejna zaletą SA jest utrzymywanie równowagi między skupieniem na celu i reagowaniem na bodźce.
     Możliwość negocjacji i kooperacji.
+
     Obiekt nie jest zdolny do proaktywnego zachowania i nie jest w stanie samodzielnie decydować, co zrobić w określonej sytuacji.
     Autonomiczne komponenty oddelegowane do własnej kontroli mogą zostać wzbogacone o wyrafinowane umiejętności społeczne, to znaczy zdolność do podejmowania decyzji o zakresie i naturze ich interakcji w czasie wykonywania oraz inicjowania interakcji w sposób elastyczny (np. poprzez wyszukiwanie i negocjowanie świadczenia usług oraz dostarczania danych).
-%    Belief-Desire-Intention
-
 
     \section{Metodologie rozwoju Systemu Agentowego}
     Dziedzina inżynierii oprogramowania zorientowanej na agentów zajmuje się opracowywaniem systemów opartych na agentach oraz sposobami wspierania ich rozwoju.
@@ -366,7 +363,7 @@ singlelinecheck=off
             Opis                   & Ta rola obejmuje wyszukiwanie korelacji między krajami         \\
             & na podstawie danych pobranych od poszukiwaczy wzorców.         \\
             Protokoły i Aktywności & \textbf{sprawdzajWzorce, szukajKorelacji, poinformujGenerator} \\
-            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczWzorcow}          \\
+            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczWzorcow}         \\
             & ~~~~~~\textit{wzorzec}                                         \\
             & \textbf{zmienia} \textit{zestawienie}                          \\
             Obowiązki              &                                                                \\
@@ -379,19 +376,37 @@ singlelinecheck=off
 
     \begin{table}[ht!]
         \begin{tabular}{ll}
-            Schemat roli:          & Generator Zestawień                                                         \\ \hline
-            Opis                   & Ta rola obejmuje tworzenie zestawień na podstawie                           \\
-            & danych zebranych przez poszukiwaczy korelacji i trendów.                    \\
-            Protokoły i Aktywności & \textbf{sprawdzajZestawienia}              \\
+            Schemat roli:          & Generator Zestawień                                                          \\ \hline
+            Opis                   & Ta rola obejmuje tworzenie zestawień na podstawie                            \\
+            & danych zebranych przez poszukiwaczy korelacji i trendów.                     \\
+            Protokoły i Aktywności & \textbf{sprawdzajZestawienia}                                                \\
             Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczKorelacji, PoszukiwaczTrendow} \\
-            & ~~~~~~\textit{zestawienie}                                                  \\
-            & \textbf{zmienia} \textit{zestawienie}                                       \\
-            Obowiązki              &                                                                             \\
-            ~~żywotność            & \textbf{sprawdzajZestawienia}                                               \\
-            ~~bezpieczeństwo       & -                                                                           \\
+            & ~~~~~~\textit{zestawienie}                                                   \\
+            & \textbf{zmienia} \textit{zestawienie}                                        \\
+            Obowiązki              &                                                                              \\
+            ~~żywotność            & \textbf{sprawdzajZestawienia}                                                \\
+            ~~bezpieczeństwo       & -                                                                            \\
         \end{tabular}
         \caption{Schemat roli Generator Zestawień. (źródło: Opracowanie własne)}
         \label{tab:schemat roli Generator Zestawień}
+    \end{table}
+
+    \begin{table}[ht!]
+        \begin{tabular}{ll}
+            Schemat roli:          & Poszukiwacz Wzorców                             \\ \hline
+            Opis                   & Ta rola obejmuje wyszukiwanie wzorców           \\
+            & pośród danych z wykorzystaniem zestawu miar.    \\
+            & Wzorce dzielą się na dwie kategorie: wewnętrzne \\
+            & oraz między krajami.                            \\
+            Protokoły i Aktywności & \textbf{SzukajWzorców}                          \\
+            Uprawnienia            & \textbf{czyta} \textit{miary}                   \\
+            & \textbf{zmienia} \textit{wzorzec}               \\
+            Obowiązki              &                                                 \\
+            ~~żywotność            & \textbf{SzukajWzorców}                          \\
+            ~~bezpieczeństwo       & -                                               \\
+        \end{tabular}
+        \caption{Schemat roli Poszukiwacz Wzorców. (źródło: Opracowanie własne)}
+        \label{tab:schemat roli Poszukiwacz Wzorców}
     \end{table}
 
     \subsection{Agenci}
@@ -399,9 +414,52 @@ singlelinecheck=off
     Dla każdego kraju powstanie agent mu odpowiadający który obliczy podstawowe miary.
     Agenci przyjmujący role poszukiwaczy wzorców będą współpracować z agentami - krajami.
 
+    Na podstawie ogólnego schematu Poszukiwacz Wzorców zostaną wyspecyfikowani poszukiwacze wzorców lokalnych - wewnętrznych -
+    i globalnych - między państwami.
+    Analizowane będą wzorce statyczne i dynamiczne.
+
+    Agent związany z danym krajem może wstępnie badać relacje z innymi krajami i w razie potrzeby powołać agenta badającego relacje między krajami.
+
 
     \section{Współdziałanie agentów}
-    TABELA\ldots
+    Na rysunku~\ref{fig:relacje} przedstawiony został schemat relacji ról agentów.
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{fig/relacja ról.png}
+        \caption{Interakcje ról. (źródło: Opracowanie własne)}
+        \label{fig:relacje}
+    \end{figure}
+
+
+    \section{Eksploracja}
+
+    \paragraph{Symetria relacji między państwami}
+    Siła powiązania, zaproponowana w artykule, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
+    Ponieważ siła powiązania nie jest znormalizowana przez liczbę zdarzeń dla kraju B, dlatego nie jest symetryczna.
+    Odzwierciedla to jak ważny dla kraju A jest kraj B.
+    W trakcie eksploracji możliwe są zmiany miary symetrii np.:
+    \begin{enumerate}
+        \item poprzez wymnażanie przez liczbę wzmianek,
+        \item wybór zdarzeń ważniejszych,
+        \item filtrowanie miarą goldsteina.
+    \end{enumerate}
+
+    Wykres~\ref{fig:POL-DEU-POL} przedstawia symetryczność siły połączenia Polski i~Niemiec w~czasie.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/POL-DEU-POL.png}
+        \caption{Symetryczność siły połączenia Polski i~Niemiec w~czasie. (źródło: opracowanie własne)}
+        \label{fig:POL-DEU-POL}
+    \end{figure}
+
+
+    Wykres~\ref{fig:POL-RUS-POL} przedstawia symetryczność siły połączenia Polski i~Rosji w~czasie.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/POL-RUS-POL.png}
+        \caption{Symetryczność siły połączenia Polski i~Rosji w~czasie. (źródło: opracowanie własne)}
+        \label{fig:POL-RUS-POL}
+    \end{figure}
 
 
     \chapter{Realizacja}\label{ch:realizacja}
