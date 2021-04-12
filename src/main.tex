@@ -517,6 +517,149 @@ singlelinecheck=off
 
     \chapter{Podsumowanie}\label{ch:podsumowanie}
 
+    \appendix
+    \newpage
+
+
+    \chapter{Instalacja platformy wieloagentowej}
+
+
+    \section{Prosody}
+    Do działania platformy SPADE niezbędny jest serwer XMPP.
+    Przykładem takiego oprogramowania na licencji otwarto-źródłowej jest Prosody.
+    Prosody~\cite{prosody} jest nowoczesnym serwerem komunikacyjnym XMPP.
+    W celu jego instalacji w systemie operacyjnym Linux Debian lub Ubuntu należy skorzystać z polecenia:
+    \begin{verbatim}
+           sudo apt-get install prosody
+    \end{verbatim}
+
+    Dodanie użytkownika następuje przez wydanie polecenia:
+    \begin{verbatim}
+        sudo prosodyctl adduser me@localhost
+    \end{verbatim}
+
+
+    \section{SPADE}
+
+    Aby zainstalować SPADE wystarczy w terminalu wydać polecenie:
+    \begin{verbatim}
+        pip install spade
+    \end{verbatim}
+
+    W celu stworzenia agenta należy postępować wg instrukcji~\cite{SPADEquickstart}:
+    \begin{verbatim}
+    from spade import agent
+
+    class DummyAgent(agent.Agent):
+        async def setup(self):
+            print("Hello World! I'm agent {}".format(str(self.jid)))
+
+    dummy = DummyAgent("your_jid@your_xmpp_server", "your_password")
+    dummy.start()
+
+    dummy.stop()
+    \end{verbatim}
+
+    W SPADE do tworzenia wiadomości przeznaczona jest klasa \textit{Message},
+    która pozwala na wprowadzenie metadanych do wiadomości.
+    Metadane w postaci słowników klucz, wartość są przydatne do uwzględnienia atrybutów FIPA.
+
+    Funkcje \textbf{send} oraz \textbf{receive} są procesami asynchronicznymi dlatego należy je wywoływać z instrukcją \textit{await}.
+    Ponieważ SPADE jest platformą do przesyłania wiadomości w czasie rzeczywistym,
+    to wysłana wiadomość przepadnie jeśli odbiorca nie jest gotowy na jej odebranie.
+    Dzięki XMPP agenci SPADE są zdolni do utrzymywania listy kontaktów i mogą otrzymywać powiadomienia o ich kontaktach w czasie rzeczywistym.
+    Ta funkcjonalność pozwala podnieść niezawodność komunikacji.
+
+
+    \chapter{table en}
+
+    \begin{table}[ht!]
+        \begin{tabular}{ll}
+            Role schema:             & Correlation Seeker                                          \\ \hline
+            Description              & This role includes finding correlations between countries   \\
+            & based on data collected from Pattern Seekers.               \\
+            Protocols and Activities & \textbf{checkPatterns, searchForCorrelation, tellGenerator} \\
+            Permissions              & \textbf{reads delivered} \textit{PatternSeeker}             \\
+            & ~~~~~~\textit{pattern}                                      \\
+            & \textbf{change} \textit{statement}                          \\
+            Responsibilities         &                                                             \\
+            ~~vitality               & \textbf{checkPatterns, searchForCorrelation, tellGenerator} \\
+            ~~security               & -                                                           \\
+        \end{tabular}
+        \caption{Correlation Seeker role schema. (source: own research)}
+    \end{table}
+
+    \begin{table}[ht!]
+        \begin{tabular}{ll}
+            Role schema:             & Comparison Generator                                               \\ \hline
+            Description              & This role includes creating comparisons from                       \\
+            & data collected by Correlation and Trend Seekers.                   \\
+            Protocols and Activities & \textbf{checkComparisons}                                          \\
+            Permissions              & \textbf{reads delivered} \textit{Correlation Seeker, Trend Seeker} \\
+            & ~~~~~~\textit{comparison}                                          \\
+            & \textbf{change} \textit{comparison}                                \\
+            Responsibilities         &                                                                    \\
+            ~~vitality               & \textbf{checkComparison}                                           \\
+            ~~security               & -                                                                  \\
+        \end{tabular}
+        \caption{Comparison Generator role schema. (source: own research)}
+    \end{table}
+
+    \begin{table}[ht!]
+        \begin{tabular}{ll}
+            Role schema:             & Pattern Seeker                              \\ \hline
+            Description              & This role includes pattern searching        \\
+            & among the data using a set of measures.     \\
+            & Patterns fall into two categories: internal \\
+            & and between countries.                      \\
+            Protocols and Activities & \textbf{SearchPatterns}                     \\
+            Permissions              & \textbf{reads} \textit{measures}            \\
+            & \textbf{change} \textit{pattern}            \\
+            Responsibilities         &                                             \\
+            ~~vitality               & \textbf{SearchPatterns}                     \\
+            ~~security               & -                                           \\
+        \end{tabular}
+        \caption{Pattern Seeker role schema. (source: own research)}
+    \end{table}
+
+
+    \chapter{Prototyp}
+    System agentowy składający się z:
+    \begin{itemize}
+        \item jednego agenta Generator Zestawień
+        \item jednego agenta Poszukiwacza Trendów
+        \item przynajmniej jednego agenta Poszukiwacza Wzorców.
+    \end{itemize}
+
+    Generator Zestawień tworzy agenta Poszukiwacz Trendów.
+    Agent Poszukiwacz Trendów tworzy dla każdej pary krajów Poszukiwacza Wzorców.
+    Poszukiwacz Wzorców sprawdza symetrię/asymetrię relacji~\ref{symetria_relacji} pomiędzy parą krajów badając siłę powiązania miedzy nimi, w kolejnych okresach czasu.
+    Wyniki są zwracane do Poszukiwacza Trendów który analizuje zebrane dane szukając tendencji.
+    Ostateczne wyniki przekazywane są do Generatora Zestawień który przygotowuje raport końcowy.
+
+    \paragraph{Kraje do testów}
+    \begin{enumerate}
+        \item Polska
+        \item Niemcy
+        \item Rosja
+        \item Czechy
+        \item Słowacja
+        \item Ukraina
+    \end{enumerate}
+    6 krajów - 30 kombinacji
+
+    Zakres czasu jaki powinien być analizowany jest przekazywany z Generatora Zestawień.
+    Analizowane zostaną wszystkie kraje (z puli testowej)lub te wybrane przez Generator.
+    Analizowany jest tylko wzorzec symetria/asymetria.
+
+    \section{Zadania}
+    \begin{itemize}
+        \item klastrowanie (jak zmienia się przynależność kraju do klastrów)
+        \item ważne wydarzenia (daty) podawane w formie pliku na wejście jako punkt zaczepienia do poszukiwań
+        \item
+        \item
+    \end{itemize}
+
     \inputencoding{utf8}
 
     \newpage
