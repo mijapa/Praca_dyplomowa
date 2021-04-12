@@ -19,6 +19,9 @@ labelfont=bf,
 singlelinecheck=off
 }
 
+\DeclareUnicodeCharacter{0327}{}
+\DeclareUnicodeCharacter{25CC}{}
+
 %\addbibresource{library.bib}
 \addbibresource{NEW.bib}
 
@@ -127,6 +130,7 @@ singlelinecheck=off
 
     Obiekt nie jest zdolny do proaktywnego zachowania i nie jest w stanie samodzielnie decydować, co zrobić w określonej sytuacji.
     Autonomiczne komponenty oddelegowane do własnej kontroli mogą zostać wzbogacone o wyrafinowane umiejętności społeczne, to znaczy zdolność do podejmowania decyzji o zakresie i naturze ich interakcji w czasie wykonywania oraz inicjowania interakcji w sposób elastyczny (np. poprzez wyszukiwanie i negocjowanie świadczenia usług oraz dostarczania danych).
+
 
     \section{Metodologie rozwoju Systemu Agentowego}
     Dziedzina inżynierii oprogramowania zorientowanej na agentów zajmuje się opracowywaniem systemów opartych na agentach oraz sposobami wspierania ich rozwoju.
@@ -433,8 +437,8 @@ singlelinecheck=off
 
     \section{Eksploracja}
 
-    \paragraph{Symetria relacji między państwami}
-    Siła powiązania, zaproponowana w artykule, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
+    \paragraph{Symetria relacji między państwami}\label{symetria_relacji}
+    Siła powiązania, zaproponowana w artykule \ldots, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
     Ponieważ siła powiązania nie jest znormalizowana przez liczbę zdarzeń dla kraju B, dlatego nie jest symetryczna.
     Odzwierciedla to jak ważny dla kraju A jest kraj B.
     W trakcie eksploracji możliwe są zmiany miary symetrii np.:
@@ -471,21 +475,41 @@ singlelinecheck=off
     Aby uniknąć potrzeby generowania powiązań z innymi językami platforma agentowa będzie również w Pythonie.
     Poniżej przeanalizowano zalety i wady kilku wybranych platform w tym języku.
 
+    \begin{table}[]
+        \begin{tabular}{l|ll}
+            & SPADE                                   & PADE                     \\ \hline
+            komunikacja            & serwer XMPP                             & biblioteka Twisted       \\
+            & FIPA, XMPP Data Forms~\cite{data_forms} & FIPA ACL~\cite{fipa_acl} \\ \hline
+            filtrowanie wiadomości & metadane                                & klasa filtrująca         \\ \hline
+            licencja               & MIT                                     & MIT                      \\ \hline
+            transfer               & zserializowani agenci                   & agenci mogą być          \\
+            &                                         & zawartością wiadomości   \\ \hline
+            zachowania             & wiele jednocześnie:                     & cykliczne i periodyczne  \\
+            & cykliczne i periodyczne \\ \hline
+            obecność kontaktów     & powiadomienia                           & -                        \\
+            & w czasie rzeczywistym \\ \hline
+            interfejs graficzny    & webowy                                  & webowy (Flask)           \\ \hline
+            rozszerzenia           & wtyczki                                 & -                        \\ \hline \hline
+        \end{tabular}
+        \caption{Porównanie wybranych platform wieloagentowych w języku python. (źródło: opracowanie własne)}
+        \label{tab:porownanie}
+    \end{table}
+
     \subsection{Mesa}
     Mesa~\cite{Masad2015} to biblioteka do modelowania agentowego w Pythonie.
     Pozwala na szybkie stworzenie modelu agentowego przy wykorzystaniu wbudowanych komponentów.
     \href{https://github.com/projectmesa/mesa}{Project~Mesa~github}
-    Ostatnie zmiany na githubie 28 listopada 2020 (stan na 11XII2020r.).
+    Ostatnie zmiany na githubie 11 lutego 2021 (stan na 17 II 2021r.).
 
     \subsection{Python Agent DEvelopment framework}
     Framework PADE~\cite{Melo2019} umożliwia rozwój, wykonanie i zarządzanie wieloagentowymi systemami w rozproszonym środowisku.
     \href{https://github.com/grei-ufc/pade}{Smart~Grids~Research~Group~-~UFC~github}
-    Ostatnie zmiany na githubie 22 maja 2020 (stan na 11XII2020r.).
+    Ostatnie zmiany na githubie 4 lutego 2021 (stan na 17 II 2021r.).
 
     \subsection{Smart Python multi-Agent Development Environment}
     Platforma wieloagentowa SPADE jest oparta o XMPP\cite{Saint-Andre2007}.
     \href{https://github.com/javipalanca/spade}{javipalanca~github}
-    Ostatnie zmiany na githubie 22 maja 2020 (stan na 11XII2020r.).
+    Ostatnie zmiany na githubie 22 maja 2020 (stan na 17 II 2021r.).
 
 
     \chapter{Ewaluacja}\label{ch:ewaluacja}
@@ -498,8 +522,6 @@ singlelinecheck=off
     \newpage
     \addcontentsline{toc}{chapter}{Bibliografia}
 
-%    TODO remove next line
-    \nocite{*}
     \printbibliography[title={Bibliografia}]
 
 
