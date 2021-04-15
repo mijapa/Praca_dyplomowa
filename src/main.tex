@@ -651,14 +651,69 @@ singlelinecheck=off
     Zakres czasu jaki powinien być analizowany jest przekazywany z Generatora Zestawień.
     Analizowane zostaną wszystkie kraje (z puli testowej)lub te wybrane przez Generator.
     Analizowany jest tylko wzorzec symetria/asymetria.
+    Początkowo analiza prowadzona jest w miesięcznych przedziałach czasu.
+    Jeśli wyniki będą bardzo zaburzone, zwiększone zostaną analizowane przedziały czasu.
+    Jeśli wyniki będą stałe możliwe będzie przejście na mniejsze przeziały.
+
 
     \section{Zadania}
+
+    \subsection{Klastrowanie}
+    Gdzie odbędzie się klastrowanie?
+    Wg jakich miar?
+
+    \subsubsection{Klastrowanie w czasie}
+    Jak zmienia się przynależność kraju do klastrów?
+    Zmiana/oscylacja/piki
+
+    \paragraph{Korelacja}
     \begin{itemize}
-        \item klastrowanie (jak zmienia się przynależność kraju do klastrów)
-        \item ważne wydarzenia (daty) podawane w formie pliku na wejście jako punkt zaczepienia do poszukiwań
-        \item
-        \item
+        \item zmiany następują z opóźnieniem
+        \item zmiany następują jednocześnie
+        \item procentowa (w czasie) przynależność do tego samego
+        \item jak często zmiana klastra przez oba państwa występuje w tych samych tygodniach
     \end{itemize}
+
+    \subsection{Ważne wydarzenia}
+    Daty ważnych wydarzeń podawane w formie pliku na wejście jako punkt zaczepienia do poszukiwań w koło tej daty.
+
+    \subsection{Stan gospodarczy}
+    Jak zmiana stanu gospodarczego wpływa na relację?
+
+    \subsection{Rodzaje przeszukiwania - zmienność/agregacja}
+    Agregacja gdy pojawia się stały poziom.
+    Preferencja rodzaju przeszukiwania podana w konfiguracji.
+
+    \subsection{Przedziały czasowe}
+    Jeśli są mocne zmiany zachowań dla szerokiego przedziału, zmniejsz przedział aby uniknąć lokalnych fluktuacji.
+    Jeśli jest stała wartość dla relacji to zacznij badać dla mniejszego przedziału.
+
+    \subsection{Agregacja}
+    Poszukiwacz wzorców może mieć miarę zagregowaną na różnych poziomach.
+
+    \subsection{Badanie relacji odwrotnej}
+    Dla tej samej relacji zamieniamy Aktora 1 i Aktora 2.
+
+    \subsection{Mało zdarzeń - informacja dodatkowa}
+    Zwracanie dodatkowej informacji do poszukiwacza o tym, że analizowanych wydarzeń jest mało.
+
+    \subsubsection{Zaprzestanie poszukiwań}
+    Poszukiwacz trendów może decydować o zaprzestaniu poszukiwania relacji gdy zdarzeń jest zbyt mało.
+
+    \subsection{Dużo zdarzeń - informacja dodatkowa}
+    Zwracanie dodatkowej informacji do poszukiwacza o tym, że analizowanych wydarzeń jest dużo.
+
+    \subsubsection{Histogram}
+    Generowanie dodatkowego histogramu gdy danych zdarzeń jest bardzo dużo.
+
+    \subsubsection{Uruchomienie poszukiwań korelacji}
+    Ewentualne uruchomienie poszukiwań korelacji gdy zdarzeń jest bardzo dużo.
+
+    \subsection{Inteligentna selekcja wyników}
+    Selekcja wyników będzie podstawą do dalszej eksploracji.
+
+    \subsection{Kraje szczególnego zainteresowania}
+    Wskazanie w konfiguracji jakie kraje są szczególnie interesujące.
 
     \inputencoding{utf8}
 
