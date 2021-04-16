@@ -623,12 +623,12 @@ singlelinecheck=off
     \end{table}
 
 
-    \chapter{Prototyp}
+    \chapter{Prototyp v1}
     System agentowy składający się z:
     \begin{itemize}
         \item jednego agenta Generator Zestawień
         \item jednego agenta Poszukiwacza Trendów
-        \item przynajmniej jednego agenta Poszukiwacza Wzorców.
+        \item 30 agentów Poszukiwacz Wzorców - po jednym dla każdej kombinacji państw.
     \end{itemize}
 
     Generator Zestawień tworzy agenta Poszukiwacz Trendów.
@@ -653,7 +653,15 @@ singlelinecheck=off
     Analizowany jest tylko wzorzec symetria/asymetria.
     Początkowo analiza prowadzona jest w miesięcznych przedziałach czasu.
     Jeśli wyniki będą bardzo zaburzone, zwiększone zostaną analizowane przedziały czasu.
-    Jeśli wyniki będą stałe możliwe będzie przejście na mniejsze przeziały.
+    Jeśli wyniki będą stałe możliwe będzie przejście na mniejsze przedziały.
+    Diagram czynności prototypu został przedstawiony na rysunku~\ref{fig:diagram_czynności_top}.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{fig/diagrams/Diagram czynności top.pdf}
+        \caption{Diagram czynności prototypu v1. (źródło: opracowanie własne)}
+        \label{fig:diagram_czynności_top}
+    \end{figure}
 
 
     \section{Zadania}
@@ -662,23 +670,47 @@ singlelinecheck=off
     Gdzie odbędzie się klastrowanie?
     Wg jakich miar?
 
+    \subsubsection{Klastrowanie państw}
+    Łączenie podobnych państw w grupy na podstawie wybranych miar.
+    Wyodrębnienie państw:
+    \begin{itemize}
+        \item silnych,
+        \item bogatych,
+        \item aktywnych politycznie
+        \item związanych z przemocą
+        \item o wyraźnie podwyższonych nakładach na opiekę zdrowotną / zbrojenia
+        \item \ldots
+    \end{itemize}
+
+    \subsubsection{Klastrowanie relacji}
+    Łączenie podobnych relacji w grupy na podstawie wybranych miar.
+    Wyodrębnienie relacji:
+    \begin{itemize}
+        \item mocarstwo - klient
+        \item \ldots
+    \end{itemize}
+
     \subsubsection{Klastrowanie w czasie}
     Jak zmienia się przynależność kraju do klastrów?
-    Zmiana/oscylacja/piki
+    Zmiana/oscylacja/piki.
 
     \paragraph{Korelacja}
     \begin{itemize}
-        \item zmiany następują z opóźnieniem
-        \item zmiany następują jednocześnie
-        \item procentowa (w czasie) przynależność do tego samego
-        \item jak często zmiana klastra przez oba państwa występuje w tych samych tygodniach
+        \item zmiany następują z opóźnieniem,
+        \item zmiany następują jednocześnie,
+        \item procentowa (w czasie) przynależność do tego samego,
+        \item jak często zmiana klastra przez oba państwa występuje w tych samych tygodniach.
+        \item korelacja miedzy miarami, a stanem gospodarczym
     \end{itemize}
+
+    \subsection{Porównanie państw}
+    Porównywanie wybranych państw.
+
+    \subsection{Porównywanie relacji}
+    Porównywanie wybranych relacji.
 
     \subsection{Ważne wydarzenia}
     Daty ważnych wydarzeń podawane w formie pliku na wejście jako punkt zaczepienia do poszukiwań w koło tej daty.
-
-    \subsection{Stan gospodarczy}
-    Jak zmiana stanu gospodarczego wpływa na relację?
 
     \subsection{Rodzaje przeszukiwania - zmienność/agregacja}
     Agregacja gdy pojawia się stały poziom.
@@ -693,6 +725,7 @@ singlelinecheck=off
 
     \subsection{Badanie relacji odwrotnej}
     Dla tej samej relacji zamieniamy Aktora 1 i Aktora 2.
+    W niektórych przypadkach może to stanowić redundancję która ułatwi dalsze obliczenia.
 
     \subsection{Mało zdarzeń - informacja dodatkowa}
     Zwracanie dodatkowej informacji do poszukiwacza o tym, że analizowanych wydarzeń jest mało.
