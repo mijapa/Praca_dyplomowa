@@ -244,7 +244,7 @@ singlelinecheck=off
     Na wyjściu systemu otrzymujemy zagregowane dane.
 
 
-    \section{Miary}
+    \section{Miary}\label{sec:miary}
     Miary jakie zostaną wykorzystane do poszukiwania wzorców:
     \begin{enumerate}
         \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1 (dalej oznaczone jako \textit{Events}),
@@ -258,7 +258,7 @@ singlelinecheck=off
     \end{enumerate}
 
 
-    \section{Wybór wzorców}
+    \section{Wybór wzorców}\label{sec:wybór-wzorców}
 
     \paragraph{GDELT}
 
@@ -664,11 +664,80 @@ singlelinecheck=off
     \end{figure}
 
 
+    \section{Parametry konfiguracyjne}
+    Parametry konfiguracyjne mogą być podawane na wejście systemu.
+    Część parametrów może być określana w postaci przedziałów, z których system wybierze wartości.
+    Niektóre z parametrów mogą być dobierane w pełni automatycznie na zasadzie uczenia maszynowego.
+%    Manualne, pół-automatyczne, automatyczne.
+
+    \subsection{Tylko wybrane kraje}
+    Lista krajów które będą analizowane jako jedyne.
+
+    \subsection{Kraje szczególnego zainteresowania}
+    Lista krajów dla których system będzie starał się znaleźć najwięcej informacji.
+
+
+    \subsection{Zdarzenia szczególnego zainteresowania}
+    Podane w formie dat główne punkty w pobliżu których system powinien przeprowadzać poszukiwania.
+
+    \subsection{Wielkość okna czasowego}
+    Rozmiar przedziałów czasu w jakich agregowane będą analizowane dane.
+    Poziomy granulacji czasu:
+    \begin{itemize}
+        \item tydzień,
+        \item miesiąc,
+        \item rok.
+    \end{itemize}
+    Okno czasowe może być zmieniane przez system wg.~\ref{subsec:przedziały-czasowe}.
+
+    \subsection{Punkt stopu poszukiwań}
+%    W którym momencie który agent powinien zaprzestawać dalszej analizy?
+    Cyklicznie sprawdzane warunki pozwalające określić czy dalsze przeszukiwanie jest zasadne.
+
+    \subsection{Data początku i końca analizy}
+    Przedział czasu określający badany przez system okres.
+
+    \subsection{Progi dla danego kraju/relacji}\label{subsec:progi-dla-danego-kraju/relacji}
+    Progi pozwolą na odrzucenie poszukiwań w mało interesujących obszarach.
+    Mogą być dobierane ręcznie, pół-automatycznie, lub automatycznie.
+    Możliwe do wyboru progi:
+    \begin{itemize}
+        \item ilość zdarzeń (pokazuje aktywność podmiotów z danego kraju - ZAKRES),
+        \item liczba wzmianek (pokazuje, że dane działanie było uznane za ważne - WAGA),
+        \item ilość źródeł,
+        \item średni średni ton,
+        \item miara Goldsteina
+        \item stosunek liczby zdarzeń (pokazuje jak nastawione jest dane państwo).
+        \item ilość silnych relacji kooperacyjnych,
+        \item ilość silnych relacji wrogich.
+    \end{itemize}
+
+    \subsection{Podpowiedź prawdopodobnego wyniku}\label{subsec:podpowiedź-prawdopodobnego-wyniku}
+    Podpowiedzi dla systemu pochodzące z pliku konfiguracyjnego.
+    W celu poprawy weryfikacji podpowiadane są prawdopodobne wyniki jakie chcemy otrzymać,
+    np.: Izrael - Iran -> wrogowie, USA - Polska -> mocarstwo - klient.
+
+    \subsection{Zadane algorytmy klastrowania}
+    Możliwe do wyboru algorytmy klastrowania:
+    \begin{itemize}
+        \item k-means
+        \item aglomeracyjne
+        \item DBSCAN
+    \end{itemize}
+
+
+
+    \section{Miary i wzorce}
+    Miar zostały opisane w sekcji~\ref{sec:miary}.
+    Wzorce zostały opisane w sekcji~\ref{sec:wybór-wzorców}
+
+
     \section{Zadania}
 
     \subsection{Klastrowanie}
     Gdzie odbędzie się klastrowanie?
     Wg jakich miar?
+
 
     \subsubsection{Klastrowanie państw}
     Łączenie podobnych państw w grupy na podstawie wybranych miar.
@@ -695,12 +764,20 @@ singlelinecheck=off
     Zmiana/oscylacja/piki.
 
     \paragraph{Korelacja}
+    Jaki współczynnik korelacji(Pearsona?)?
     \begin{itemize}
         \item zmiany następują z opóźnieniem,
         \item zmiany następują jednocześnie,
+        \item jak często (procentowo) trafiają do tego samego klastra,
+        \item jak często (procentowo) trafiają do różnych klastrów ale zmiana zachodzi w tym samym czasie.
+        Dynamika relacji.
+        Uchwycenie podobieństwa w zachowaniu.
+        Powiązanie zmiany relacji (np.: sojusznik ->wróg) z wydarzeniami.
         \item procentowa (w czasie) przynależność do tego samego,
         \item jak często zmiana klastra przez oba państwa występuje w tych samych tygodniach.
         \item korelacja miedzy miarami, a stanem gospodarczym
+        \item powiązanie zmiany relacji z wydarzeniami
+        \item powiązanie z kursem giełdowym?
     \end{itemize}
 
     \subsection{Porównanie państw}
@@ -716,7 +793,7 @@ singlelinecheck=off
     Agregacja gdy pojawia się stały poziom.
     Preferencja rodzaju przeszukiwania podana w konfiguracji.
 
-    \subsection{Przedziały czasowe}
+    \subsection{Przedziały czasowe}\label{subsec:przedziały-czasowe}
     Jeśli są mocne zmiany zachowań dla szerokiego przedziału, zmniejsz przedział aby uniknąć lokalnych fluktuacji.
     Jeśli jest stała wartość dla relacji to zacznij badać dla mniejszego przedziału.
 
@@ -747,6 +824,35 @@ singlelinecheck=off
 
     \subsection{Kraje szczególnego zainteresowania}
     Wskazanie w konfiguracji jakie kraje są szczególnie interesujące.
+
+    \subsection{Podpowiedzi konfiguracyjne}\label{subsec:podpowiedzi-konfiguracyjne}
+    Realizacja punktu~\ref{subsec:podpowiedź-prawdopodobnego-wyniku}.
+
+    \subsection{Reset systemu w przypadku niezadowalającej odpowiedzi}
+    Reset systemu z nowymi parametrami.
+    
+    \subsection{Komunikacja z agentami wyższego rzędu tylko w przypadku znalezienia istotnych informacji}
+
+    \subsection{Filtrowanie relacji/krajów na podstawie wartości progowej}
+    Relacje krajów europejskich z krajami azjatyckimi mają małe znaczenie i powinny zostać odfiltrowane.
+    Progi - patrz~\ref{subsec:progi-dla-danego-kraju/relacji}.
+
+    \subsection{Wykorzystanie analogii}
+    Coś ciekawego w jednym państwie/relacji może być wskazówką do poszukiwania w drugim/drugiej.
+
+    \subsection{Poszukiwacz Wzorców Wewnętrznych}
+    Dedykowany agent zajmujący się poszukiwaniem wzorców wewnątrz kraju.
+    Agent związany z krajem może wstępnie badać relacje z innymi krajami
+    i powołać agenta który będzie odpowiadał za badanie tych relacji.
+    Takie działanie pozwoli ograniczyć ilość badanych relacji, odrzucić relacje niepożądane.
+
+    \subsection{}
+
+    \section{Pytania}
+    Lista pytań możliwych do eksplorowania przez system.
+    \subsection{Jak sojusznicy USA reagują na pogorszenie relacji danego państwa ze Stanami?}
+
+
 
     \inputencoding{utf8}
 
