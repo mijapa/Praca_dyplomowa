@@ -678,7 +678,6 @@ singlelinecheck=off
     \subsection{Kraje szczególnego zainteresowania}
     Lista krajów dla których system będzie starał się znaleźć najwięcej informacji.
 
-
     \subsection{Zdarzenia szczególnego zainteresowania}
     Podane w formie dat główne punkty w pobliżu których system powinien przeprowadzać poszukiwania.
 
@@ -728,7 +727,6 @@ singlelinecheck=off
     \end{itemize}
 
 
-
     \section{Miary i wzorce}
     Miar zostały opisane w sekcji~\ref{sec:miary}.
     Wzorce zostały opisane w sekcji~\ref{sec:wybór-wzorców}
@@ -739,7 +737,6 @@ singlelinecheck=off
     \subsection{Klastrowanie}
     Gdzie odbędzie się klastrowanie?
     Wg jakich miar?
-
 
     \subsubsection{Klastrowanie państw}
     Łączenie podobnych państw w grupy na podstawie wybranych miar.
@@ -755,7 +752,7 @@ singlelinecheck=off
 
     \paragraph{Przykład}
 
-        Grupowanie państw w~klastry z wykorzystaniem wektora cech z~bazy GDELT oraz algorytmu klastrowania k-średnich.
+    Grupowanie państw w~klastry z wykorzystaniem wektora cech z~bazy GDELT oraz algorytmu klastrowania k-średnich.
     Wektor danych dla każdego kraju składa się z:
     \begin{enumerate}
         \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1,
@@ -862,7 +859,7 @@ singlelinecheck=off
 
     \subsection{Reset systemu w przypadku niezadowalającej odpowiedzi}
     Reset systemu z nowymi parametrami.
-    
+
     \subsection{Komunikacja z agentami wyższego rzędu tylko w przypadku znalezienia istotnych informacji}
 
     \subsection{Filtrowanie relacji/krajów na podstawie wartości progowej}
@@ -878,13 +875,218 @@ singlelinecheck=off
     i powołać agenta który będzie odpowiadał za badanie tych relacji.
     Takie działanie pozwoli ograniczyć ilość badanych relacji, odrzucić relacje niepożądane.
 
-    \subsection{}
-
-    \section{Pytania}
-    Lista pytań możliwych do eksplorowania przez system.
-    \subsection{Jak sojusznicy USA reagują na pogorszenie relacji danego państwa ze Stanami?}
+%    \section{Pytania}
+%    Lista pytań możliwych do eksplorowania przez system.
+%    \subsection{Jak sojusznicy USA reagują na pogorszenie relacji danego państwa ze Stanami?}
 
 
+    \section{Analiza zdarzeń wewnętrznych USA}
+    W tym dodatku przedstawiona została analiza zdarzeń wewnętrznych w Stanach Zjednoczonych.
+
+    \subsection{Kody bazowe (Event Base Codes)}
+    W tej części zastały porównane liczby kodów bazowych.
+
+    Wykres~\ref{fig:USA_inner_EBC} przedstawia liczbę liczbę zdarzeń wewnętrznych w USA z poszczególnymi kodami bazowymi.
+    Wykres~\ref{fig:USA_inner_EBCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi kodami bazowymi.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/EBC.png}
+        \caption{Liczba zdarzeń wewnętrznych USA dla kodów bazowych od 2015 - top 20. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_EBC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/EBCperc.png}
+        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_EBCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:USA_not_inner_EBC} przedstawia liczbę liczbę zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami bazowymi.
+    Wykres~\ref{fig:USA_not_inner_EBCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami bazowymi.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/EBC.png}
+        \caption{Liczba zdarzeń zewnętrznych USA dla kodów bazowych od 2015 - top 20. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_EBC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/EBCperc.png}
+        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_EBCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:GLOBAL_EBC} przedstawia globalną liczbę liczbę zdarzeń z poszczególnymi kodami bazowymi.
+    Wykres~\ref{fig:GLOBAL_EBCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi kodami bazowymi.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL//EBC.png}
+        \caption{Liczba zdarzeń dla kodów bazowych od 2015 - top 20. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_EBC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL//EBCperc.png}
+        \caption{Procentowa liczba zdarzeń dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_EBCperc}
+    \end{figure}
+
+    Liczba zdarzeń wewnętrznych \textit{Make a visit} w USA w latach 2015-2020 to około 810 tysięcy.
+    Zdarzeń zewnętrznych \textit{Consult} w USA w tym okresie było 3 razy więcej - około 2,4 miliona,
+    podczas gdy globalna liczba zdarzeń \textit{Consult} wynosiła około 41 milionów.
+
+    Zarówno dla zdarzeń wewnętrznych USA, jak i globalnych w pierwszej trójce występują zdarzenia:
+    \begin{itemize}
+        \item \textit{Make a visit},
+        \item \textit{Make statement - not specific below},
+        \item \textit{Host a visit}.
+    \end{itemize}
+    Dla zdarzeń zewnętrznych USA w pierwszej trójce \textit{Make statement - not specific below} zostaje zastąpione przez \textit{Consult - not specific below}.
+    \textit{Make statement - not specific below} pojawia się na 4 pozycji.
+
+    Takie wyniki mogą świadczyć o podobieństwie klasyfikacji bazowej (Base Codes) zdarzeń,
+    niezależnie od tego czy są to zdarzenia wewnętrzne czy zewnętrzne.
+
+    \subsection{Kody podstawowe (Event Root Codes)}
+
+    Wykres~\ref{fig:USA_inner_ERC} przedstawia liczbę zdarzeń wewnętrznych w USA z poszczególnymi kodami podstawowymi.
+    Wykres~\ref{fig:USA_inner_ERCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi kodami podstawowymi.
+
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/ERC.png}
+        \caption{Liczba zdarzeń wewnętrznych USA dla wszystkich kodów podstawowych od 2015. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_ERC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/ERCperc.png}
+        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla wszystkich kodów podstawowych od 2015. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_ERCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:USA_not_inner_ERC} przedstawia liczbę zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami podstawowymi.
+    Wykres~\ref{fig:USA_not_inner_ERCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami podstawowymi.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/ERC.png}
+        \caption{Liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 20. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_ERC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/ERCperc.png}
+        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_ERCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:GLOBAL_ERC} przedstawia globalną liczbę zdarzeń z poszczególnymi kodami podstawowymi.
+    Wykres~\ref{fig:GLOBAL_ERCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi kodami podstawowymi.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL//ERC.png}
+        \caption{Liczba zdarzeń dla kodów podstawowych od 2015 - top 20. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_ERC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL/ERCperc.png}
+        \caption{Procentowa liczba zdarzeń dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_ERCperc}
+    \end{figure}
+
+    Liczba zdarzeń wewnętrznych \textit{Consult} w USA w latach 2015-2020 to około 2,5 miliona.
+    Zdarzeń zewnętrznych \textit{Consult} w USA w tym okresie było 3 razy więcej - około 7,5 miliona,
+    podczas gdy globalna liczba zdarzeń \textit{Consult} wynosiła około 140 milionów.
+
+    Zarówno dla zdarzeń wewnętrznych USA, zewnętrznych USA jak i globalnych pierwsza trójka wygląda następująco:
+    \begin{enumerate}
+        \item \textit{Consult},
+        \item \textit{Make public statement},
+        \item \textit{Engage in diplomatic cooperation}.
+    \end{enumerate}
+
+    Takie wyniki wyraźnie świadczą o podobieństwie klasyfikacji podstawowej (Root Codes) zdarzeń.
+
+    \subsection{Czterokody (Quad Class)}
+
+    Wykres~\ref{fig:USA_inner_QC} przedstawia liczbę zdarzeń wewnętrznych w USA z poszczególnymi czterokodami.
+    Wykres~\ref{fig:USA_inner_QCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi czterokodami.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/QC.png}
+        \caption{Liczba zdarzeń wewnętrznych USA dla czterokodów od 2015. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_QC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/QCperc.png}
+        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla czterokodów od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_QCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:USA_not_inner_QC} przedstawia liczbę zdarzeń pomiędzy USA i innymi krajami z poszczególnymi czterokodami.
+    Wykres~\ref{fig:USA_not_inner_QCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi czterokodami.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/QC.png}
+        \caption{Liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 20. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_QC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/QCperc.png}
+        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_QCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:GLOBAL_QC} przedstawia globalną liczbę zdarzeń z poszczególnymi czterokodami.
+    Wykres~\ref{fig:GLOBAL_QCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi czterokodami.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL//QC.png}
+        \caption{Liczba zdarzeń dla kodów podstawowych od 2015 - top 20. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_QC}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL/QCperc.png}
+        \caption{Procentowa liczba zdarzeń dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_QCperc}
+    \end{figure}
+
+    Liczba zdarzeń wewnętrznych \textit{Verbal Cooperation} w USA w latach 2015-2020 to około 6,5 miliona.
+    Zdarzeń zewnętrznych \textit{Verbal Cooperation} w USA w tym okresie było 3 razy więcej - około 16 milionów,
+    podczas gdy globalna liczba zdarzeń \textit{Verbal Cooperation} wynosiła około 340 milionów.
+
+    Dla wszystkich typów zdarzeń czterokody występują w następującej kolejności:
+    \begin{enumerate}
+        \item \textit{Verbal Cooperation},
+        \item \textit{Material Conflict},
+        \item \textit{Verbal Conflict},
+        \item \textit{Material Cooperation}.
+    \end{enumerate}
+    Dla każdego typu zdarzeń przeważającą większość stanowią zdarzenia \textit{Verbal Cooperation}.
+
+    Takie wyniki wyraźnie świadczą o podobieństwie przyporządkowań zdarzeń do czterokodów (Quad Class).
 
     \inputencoding{utf8}
 
