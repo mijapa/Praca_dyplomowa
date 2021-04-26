@@ -655,11 +655,13 @@ singlelinecheck=off
     Jeśli wyniki będą bardzo zaburzone, zwiększone zostaną analizowane przedziały czasu.
     Jeśli wyniki będą stałe możliwe będzie przejście na mniejsze przedziały.
     Diagram czynności prototypu został przedstawiony na rysunku~\ref{fig:diagram_czynności_top}.
+    Diagram czynności przedstawia logikę algorytmu w postaci sekwencji aktywności.
+    Upraszcza i ulepsza proces dzięki wyjaśnieniu skomplikowanych przypadków.
 
     \begin{figure}[!ht]
         \centering
-        \includegraphics[width=\linewidth]{fig/diagrams/Diagram czynności top.pdf}
-        \caption{Diagram czynności prototypu v1. (źródło: opracowanie własne)}
+        \includegraphics[width=\linewidth]{fig/diagrams/Diagram czynności top ALL.pdf}
+        \caption{Diagram czynności systemu. (źródło: opracowanie własne)}
         \label{fig:diagram_czynności_top}
     \end{figure}
 
@@ -751,12 +753,42 @@ singlelinecheck=off
         \item \ldots
     \end{itemize}
 
+    \paragraph{Przykład}
+
+        Grupowanie państw w~klastry z wykorzystaniem wektora cech z~bazy GDELT oraz algorytmu klastrowania k-średnich.
+    Wektor danych dla każdego kraju składa się z:
+    \begin{enumerate}
+        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1,
+        \item[•] sumy liczby wzmianek (całkowitej liczby wzmianek o~tym wydarzeniu, we wszystkich dokumentach źródłowych podczas 15-minutowej aktualizacji, w~której zostało po raz pierwszy zauważone) w~analizowanym okresie, dla wydarzeń w~których dany kraj jest aktorem 1,
+        \item[•] stosunku liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{material conflict} do liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{material cooperation},
+        \item[•] stosunku liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{verbal conflict} do liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{verbal cooperation},
+        \item[•] średniego, dla wszystkich zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, średniego tonu (średni „ton” wszystkich dokumentów zawierających jedną lub więcej wzmianek o~tym wydarzeniu, podczas 15-minutowej aktualizacji, w~której zostało ono po raz pierwszy zauważone, waha się od -100 (skrajnie ujemny) do +100 (skrajnie dodatni)),
+        \item[•] średniej, dla wszystkich zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, miary Goldsteina (skala Goldsteina przypisuje wynik liczbowy od -10 do +10, wychwytując teoretyczny potencjalny wpływ, jaki rodzaj zdarzenia będzie miał na stabilność kraju),
+        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{event root code} jako \textit{fight} Fight,
+        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{event root code} jako \textit{Express intent to cooperate}.
+    \end{enumerate}
+    Wykorzystane dane pochodzą ze stycznia 2020 roku.
+    Przed dokonaniem klasteryzacji odrzucone zostały wydarzenia z~kodami krajów cameo niezgodnymi z~kodami ISO 3166-1 alfa-3~\cite{iso_alfa3}.
+
+    Wykres~\ref{fig:clust10std} przedstawia mapę z~naniesionymi wynikami klasteryzacji ustandaryzowanych próbek.
+    Każda grupa krajów otrzymała inny kolor.
+    Zauważalne są skupiska geograficzne krajów należących do danego klastra.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/pp/10clusterMap_std.png}
+        \caption{Mapa z~wynikami klasteryzacji. (źródło: opracowanie własne)}
+        \label{fig:clust10std}
+    \end{figure}
+
     \subsubsection{Klastrowanie relacji}
     Łączenie podobnych relacji w grupy na podstawie wybranych miar.
     Wyodrębnienie relacji:
     \begin{itemize}
         \item mocarstwo - klient
-        \item \ldots
+        \item sojusznicy
+        \item wrogowie
+        \item symetria/asymetria
     \end{itemize}
 
     \subsubsection{Klastrowanie w czasie}
