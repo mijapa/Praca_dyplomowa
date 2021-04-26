@@ -1,0 +1,1 @@
+SELECT Year, QuadClass , count(*) as Count FROM `gdelt-bq.gdeltv2.events` where Year >= 2015 AND Year <= 2020 AND Actor1CountryCode!=Actor2CountryCode AND (Actor1CountryCode = "USA"  OR Actor2CountryCode= "USA") group by Year, QuadClass

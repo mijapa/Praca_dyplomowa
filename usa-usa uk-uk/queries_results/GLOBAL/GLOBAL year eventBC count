@@ -1,0 +1,1 @@
+SELECT Year, EventBaseCode , count(*) as Count FROM `gdelt-bq.gdeltv2.events` where Year >= 2015  AND Year <= 2020 group by Year, EventBaseCode
