@@ -27,3 +27,26 @@ def authenticate_google_cloud():
     client = bigquery.Client(project="hazel-form-273711", credentials=credentials)
 
     return client, bqstorageclient
+
+
+def perform_query(clients, QUERY):
+    client, bqstorageclient = clients
+
+    query_job = client.query(QUERY)  # API request
+    results = query_job.result()  # Waits for query to finish
+    dataframe = results.to_dataframe(bqstorage_client=bqstorageclient)
+    return dataframe
+
+
+def string_to_list(string):
+    return string.strip('\']\'[').split('\', \'')
+
+
+def change_country_names_to_codes(names_list):
+    import pandas as pd
+    codes_list = []
+    codes = pd.read_csv('../CAMEO.country.txt', header=0, sep='\t')
+    for country_name in names_list:
+        code = codes.loc[codes.LABEL == country_name].CODE.values[0]
+        codes_list.append(code)
+    return codes_list
