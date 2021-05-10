@@ -4,8 +4,8 @@ from spade import quit_spade
 from spade_proto.raport_generator import RaportGenerator
 
 if __name__ == "__main__":
-    rap_gen = RaportGenerator("me@localhost", "RADiance89")
-    future = rap_gen.start()
+    rap_gen = RaportGenerator("raport_generator@localhost", "RADiance89")
+    future = rap_gen.start(auto_register=True)
     future.result()  # Wait until the start method is finished
 
     # wait until user interrupts with ctrl+C
