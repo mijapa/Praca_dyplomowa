@@ -50,3 +50,13 @@ def change_country_names_to_codes(names_list):
         code = codes.loc[codes.LABEL == country_name].CODE.values[0]
         codes_list.append(code)
     return codes_list
+
+
+def create_symmetry_figure(symmetry, actor1, actor2):
+    import matplotlib.pyplot as plt
+    s = symmetry.groupby(['Time', 'Connection']).last()
+    g = symmetry.unstack().plot(y='Percentage')
+    g.set(ylabel='Percentage')
+    g.set_title(f"Connection strength {actor1} and {actor2} 2015-2020")
+    g.figure.set_size_inches(20, 8)
+    plt.savefig(f'figures/{actor1} and {actor2}connection.png', bbox_inches='tight')
