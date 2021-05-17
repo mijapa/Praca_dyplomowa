@@ -1,9 +1,12 @@
 import asyncio
+import os
 
+from fpdf import FPDF
 from spade.agent import Agent
 from spade.behaviour import CyclicBehaviour, OneShotBehaviour
 from spade.message import Message
 
+from spade_proto.PDF import PDF
 from spade_proto.auxiliary import load_config_from_file, change_country_names_to_codes
 from spade_proto.correlation_seeker import CorrelationSeeker
 
@@ -13,7 +16,7 @@ import pandas as pd
 
 class RaportGenerator(Agent):
     correlation_seekers = []
-    results = pd.DataFrame()
+    symmetry_results = pd.DataFrame()
 
     class MyBehav(CyclicBehaviour):
         async def on_start(self):
@@ -67,13 +70,13 @@ class RaportGenerator(Agent):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: RecvBehav running")
 
-            msg = await self.receive(timeout=20)  # wait for a message for 10 seconds
+            msg = await self.receive(timeout=10)  # wait for a message for 10 seconds
             if msg:
                 print(f"{self.agent.jid}: {self.__class__.__name__}: Message received.")
-                if msg.metadata["ontology"] == 'results':
+                if msg.metadata["ontology"] == 'symmetry_results':
                     print(f"{self.agent.jid}: {self.__class__.__name__}: RESULTS")
                     res = pd.read_csv(StringIO(msg.body))
-                    self.agent.results = pd.concat([self.agent.results, res])
+                    self.agent.symmetry_results = pd.concat([self.agent.symmetry_results, res])
             else:
                 print(f"{self.agent.jid}: Did not received any message after 10 seconds")
                 self.agent.add_behaviour(self.agent.GeneratePdfBehav())
@@ -104,6 +107,19 @@ class RaportGenerator(Agent):
     class GeneratePdfBehav(OneShotBehaviour):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: {self.__class__.__name__} running")
+            pdf = PDF()
+            pdf.set_title('Raport')
+            pdf.set_author('Michal Patyk')
+            pdf.add_chapter(1, 'Symmetry analyse')
+            fig_dir = 'figures'
+            with os.scandir(f'{fig_dir}/') as entries:
+                for entry in entries:
+                    name = entry.name
+                    if name.endswith(".png"):
+                        pdf.add_image(f'{fig_dir}/{name}', width=180)
+
+            pdf.output('Automated PDF Report.pdf')
+            print(f"{self.agent.jid}: {self.__class__.__name__}: {self.__class__.__name__} done")
 
     async def setup(self):
         print(f"{self.jid}: Agent starting . . .")
