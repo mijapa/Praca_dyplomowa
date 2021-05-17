@@ -14,31 +14,31 @@ import pandas as pd
 class CorrelationSeeker(Agent):
     config = []
     first_config = {}
-    results = pd.DataFrame()
-
-    class InformBehav(OneShotBehaviour):
-        async def run(self):
-            print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-            msg = Message(to="raport_generator@localhost")  # Instantiate the message
-            msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-            msg.set_metadata("ontology", "myOntology")  # Set the ontology of the message content
-            msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-            msg.body = self.agent.results.to_string()  # Set the message content
-
-            await self.send(msg)
-            print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
-
-            # set exit_code for the behaviour
-            self.exit_code = "Job Finished!"
+    symmetry_results = pd.DataFrame()
+    #
+    # class InformBehav(OneShotBehaviour):
+    #     async def run(self):
+    #         print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
+    #         msg = Message(to="raport_generator@localhost")  # Instantiate the message
+    #         msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
+    #         msg.set_metadata("ontology", "myOntology")  # Set the ontology of the message content
+    #         msg.set_metadata("language", "OWL-S")  # Set the language of the message content
+    #         msg.body = self.agent.symmetry_results.to_string()  # Set the message content
+    #
+    #         await self.send(msg)
+    #         print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
+    #
+    #         # set exit_code for the behaviour
+    #         self.exit_code = "Job Finished!"
 
     class SendResultsBehav(OneShotBehaviour):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
             msg = Message(to="raport_generator@localhost")  # Instantiate the message
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-            msg.set_metadata("ontology", "results")  # Set the ontology of the message content
+            msg.set_metadata("ontology", "symmetry_results")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-            msg.body = self.agent.results.to_string()  # Set the message content
+            msg.body = self.agent.symmetry_results.to_string()  # Set the message content
 
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
@@ -81,17 +81,17 @@ class CorrelationSeeker(Agent):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: running")
 
-            msg = await self.receive(timeout=10)  # wait for a message for 10 seconds
+            msg = await self.receive(timeout=5)  # wait for a message for 5 seconds
             if msg:
                 # print(f"{self.agent.jid}: {self.__class__.__name__}: Message received with content: {msg.body}")
                 if msg.metadata["ontology"] == 'config':
                     print(f"{self.agent.jid}: {self.__class__.__name__}: CONFIG")
                     self.agent.config = string_to_list(msg.body)
                     self.agent.add_behaviour(self.agent.CreatePatternSeekerBehav())
-                if msg.metadata["ontology"] == 'results':
-                    print(f"{self.agent.jid}: {self.__class__.__name__}: RESULTS")
+                if msg.metadata["ontology"] == 'symmetry_results':
+                    print(f"{self.agent.jid}: {self.__class__.__name__}: SYMMETRY RESULTS")
                     res = pd.read_csv(StringIO(msg.body))
-                    self.agent.results = pd.concat([self.agent.results, res])
+                    self.agent.symmetry_results = pd.concat([self.agent.symmetry_results, res])
             else:
                 print(f"{self.agent.jid}: {self.__class__.__name__}: Did not received any message after 10 seconds")
                 self.agent.add_behaviour(self.agent.SendResultsBehav())
@@ -124,9 +124,9 @@ class CorrelationSeeker(Agent):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
             msg = Message(to=to)  # Instantiate the message
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-            msg.set_metadata("ontology", "results")  # Set the ontology of the message content
+            msg.set_metadata("ontology", "symmetry_results")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-            msg.body = self.agent.results.to_string()  # Set the message content
+            msg.body = self.agent.symmetry_results.to_string()  # Set the message content
 
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent to: {to}")

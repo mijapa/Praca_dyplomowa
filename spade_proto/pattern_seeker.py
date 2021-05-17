@@ -19,9 +19,9 @@ class PatternSeeker(Agent):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
             msg = Message(to="correlation_seeker@localhost")  # Instantiate the message
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-            msg.set_metadata("ontology", "results")  # Set the ontology of the message content
+            msg.set_metadata("ontology", "symmetry")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-            msg.body = self.agent.results.to_string()  # Set the message content
+            msg.body = self.agent.symmetry.to_string()  # Set the message content
 
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
@@ -67,7 +67,7 @@ class PatternSeeker(Agent):
             create_symmetry_figure(symmetry, actor1, actor2)
 
 
-            self.agent.results = symmetry
+            self.agent.symmetry = symmetry
 
             self.agent.add_behaviour(self.agent.SendResultsBehav())
 
