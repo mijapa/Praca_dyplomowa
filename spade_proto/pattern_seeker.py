@@ -8,20 +8,20 @@ from spade.message import Message
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list
+from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure
 
 
 class PatternSeeker(Agent):
     config = []
 
-    class InformBehav(OneShotBehaviour):
+    class SendResultsBehav(OneShotBehaviour):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-            msg = Message(to="correlation_seeker1@localhost")  # Instantiate the message
+            msg = Message(to="correlation_seeker@localhost")  # Instantiate the message
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-            msg.set_metadata("ontology", "myOntology")  # Set the ontology of the message content
+            msg.set_metadata("ontology", "results")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-            msg.body = f"Hello World from {self.agent.jid}"  # Set the message content
+            msg.body = self.agent.results.to_string()  # Set the message content
 
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
@@ -32,7 +32,6 @@ class PatternSeeker(Agent):
     async def setup(self):
         print(f"{self.jid}: Agent starting . . .")
         self.add_behaviour(self.RecvBehav())
-        self.add_behaviour(self.InformBehav())
 
     class RecvBehav(OneShotBehaviour):
         async def run(self):
@@ -41,7 +40,6 @@ class PatternSeeker(Agent):
             msg = await self.receive(timeout=10)  # wait for a message for 10 seconds
             if msg:
                 print(f"{self.agent.jid}: {self.__class__.__name__}:Message received with content: {msg.body}")
-                self.agent.add_behaviour(self.agent.InformBehav())
                 if msg.metadata["ontology"] == 'config':
                     print(f"{self.agent.jid}: {self.__class__.__name__}: CONFIG")
                     self.agent.config = literal_eval(msg.body)
@@ -66,12 +64,12 @@ class PatternSeeker(Agent):
             ac2ac1 = await self.calculate_connection_strength(actor2, actor1)
 
             symmetry = ac1ac2.append(ac2ac1)
-            s = symmetry.groupby(['Time', 'Connection']).last()
-            g = symmetry.unstack().plot(y='Percentage')
-            g.set(ylabel='Percentage')
-            g.set_title(f"Connection strength {actor1} and {actor2} 2015-2020")
-            g.figure.set_size_inches(20, 8)
-            plt.savefig(f'{actor1} and {actor2}connection.png', bbox_inches='tight')
+            create_symmetry_figure(symmetry, actor1, actor2)
+
+
+            self.agent.results = symmetry
+
+            self.agent.add_behaviour(self.agent.SendResultsBehav())
 
         async def calculate_connection_strength(self, actor1, actor2):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Calculating connection strength {actor1}-{actor2}")
@@ -105,21 +103,25 @@ GROUP BY
             s = s.groupby(["Time", "Connection"]).agg({'Percentage': 'sum'})
             # print(s)
             g = s.unstack().plot(y='Percentage')
-            g
+
             g.set(ylabel='Percentage')
             g.set_title(f"Connection strength {actor1}-{actor2} 2015-2020")
             g.figure.set_size_inches(20, 8)
-            plt.savefig(f'{actor1}-{actor2}connection.png', bbox_inches='tight')
+            # plt.savefig(f'figures/{actor1}-{actor2}connection.png', bbox_inches='tight')
             # print(s)
             return s
 
         async def get_data(self, QUERY):
             if not os.path.isfile(f'queries_results_auto/{QUERY}.csv'):
-                print(f"{self.agent.jid}: {self.__class__.__name__}: Local data miss. Performing query\n {QUERY}")
+                print(f"{self.agent.jid}: {self.__class__.__name__}: Local data miss. Performing query"
+                      # f"\n {QUERY}"
+                      )
                 result = perform_query(clients=self.clients, QUERY=QUERY)
                 result.to_csv(f'queries_results_auto/{QUERY}.csv')
             else:
-                print(f"{self.agent.jid}: {self.__class__.__name__}: Local data hit. Reading from file\n{QUERY}.csv")
+                print(f"{self.agent.jid}: {self.__class__.__name__}: Local data hit. Reading from file"
+                      # f"\n{QUERY}.csv"
+                      )
                 result = pd.read_csv(f'queries_results_auto/{QUERY}.csv')
             return result
 
