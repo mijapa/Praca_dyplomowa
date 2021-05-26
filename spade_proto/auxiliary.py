@@ -55,8 +55,19 @@ def change_country_names_to_codes(names_list):
 def create_symmetry_figure(symmetry, actor1, actor2):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Connection']).last()
-    g = symmetry.unstack().plot(y='Percentage')
+    g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
     g.set_title(f"Connection strength {actor1} and {actor2} 2015-2020")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/{actor1} and {actor2}connection.png', bbox_inches='tight')
+    plt.savefig(f'figures/symmetry/{actor1} and {actor2}connection.png', bbox_inches='tight')
+    return g
+
+def create_power_client_figure(symmetry, actor1, actor2):
+    import matplotlib.pyplot as plt
+    s = symmetry.groupby(['Time', 'Countries']).last()
+    g = s.unstack().plot(y='Ratio')
+    g.set(ylabel='Ratio')
+    g.set_title(f"Power-client {actor1} and {actor2} 2015-2020")
+    g.figure.set_size_inches(20, 8)
+    plt.savefig(f'figures/power-client/{actor1} and {actor2} power-client.png', bbox_inches='tight')
+    return g

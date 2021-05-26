@@ -8,10 +8,11 @@ from spade.message import Message
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure
+from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure, \
+    create_power_client_figure
 
 
-class PatternSeeker(Agent):
+class PatternSeekerPowerClient(Agent):
     config = []
 
     class SendResultsBehav(OneShotBehaviour):
@@ -67,7 +68,7 @@ class PatternSeeker(Agent):
             ac2ac1 = await self.calculate_connection_strength(actor2, actor1)
 
             symmetry = ac1ac2.append(ac2ac1)
-            create_symmetry_figure(symmetry, actor1, actor2)
+            create_power_client_figure(symmetry, actor1, actor2)
 
             self.agent.symmetry = symmetry
 
@@ -76,7 +77,6 @@ class PatternSeeker(Agent):
         async def calculate_connection_strength(self, actor1, actor2):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Calculating connection strength {actor1}-{actor2}")
             QUERY = (f"""SELECT
-  Actor2CountryCode,
   MonthYear,
   COUNT(*) AS Count
 FROM
@@ -85,24 +85,37 @@ WHERE
   Year >= 2015
   AND Year <= 2020
   AND Actor1CountryCode = "{actor1}"
+  AND NumMentions >= 50
 GROUP BY
-  Actor2CountryCode,
   MonthYear""")
 
             ac1monthyear = await self.get_data(QUERY)
 
-            # print(ac1monthyear)
             ac1monthyear["Time"] = pd.to_datetime(ac1monthyear['MonthYear'], format='%Y%m').dt.strftime('%Y-%m')
 
-            ac1ac2monthyear = ac1monthyear.loc[ac1monthyear.Actor2CountryCode == f'{actor2}']
-            # print(ac1ac2monthyear)
+            QUERY = (f"""SELECT
+  MonthYear,
+  COUNT(*) AS Count
+FROM
+  `gdelt-bq.gdeltv2.events`
+WHERE
+  Year >= 2015
+  AND Year <= 2020
+  AND Actor1CountryCode = "{actor2}"
+  AND NumMentions >= 50
+GROUP BY
+  MonthYear""")
 
-            s = ac1ac2monthyear.groupby(["Time"]).agg({'Count': 'sum'})
-            t = ac1monthyear.groupby(["Time"]).agg({'Count': 'sum'})
-            s['Percentage'] = s['Count'] / t['Count'] * 100
-            s['Connection'] = f'{actor2} to {actor1}'
+            ac2monthyear = await self.get_data(QUERY)
+
+            ac2monthyear["Time"] = pd.to_datetime(ac1monthyear['MonthYear'], format='%Y%m').dt.strftime('%Y-%m')
+
+            s = ac1monthyear.groupby(["Time"]).agg({'Count': 'sum'})
+            t = ac2monthyear.groupby(["Time"]).agg({'Count': 'sum'})
+            s['Ratio'] = s['Count'] / t['Count']
+            s['Countries'] = f'{actor1}/{actor2}'
             # print(s)
-            s = s.groupby(["Time", "Connection"]).agg({'Percentage': 'last'})
+            s = s.groupby(["Time", "Countries"]).agg({'Ratio': 'last'})
             # print(s)
             # g = s.unstack().plot(y='Percentage')
 
