@@ -150,11 +150,12 @@ class RaportGenerator(Agent):
 
             pdf.output('Automated PDF Report.pdf')
 
-            # doc = Document('basic')
-            # doc.create(Section('A section'))
-            # doc.append('Also some crazy characters: $&#{}')
-            #
-            # doc.generate_pdf('basic', clean_tex=False)
+            doc = Document('basic')
+            with doc.create(Section('A section')):
+                doc.append('Also some crazy characters: $&#{}')
+
+            doc.generate_pdf(clean_tex=False)
+            # doc.generate_tex('basic.tex')
 
         async def on_end(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Behaviour finished with exit code {self.exit_code}.")
