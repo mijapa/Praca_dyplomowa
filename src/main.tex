@@ -538,6 +538,16 @@ singlelinecheck=off
         sudo prosodyctl adduser me@localhost
     \end{verbatim}
 
+    Aby zezwolić użytkownikom na rejestrację nowych kont i zmianę haseł należy edytować plik:
+    \begin{verbatim}
+        /etc/prosody/prosody.cfg.lua
+    \end{verbatim}
+    zmieniając na: \textit{allow\_registration = true;}
+    Następnie należy zrestartować program Prosody używając polecenia:
+    \begin{verbatim}
+        sudo /etc/init.d/prosody restart
+    \end{verbatim}.
+
 
     \section{SPADE}
 
@@ -569,6 +579,20 @@ singlelinecheck=off
     to wysłana wiadomość przepadnie jeśli odbiorca nie jest gotowy na jej odebranie.
     Dzięki XMPP agenci SPADE są zdolni do utrzymywania listy kontaktów i mogą otrzymywać powiadomienia o ich kontaktach w czasie rzeczywistym.
     Ta funkcjonalność pozwala podnieść niezawodność komunikacji.
+
+    \section{BigQuery}
+    W celu zainstalowania biblioteki google cloud dla języka python należy skorzystać z polecenia:
+    \begin{verbatim}
+        pip install --upgrade 'google-cloud-bigquery[bqstorage,pandas]'
+    \end{verbatim}
+
+    \section{fpdf2}
+    fpdf2 to minimalistyczna bilblioteka do tworzenia plików PDF w Python.
+    W celu zainstalowania bilbioteki fpdf2 należy skorzystać z polecenia:
+        \begin{verbatim}
+        pip install fpdf2
+    \end{verbatim}
+
 
 
     \chapter{table en}
@@ -628,6 +652,7 @@ singlelinecheck=off
     \begin{itemize}
         \item jednego agenta Generator Zestawień
         \item jednego agenta Poszukiwacza Trendów
+%        todo sprawdź czy rzeczywiście 30 kombinacji
         \item 30 agentów Poszukiwacz Wzorców - po jednym dla każdej kombinacji państw.
     \end{itemize}
 
@@ -636,6 +661,26 @@ singlelinecheck=off
     Poszukiwacz Wzorców sprawdza symetrię/asymetrię relacji~\ref{symetria_relacji} pomiędzy parą krajów badając siłę powiązania miedzy nimi, w kolejnych okresach czasu.
     Wyniki są zwracane do Poszukiwacza Trendów który analizuje zebrane dane szukając tendencji.
     Ostateczne wyniki przekazywane są do Generatora Zestawień który przygotowuje raport końcowy.
+
+    \paragraph{Symetria relacji}
+    \[ Percentage = \frac
+    {\sum{Events\ country\ A\ (actor 1)\ with\ Country\ B\ (actor 2)}}
+    {\sum{Events\ country\ A\ (actor 1)}}
+    \]
+
+    \paragraph{Wzorzec Mocarstwo/Klient}
+    \subparagraph{Relacje istotne}
+%    todo przeredagować
+    Wg pracy Jarosza.
+    Relacje znaczące to takie wydarzenia które posiadają co najmniej 50 wzmianek w mediach (NumMentions)//s. 33.
+
+    Wzorzec Mocarstwo/Klient określony jako stosunek liczby wszystkich relacji znaczących Aktora 1 oraz liczby wszystkich znaczących relacji Aktora2 //s. 82.
+    \[ Ratio = \frac
+    {\sum{Events\ country\ A\ (actor 1) (NumMentions > 50)}}
+    {\sum{Events\ country\ B\ (actor 1) (NumMentions > 50)}}
+    \]
+
+
 
     \paragraph{Kraje do testów}
     \begin{enumerate}
@@ -703,14 +748,14 @@ singlelinecheck=off
     Mogą być dobierane ręcznie, pół-automatycznie, lub automatycznie.
     Możliwe do wyboru progi:
     \begin{itemize}
-        \item ilość zdarzeń (pokazuje aktywność podmiotów z danego kraju - ZAKRES),
+        \item liczba zdarzeń (pokazuje aktywność podmiotów z danego kraju - ZAKRES),
         \item liczba wzmianek (pokazuje, że dane działanie było uznane za ważne - WAGA),
-        \item ilość źródeł,
+        \item liczba źródeł,
         \item średni średni ton,
         \item miara Goldsteina
         \item stosunek liczby zdarzeń (pokazuje jak nastawione jest dane państwo).
-        \item ilość silnych relacji kooperacyjnych,
-        \item ilość silnych relacji wrogich.
+        \item liczba silnych relacji kooperacyjnych,
+        \item liczba silnych relacji wrogich.
     \end{itemize}
 
     \subsection{Podpowiedź prawdopodobnego wyniku}\label{subsec:podpowiedź-prawdopodobnego-wyniku}
@@ -873,7 +918,7 @@ singlelinecheck=off
     Dedykowany agent zajmujący się poszukiwaniem wzorców wewnątrz kraju.
     Agent związany z krajem może wstępnie badać relacje z innymi krajami
     i powołać agenta który będzie odpowiadał za badanie tych relacji.
-    Takie działanie pozwoli ograniczyć ilość badanych relacji, odrzucić relacje niepożądane.
+    Takie działanie pozwoli ograniczyć liczbę badanych relacji, odrzucić relacje niepożądane.
 
 %    \section{Pytania}
 %    Lista pytań możliwych do eksplorowania przez system.
@@ -938,8 +983,8 @@ singlelinecheck=off
     \end{figure}
 
     Liczba zdarzeń wewnętrznych \textit{Make a visit} w USA w latach 2015-2020 to około 810 tysięcy.
-    Zdarzeń zewnętrznych \textit{Consult} w USA w tym okresie było 3 razy więcej - około 2,4 miliona,
-    podczas gdy globalna liczba zdarzeń \textit{Consult} wynosiła około 41 milionów.
+    Zdarzeń zewnętrznych \textit{Make a visit} w USA w tym okresie było 3 razy więcej - około 2,4 miliona,
+    podczas gdy globalna liczba zdarzeń \textit{Make a visit} wynosiła około 41 milionów.
 
     Zarówno dla zdarzeń wewnętrznych USA, jak i globalnych w pierwszej trójce występują zdarzenia:
     \begin{itemize}
