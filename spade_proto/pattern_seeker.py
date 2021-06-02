@@ -22,9 +22,9 @@ class PatternSeeker(Agent):
             msg.set_metadata("ontology", "symmetry_results")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
 
-            msg.body = self.agent.symmetry.to_json()  # Set the message content
+            msg.body = self.agent.symmetry.to_json(orient='table')  # Set the message content
 
-            print(f"{self.agent.jid}: {self.__class__.__name__}: msg.body {msg.body}")
+            # print(f"{self.agent.jid}: {self.__class__.__name__}: msg.body {msg.body}")
 
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
