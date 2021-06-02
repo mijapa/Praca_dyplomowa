@@ -77,8 +77,8 @@ class RaportGenerator(Agent):
                 print(f"{self.agent.jid}: {self.__class__.__name__}: Message received.")
                 if msg.metadata["ontology"] == 'symmetry_results':
                     print(f"{self.agent.jid}: {self.__class__.__name__}: RESULTS")
-                    res = pd.read_json(msg.body)
-                    # print(f"{self.agent.jid}: {self.__class__.__name__}: res: {res}")
+                    res = pd.read_json(msg.body, orient='table')
+                    print(f"{self.agent.jid}: {self.__class__.__name__}: res: {res}")
                     if self.agent.symmetry_results.empty:
                         self.agent.symmetry_results = res
                     else:
@@ -141,6 +141,15 @@ class RaportGenerator(Agent):
 
             pdf.add_chapter(2, 'Power-client analyse')
             fig_dir = 'figures/power-client'
+
+            with os.scandir(f'{fig_dir}/') as entries:
+                for entry in entries:
+                    name = entry.name
+                    if name.endswith(".png"):
+                        pdf.add_image(f'{fig_dir}/{name}', width=180)
+
+            pdf.add_chapter(3, 'Pairwise correlation')
+            fig_dir = 'figures/pairwise_correlation'
 
             with os.scandir(f'{fig_dir}/') as entries:
                 for entry in entries:

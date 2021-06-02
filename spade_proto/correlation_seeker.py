@@ -40,7 +40,7 @@ class CorrelationSeeker(Agent):
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
             msg.set_metadata("ontology", "symmetry_results")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-            msg.body = self.agent.symmetry_results.to_json()  # Set the message content
+            msg.body = self.agent.symmetry_results.to_json(orient='table')  # Set the message content
 
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
@@ -108,18 +108,24 @@ class CorrelationSeeker(Agent):
                 if msg.metadata["ontology"] == 'symmetry_results':
                     print(f"{self.agent.jid}: {self.__class__.__name__}: SYMMETRY RESULTS")
                     # print(f"{self.agent.jid}: {self.__class__.__name__}: msg.body: {msg.body}")
-                    res = pd.read_json(msg.body)
-                    # print(f"{self.agent.jid}: {self.__class__.__name__}: res: {res}")
+
+                    res = pd.read_json(msg.body, orient='table')
+
+                    print(f"{self.agent.jid}: {self.__class__.__name__}: res: {res}")
+
                     if self.agent.symmetry_results.empty:
                         self.agent.symmetry_results = res
                     else:
-                        self.agent.symmetry_results = pd.concat([self.agent.symmetry_results, res], ignore_index=True)
-                        print(self.agent.symmetry_results)
+                        self.agent.symmetry_results = pd.concat([self.agent.symmetry_results, res])
+                        # print(self.agent.symmetry_results)
 
             else:
                 print(f"{self.agent.jid}: {self.__class__.__name__}: "
                       f"Did not received any message after {timeout} seconds")
                 self.agent.add_behaviour(self.agent.SendResultsBehav())
+                f = open("res.json", "w")
+                f.write(self.agent.symmetry_results.to_json(orient='table'))
+                f.close()
                 self.kill()
 
     class SendConfigBehav(OneShotBehaviour):
@@ -154,7 +160,7 @@ class CorrelationSeeker(Agent):
             # print(self.agent.symmetry_results.head())
             # print(self.agent.symmetry_results.columns)
 
-            body = self.agent.symmetry_results.to_json()
+            body = self.agent.symmetry_results.to_json(orient='table')
 
             # print(f"{self.agent.jid}: {self.__class__.__name__}: symmetry_results: {self.agent.symmetry_results}")
             msg.body = body  # Set the message content
