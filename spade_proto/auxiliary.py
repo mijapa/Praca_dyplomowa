@@ -62,6 +62,7 @@ def create_symmetry_figure(symmetry, actor1, actor2):
     plt.savefig(f'figures/symmetry/{actor1} and {actor2}connection.png', bbox_inches='tight')
     return g
 
+
 def create_power_client_figure(symmetry, actor1, actor2):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Countries']).last()
@@ -70,4 +71,37 @@ def create_power_client_figure(symmetry, actor1, actor2):
     g.set_title(f"Power-client {actor1} and {actor2} 2015-2020")
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/power-client/{actor1} and {actor2} power-client.png', bbox_inches='tight')
+    return g
+
+
+def create_fight_figure(symmetry, actor1, actor2):
+    import matplotlib.pyplot as plt
+    s = symmetry.groupby(['Time', 'Fight']).last()
+    g = s.unstack().plot(y='Percentage')
+    g.set(ylabel='Percentage')
+    g.set_title(f"Fight {actor1} and {actor2} 2015-2020")
+    g.figure.set_size_inches(20, 8)
+    plt.savefig(f'figures/fight/{actor1} and {actor2} fight.png', bbox_inches='tight')
+    return g
+
+
+def create_cooperate_figure(symmetry, actor1, actor2):
+    import matplotlib.pyplot as plt
+    s = symmetry.groupby(['Time', 'Cooperate']).last()
+    g = s.unstack().plot(y='Percentage')
+    g.set(ylabel='Percentage')
+    g.set_title(f"Express intent to cooperate {actor1} and {actor2} 2015-2020")
+    g.figure.set_size_inches(20, 8)
+    plt.savefig(f'figures/cooperate/{actor1} and {actor2} cooperate.png', bbox_inches='tight')
+    return g
+
+
+def create_fight_vs_all_figure(symmetry, actor1, actor2):
+    import matplotlib.pyplot as plt
+    s = symmetry.groupby(['Time', 'Fight vs all']).last()
+    g = s.unstack().plot(y='Percentage')
+    g.set(ylabel='Percentage')
+    g.set_title(f"Fight vs all events{actor1} and {actor2} 2015-2020")
+    g.figure.set_size_inches(20, 8)
+    plt.savefig(f'figures/fight vs all/{actor1} and {actor2} fight vs all.png', bbox_inches='tight')
     return g
