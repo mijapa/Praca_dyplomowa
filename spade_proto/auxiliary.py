@@ -116,3 +116,15 @@ def create_cooperate_nummen30_figure(symmetry, actor1, actor2):
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/cooperate_nummen30/{actor1} and {actor2} cooperate.png', bbox_inches='tight')
     return g
+
+
+def create_cooperate_times_nummen_figure(symmetry, actor1, actor2):
+    import matplotlib.pyplot as plt
+    s = symmetry.groupby(['Time', 'Cooperate']).last()
+    g = s.unstack().plot(y='Percentage')
+    g.set(ylabel='Percentage')
+    g.set_title(f"Express intent to cooperate times mentions {actor1} and {actor2} 2015-2020")
+    g.figure.set_size_inches(20, 8)
+    plt.savefig(f'figures/cooperate_times_nummen/{actor1} and {actor2} cooperate times mentions.png',
+                bbox_inches='tight')
+    return g
