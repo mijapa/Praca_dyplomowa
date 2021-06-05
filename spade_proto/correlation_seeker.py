@@ -12,6 +12,7 @@ import pandas as pd
 
 from spade_proto.pattern_seeker_cooperate import PatternSeekerCooperate
 from spade_proto.pattern_seeker_cooperate_numMen30 import PatternSeekerCooperateNumMen30
+from spade_proto.pattern_seeker_cooperate_times_goldstein import PatternSeekerCooperateTimesGoldstein
 from spade_proto.pattern_seeker_cooperate_times_mentions import PatternSeekerCooperateTimesNumMen
 from spade_proto.pattern_seeker_fight import PatternSeekerFight
 from spade_proto.pattern_seeker_fight_vs_all import PatternSeekerFightVsAll
@@ -171,6 +172,22 @@ class CorrelationSeeker(Agent):
                 # print(self.agent.first_config)
                 msg = Message(
                     to=f"pattern_seeker_cooperate_times_nummen_{self.agent.first_config['actors']['actor1']}"
+                       f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
+                msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
+                msg.set_metadata("ontology", "config")  # Set the ontology of the message content
+                msg.set_metadata("language", "OWL-S")  # Set the language of the message content
+                print(f'first_config {self.agent.first_config}')
+                msg.body = self.agent.first_config.__str__()  # Set the message content
+                await self.send(msg)
+
+                agent = PatternSeekerCooperateTimesGoldstein(f"pattern_seeker_cooperate_times_goldstein_{actor1}_{actor2}@localhost", "RADiance89")
+                # This start is inside an async def, so it must be awaited
+                await agent.start(auto_register=True)
+
+                # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
+                # print(self.agent.first_config)
+                msg = Message(
+                    to=f"pattern_seeker_cooperate_times_goldstein_{self.agent.first_config['actors']['actor1']}"
                        f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
                 msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
