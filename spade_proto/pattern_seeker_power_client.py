@@ -114,7 +114,7 @@ GROUP BY
             s = ac1monthyear.groupby(["Time"]).agg({'Count': 'sum'})
             t = ac2monthyear.groupby(["Time"]).agg({'Count': 'sum'})
             s['Ratio'] = s['Count'] / t['Count']
-            s['Countries'] = f'{actor1}/{actor2}'
+            s['Countries'] = f'{actor1} to {actor2}'
             # print(s)
             s = s.groupby(["Time", "Countries"]).agg({'Ratio': 'last'})
             # print(s)

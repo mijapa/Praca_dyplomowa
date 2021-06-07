@@ -18,11 +18,15 @@ from spade_proto.pattern_seeker_fight import PatternSeekerFight
 from spade_proto.pattern_seeker_fight_vs_all import PatternSeekerFightVsAll
 from spade_proto.pattern_seeker_power_client import PatternSeekerPowerClient
 
+import seaborn as sn
+import matplotlib.pyplot as plt
+
 
 class CorrelationSeeker(Agent):
     config = []
     first_config = {}
     results = {}
+
     #
     # class InformBehav(OneShotBehaviour):
     #     async def run(self):
@@ -85,7 +89,8 @@ class CorrelationSeeker(Agent):
                 msg.body = self.agent.first_config.__str__()  # Set the message content
                 await self.send(msg)
 
-                agent = PatternSeekerPowerClient(f"pattern_seeker_power_client_{actor1}_{actor2}@localhost", "RADiance89")
+                agent = PatternSeekerPowerClient(f"pattern_seeker_power_client_{actor1}_{actor2}@localhost",
+                                                 "RADiance89")
                 # This start is inside an async def, so it must be awaited
                 await agent.start(auto_register=True)
 
@@ -148,7 +153,8 @@ class CorrelationSeeker(Agent):
                 # msg.body = self.agent.first_config.__str__()  # Set the message content
                 # await self.send(msg)
 
-                agent = PatternSeekerCooperateNumMen5(f"pattern_seeker_cooperate_nummen5_{actor1}_{actor2}@localhost", "RADiance89")
+                agent = PatternSeekerCooperateNumMen5(f"pattern_seeker_cooperate_nummen5_{actor1}_{actor2}@localhost",
+                                                      "RADiance89")
                 # This start is inside an async def, so it must be awaited
                 await agent.start(auto_register=True)
 
@@ -164,7 +170,8 @@ class CorrelationSeeker(Agent):
                 msg.body = self.agent.first_config.__str__()  # Set the message content
                 await self.send(msg)
 
-                agent = PatternSeekerCooperateTimesNumMen(f"pattern_seeker_cooperate_times_nummen_{actor1}_{actor2}@localhost", "RADiance89")
+                agent = PatternSeekerCooperateTimesNumMen(
+                    f"pattern_seeker_cooperate_times_nummen_{actor1}_{actor2}@localhost", "RADiance89")
                 # This start is inside an async def, so it must be awaited
                 await agent.start(auto_register=True)
 
@@ -180,7 +187,8 @@ class CorrelationSeeker(Agent):
                 msg.body = self.agent.first_config.__str__()  # Set the message content
                 await self.send(msg)
 
-                agent = PatternSeekerCooperateTimesGoldstein(f"pattern_seeker_cooperate_times_goldstein_{actor1}_{actor2}@localhost", "RADiance89")
+                agent = PatternSeekerCooperateTimesGoldstein(
+                    f"pattern_seeker_cooperate_times_goldstein_{actor1}_{actor2}@localhost", "RADiance89")
                 # This start is inside an async def, so it must be awaited
                 await agent.start(auto_register=True)
 
@@ -231,7 +239,8 @@ class CorrelationSeeker(Agent):
                     f = open(f"results_{res}.json", "w")
                     f.write(results[res].to_json(orient='table'))
                     f.close()
-                self.agent.add_behaviour(self.agent.SeekCorrelationBehav())
+                self.agent.add_behaviour(self.agent.SeekSimpleCorrelationBehav())
+                self.agent.add_behaviour(self.agent.SeekComplexCorrelationBehav())
                 self.kill()
 
     class SendConfigBehav(OneShotBehaviour):
@@ -278,32 +287,159 @@ class CorrelationSeeker(Agent):
             # set exit_code for the behaviour
             self.exit_code = "Job Finished!"
 
-    class SeekCorrelationBehav(OneShotBehaviour):
+    class SeekSimpleCorrelationBehav(OneShotBehaviour):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
 
-            import seaborn as sn
-            import matplotlib.pyplot as plt
             results = self.agent.results
             for res_name in results:
-                resun = results[res_name].unstack()['Percentage']
-                methods = ['pearson', 'kendall', 'spearman']
-                for method in methods:
-                    g = sn.heatmap(resun.corr(method=method), annot=True)
-                    title = f"{res_name}".capitalize() + " " \
-                            f"{method}".capitalize() + \
-                            f" correlation 2015-2020"
-                    g.set_title(title)
-                    g.figure.set_size_inches(15, 6)
-                    path = f'figures/auto_seek/{res_name}/correlation'
-                    import pathlib
-                    pathlib.Path(path).mkdir(parents=True, exist_ok=True)
-                    plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
-                    plt.show()
-                    plt.close('all')
+                result = results[res_name]
+                resun = result.unstack()[result.columns[0]]
+                # print(resun)
+                await self.create_global_correlation_figures(res_name, resun)
+
+                await self.create_autocorrelation_figures(res_name, resun)
+
+                await self.create_pairwise_rolling_correlation_figures(res_name, resun)
+
+                await self.create_cross_correlation_figures(res_name, resun)
 
             # set exit_code for the behaviour
             self.exit_code = "Job Finished!"
+
+        async def create_cross_correlation_figures(self, res_name, resun):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Create Pearson cross correlation figures")
+            import numpy as np
+            df = resun
+
+            def crosscorr(datax, datay, lag=0, wrap=False):
+                """ Lag-N cross correlation.
+                Shifted data filled with NaNs
+
+                Parameters
+                ----------
+                lag : int, default 0
+                datax, datay : pandas.Series objects of equal length
+                Returns
+                ----------
+                crosscorr : float
+                """
+                if wrap:
+                    shiftedy = datay.shift(lag)
+                    shiftedy.iloc[:lag] = datay.iloc[-lag:].values
+                    return datax.corr(shiftedy)
+                else:
+                    return datax.corr(datay.shift(lag))
+
+            length = len(resun.columns)
+            combi = set(itertools.combinations(range(length), 2))
+            # print(combi)
+            for i, j in combi:
+                connection_A = resun.columns[i]
+                connection_B = resun.columns[j]
+
+                d1 = df[connection_A]
+                d2 = df[connection_B]
+
+                months_lag = 10
+                rs = [crosscorr(d1, d2, lag) for lag in range(-int(months_lag - 1), int(months_lag))]
+                offset = np.floor(len(rs) / 2) - np.argmax(rs)
+                f, ax = plt.subplots(figsize=(15, 6))
+                ax.plot(rs)
+                ax.axvline(np.ceil(len(rs) / 2), color='k', linestyle='--', label='Center')
+                ax.axvline(np.argmax(rs), color='r', linestyle='--', label='Peak synchrony')
+                title = f"{res_name}".capitalize() + \
+                        f" {connection_A} and {connection_B} Pearson cross correlation 2015-2020"
+                ax.set(title=f'{title}\n{connection_A} leads <> {connection_B} leads', xlabel='Offset',
+                       ylabel='Pearson r')
+                ax.set_xticklabels([int(item - months_lag) for item in ax.get_xticks()]);
+                plt.legend()
+                ax.figure.set_size_inches(15, 6)
+                ax.set(ylabel='Percentage')
+
+                path = f'figures/auto_seek/{res_name}/cross_correlation'
+                import pathlib
+                pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+                plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                # plt.show()
+                plt.close('all')
+
+        async def create_pairwise_rolling_correlation_figures(self, res_name, resun):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Create Pearson pairwise correlation figures")
+            import itertools
+            # Set window size to compute moving window synchrony.
+            window_length = 6
+            # Interpolate missing data.
+            df_interpolated = resun.interpolate()
+            # Compute rolling window synchrony
+            length = len(resun.columns)
+            combi = set(itertools.combinations(range(length), 2))
+            # print(combi)
+            for i, j in combi:
+                connection_A = resun.columns[i]
+                connection_B = resun.columns[j]
+                rolling_r = df_interpolated[connection_A].rolling(window=window_length, center=True) \
+                    .corr(df_interpolated[connection_B])
+
+                g = rolling_r.plot(style='r-')
+                title = f"{res_name}".capitalize() + \
+                        f" {connection_A} and {connection_B} Pearson correlation with {window_length} months rolling 2015-2020"
+                g.set_title(title)
+                g.figure.set_size_inches(15, 6)
+                g.set(ylabel='Correlation')
+
+                g2 = g.twinx()
+
+                g2 = resun[[connection_A, connection_B]].rolling(window=window_length, center=True).median().plot(
+                    ax=g2)
+
+                g2.set(ylabel='Percentage')
+
+                # plt.legend([g.get_lines()[0], g2.get_lines()[0]],
+                #            ['Correlation', connection_A, connection_B])
+                path = f'figures/auto_seek/{res_name}/pairwise_rolling_correlation'
+                import pathlib
+                pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+                plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                # plt.show()
+                plt.close('all')
+
+        async def create_autocorrelation_figures(self, res_name, resun):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Create Pearson autocorrelation figures")
+            for connection_name in resun.columns:
+                g = pd.plotting.autocorrelation_plot(resun[connection_name])
+                title = f"{res_name}".capitalize() + " " \
+                                                     f"{connection_name}".capitalize() + \
+                        f" autocorrelation 2015-2020"
+                g.set_title(title)
+                g.figure.set_size_inches(15, 6)
+                path = f'figures/auto_seek/{res_name}/autocorrelation'
+                import pathlib
+                pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+                plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                # plt.show()
+                plt.close('all')
+
+        async def create_global_correlation_figures(self, res_name, resun):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Create global Pearson correlation figures")
+            methods = ['pearson', 'kendall', 'spearman']
+            for method in methods:
+                g = sn.heatmap(resun.corr(method=method), annot=True)
+                title = f"{res_name}".capitalize() + " " \
+                                                     f"{method}".capitalize() + \
+                        f" correlation 2015-2020"
+                g.set_title(title)
+                g.figure.set_size_inches(15, 6)
+                path = f'figures/auto_seek/{res_name}/correlation'
+                import pathlib
+                pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+                plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                # plt.show()
+                plt.close('all')
+
+    class SeekComplexCorrelationBehav(OneShotBehaviour):
+        async def run(self):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
 
     async def setup(self):
         print(f"{self.jid}: Agent starting . . .")

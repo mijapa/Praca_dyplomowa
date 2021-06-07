@@ -71,7 +71,7 @@ class RaportGenerator(Agent):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: RecvBehav running")
 
-            timeout = 20
+            timeout = 60
             msg = await self.receive(timeout=timeout)  # wait for a message for 10 seconds
             if msg:
                 print(f"{self.agent.jid}: {self.__class__.__name__}: Message received.")
