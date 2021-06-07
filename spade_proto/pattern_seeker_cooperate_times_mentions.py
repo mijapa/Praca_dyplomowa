@@ -8,8 +8,7 @@ from spade.message import Message
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure, \
-    create_fight_figure, create_cooperate_figure, create_cooperate_nummen30_figure, create_cooperate_times_nummen_figure
+from spade_proto.auxiliary import authenticate_google_cloud, perform_query, create_cooperate_times_nummen_figure
 
 
 class PatternSeekerCooperateTimesNumMen(Agent):

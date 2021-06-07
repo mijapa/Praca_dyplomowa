@@ -20,7 +20,8 @@ class PatternSeekerFightVsAll(Agent):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
             msg = Message(to="correlation_seeker@localhost")  # Instantiate the message
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-            msg.set_metadata("ontology", "fight_results")  # Set the ontology of the message content
+            msg.set_metadata("ontology", "results")  # Set the ontology of the message content
+            msg.set_metadata("type", "fight vs all")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
 
             msg.body = self.agent.symmetry.to_json(orient='table')  # Set the message content

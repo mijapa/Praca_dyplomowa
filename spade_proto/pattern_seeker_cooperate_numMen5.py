@@ -9,10 +9,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure, \
-    create_fight_figure, create_cooperate_figure, create_cooperate_nummen30_figure
+    create_fight_figure, create_cooperate_figure, create_cooperate_nummen5_figure
 
 
-class PatternSeekerCooperateNumMen30(Agent):
+class PatternSeekerCooperateNumMen5(Agent):
     config = []
 
     class SendResultsBehav(OneShotBehaviour):
@@ -20,7 +20,8 @@ class PatternSeekerCooperateNumMen30(Agent):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
             msg = Message(to="correlation_seeker@localhost")  # Instantiate the message
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-            msg.set_metadata("ontology", "cooperate_nummen30_results")  # Set the ontology of the message content
+            msg.set_metadata("ontology", "results")  # Set the ontology of the message content
+            msg.set_metadata("type", "cooperate mentions >=5")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
 
             msg.body = self.agent.symmetry.to_json(orient='table')  # Set the message content
@@ -64,17 +65,17 @@ class PatternSeekerCooperateNumMen30(Agent):
             actor1 = self.agent.config['actors']['actor1']
             actor2 = self.agent.config['actors']['actor2']
 
-            ac1ac2 = await self.calculate_cooperate_nummen30_percentage(actor1, actor2)
-            ac2ac1 = await self.calculate_cooperate_nummen30_percentage(actor2, actor1)
+            ac1ac2 = await self.calculate_cooperate_nummen5_percentage(actor1, actor2)
+            ac2ac1 = await self.calculate_cooperate_nummen5_percentage(actor2, actor1)
 
             symmetry = ac1ac2.append(ac2ac1)
-            create_cooperate_nummen30_figure(symmetry, actor1, actor2)
+            create_cooperate_nummen5_figure(symmetry, actor1, actor2)
 
             self.agent.symmetry = symmetry
 
             self.agent.add_behaviour(self.agent.SendResultsBehav())
 
-        async def calculate_cooperate_nummen30_percentage(self, actor1, actor2):
+        async def calculate_cooperate_nummen5_percentage(self, actor1, actor2):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Calculating cooperate percentage {actor1}-{actor2}")
             QUERY = (f"""SELECT
   MonthYear,
@@ -87,7 +88,7 @@ WHERE
   AND Year <= 2020
   AND Actor1CountryCode = "{actor1}"
   AND EventRootCode = "03"
-  AND NumMentions >= 30
+  AND NumMentions >= 5
 GROUP BY
   MonthYear,
   Actor2CountryCode""")

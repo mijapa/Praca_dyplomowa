@@ -60,6 +60,7 @@ def create_symmetry_figure(symmetry, actor1, actor2):
     g.set_title(f"Connection strength {actor1} and {actor2} 2015-2020")
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/symmetry/{actor1} and {actor2}connection.png', bbox_inches='tight')
+    plt.close('all')
     return g
 
 
@@ -71,6 +72,7 @@ def create_power_client_figure(symmetry, actor1, actor2):
     g.set_title(f"Power-client {actor1} and {actor2} 2015-2020")
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/power-client/{actor1} and {actor2} power-client.png', bbox_inches='tight')
+    plt.close('all')
     return g
 
 
@@ -82,6 +84,7 @@ def create_fight_figure(symmetry, actor1, actor2):
     g.set_title(f"Fight {actor1} and {actor2} 2015-2020")
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/fight/{actor1} and {actor2} fight.png', bbox_inches='tight')
+    plt.close('all')
     return g
 
 
@@ -93,6 +96,7 @@ def create_cooperate_figure(symmetry, actor1, actor2):
     g.set_title(f"Express intent to cooperate {actor1} and {actor2} 2015-2020")
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/cooperate/{actor1} and {actor2} cooperate.png', bbox_inches='tight')
+    plt.close('all')
     return g
 
 
@@ -104,17 +108,19 @@ def create_fight_vs_all_figure(symmetry, actor1, actor2):
     g.set_title(f"Fight vs all events{actor1} and {actor2} 2015-2020")
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/fight vs all/{actor1} and {actor2} fight vs all.png', bbox_inches='tight')
+    plt.close('all')
     return g
 
 
-def create_cooperate_nummen30_figure(symmetry, actor1, actor2):
+def create_cooperate_nummen5_figure(symmetry, actor1, actor2):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Cooperate']).last()
     g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
-    g.set_title(f"Express intent to cooperate with mentions >=30 {actor1} and {actor2} 2015-2020")
+    g.set_title(f"Express intent to cooperate with mentions >=5 {actor1} and {actor2} 2015-2020")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/cooperate_nummen30/{actor1} and {actor2} cooperate.png', bbox_inches='tight')
+    plt.savefig(f'figures/cooperate_nummen5/{actor1} and {actor2} cooperate.png', bbox_inches='tight')
+    plt.close('all')
     return g
 
 
@@ -127,6 +133,7 @@ def create_cooperate_times_nummen_figure(symmetry, actor1, actor2):
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/cooperate_times_nummen/{actor1} and {actor2} cooperate times mentions.png',
                 bbox_inches='tight')
+    plt.close('all')
     return g
 
 
@@ -139,4 +146,5 @@ def create_cooperate_times_goldstein_figure(symmetry, actor1, actor2):
     g.figure.set_size_inches(20, 8)
     plt.savefig(f'figures/cooperate_times_goldstein/{actor1} and {actor2} cooperate times goldstein.png',
                 bbox_inches='tight')
+    plt.close('all')
     return g

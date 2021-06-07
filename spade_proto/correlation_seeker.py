@@ -11,7 +11,7 @@ from spade_proto.pattern_seeker_connection_strength import PatternSeeker
 import pandas as pd
 
 from spade_proto.pattern_seeker_cooperate import PatternSeekerCooperate
-from spade_proto.pattern_seeker_cooperate_numMen30 import PatternSeekerCooperateNumMen30
+from spade_proto.pattern_seeker_cooperate_numMen5 import PatternSeekerCooperateNumMen5
 from spade_proto.pattern_seeker_cooperate_times_goldstein import PatternSeekerCooperateTimesGoldstein
 from spade_proto.pattern_seeker_cooperate_times_mentions import PatternSeekerCooperateTimesNumMen
 from spade_proto.pattern_seeker_fight import PatternSeekerFight
@@ -22,7 +22,7 @@ from spade_proto.pattern_seeker_power_client import PatternSeekerPowerClient
 class CorrelationSeeker(Agent):
     config = []
     first_config = {}
-    symmetry_results = pd.DataFrame()
+    results = {}
     #
     # class InformBehav(OneShotBehaviour):
     #     async def run(self):
@@ -148,14 +148,14 @@ class CorrelationSeeker(Agent):
                 # msg.body = self.agent.first_config.__str__()  # Set the message content
                 # await self.send(msg)
 
-                agent = PatternSeekerCooperateNumMen30(f"pattern_seeker_cooperate_nummen30_{actor1}_{actor2}@localhost", "RADiance89")
+                agent = PatternSeekerCooperateNumMen5(f"pattern_seeker_cooperate_nummen5_{actor1}_{actor2}@localhost", "RADiance89")
                 # This start is inside an async def, so it must be awaited
                 await agent.start(auto_register=True)
 
                 # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
                 # print(self.agent.first_config)
                 msg = Message(
-                    to=f"pattern_seeker_cooperate_nummen30_{self.agent.first_config['actors']['actor1']}"
+                    to=f"pattern_seeker_cooperate_nummen5_{self.agent.first_config['actors']['actor1']}"
                        f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
                 msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
@@ -208,27 +208,30 @@ class CorrelationSeeker(Agent):
                     print(f"{self.agent.jid}: {self.__class__.__name__}: CONFIG")
                     self.agent.config = string_to_list(msg.body)
                     self.agent.add_behaviour(self.agent.CreatePatternSeekerBehav())
-                if msg.metadata["ontology"] == 'symmetry_results':
-                    print(f"{self.agent.jid}: {self.__class__.__name__}: SYMMETRY RESULTS")
+                if msg.metadata["ontology"] == 'results':
+                    print(f"{self.agent.jid}: {self.__class__.__name__}: RESULTS")
                     # print(f"{self.agent.jid}: {self.__class__.__name__}: msg.body: {msg.body}")
 
                     res = pd.read_json(msg.body, orient='table')
 
-                    # print(f"{self.agent.jid}: {self.__class__.__name__}: res: {res}")
+                    result_type = msg.metadata["type"]
+                    try:
+                        self.agent.results[result_type] = pd.concat([self.agent.results[result_type], res])
+                    except KeyError:
+                        self.agent.results[result_type] = res
 
-                    if self.agent.symmetry_results.empty:
-                        self.agent.symmetry_results = res
-                    else:
-                        self.agent.symmetry_results = pd.concat([self.agent.symmetry_results, res])
-                        # print(self.agent.symmetry_results)
 
             else:
                 print(f"{self.agent.jid}: {self.__class__.__name__}: "
                       f"Did not received any message after {timeout} seconds")
-                self.agent.add_behaviour(self.agent.SendResultsBehav())
-                f = open("res.json", "w")
-                f.write(self.agent.symmetry_results.to_json(orient='table'))
-                f.close()
+                # self.agent.add_behaviour(self.agent.SendResultsBehav())
+                # todo: send results to raport generator
+                results = self.agent.results
+                for res in results:
+                    f = open(f"results_{res}.json", "w")
+                    f.write(results[res].to_json(orient='table'))
+                    f.close()
+                self.agent.add_behaviour(self.agent.SeekCorrelationBehav())
                 self.kill()
 
     class SendConfigBehav(OneShotBehaviour):
@@ -271,6 +274,33 @@ class CorrelationSeeker(Agent):
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent to: {to}")
             # print(f"{self.agent.jid}: {self.__class__.__name__}: msg.body: {msg.body}")
+
+            # set exit_code for the behaviour
+            self.exit_code = "Job Finished!"
+
+    class SeekCorrelationBehav(OneShotBehaviour):
+        async def run(self):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
+
+            import seaborn as sn
+            import matplotlib.pyplot as plt
+            results = self.agent.results
+            for res_name in results:
+                resun = results[res_name].unstack()['Percentage']
+                methods = ['pearson', 'kendall', 'spearman']
+                for method in methods:
+                    g = sn.heatmap(resun.corr(method=method), annot=True)
+                    title = f"{res_name}".capitalize() + " " \
+                            f"{method}".capitalize() + \
+                            f" correlation 2015-2020"
+                    g.set_title(title)
+                    g.figure.set_size_inches(15, 6)
+                    path = f'figures/auto_seek/{res_name}/correlation'
+                    import pathlib
+                    pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+                    plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                    plt.show()
+                    plt.close('all')
 
             # set exit_code for the behaviour
             self.exit_code = "Job Finished!"

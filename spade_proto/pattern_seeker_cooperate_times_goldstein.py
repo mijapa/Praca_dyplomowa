@@ -8,9 +8,7 @@ from spade.message import Message
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure, \
-    create_fight_figure, create_cooperate_figure, create_cooperate_nummen30_figure, \
-    create_cooperate_times_nummen_figure, create_cooperate_times_goldstein_figure
+from spade_proto.auxiliary import authenticate_google_cloud, perform_query, create_cooperate_times_goldstein_figure
 
 
 class PatternSeekerCooperateTimesGoldstein(Agent):
@@ -21,7 +19,8 @@ class PatternSeekerCooperateTimesGoldstein(Agent):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
             msg = Message(to="correlation_seeker@localhost")  # Instantiate the message
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-            msg.set_metadata("ontology", "cooperate_goldstein_results")  # Set the ontology of the message content
+            msg.set_metadata("ontology", "results")  # Set the ontology of the message content
+            msg.set_metadata("type", "cooperate sum Goldstein Scale")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
 
             msg.body = self.agent.symmetry.to_json(orient='table')  # Set the message content
