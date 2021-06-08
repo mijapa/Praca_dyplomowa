@@ -103,7 +103,7 @@ GROUP BY
             s = ac1ac2monthyear.groupby(["Time"]).agg({'Count': 'sum'})
             t = ac1monthyear.groupby(["Time"]).agg({'Count': 'sum'})
             s['Percentage'] = s['Count'] / t['Count'] * 100
-            s['Fight'] = f'{actor1}(actor1) with {actor2}(actor2)'
+            s['Fight'] = f'{actor1} with {actor2}'
             # print(s)
             s = s.groupby(["Time", "Fight"]).agg({'Percentage': 'last'})
             # print(s)

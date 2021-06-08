@@ -100,12 +100,12 @@ GROUP BY
 
             ac1ac2monthyear = ac1monthyear.loc[(ac1monthyear.Actor2CountryCode == f'{actor2}') &
                                                (ac1monthyear.EventRootCode == '19')]
-            print(ac1ac2monthyear)
+            # print(ac1ac2monthyear)
 
             s = ac1ac2monthyear.groupby(["Time"]).agg({'Count': 'sum'})
             t = ac1monthyear.groupby(["Time"]).agg({'Count': 'sum'})
             s['Percentage'] = s['Count'] / t['Count'] * 100
-            s['Fight vs all'] = f'{actor1}(actor1) with {actor2}(actor2)'
+            s['Fight vs all'] = f'{actor1} with {actor2}'
             # print(s)
             s = s.groupby(["Time", "Fight vs all"]).agg({'Percentage': 'last'})
             # print(s)
