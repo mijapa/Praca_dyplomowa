@@ -1,3 +1,4 @@
+import json
 import os
 from ast import literal_eval
 
@@ -46,7 +47,7 @@ class PatternSeeker(Agent):
                 print(f"{self.agent.jid}: {self.__class__.__name__}:Message received with content: {msg.body}")
                 if msg.metadata["ontology"] == 'config':
                     print(f"{self.agent.jid}: {self.__class__.__name__}: CONFIG")
-                    self.agent.config = literal_eval(msg.body)
+                    self.agent.config = json.loads(msg.body)
                     self.agent.add_behaviour(self.agent.AnalyseSymmetryBehav())
             else:
                 print(f"{self.agent.jid}: {self.__class__.__name__}: Did not received any message after 10 seconds")

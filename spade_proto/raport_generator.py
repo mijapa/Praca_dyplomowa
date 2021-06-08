@@ -1,4 +1,5 @@
 import asyncio
+import json
 import os
 
 from fpdf import FPDF
@@ -99,9 +100,9 @@ class RaportGenerator(Agent):
             msg.set_metadata("ontology", "config")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
             config = load_config_from_file()
-            config = change_country_names_to_codes(config)
-            print(config.__str__())
-            msg.body = config.__str__()  # Set the message content
+            config['countries'] = change_country_names_to_codes(config['countries'])
+            print(config)
+            msg.body = json.dumps(config)  # Set the message content
 
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")

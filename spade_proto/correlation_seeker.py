@@ -1,4 +1,5 @@
 import itertools
+import json
 from io import StringIO
 
 from spade.agent import Agent
@@ -23,7 +24,6 @@ import matplotlib.pyplot as plt
 
 
 class CorrelationSeeker(Agent):
-    config = []
     first_config = {}
     results = {}
 
@@ -64,15 +64,18 @@ class CorrelationSeeker(Agent):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Creating new Pattern Seeker agent behaviour . . .")
 
         async def run(self):
-            length = len(self.agent.config)
+            config_countries = self.agent.config['countries']
+            length = len(config_countries)
             combi = set(itertools.combinations(range(length), 2))
-            print(combi)
+            # print(combi)
             for i, j in combi:
-                print(i, j)
-                print(f'config {self.agent.config}')
-                actor1 = self.agent.config[i]
-                actor2 = self.agent.config[j]
-                self.agent.first_config = {'actors': {'actor1': actor1, 'actor2': actor2}}
+                # print(i, j)
+                # print(f'config {config_countries}')
+                actor1 = config_countries[i]
+                actor2 = config_countries[j]
+                self.agent.first_config = {'actors': {'actor1': actor1, 'actor2': actor2},
+                                           'granulation': self.agent.config['granulation']
+                                           }
 
                 agent = PatternSeeker(f"pattern_seeker_{actor1}_{actor2}@localhost", "RADiance89")
                 # This start is inside an async def, so it must be awaited
@@ -86,7 +89,7 @@ class CorrelationSeeker(Agent):
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
                 msg.set_metadata("language", "OWL-S")  # Set the language of the message content
                 print(f'first_config {self.agent.first_config}')
-                msg.body = self.agent.first_config.__str__()  # Set the message content
+                msg.body = json.dumps(self.agent.first_config)  # Set the message content
                 await self.send(msg)
 
                 agent = PatternSeekerPowerClient(f"pattern_seeker_power_client_{actor1}_{actor2}@localhost",
@@ -102,7 +105,7 @@ class CorrelationSeeker(Agent):
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
                 msg.set_metadata("language", "OWL-S")  # Set the language of the message content
                 print(f'first_config {self.agent.first_config}')
-                msg.body = self.agent.first_config.__str__()  # Set the message content
+                msg.body = json.dumps(self.agent.first_config)  # Set the message content
                 await self.send(msg)
 
                 agent = PatternSeekerFight(f"pattern_seeker_fight_{actor1}_{actor2}@localhost", "RADiance89")
@@ -118,7 +121,7 @@ class CorrelationSeeker(Agent):
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
                 msg.set_metadata("language", "OWL-S")  # Set the language of the message content
                 print(f'first_config {self.agent.first_config}')
-                msg.body = self.agent.first_config.__str__()  # Set the message content
+                msg.body = json.dumps(self.agent.first_config)  # Set the message content
                 await self.send(msg)
 
                 agent = PatternSeekerCooperate(f"pattern_seeker_cooperate_{actor1}_{actor2}@localhost", "RADiance89")
@@ -134,7 +137,7 @@ class CorrelationSeeker(Agent):
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
                 msg.set_metadata("language", "OWL-S")  # Set the language of the message content
                 print(f'first_config {self.agent.first_config}')
-                msg.body = self.agent.first_config.__str__()  # Set the message content
+                msg.body = json.dumps(self.agent.first_config)  # Set the message content
                 await self.send(msg)
 
                 # agent = PatternSeekerFightVsAll(f"pattern_seeker_fight_vs_all_{actor1}_{actor2}@localhost", "RADiance89")
@@ -150,7 +153,7 @@ class CorrelationSeeker(Agent):
                 # msg.set_metadata("ontology", "config")  # Set the ontology of the message content
                 # msg.set_metadata("language", "OWL-S")  # Set the language of the message content
                 # print(f'first_config {self.agent.first_config}')
-                # msg.body = self.agent.first_config.__str__()  # Set the message content
+                # msg.body = json.dumps(self.agent.first_config)  # Set the message content
                 # await self.send(msg)
 
                 agent = PatternSeekerCooperateNumMen5(f"pattern_seeker_cooperate_nummen5_{actor1}_{actor2}@localhost",
@@ -167,7 +170,7 @@ class CorrelationSeeker(Agent):
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
                 msg.set_metadata("language", "OWL-S")  # Set the language of the message content
                 print(f'first_config {self.agent.first_config}')
-                msg.body = self.agent.first_config.__str__()  # Set the message content
+                msg.body = json.dumps(self.agent.first_config)  # Set the message content
                 await self.send(msg)
 
                 agent = PatternSeekerCooperateTimesNumMen(
@@ -184,7 +187,7 @@ class CorrelationSeeker(Agent):
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
                 msg.set_metadata("language", "OWL-S")  # Set the language of the message content
                 print(f'first_config {self.agent.first_config}')
-                msg.body = self.agent.first_config.__str__()  # Set the message content
+                msg.body = json.dumps(self.agent.first_config)  # Set the message content
                 await self.send(msg)
 
                 agent = PatternSeekerCooperateTimesGoldstein(
@@ -201,7 +204,7 @@ class CorrelationSeeker(Agent):
                 msg.set_metadata("ontology", "config")  # Set the ontology of the message content
                 msg.set_metadata("language", "OWL-S")  # Set the language of the message content
                 print(f'first_config {self.agent.first_config}')
-                msg.body = self.agent.first_config.__str__()  # Set the message content
+                msg.body = json.dumps(self.agent.first_config)  # Set the message content
                 await self.send(msg)
 
     class RecvBehav(CyclicBehaviour):
@@ -214,7 +217,7 @@ class CorrelationSeeker(Agent):
                 # print(f"{self.agent.jid}: {self.__class__.__name__}: Message received with content: {msg.body}")
                 if msg.metadata["ontology"] == 'config':
                     print(f"{self.agent.jid}: {self.__class__.__name__}: CONFIG")
-                    self.agent.config = string_to_list(msg.body)
+                    self.agent.config = json.loads(msg.body)
                     self.agent.add_behaviour(self.agent.CreatePatternSeekerBehav())
                 if msg.metadata["ontology"] == 'results':
                     print(f"{self.agent.jid}: {self.__class__.__name__}: RESULTS")
@@ -254,7 +257,7 @@ class CorrelationSeeker(Agent):
             msg.set_metadata("ontology", "config")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
             print(f'first_config {self.agent.first_config}')
-            msg.body = self.agent.first_config.__str__()  # Set the message content
+            msg.body = json.dumps(self.agent.first_config)  # Set the message content
 
             await self.send(msg)
             print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
@@ -440,6 +443,27 @@ class CorrelationSeeker(Agent):
     class SeekComplexCorrelationBehav(OneShotBehaviour):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
+            res_name = 'all'
+            resun = self.agent.results
+
+            await self.create_global_correlation_figures(res_name, resun)
+
+        async def create_global_correlation_figures(self, res_name, resun):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Create global Pearson correlation figures")
+            # methods = ['pearson', 'kendall', 'spearman']
+            # for method in methods:
+            #     g = sn.heatmap(resun.corr(method=method), annot=True)
+            #     title = f"{res_name}".capitalize() + " " \
+            #                                          f"{method}".capitalize() + \
+            #             f" correlation 2015-2020"
+            #     g.set_title(title)
+            #     g.figure.set_size_inches(15, 6)
+            #     path = f'figures/auto_seek/{res_name}/correlation'
+            #     import pathlib
+            #     pathlib.Path(path).mkdir(parents=True, exist_ok=True)
+            #     plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+            #     # plt.show()
+            #     plt.close('all')
 
     async def setup(self):
         print(f"{self.jid}: Agent starting . . .")
