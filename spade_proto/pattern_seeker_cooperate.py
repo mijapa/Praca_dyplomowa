@@ -9,7 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure, \
-    create_fight_figure, create_cooperate_figure
+    create_fight_figure, create_cooperate_figure, get_data, calculate_percentage
 
 
 class PatternSeekerCooperate(Agent):
@@ -64,18 +64,19 @@ class PatternSeekerCooperate(Agent):
             print(f"{self.agent.jid}: {self.__class__.__name__}: {self.agent.config}")
             actor1 = self.agent.config['actors']['actor1']
             actor2 = self.agent.config['actors']['actor2']
+            granulation = self.agent.config['granulation']
 
-            ac1ac2 = await self.calculate_cooperate_percentage(actor1, actor2)
-            ac2ac1 = await self.calculate_cooperate_percentage(actor2, actor1)
+            ac1ac2 = await self.calculate_cooperate_percentage(actor1, actor2, granulation)
+            ac2ac1 = await self.calculate_cooperate_percentage(actor2, actor1, granulation)
 
             symmetry = ac1ac2.append(ac2ac1)
-            create_cooperate_figure(symmetry, actor1, actor2)
+            create_cooperate_figure(symmetry, actor1, actor2, granulation)
 
             self.agent.symmetry = symmetry
 
             self.agent.add_behaviour(self.agent.SendResultsBehav())
 
-        async def calculate_cooperate_percentage(self, actor1, actor2):
+        async def calculate_cooperate_percentage(self, actor1, actor2, granulation):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Calculating cooperate percentage {actor1}-{actor2}")
             QUERY = (f"""SELECT
   MonthYear,
@@ -92,45 +93,11 @@ GROUP BY
   MonthYear,
   Actor2CountryCode""")
 
-            ac1monthyear = await self.get_data(QUERY)
 
-            # print(ac1monthyear)
-            ac1monthyear["Time"] = pd.to_datetime(ac1monthyear['MonthYear'], format='%Y%m').dt.strftime('%Y-%m')
-
-            ac1ac2monthyear = ac1monthyear.loc[ac1monthyear.Actor2CountryCode == f'{actor2}']
-            # print(ac1ac2monthyear)
-
-            s = ac1ac2monthyear.groupby(["Time"]).agg({'Count': 'sum'})
-            t = ac1monthyear.groupby(["Time"]).agg({'Count': 'sum'})
-            s['Percentage'] = s['Count'] / t['Count'] * 100
-            s['Cooperate'] = f'{actor1} with {actor2}'
-            # print(s)
-            s = s.groupby(["Time", "Cooperate"]).agg({'Percentage': 'last'})
-            # print(s)
-            # g = s.unstack().plot(y='Percentage')
-
-            # g.set(ylabel='Percentage')
-            # g.set_title(f"Connection strength {actor1}-{actor2} 2015-2020")
-            # g.figure.set_size_inches(20, 8)
-            # plt.savefig(f'figures/{actor1}-{actor2}connection.png', bbox_inches='tight')
-            # print(s)
-            return s
-
-        async def get_data(self, QUERY):
-            # name = ''.join(QUERY.split())
-            name = QUERY
-            if not os.path.isfile(f'queries_results_auto/{name}.csv'):
-                print(f"{self.agent.jid}: {self.__class__.__name__}: Local data miss. Performing query"
-                      # f"\n {QUERY}"
-                      )
-                result = perform_query(clients=self.clients, QUERY=QUERY)
-                result.to_csv(f'queries_results_auto/{name}.csv')
-            else:
-                print(f"{self.agent.jid}: {self.__class__.__name__}: Local data hit. Reading from file"
-                      # f"\n{QUERY}.csv"
-                      )
-                result = pd.read_csv(f'queries_results_auto/{name}.csv')
-            return result
+            ac1monthyear = await get_data(self, QUERY)
+            return await calculate_percentage(ac1monthyear, actor2, granulation,
+                                           name='Cooperate',
+                                           name_string=f'{actor1} with {actor2}')
 
         async def on_end(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Behaviour finished with exit code {self.exit_code}.")

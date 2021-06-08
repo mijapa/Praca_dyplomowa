@@ -89,9 +89,9 @@ class CorrelationSeeker(Agent):
                 # agent = PatternSeekerFight(name, "RADiance89")
                 # await self.start_agent_and_send_config(agent, name)
                 #
-                # name = f"pattern_seeker_cooperate_{actor1}_{actor2}@localhost"
-                # agent = PatternSeekerCooperate(name, "RADiance89")
-                # await self.start_agent_and_send_config(agent, name)
+                name = f"pattern_seeker_cooperate_{actor1}_{actor2}@localhost"
+                agent = PatternSeekerCooperate(name, "RADiance89")
+                await self.start_agent_and_send_config(agent, name)
                 #
                 # # name = f"pattern_seeker_fight_vs_all_{actor1}_{actor2}@localhost"
                 # # agent = PatternSeekerFightVsAll(name, "RADiance89")
@@ -209,24 +209,25 @@ class CorrelationSeeker(Agent):
     class SeekSimpleCorrelationBehav(OneShotBehaviour):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
+            granulation = self.agent.config['granulation']
 
             results = self.agent.results
             for res_name in results:
                 result = results[res_name]
                 resun = result.unstack()[result.columns[0]]
                 # print(resun)
-                await self.create_global_correlation_figures(res_name, resun)
+                await self.create_global_correlation_figures(res_name, resun, granulation)
 
-                await self.create_autocorrelation_figures(res_name, resun)
+                await self.create_autocorrelation_figures(res_name, resun, granulation)
 
-                await self.create_pairwise_rolling_correlation_figures(res_name, resun)
+                await self.create_pairwise_rolling_correlation_figures(res_name, resun, granulation)
 
-                await self.create_cross_correlation_figures(res_name, resun)
+                await self.create_cross_correlation_figures(res_name, resun, granulation)
 
             # set exit_code for the behaviour
             self.exit_code = "Job Finished!"
 
-        async def create_cross_correlation_figures(self, res_name, resun):
+        async def create_cross_correlation_figures(self, res_name, resun, granulation):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Create Pearson cross correlation figures")
             import numpy as np
             df = resun
@@ -279,11 +280,11 @@ class CorrelationSeeker(Agent):
                 path = f'figures/auto_seek/{res_name}/cross_correlation'
                 import pathlib
                 pathlib.Path(path).mkdir(parents=True, exist_ok=True)
-                plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                plt.savefig(f'{path}/{title} {granulation}.png', bbox_inches='tight')
                 # plt.show()
                 plt.close('all')
 
-        async def create_pairwise_rolling_correlation_figures(self, res_name, resun):
+        async def create_pairwise_rolling_correlation_figures(self, res_name, resun, granulation):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Create Pearson pairwise correlation figures")
             import itertools
             # Set window size to compute moving window synchrony.
@@ -319,11 +320,11 @@ class CorrelationSeeker(Agent):
                 path = f'figures/auto_seek/{res_name}/pairwise_rolling_correlation'
                 import pathlib
                 pathlib.Path(path).mkdir(parents=True, exist_ok=True)
-                plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                plt.savefig(f'{path}/{title} {granulation}.png', bbox_inches='tight')
                 # plt.show()
                 plt.close('all')
 
-        async def create_autocorrelation_figures(self, res_name, resun):
+        async def create_autocorrelation_figures(self, res_name, resun, granulation):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Create Pearson autocorrelation figures")
             for connection_name in resun.columns:
                 g = pd.plotting.autocorrelation_plot(resun[connection_name])
@@ -335,11 +336,11 @@ class CorrelationSeeker(Agent):
                 path = f'figures/auto_seek/{res_name}/autocorrelation'
                 import pathlib
                 pathlib.Path(path).mkdir(parents=True, exist_ok=True)
-                plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                plt.savefig(f'{path}/{title} {granulation}.png', bbox_inches='tight')
                 # plt.show()
                 plt.close('all')
 
-        async def create_global_correlation_figures(self, res_name, resun):
+        async def create_global_correlation_figures(self, res_name, resun, granulation):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Create global Pearson correlation figures")
             methods = ['pearson', 'kendall', 'spearman']
             for method in methods:
@@ -352,7 +353,7 @@ class CorrelationSeeker(Agent):
                 path = f'figures/auto_seek/{res_name}/correlation'
                 import pathlib
                 pathlib.Path(path).mkdir(parents=True, exist_ok=True)
-                plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+                plt.savefig(f'{path}/{title} {granulation}.png', bbox_inches='tight')
                 # plt.show()
                 plt.close('all')
 
@@ -360,11 +361,12 @@ class CorrelationSeeker(Agent):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
             res_name = 'all'
+            granulation = self.agent.config['granulation']
             resun = self.agent.results
 
-            await self.create_global_correlation_figures(res_name, resun)
+            await self.create_global_correlation_figures(res_name, resun, granulation)
 
-        async def create_global_correlation_figures(self, res_name, resun):
+        async def create_global_correlation_figures(self, res_name, resun, granulation):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Create global Pearson correlation figures")
             # methods = ['pearson', 'kendall', 'spearman']
             # for method in methods:
@@ -377,7 +379,7 @@ class CorrelationSeeker(Agent):
             #     path = f'figures/auto_seek/{res_name}/correlation'
             #     import pathlib
             #     pathlib.Path(path).mkdir(parents=True, exist_ok=True)
-            #     plt.savefig(f'{path}/{title}.png', bbox_inches='tight')
+            #     plt.savefig(f'{path}/{title} {granulation}.png', bbox_inches='tight')
             #     # plt.show()
             #     plt.close('all')
 

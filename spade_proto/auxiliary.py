@@ -1,9 +1,12 @@
+import json
+import os
+import pandas as pd
+
+
 def load_config_from_file():
-    config = []
-    with open('config', 'r') as reader:
-        for line in reader:
-            if not line.startswith('#'):
-                config.append(line.split('\n')[0])
+    with open('config.json', 'r') as reader:
+        config = json.load(reader)
+        print(config)
     return config
 
 
@@ -52,99 +55,124 @@ def change_country_names_to_codes(names_list):
     return codes_list
 
 
-def create_symmetry_figure(symmetry, actor1, actor2):
+def create_symmetry_figure(symmetry, actor1, actor2, granulation):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Connection']).last()
     g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
-    g.set_title(f"Connection strength {actor1} and {actor2} 2015-2020")
+    g.set_title(f"Connection strength {actor1} and {actor2} 2015-2020 {granulation}")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/symmetry/{actor1} and {actor2}connection.png', bbox_inches='tight')
+    plt.savefig(f'figures/symmetry/{actor1} and {actor2}connection {granulation}.png', bbox_inches='tight')
     plt.close('all')
     return g
 
 
-def create_power_client_figure(symmetry, actor1, actor2):
+def create_power_client_figure(symmetry, actor1, actor2, granulation):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Countries']).last()
     g = s.unstack().plot(y='Ratio')
     g.set(ylabel='Ratio')
-    g.set_title(f"Power-client {actor1} and {actor2} 2015-2020")
+    g.set_title(f"Power-client {actor1} and {actor2} 2015-2020 {granulation}")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/power-client/{actor1} and {actor2} power-client.png', bbox_inches='tight')
+    plt.savefig(f'figures/power-client/{actor1} and {actor2} power-client {granulation}.png', bbox_inches='tight')
     plt.close('all')
     return g
 
 
-def create_fight_figure(symmetry, actor1, actor2):
+def create_fight_figure(symmetry, actor1, actor2, granulation):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Fight']).last()
     g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
-    g.set_title(f"Fight {actor1} and {actor2} 2015-2020")
+    g.set_title(f"Fight {actor1} and {actor2} 2015-2020 {granulation}")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/fight/{actor1} and {actor2} fight.png', bbox_inches='tight')
+    plt.savefig(f'figures/fight/{actor1} and {actor2} fight {granulation}.png', bbox_inches='tight')
     plt.close('all')
     return g
 
 
-def create_cooperate_figure(symmetry, actor1, actor2):
+def create_cooperate_figure(symmetry, actor1, actor2, granulation):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Cooperate']).last()
     g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
-    g.set_title(f"Express intent to cooperate {actor1} and {actor2} 2015-2020")
+    g.set_title(f"Express intent to cooperate {actor1} and {actor2} 2015-2020 {granulation}")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/cooperate/{actor1} and {actor2} cooperate.png', bbox_inches='tight')
+    plt.savefig(f'figures/cooperate/{actor1} and {actor2} cooperate {granulation}.png', bbox_inches='tight')
     plt.close('all')
     return g
 
 
-def create_fight_vs_all_figure(symmetry, actor1, actor2):
+def create_fight_vs_all_figure(symmetry, actor1, actor2, granulation):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Fight vs all']).last()
     g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
-    g.set_title(f"Fight vs all events{actor1} and {actor2} 2015-2020")
+    g.set_title(f"Fight vs all events{actor1} and {actor2} 2015-2020 {granulation}")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/fight vs all/{actor1} and {actor2} fight vs all.png', bbox_inches='tight')
+    plt.savefig(f'figures/fight vs all/{actor1} and {actor2} fight vs all {granulation}.png', bbox_inches='tight')
     plt.close('all')
     return g
 
 
-def create_cooperate_nummen5_figure(symmetry, actor1, actor2):
+def create_cooperate_nummen5_figure(symmetry, actor1, actor2, granulation):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Cooperate']).last()
     g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
-    g.set_title(f"Express intent to cooperate with mentions >=5 {actor1} and {actor2} 2015-2020")
+    g.set_title(f"Express intent to cooperate with mentions >=5 {actor1} and {actor2} 2015-2020 {granulation}")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/cooperate_nummen5/{actor1} and {actor2} cooperate.png', bbox_inches='tight')
+    plt.savefig(f'figures/cooperate_nummen5/{actor1} and {actor2} cooperate {granulation}.png', bbox_inches='tight')
     plt.close('all')
     return g
 
 
-def create_cooperate_times_nummen_figure(symmetry, actor1, actor2):
+def create_cooperate_times_nummen_figure(symmetry, actor1, actor2, granulation):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Cooperate']).last()
     g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
-    g.set_title(f"Express intent to cooperate times mentions {actor1} and {actor2} 2015-2020")
+    g.set_title(f"Express intent to cooperate times mentions {actor1} and {actor2} 2015-2020 {granulation}")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/cooperate_times_nummen/{actor1} and {actor2} cooperate times mentions.png',
+    plt.savefig(f'figures/cooperate_times_nummen/{actor1} and {actor2} cooperate times mentions {granulation}.png',
                 bbox_inches='tight')
     plt.close('all')
     return g
 
 
-def create_cooperate_times_goldstein_figure(symmetry, actor1, actor2):
+def create_cooperate_times_goldstein_figure(symmetry, actor1, actor2, granulation):
     import matplotlib.pyplot as plt
     s = symmetry.groupby(['Time', 'Cooperate']).last()
     g = s.unstack().plot(y='Percentage')
     g.set(ylabel='Percentage')
-    g.set_title(f"Express intent to cooperate times Goldstein {actor1} and {actor2} 2015-2020")
+    g.set_title(f"Express intent to cooperate times Goldstein {actor1} and {actor2} 2015-2020 {granulation}")
     g.figure.set_size_inches(20, 8)
-    plt.savefig(f'figures/cooperate_times_goldstein/{actor1} and {actor2} cooperate times goldstein.png',
+    plt.savefig(f'figures/cooperate_times_goldstein/{actor1} and {actor2} cooperate times goldstein {granulation}.png',
                 bbox_inches='tight')
     plt.close('all')
     return g
+
+
+async def calculate_percentage(ac1monthyear, actor2, granulation, name, name_string):
+    ac1monthyear["Time"] = pd.to_datetime(ac1monthyear['MonthYear'], format='%Y%m')
+    ac1monthyear = ac1monthyear.groupby(
+        [pd.Grouper(key='Time', freq=granulation), pd.Grouper('Actor2CountryCode')]).agg({'Count': 'sum'})
+    ac1monthyear = ac1monthyear.reset_index()
+    s = ac1monthyear.loc[ac1monthyear.Actor2CountryCode == f'{actor2}'].groupby('Time').agg({'Count': 'sum'})
+    t = ac1monthyear.groupby('Time').agg({'Count': 'sum'})
+    s['Percentage'] = 100 * s['Count'] / t['Count']
+    s[name] = name_string
+    s = s.groupby(["Time", name]).agg({'Percentage': 'last'})
+    return s
+
+
+async def get_data(self, QUERY):
+    name = ''.join(QUERY.split())
+    if not os.path.isfile(f'queries_results_auto/{name}.csv'):
+        print(f"{self.agent.jid}: {self.__class__.__name__}: Local data miss. Performing query")
+        result = perform_query(clients=self.clients, QUERY=QUERY)
+        result.to_csv(f'queries_results_auto/{name}.csv')
+    else:
+        print(f"{self.agent.jid}: {self.__class__.__name__}: Local data hit. Reading from file")
+        result = pd.read_csv(f'queries_results_auto/{name}.csv')
+    return result

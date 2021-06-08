@@ -9,7 +9,8 @@ from spade.message import Message
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure
+from spade_proto.auxiliary import authenticate_google_cloud, perform_query, string_to_list, create_symmetry_figure, \
+    calculate_percentage, get_data
 
 
 class PatternSeeker(Agent):
@@ -92,42 +93,10 @@ GROUP BY
   Actor2CountryCode,
   MonthYear""")
 
-            ac1monthyear = await self.get_data(QUERY)
-
-            name = 'Connection'
-            name_string = f'{actor2} to {actor1}'
-
-            s = await self.calculate_percentage(ac1monthyear, actor2, granulation, name, name_string)
-
-            return s
-
-        async def calculate_percentage(self, ac1monthyear, actor2, granulation, name, name_string):
-            ac1monthyear["Time"] = pd.to_datetime(ac1monthyear['MonthYear'], format='%Y%m')
-            ac1monthyear = ac1monthyear.groupby(
-                [pd.Grouper(key='Time', freq=granulation), pd.Grouper('Actor2CountryCode')]).agg({'Count': 'sum'})
-            ac1monthyear = ac1monthyear.reset_index()
-            s = ac1monthyear.loc[ac1monthyear.Actor2CountryCode == f'{actor2}'].groupby('Time').agg({'Count': 'sum'})
-            t = ac1monthyear.groupby('Time').agg({'Count': 'sum'})
-            s['Percentage'] = 100 * s['Count'] / t['Count']
-            s[name] = name_string
-            s = s.groupby(["Time", name]).agg({'Percentage': 'last'})
-            return s
-
-        async def get_data(self, QUERY):
-            # name = ''.join(QUERY.split())
-            name = QUERY
-            if not os.path.isfile(f'queries_results_auto/{name}.csv'):
-                print(f"{self.agent.jid}: {self.__class__.__name__}: Local data miss. Performing query"
-                      # f"\n {QUERY}"
-                      )
-                result = perform_query(clients=self.clients, QUERY=QUERY)
-                result.to_csv(f'queries_results_auto/{name}.csv')
-            else:
-                print(f"{self.agent.jid}: {self.__class__.__name__}: Local data hit. Reading from file"
-                      # f"\n{QUERY}.csv"
-                      )
-                result = pd.read_csv(f'queries_results_auto/{name}.csv')
-            return result
+            ac1monthyear = await get_data(self, QUERY)
+            return await calculate_percentage(ac1monthyear, actor2, granulation,
+                                           name='Connection',
+                                           name_string=f'{actor2} to {actor1}')
 
         async def on_end(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Behaviour finished with exit code {self.exit_code}.")
