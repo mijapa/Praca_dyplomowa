@@ -64,18 +64,19 @@ class PatternSeeker(Agent):
             print(f"{self.agent.jid}: {self.__class__.__name__}: {self.agent.config}")
             actor1 = self.agent.config['actors']['actor1']
             actor2 = self.agent.config['actors']['actor2']
+            granulation = self.agent.config['granulation']
 
-            ac1ac2 = await self.calculate_connection_strength(actor1, actor2)
-            ac2ac1 = await self.calculate_connection_strength(actor2, actor1)
+            ac1ac2 = await self.calculate_connection_strength(actor1, actor2, granulation)
+            ac2ac1 = await self.calculate_connection_strength(actor2, actor1, granulation)
 
             symmetry = ac1ac2.append(ac2ac1)
-            create_symmetry_figure(symmetry, actor1, actor2)
+            create_symmetry_figure(symmetry, actor1, actor2, granulation)
 
             self.agent.symmetry = symmetry
 
             self.agent.add_behaviour(self.agent.SendResultsBehav())
 
-        async def calculate_connection_strength(self, actor1, actor2):
+        async def calculate_connection_strength(self, actor1, actor2, granulation):
             print(f"{self.agent.jid}: {self.__class__.__name__}: Calculating connection strength {actor1}-{actor2}")
             QUERY = (f"""SELECT
   Actor2CountryCode,
@@ -93,26 +94,23 @@ GROUP BY
 
             ac1monthyear = await self.get_data(QUERY)
 
-            # print(ac1monthyear)
-            ac1monthyear["Time"] = pd.to_datetime(ac1monthyear['MonthYear'], format='%Y%m').dt.strftime('%Y-%m')
+            name = 'Connection'
+            name_string = f'{actor2} to {actor1}'
 
-            ac1ac2monthyear = ac1monthyear.loc[ac1monthyear.Actor2CountryCode == f'{actor2}']
-            # print(ac1ac2monthyear)
+            s = await self.calculate_percentage(ac1monthyear, actor2, granulation, name, name_string)
 
-            s = ac1ac2monthyear.groupby(["Time"]).agg({'Count': 'sum'})
-            t = ac1monthyear.groupby(["Time"]).agg({'Count': 'sum'})
-            s['Percentage'] = s['Count'] / t['Count'] * 100
-            s['Connection'] = f'{actor2} to {actor1}'
-            # print(s)
-            s = s.groupby(["Time", "Connection"]).agg({'Percentage': 'last'})
-            # print(s)
-            # g = s.unstack().plot(y='Percentage')
+            return s
 
-            # g.set(ylabel='Percentage')
-            # g.set_title(f"Connection strength {actor1}-{actor2} 2015-2020")
-            # g.figure.set_size_inches(20, 8)
-            # plt.savefig(f'figures/{actor1}-{actor2}connection.png', bbox_inches='tight')
-            # print(s)
+        async def calculate_percentage(self, ac1monthyear, actor2, granulation, name, name_string):
+            ac1monthyear["Time"] = pd.to_datetime(ac1monthyear['MonthYear'], format='%Y%m')
+            ac1monthyear = ac1monthyear.groupby(
+                [pd.Grouper(key='Time', freq=granulation), pd.Grouper('Actor2CountryCode')]).agg({'Count': 'sum'})
+            ac1monthyear = ac1monthyear.reset_index()
+            s = ac1monthyear.loc[ac1monthyear.Actor2CountryCode == f'{actor2}'].groupby('Time').agg({'Count': 'sum'})
+            t = ac1monthyear.groupby('Time').agg({'Count': 'sum'})
+            s['Percentage'] = 100 * s['Count'] / t['Count']
+            s[name] = name_string
+            s = s.groupby(["Time", name]).agg({'Percentage': 'last'})
             return s
 
         async def get_data(self, QUERY):
