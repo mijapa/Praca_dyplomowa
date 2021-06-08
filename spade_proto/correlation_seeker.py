@@ -77,135 +77,51 @@ class CorrelationSeeker(Agent):
                                            'granulation': self.agent.config['granulation']
                                            }
 
-                agent = PatternSeeker(f"pattern_seeker_{actor1}_{actor2}@localhost", "RADiance89")
-                # This start is inside an async def, so it must be awaited
-                await agent.start(auto_register=True)
+                name = f"pattern_seeker_{actor1}_{actor2}@localhost"
+                agent = PatternSeeker(name, "RADiance89")
+                await self.start_agent_and_send_config(agent, name)
 
-                # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-                # print(self.agent.first_config)
-                msg = Message(
-                    to=f"pattern_seeker_{self.agent.first_config['actors']['actor1']}_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
-                msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-                msg.set_metadata("ontology", "config")  # Set the ontology of the message content
-                msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-                print(f'first_config {self.agent.first_config}')
-                msg.body = json.dumps(self.agent.first_config)  # Set the message content
-                await self.send(msg)
-
-                agent = PatternSeekerPowerClient(f"pattern_seeker_power_client_{actor1}_{actor2}@localhost",
-                                                 "RADiance89")
-                # This start is inside an async def, so it must be awaited
-                await agent.start(auto_register=True)
-
-                # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-                # print(self.agent.first_config)
-                msg = Message(
-                    to=f"pattern_seeker_power_client_{self.agent.first_config['actors']['actor1']}_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
-                msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-                msg.set_metadata("ontology", "config")  # Set the ontology of the message content
-                msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-                print(f'first_config {self.agent.first_config}')
-                msg.body = json.dumps(self.agent.first_config)  # Set the message content
-                await self.send(msg)
-
-                agent = PatternSeekerFight(f"pattern_seeker_fight_{actor1}_{actor2}@localhost", "RADiance89")
-                # This start is inside an async def, so it must be awaited
-                await agent.start(auto_register=True)
-
-                # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-                # print(self.agent.first_config)
-                msg = Message(
-                    to=f"pattern_seeker_fight_{self.agent.first_config['actors']['actor1']}"
-                       f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
-                msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-                msg.set_metadata("ontology", "config")  # Set the ontology of the message content
-                msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-                print(f'first_config {self.agent.first_config}')
-                msg.body = json.dumps(self.agent.first_config)  # Set the message content
-                await self.send(msg)
-
-                agent = PatternSeekerCooperate(f"pattern_seeker_cooperate_{actor1}_{actor2}@localhost", "RADiance89")
-                # This start is inside an async def, so it must be awaited
-                await agent.start(auto_register=True)
-
-                # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-                # print(self.agent.first_config)
-                msg = Message(
-                    to=f"pattern_seeker_cooperate_{self.agent.first_config['actors']['actor1']}"
-                       f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
-                msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-                msg.set_metadata("ontology", "config")  # Set the ontology of the message content
-                msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-                print(f'first_config {self.agent.first_config}')
-                msg.body = json.dumps(self.agent.first_config)  # Set the message content
-                await self.send(msg)
-
-                # agent = PatternSeekerFightVsAll(f"pattern_seeker_fight_vs_all_{actor1}_{actor2}@localhost", "RADiance89")
-                # # This start is inside an async def, so it must be awaited
-                # await agent.start(auto_register=True)
+                # name = f"pattern_seeker_power_client_{actor1}_{actor2}@localhost"
+                # agent = PatternSeekerPowerClient(name, "RADiance89")
+                # await self.start_agent_and_send_config(agent, name)
                 #
-                # # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-                # # print(self.agent.first_config)
-                # msg = Message(
-                #     to=f"pattern_seeker_fight_vs_all_{self.agent.first_config['actors']['actor1']}"
-                #        f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
-                # msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-                # msg.set_metadata("ontology", "config")  # Set the ontology of the message content
-                # msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-                # print(f'first_config {self.agent.first_config}')
-                # msg.body = json.dumps(self.agent.first_config)  # Set the message content
-                # await self.send(msg)
+                # name = f"pattern_seeker_fight_{actor1}_{actor2}@localhost"
+                # agent = PatternSeekerFight(name, "RADiance89")
+                # await self.start_agent_and_send_config(agent, name)
+                #
+                # name = f"pattern_seeker_cooperate_{actor1}_{actor2}@localhost"
+                # agent = PatternSeekerCooperate(name, "RADiance89")
+                # await self.start_agent_and_send_config(agent, name)
+                #
+                # # name = f"pattern_seeker_fight_vs_all_{actor1}_{actor2}@localhost"
+                # # agent = PatternSeekerFightVsAll(name, "RADiance89")
+                # # await self.start_agent_and_send_config(agent, name)
+                #
+                # name = f"pattern_seeker_cooperate_nummen5_{actor1}_{actor2}@localhost"
+                # agent = PatternSeekerCooperateNumMen5(name, "RADiance89")
+                # await self.start_agent_and_send_config(agent, name)
+                #
+                # name = f"pattern_seeker_cooperate_times_nummen_{actor1}_{actor2}@localhost"
+                # agent = PatternSeekerCooperateTimesNumMen(name, "RADiance89")
+                # await self.start_agent_and_send_config(agent, name)
+                #
+                # name = f"pattern_seeker_cooperate_times_goldstein_{actor1}_{actor2}@localhost"
+                # agent = PatternSeekerCooperateTimesGoldstein(name, "RADiance89")
+                # await self.start_agent_and_send_config(agent, name)
 
-                agent = PatternSeekerCooperateNumMen5(f"pattern_seeker_cooperate_nummen5_{actor1}_{actor2}@localhost",
-                                                      "RADiance89")
-                # This start is inside an async def, so it must be awaited
-                await agent.start(auto_register=True)
 
-                # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-                # print(self.agent.first_config)
-                msg = Message(
-                    to=f"pattern_seeker_cooperate_nummen5_{self.agent.first_config['actors']['actor1']}"
-                       f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
-                msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-                msg.set_metadata("ontology", "config")  # Set the ontology of the message content
-                msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-                print(f'first_config {self.agent.first_config}')
-                msg.body = json.dumps(self.agent.first_config)  # Set the message content
-                await self.send(msg)
-
-                agent = PatternSeekerCooperateTimesNumMen(
-                    f"pattern_seeker_cooperate_times_nummen_{actor1}_{actor2}@localhost", "RADiance89")
-                # This start is inside an async def, so it must be awaited
-                await agent.start(auto_register=True)
-
-                # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-                # print(self.agent.first_config)
-                msg = Message(
-                    to=f"pattern_seeker_cooperate_times_nummen_{self.agent.first_config['actors']['actor1']}"
-                       f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
-                msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-                msg.set_metadata("ontology", "config")  # Set the ontology of the message content
-                msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-                print(f'first_config {self.agent.first_config}')
-                msg.body = json.dumps(self.agent.first_config)  # Set the message content
-                await self.send(msg)
-
-                agent = PatternSeekerCooperateTimesGoldstein(
-                    f"pattern_seeker_cooperate_times_goldstein_{actor1}_{actor2}@localhost", "RADiance89")
-                # This start is inside an async def, so it must be awaited
-                await agent.start(auto_register=True)
-
-                # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
-                # print(self.agent.first_config)
-                msg = Message(
-                    to=f"pattern_seeker_cooperate_times_goldstein_{self.agent.first_config['actors']['actor1']}"
-                       f"_{self.agent.first_config['actors']['actor2']}@localhost")  # Instantiate the message
-                msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
-                msg.set_metadata("ontology", "config")  # Set the ontology of the message content
-                msg.set_metadata("language", "OWL-S")  # Set the language of the message content
-                print(f'first_config {self.agent.first_config}')
-                msg.body = json.dumps(self.agent.first_config)  # Set the message content
-                await self.send(msg)
+        async def start_agent_and_send_config(self, agent, name):
+            # This start is inside an async def, so it must be awaited
+            await agent.start(auto_register=True)
+            # print(f"{self.agent.jid}: {self.__class__.__name__}: Running")
+            # print(self.agent.first_config)
+            msg = Message(to=name)  # Instantiate the message
+            msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
+            msg.set_metadata("ontology", "config")  # Set the ontology of the message content
+            msg.set_metadata("language", "OWL-S")  # Set the language of the message content
+            print(f'first_config {self.agent.first_config}')
+            msg.body = json.dumps(self.agent.first_config)  # Set the message content
+            await self.send(msg)
 
     class RecvBehav(CyclicBehaviour):
         async def run(self):
