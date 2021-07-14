@@ -580,19 +580,20 @@ singlelinecheck=off
     Dzięki XMPP agenci SPADE są zdolni do utrzymywania listy kontaktów i mogą otrzymywać powiadomienia o ich kontaktach w czasie rzeczywistym.
     Ta funkcjonalność pozwala podnieść niezawodność komunikacji.
 
+
     \section{BigQuery}
     W celu zainstalowania biblioteki google cloud dla języka python należy skorzystać z polecenia:
     \begin{verbatim}
         pip install --upgrade 'google-cloud-bigquery[bqstorage,pandas]'
     \end{verbatim}
 
+
     \section{fpdf2}
     fpdf2 to minimalistyczna bilblioteka do tworzenia plików PDF w Python.
     W celu zainstalowania bilbioteki fpdf2 należy skorzystać z polecenia:
-        \begin{verbatim}
+    \begin{verbatim}
         pip install fpdf2
     \end{verbatim}
-
 
 
     \chapter{table en}
@@ -669,6 +670,7 @@ singlelinecheck=off
     \]
 
     \paragraph{Wzorzec Mocarstwo/Klient}
+
     \subparagraph{Relacje istotne}
 %    todo przeredagować
     Wg pracy Jarosza.
@@ -679,8 +681,6 @@ singlelinecheck=off
     {\sum{Events\ country\ A\ (actor 1) (NumMentions > 50)}}
     {\sum{Events\ country\ B\ (actor 1) (NumMentions > 50)}}
     \]
-
-
 
     \paragraph{Kraje do testów}
     \begin{enumerate}
@@ -777,7 +777,7 @@ singlelinecheck=off
     Wzorce zostały opisane w sekcji~\ref{sec:wybór-wzorców}
 
 
-    \section{Zadania}
+    \section{Otwarte problemy}
 
     \subsection{Klastrowanie}
     Gdzie odbędzie się klastrowanie?
@@ -920,9 +920,88 @@ singlelinecheck=off
     i powołać agenta który będzie odpowiadał za badanie tych relacji.
     Takie działanie pozwoli ograniczyć liczbę badanych relacji, odrzucić relacje niepożądane.
 
-%    \section{Pytania}
-%    Lista pytań możliwych do eksplorowania przez system.
-%    \subsection{Jak sojusznicy USA reagują na pogorszenie relacji danego państwa ze Stanami?}
+    \subsection{Jak sojusznicy USA reagują na pogorszenie relacji danego państwa ze Stanami?}
+
+    \subsection{Jakie eksperymenty? Co w nich zebrać? Czego system ma się uczyć?}
+    granulacja, korelacja, średnie, zakresy czasowe
+
+    \subsection{Pytania badawcze}
+    \begin{itemize}
+        \item Znajdź kraje z którymi dany kraj jest w dobrych/złych relacjach.
+        \item Znajdź relacje podobne do relacji POL-RUS (jakie relacje są najbardziej podobne) /relacja POL-RUS opisana zestawem miar/
+        /czy system znajdzie coś zgodnego z intuicją czy raczej coś dziwnego/
+        \item Jak Czechy są postrzegane w relacji z Polską?
+        \item Kto jest hegemonem dla Polski na podstawie miar lub podobieństwo do relacji POL-USA.
+    \end{itemize}
+
+    \subsection{Sterowanie w oparciu o jaka miarę?}
+    prawdopodobieństwo (determinizm)
+    wyszukiwanie z listą tabu
+    losowanie konfiguracji (może uczenie genetyczne)
+
+    \subsection{Identyfikacja relacji wrogich}
+    Czy są stabilne?
+    Przewidywanie dalszego przebiegu relacji.
+
+    \subsection{Identyfikacja przynależności do klastrów w czasie}
+    Czy kraj trafia ciągle do tego samego klastra?
+    - stabilność, oscylacja, pojedyńcza zmiana z A do B, pojedyńcze zaburzenie ABA
+
+    \subsection{Poszukiwanie przejśc ABA w relacjach}
+    W jaki terminie się znajdują.
+
+    \subsection{Po automatycznym policzeniu miar -> klastrowanie}
+    \begin{itemize}
+        \item Jak klastry są odseparowane?
+        \item Które miary dobrze separują z punktu widzenia celu?
+        System może podpowiadać na jakie miary warto zmieniać wna podstawie miary jakości kastrowania (patrz literatura).
+        Które klastrowanie jest najlepsze z punktu widzenia separowalności (ciężko zaliczyć element z jednego klastra do innego w oparciu o miarę).
+        Wiemy które kraje powinny być we wspólnym klastrze -> chcemy dobrać miary.
+
+        \item Na ile udało się dobrze dobrać klastry?
+        np.: relacje przyjazne/wrogie w jednym klastrze
+        państwa o podobnym potencjale
+        podobny potencjał militarny
+        podobny potencjał militarny i duże wydatki na opiekę zdrowotną
+        duże PKB (różne klasy w oparciu o klastry)
+
+        \item Kiedy kraje trafiają do tych samych kategorii?
+        Czy mamy zmienność przynależności w czasie?
+        Które relacje sa stabilne?
+    \end{itemize}
+
+    \subsection{Badanie dynamiki}
+
+    \subsection{Podobieństwo statyczne}
+
+    \subsection{Podobieństwo zagregowane}
+
+
+    \section{Działające elementy systemu}
+    \begin{itemize}
+        \item Raportowanie PDF
+        \begin{itemize}
+            \item analiza symetrii
+            \item Power-Client
+            \item Pairwise correlation
+        \end{itemize}
+        \item Bez raportu
+        \begin{itemize}
+            \item cooperate
+            \item cooperate mentions >=5 >=10
+            \item fight
+            \item correlation
+            \begin{itemize}
+                \item Spearman
+                \item Pearson
+                \item Kendall
+            \end{itemize}
+            \item autocorrelation
+            \item crosscorrelation
+            \item rolling median
+            \item symmetry 1 2 3 4 5 6 12 M
+        \end{itemize}
+    \end{itemize}
 
 
     \section{Analiza zdarzeń wewnętrznych USA}
