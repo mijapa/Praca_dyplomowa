@@ -1217,6 +1217,7 @@ singlelinecheck=off
     W tym rozdziale przedstawione zostaną wyniki wstępnej analizy mającej na celu wyłonienie miar
     do poszukiwań wzorca Power-Client.
 
+
     \section{Event Root Code}
 
     \subsection{Bez progowania}
@@ -1384,8 +1385,9 @@ singlelinecheck=off
     \paragraph{Wnioski}
     Kody główne zdarzeń wydają się być zbyt ogólne do wyróżniania relacji typu mocarstwo-klient.
 
+
     \section{Event Base Code}
-    
+
     \subsection{Bez progowania}
     Wykresy~\ref{fig:Power-Client:EBC:POL-USA}, \ref{fig:Power-Client:EBC:POL-RUS} oraz~\ref{fig:Power-Client:EBC:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
@@ -1585,11 +1587,60 @@ singlelinecheck=off
 
     Dla relacji POL-CZE oraz POL-HUN na pierwszym miejscu występują zdarzenia \textit{Consult - not specified below}.
 
+    \subsection{Próg średniego tonu >=10 lub <=-10}
+    Średni ton to średnia dla wszystkich dokumentów zawierających wzmiankę o danym wydarzeniu.
+    Ocena od -100 (ekstremalnie negatywna) do 100 (ekstremalnie pozytywna).
+    Ekstremalny ton sugeruje bardziej poważne zdarzenie.
+
+    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-USA}, \ref{fig:Power-Client:EBC:AvgToone10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-DEU} przedstawiają relacje klient-hegemon.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-USA wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-USA}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-ESP}, \ref{fig:Power-Client:EBC:AvgToone10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-HUN} przedstawiają relacje neutralne.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-ESP wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-ESP}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-HUN}
+    \end{figure}
+
+    Dla relacji klient-hegemon w pierwszej trójce utrzymują się zdarzenia \textit{Accuse - not specified below}.
+    Dla relacji POL-ESP oraz POL-CZE na pierwszym miejscu występują zdarzenia \textit{Use conventional military force - not specified below}.
 
     \paragraph{Wnioski}
     Kody bazowe zdarzeń wydają się być bardziej odpowiednie do wyróżniania relacji typu mocarstwo-klient, niż kody podstawowe.
-    Wskazane są dalsze poszukiwania.
-    Warto rozważyć wykorzystanie \textit{Średniego Tonu} oraz \textit{Ilości Źródeł}.
 
 
     \inputencoding{utf8}
