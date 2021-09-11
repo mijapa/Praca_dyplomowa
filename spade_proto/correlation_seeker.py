@@ -97,9 +97,9 @@ class CorrelationSeeker(Agent):
                 # # agent = PatternSeekerFightVsAll(name, "RADiance89")
                 # # await self.start_agent_and_send_config(agent, name)
                 #
-                # name = f"pattern_seeker_cooperate_nummen5_{actor1}_{actor2}@localhost"
-                # agent = PatternSeekerCooperateNumMen5(name, "RADiance89")
-                # await self.start_agent_and_send_config(agent, name)
+                name = f"pattern_seeker_cooperate_nummen5_{actor1}_{actor2}@localhost"
+                agent = PatternSeekerCooperateNumMen5(name, "RADiance89")
+                await self.start_agent_and_send_config(agent, name)
                 #
                 # name = f"pattern_seeker_cooperate_times_nummen_{actor1}_{actor2}@localhost"
                 # agent = PatternSeekerCooperateTimesNumMen(name, "RADiance89")
@@ -127,7 +127,7 @@ class CorrelationSeeker(Agent):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: running")
 
-            timeout = 25
+            timeout = 10
             msg = await self.receive(timeout=timeout)  # wait for a message for 5 seconds
             if msg:
                 # print(f"{self.agent.jid}: {self.__class__.__name__}: Message received with content: {msg.body}")
@@ -155,7 +155,7 @@ class CorrelationSeeker(Agent):
                 # todo: send results to raport generator
                 results = self.agent.results
                 for res in results:
-                    f = open(f"results_{res}.json", "w")
+                    f = open(f"results_{res} {self.agent.config['granulation']}.json", "w")
                     f.write(results[res].to_json(orient='table'))
                     f.close()
                 self.agent.add_behaviour(self.agent.SeekSimpleCorrelationBehav())
@@ -315,8 +315,8 @@ class CorrelationSeeker(Agent):
 
                 g2.set(ylabel='Percentage')
 
-                # plt.legend([g.get_lines()[0], g2.get_lines()[0]],
-                #            ['Correlation', connection_A, connection_B])
+                plt.legend([g.get_lines()[0], g2.get_lines()[1], g2.get_lines()[0]],
+                           ['Correlation', connection_A, connection_B])
                 path = f'figures/auto_seek/{res_name}/pairwise_rolling_correlation'
                 import pathlib
                 pathlib.Path(path).mkdir(parents=True, exist_ok=True)
