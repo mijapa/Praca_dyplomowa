@@ -167,12 +167,14 @@ async def calculate_percentage(ac1monthyear, actor2, granulation, name, name_str
 
 
 async def get_data(self, QUERY):
-    name = ''.join(QUERY.split())
+    name = ''.join(QUERY.split())[:250]
     if not os.path.isfile(f'queries_results_auto/{name}.csv'):
-        print(f"{self.agent.jid}: {self.__class__.__name__}: Local data miss. Performing query")
-        result = perform_query(clients=self.clients, QUERY=QUERY)
+        # print(f"{self.agent.jid}: {self.__class__.__name__}: Local data miss. Performing query")
+        print(f"Local data miss. Performing query!!")
+        result = perform_query(clients=authenticate_google_cloud(), QUERY=QUERY)
         result.to_csv(f'queries_results_auto/{name}.csv')
     else:
-        print(f"{self.agent.jid}: {self.__class__.__name__}: Local data hit. Reading from file")
-        result = pd.read_csv(f'queries_results_auto/{name}.csv')
+        # print(f"{self.agent.jid}: {self.__class__.__name__}: Local data hit. Reading from file")
+        result = pd.read_csv(f'queries_results_auto/{name}.csv',
+                             dtype={'EventRootCode': object, 'EventBaseCode': object})
     return result
