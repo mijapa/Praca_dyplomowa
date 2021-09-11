@@ -10,12 +10,16 @@ from spade.message import Message
 
 from spade_proto.PDF import PDF
 from spade_proto.auxiliary import load_config_from_file, change_country_names_to_codes, create_symmetry_figure
+from spade_proto.clusters_seeker import ClustersSeeker
 from spade_proto.correlation_seeker import CorrelationSeeker
 
 from io import StringIO
 import pandas as pd
 
 
+#
+
+# Creates pdf raport
 class RaportGenerator(Agent):
     correlation_seekers = []
     symmetry_results = pd.DataFrame()
@@ -68,11 +72,23 @@ class RaportGenerator(Agent):
             await agent.start(auto_register=True)
             self.agent.add_behaviour(self.agent.SendConfigBehav())
 
+    class CreateClustersSeekerBehav(OneShotBehaviour):
+        seeker_jid = 'clusters_seeker@localhost'
+
+        async def on_start(self):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Creating new Clusters Seeker agent behaviour . . .")
+
+        async def run(self):
+            agent = ClustersSeeker(self.seeker_jid, "RADiance89")
+            # This start is inside an async def, so it must be awaited
+            await agent.start(auto_register=True)
+            self.agent.add_behaviour(self.agent.SendConfigToClustersSeekerBehav())
+
     class RecvBehav(CyclicBehaviour):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: RecvBehav running")
 
-            timeout = 60
+            timeout = 15
             msg = await self.receive(timeout=timeout)  # wait for a message for 10 seconds
             if msg:
                 print(f"{self.agent.jid}: {self.__class__.__name__}: Message received.")
@@ -96,6 +112,28 @@ class RaportGenerator(Agent):
         async def run(self):
             print(f"{self.agent.jid}: {self.__class__.__name__}: {self.__class__.__name__} running")
             msg = Message(to="correlation_seeker@localhost")  # Instantiate the message
+            msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
+            msg.set_metadata("ontology", "config")  # Set the ontology of the message content
+            msg.set_metadata("language", "OWL-S")  # Set the language of the message content
+            config = load_config_from_file()
+            config['countries'] = change_country_names_to_codes(config['countries'])
+            print(config)
+            msg.body = json.dumps(config)  # Set the message content
+
+            await self.send(msg)
+            print(f"{self.agent.jid}: {self.__class__.__name__}: Message sent!")
+
+            # set exit_code for the behaviour
+            self.exit_code = "Job Finished!"
+
+            # stop agent from behaviou
+
+    class SendConfigToClustersSeekerBehav(OneShotBehaviour):
+        correlation_seekers = ['jeden']
+
+        async def run(self):
+            print(f"{self.agent.jid}: {self.__class__.__name__}: {self.__class__.__name__} running")
+            msg = Message(to="clusters_seeker@localhost")  # Instantiate the message
             msg.set_metadata("performative", "inform")  # Set the "inform" FIPA performative
             msg.set_metadata("ontology", "config")  # Set the ontology of the message content
             msg.set_metadata("language", "OWL-S")  # Set the language of the message content
@@ -175,4 +213,5 @@ class RaportGenerator(Agent):
         # self.my_behav = self.MyBehav()
         # self.add_behaviour(self.my_behav)
         self.add_behaviour(self.CreateCorrelationSeekerBehav())
+        self.add_behaviour(self.CreateClustersSeekerBehav())
         self.add_behaviour(self.RecvBehav())
