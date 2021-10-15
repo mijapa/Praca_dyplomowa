@@ -70,63 +70,7 @@ singlelinecheck=off
 
     \chapter{Wstęp}\label{ch:wstęp}
 
-
-    \section{GDELT}\label{sec:gdelt}
-    GDELT - Global Database of Events, Language, and Tone - to baza danych gromadząca informacje o notatkach o zdarzeniach politycznych.
-    Jest to największa, najbardziej wszechstronna i~otwarta baza danych jaka powstała.
-    Wczesne poszukiwania prowadzące do stworzenia GDELT zostały opisane przez Philipa Schrodta w~dokumencie~\cite{Schrodt2010} w~styczniu 2010 r.
-    W celu gromadzenia danych, każdego dnia przeszukiwane są doniesienia medialne w ponda 100 językach, ze wszystkich krajów.
-    Na bieżąco wśród doniesień medialnych wyszukiwane są zdarzenia.
-    Zostają one opisane przez aktorów, lokalizacje i~charakter aktywności, a także specyfikowane przez zestaw atrybutów.
-    Zbiór danych jest dostępny na stronie Projektu ~\cite{gdelt} oraz na platformie Google Cloud gdzie można z~niego korzystać przez Google BigQuery~\cite{BigQuery2014} przy pomocy zapytań SQL.
-
-    Przykładowe zapytanie SQL wybiera zdarzenia ze stycznia 2021 w których aktorem numer 1 jest Polska:
-
-    \begin{verbatim}
-    select MonthYear, Actor1Code, Actor1Name, Actor1CountryCode,
-        Actor2Code, Actor2Name, Actor2CountryCode, EventBaseCode,
-        EventRootCode, QuadClass, GoldsteinScale, NumMentions,
-        NumSources, NumArticles, AvgTone, SOURCEURL
-    from gdelt-bq.full.events
-    where MonthYear = 202101 and Actor1CountryCode = 'POL'
-    \end{verbatim}
-
-    Tabela gdelt-bq.full.events w której gromadzone są informacje o zdarzeniach zawiera 50 kolumn.
-    Dopuszczalne są brakujące wartości.
-
-    Wynik przykładowego zapytania SQL:~\begin{verbatim}
-    {
-    "MonthYear": "202101",
-    "Actor1Code": "POL",
-    "Actor1Name": "POLAND",
-    "Actor1CountryCode": "POL",
-    "Actor2Code": "DEU",
-    "Actor2Name": "GERMAN",
-    "Actor2CountryCode": "DEU",
-    "EventBaseCode": "120",
-    "EventRootCode": "12",
-    "QuadClass": "3",
-    "GoldsteinScale": "-4.0",
-    "NumMentions": "2",
-    "NumSources": "1",
-    "NumArticles": "2",
-    "AvgTone": "-1.88356164383561",
-    "SOURCEURL": "https://www.timesofisrael.com/
-    in-poland-new-sobibor-museum-memorializes-
-    victims-through-unearthed-belongings/"
-    },
-    \end{verbatim}
-
-    GDELT używa kodowania obserwacji konfliktów i~mediacji (CAMEO)~\cite{GDELTDocumentation} do rejestrowania zdarzeń.
-    Poszczególne kody klasyfikacji CAMEO dla jednego z wyników przykładowego zapytania SQL oznaczają:
-    \begin{itemize}
-        \item EventBaseCode: 120 - Reject, not specified
-        \item EventRootCode: 12 - Reject
-        \item QuadClass: 3 - Verbal Conflict.
-    \end{itemize}
-
-    W~zbiorze znajdują się dane od 1979 roku.
-
+    \chapter{Źródło danych}\label{ch:źródło}
 
     \section{CAMEO}\label{sec:cameo}
     CAMEO - Conflict and Mediation Event Observations - jest schematem kodowania zdarzeń.
@@ -192,6 +136,62 @@ singlelinecheck=off
     Elementy kodu są podzielone na szerokie kategorie, takie jak podmioty państwowe, role, regiony i~grupy etniczne aktorów.
     Do oznaczania krajów wykorzystywane sa kody ISO-3166-Alpha3.
     Na przykład kod POL oznacza Polskę.
+
+    \section{GDELT}\label{sec:gdelt}
+    GDELT - Global Database of Events, Language, and Tone - to baza danych gromadząca informacje o notatkach o zdarzeniach politycznych.
+    Jest to największa, najbardziej wszechstronna i~otwarta baza danych jaka powstała.
+    Wczesne poszukiwania prowadzące do stworzenia GDELT zostały opisane przez Philipa Schrodta w~dokumencie~\cite{Schrodt2010} w~styczniu 2010 r.
+    W celu gromadzenia danych, każdego dnia przeszukiwane są doniesienia medialne w ponda 100 językach, ze wszystkich krajów.
+    Na bieżąco wśród doniesień medialnych wyszukiwane są zdarzenia.
+    Zostają one opisane przez aktorów, lokalizacje i~charakter aktywności, a także specyfikowane przez zestaw atrybutów.
+    Zbiór danych jest dostępny na stronie Projektu ~\cite{gdelt} oraz na platformie Google Cloud gdzie można z~niego korzystać przez Google BigQuery~\cite{BigQuery2014} przy pomocy zapytań SQL.
+
+    Przykładowe zapytanie SQL wybiera zdarzenia ze stycznia 2021 w których aktorem numer 1 jest Polska:
+
+    \begin{verbatim}
+    select MonthYear, Actor1Code, Actor1Name, Actor1CountryCode,
+        Actor2Code, Actor2Name, Actor2CountryCode, EventBaseCode,
+        EventRootCode, QuadClass, GoldsteinScale, NumMentions,
+        NumSources, NumArticles, AvgTone, SOURCEURL
+    from gdelt-bq.full.events
+    where MonthYear = 202101 and Actor1CountryCode = 'POL'
+    \end{verbatim}
+
+    Tabela gdelt-bq.full.events w której gromadzone są informacje o zdarzeniach zawiera 50 kolumn.
+    Dopuszczalne są brakujące wartości.
+
+    Wynik przykładowego zapytania SQL:~\begin{verbatim}
+    {
+    "MonthYear": "202101",
+    "Actor1Code": "POL",
+    "Actor1Name": "POLAND",
+    "Actor1CountryCode": "POL",
+    "Actor2Code": "DEU",
+    "Actor2Name": "GERMAN",
+    "Actor2CountryCode": "DEU",
+    "EventBaseCode": "120",
+    "EventRootCode": "12",
+    "QuadClass": "3",
+    "GoldsteinScale": "-4.0",
+    "NumMentions": "2",
+    "NumSources": "1",
+    "NumArticles": "2",
+    "AvgTone": "-1.88356164383561",
+    "SOURCEURL": "https://www.timesofisrael.com/
+    in-poland-new-sobibor-museum-memorializes-
+    victims-through-unearthed-belongings/"
+    },
+    \end{verbatim}
+
+    GDELT używa kodowania obserwacji konfliktów i~mediacji (CAMEO)~\cite{GDELTDocumentation} do rejestrowania zdarzeń.
+    Poszczególne kody klasyfikacji CAMEO dla jednego z wyników przykładowego zapytania SQL oznaczają:
+    \begin{itemize}
+        \item EventBaseCode: 120 - Reject, not specified
+        \item EventRootCode: 12 - Reject
+        \item QuadClass: 3 - Verbal Conflict.
+    \end{itemize}
+
+    W~zbiorze znajdują się dane od 1979 roku.
 
     \section{System Agentowy}
 %    todo Dlaczego system agentowy a nie obiektowy?
