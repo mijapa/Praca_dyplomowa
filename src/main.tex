@@ -142,9 +142,37 @@ singlelinecheck=off
     Jest to największa, najbardziej wszechstronna i~otwarta baza danych jaka powstała.
     Wczesne poszukiwania prowadzące do stworzenia GDELT zostały opisane przez Philipa Schrodta w~dokumencie~\cite{Schrodt2010} w~styczniu 2010 r.
     W celu gromadzenia danych, każdego dnia przeszukiwane są doniesienia medialne w ponda 100 językach, ze wszystkich krajów.
+    Główne zbiory danych dostępne dzisiaj przez GDELT to:
+    GDELT 2.0 EVENT DATABASE oraz
+    GDELT 2.0 GLOBAL KNOWLEDGE GRAPH.
     Na bieżąco wśród doniesień medialnych wyszukiwane są zdarzenia.
     Zostają one opisane przez aktorów, lokalizacje i~charakter aktywności, a także specyfikowane przez zestaw atrybutów.
-    Zbiór danych jest dostępny na stronie Projektu ~\cite{gdelt} oraz na platformie Google Cloud gdzie można z~niego korzystać przez Google BigQuery~\cite{BigQuery2014} przy pomocy zapytań SQL.
+    Zbiór danych jest dostępny jest jako surowe pliki danych na stronie Projektu ~\cite{gdelt}
+    oraz na platformie Google Cloud gdzie można z~niego korzystać przez Google BigQuery~\cite{BigQuery2014} przy pomocy zapytań SQL.
+
+    Najbardziej aktualna baza GDELT v. 2.0 gromadzi wiadomości z artykułów co 15 minut.
+    Do bazy w Google BigQuery dodawane jest ponad 100 tysięcy wierszy dziennie.
+    Aktualnie (stan na 15X2021r.) tabela gdelt-bq:gdeltv2.events zawiera prawie 600 milionów wierszy
+    i zajmuje ponad 240GB.
+    Każde zdarzenie w bazie opisywane jest przy pomocy 58 cech.
+    Najciekawsze z nich to:
+    \begin{enumerate}
+        \item DATEADDED - to pole przechowuje datę dodania zdarzenia do głównej bazy danych w formacie  RRRRMMDDHHMMSS,
+            To pole jest odpowiednie dla tych którzy potrzebują dosępu do zdarzeń w wysokiej rozdzielczości czasowej,
+        \item Actor1Code - pełny, surowy kod CAMEO dla pierwszego aktora (zawiera klasy geograficzne, etniczne, religijne),
+        \item Actor2Code - pełny, surowy kod CAMEO dla drugiego aktora (zawiera klasy geograficzne, etniczne, religijne),
+        \item QuadClass - kod zdarzenia pierwszego poziomu wg notacji CAMEO (najbardziej ogólny),
+        \item EventRootCode - kod zdarzenia drugiego poziomu wg notacji CAMEO,
+        \item EventBaseCode - kod zdarzenia trzeciego poziomu wg notacji CAMEO,
+        \item EventCode - surowy kod zdarzenia wg notacji CAMEO (najbardziej szczegółowy),
+        \item GoldsteinScale - ocena liczbowa od -10 do 10 odzwierciedlająca teoretyczny wpływ jaki dane zdarzenie ma na stabilność kraju,
+        \item NumMentions - całkowita liczba wzmianek o wydarzeniu we wszystkich dokumentach źródłowych,
+            może być wykorzystane jako metoda oceny ważności wydarzenia,
+        \item NumSources - całkowita liczba źródeł informacji zawierających przynajmniej jedną wzmiankę o wydarzeniu,
+        \item NumArticles - całkowita liczba dokumentów źródłowych zawierających przynajmniej jedną wzmiankę o wydarzeniu,
+        \item AvgTone - średni ton wszystkich dokumentów zawierających przynajmniej jedną wzmiankę o wydarzeniu,
+            -100 oznacza ton skrajnie negatywny, 100 oznacza ton skrajnie pozytywny.
+    \end{enumerate}
 
     Przykładowe zapytanie SQL wybiera zdarzenia ze stycznia 2021 w których aktorem numer 1 jest Polska:
 
@@ -157,7 +185,7 @@ singlelinecheck=off
     where MonthYear = 202101 and Actor1CountryCode = 'POL'
     \end{verbatim}
 
-    Tabela gdelt-bq.full.events w której gromadzone są informacje o zdarzeniach zawiera 50 kolumn.
+    W tabeli gdelt-bq:gdeltv2.events gromadzone są informacje o zdarzeniach.
     Dopuszczalne są brakujące wartości.
 
     Wynik przykładowego zapytania SQL:~\begin{verbatim}
