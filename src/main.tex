@@ -226,14 +226,17 @@ singlelinecheck=off
 
 
     \chapter{Przegląd dziedziny}\label{ch:przegląd-dziedziny}
-    W tym rozdziale w części~\ref{subsec:gdelt} opisany został zbiór GDELT\@.
+    W tym rozdziale w części~\ref{sec:wzorce} przenalizowane zostały prace dotyczące wzorców w zbiorach danych.
+    W części~\ref{sec:zastosowania} przeanalizowane zostały prace pokazującee możliwe zastosowania zbioru GDELT.
+    W części~\ref{sec:systemy-agentowe} przeanalizowane zostały prace o systemach agentowych.
+    W części~\ref{sec:metodologie-rozwoju-systemu-agentowego} przeanalizowane zostały metodologie rozwoju Systemu Agentowego.
 
 
-    \section{Wzorce}
+    \section{Wzorce}\label{sec:wzorce}
+    W części~\ref{subsec:wzorce-w-sieciach-społecznościowych} przenalizowane zostały prace dotyczące wzorców w sieciach społecznościowych.
+    W części~\ref{subsec:wzorce-gdelt} przeanalizowane zostały prace dotyczące wzorców w zbiorze GDELT\@.
 
-    \subsection{Ogólne}
-
-    \subsubsection{Wzorce w sieciach społecznościowych}
+    \subsection{Wzorce w sieciach społecznościowych}\label{subsec:wzorce-w-sieciach-społecznościowych}
     W pracy~\cite{10.1093/jigpal/jzaa042} autorzy identyfikują i kategoryzują wzorce opisujące interakcje między użytkownikami w sieciach społecznościowych.
     Uwaga została skupiona na wzorcach w których występują częste interakcje dwóch lub więcej użytkowników oraz na pozycji społecznej tych użytkowników w sieci.
     Zbiór danych został podzielony na N okien czasowych.
@@ -241,27 +244,47 @@ singlelinecheck=off
     Przy pomocy słownika analizowano relacje miedzy użytkownikami.
 
     W pracy Odkrywanie ukrytych informacji w mediach społecznościowych~\cite{Skwara2019} autor bada częste lub nietypowe wzorce zachowań użytkowników mediów społecznościowych.
-    Wzorce: wierny komentator, cięty komentator, dwaj komentatorzy, dwóch na jednego, komentator dwóch autorów, czujny komentator, prawo przechodniości.
+    Najważniejsze ze wzorców to: wierny komentator, cięty komentator, dwaj komentatorzy, dwóch na jednego, komentator dwóch autorów, czujny komentator, prawo przechodniości.
 
-    \subsection{GDELT}\label{subsec:gdelt}
-    Celem pracy~\cite{Jarosz2020} identyfikacja wzorców w GDELT oraz opracowanie i ewaluacja algorytmów oraz metod analizy wzorców z tego zbioru\@.
+    \subsection{Wzorce w bazie danych GDELT}\label{subsec:wzorce-gdelt}
+    Celem pracy~\cite{Jarosz2020} jest identyfikacja wzorców w GDELT oraz opracowanie i ewaluacja algorytmów oraz metod analizy wzorców z tego zbioru.
     Badane wzorce zostały podzielone na statyczne oraz dynamiczne.
     Głównymi wyszczególnionymi elementami relacji sa powtarzalność oraz intensywność.
-    Wzorce statyczne: sojusznik, nieprzyjaciel, symetria, asymetria, istotność, mocarstwo-klient.
-    Wzorce dynamiczne: stabilna relacja, jedyna zmiana, pojedyncze zaburzenie, oscylacja, wzajemność, podobny ciąg dopasowań, zależność w czasie.
-    Dodatkowe wzorce dynamiczne COVID-19: spadek nastrojów, nowa normalność, gratulacje, skupienie na walce.
+    Wzorce statyczne przedstawione w pracy to: sojusznik, nieprzyjaciel, symetria, asymetria, istotność, mocarstwo-klient.
+    Wzorce dynamiczne przedstawione w pracy to: stabilna relacja, jedyna zmiana, pojedyncze zaburzenie, oscylacja, wzajemność, podobny ciąg dopasowań, zależność w czasie.
+    Dodatkowe wzorce dynamiczne dotyczące COVID-19 przedstawione w pracy to: spadek nastrojów, nowa normalność, gratulacje, skupienie na walce.
 
 
-    \section{Zastosowania}
-    W pracy~\cite{Yan2012} autorzy proponują framework oparty na ważności dla charakteryzowania i wyodrębniania zmieniających sie wzorców w sieciach przedstawiających notatki prasowe.
+    \section{Zastosowania}\label{sec:zastosowania}
+    W pracy~\cite{Yan2012} autorzy proponują framework oparty na ważności dla charakteryzowania
+    i wyodrębniania zmieniających sie wzorców w sieciach przedstawiających notatki prasowe.
     Zdefiniowano dwa wskaźniki istotności, aby scharakteryzować ewolucję i odkryć zmiany topologii o doniosłym znaczeniu.
     Cały proces znajdowania zachowań dynamicznych jest kierowany przez punktację istotności.
 
-    \subsection{inne}\label{subsec:inne}
-    Do analizy~\cite{Buckingham2020,Levin2018,Yuan2017}.
+    \subsection{Analiza zmian w środowisku}
+    W pracy~\cite{Buckingham2020} autorzy przedstawiają możliwość wykorzystania danych z bazy danych GDELT
+    do analizy wyzwań społecznych związanych z klimatem.
+    Zrozumienie zmian zachowania aktorów i zmian sentymentu doniesień medialnych dotyczących zdarzeń może pomóc w zrozumieniu zmian społecznych.
+    Praca demonstruje, że niezbędnych w tym celu, solidnych danych mogą dostarczyć takie zbiory jak GDELT.
+    W pracy poruszany jest też temat trudności w szerokim wykorzystaniu tych danych ze względu na stronniczość mediów
+    i idące za tym nacechowanie danych.
+
+    \subsection{Monitorowanie sytuacji kryzysowych}
+    W pracy~\cite{Levin2018} autorzy badają potencjał monitorowani i zrozumienia sytuacji kryzysowych poprzez analizę szeregów czasowych i dużych zbiorów danych.
+    Przebadanie zależności pomiędzy newsami gromadzonymi w dużych zbiorach danych oraz wydarzeniami z rzeczywistości pokazuje,
+    że cześć metryk szybko reaguje na zdarzenia związana z przemocą.
+    Autorzy zwracają uwagę, że większa szybkość w zakresie dostępności danych może przyczynić się do bardziej efektywnej
+    odpowiedzi na zdarzenia przez międzynarodowy establishment.
+
+    \subsection{Analiza obrazu Chin w masmediach}
+    W pracy~\cite{Yuan2017} autorzy analizują wzorce siły powiązania pomiędzy Chinami i 15 krajami.
+    Zaprezentowano skuteczność wykorzystania algorytmu dynamic time warping w pomiarze długookresowego podobieństwa
+    wśród danych ze środków masowego przekazu.
+    Autorzy pokazują, że wzorce wydobyte z danych GDELT mogą być zweryfikowane przy pomocy innych zbirów danych
+    takich jak dane historyczne odnośnie zdarzeń oraz handlu.
 
 
-    \section{Systemy Agentowe}
+    \section{Systemy Agentowe}\label{sec:systemy-agentowe}
     Według definicji z książki Grharda Weissa Systemy Wieloagentowe~\cite{55066420130101} agent to system komputerowy który jest umieszczony w pewnym środowisku i jest zdolny do autonomicznych akcji w tym środowisku w celu osiągnięcia wyznaczonych mu celów.
     Rysunek~\ref{fig:agent} przedstawia agenta w jego środowisku.
     \begin{figure}[!htp]
@@ -285,11 +308,11 @@ singlelinecheck=off
     Autonomiczne komponenty oddelegowane do własnej kontroli mogą zostać wzbogacone o wyrafinowane umiejętności społeczne, to znaczy zdolność do podejmowania decyzji o zakresie i naturze ich interakcji w czasie wykonywania oraz inicjowania interakcji w sposób elastyczny (np. poprzez wyszukiwanie i negocjowanie świadczenia usług oraz dostarczania danych).
 
 
-    \section{Metodologie rozwoju Systemu Agentowego}
+    \section{Metodologie rozwoju Systemu Agentowego}\label{sec:metodologie-rozwoju-systemu-agentowego}
     Dziedzina inżynierii oprogramowania zorientowanej na agentów zajmuje się opracowywaniem systemów opartych na agentach oraz sposobami wspierania ich rozwoju.
     W szczególności ma na celu dostarczenie metodologii projektowania systemów agentowych oraz narzędzi pomocniczych.
 
-    \subsection{RIO}
+    \subsection{Role, Interakcje i Organizacje}
     W pracy~\cite{S095741740200070220020101} autorzy proponują metodologię RIO (Roles, Interactions and Organizations) jako właściwe podejście przy analizie i projektowaniu systemów wieloagentowych.
     \begin{figure}[!ht]
         \centering
@@ -304,7 +327,7 @@ singlelinecheck=off
     Na tym etapie nie robi się założeń co do architektury agentów.
     Dopiero etap projektowania architektonicznego kładzie naciska na wewnętrzną architekturę agenta.
 
-    \subsection{GAIA}
+    \subsection{Metodologia Gaia}
     W pracy~\cite{Wooldridge2000a} autorzy opisują metodologię analizy i projektowania systemu agentowego Gaia
     Została ona założona na bazie widzenia systemu wieloagentowego jako organizacji obliczeniowej składającej się z wielu oddziałujących ze sobą ról.
     Proces analizy i projektowania, przedstawiony na rysunku~\ref{fig:gaia}, może być postrzegany jako przyrostowe budowanie coraz bardziej złożonych modeli systemu który ma być stworzony.
@@ -317,7 +340,7 @@ singlelinecheck=off
     Celem etapu analizy jest rozwinięcie zrozumienia systemu i jego struktury.
     Podczas etapu projektowania Gaia skupia się na tym jak agenci mają kooperować aby zrealizować cele systemu oraz czego wymaga się od każdego agenta aby to osiągnąć.
 
-    \subsection{GAIA v2}
+    \subsection{Metodologia Gaia w wersji 2}
     GAIA v2 jest oficjalnym rozszerzeniem metodologii.
     Role i protokoły są uzupełnione o środowisko, w którym działają agenci, specyfikujące jednostki i zasoby.
     Dodatkowe abstrakcje organizacyjne zostały przedstawione na rysunku~\ref{fig:gaia_v2}.
@@ -330,7 +353,7 @@ singlelinecheck=off
     Reguły organizacyjne to ograniczenia które muszą być uwzględnione w globalnym zachowaniu organizacji.
     Struktura organizacyjna określa ogólną architekturę systemu.
 
-    \subsection{ROADMAP}
+    \subsection{Rozrzeszenie medodologi Gaia - ROADMAP}
     ROADMAP jest kolejnym rozszerzeniem metodologii GAIA.
     Faza analizy jest rozszerzona tak by pokryć również specyfikację.
     Wprowadzono dodatkowe modele opisujące środowisko oraz wiedze agentów.
@@ -344,7 +367,7 @@ singlelinecheck=off
     Hierarchia ról pełni podobną role do struktury i ról organizacyjnych w GAIA v2.
     Pozwala określić właściwe zachowanie agentów.
 
-    \subsection{INGENIAS}
+    \subsection{Metodologia INGENIAS}
     W pracy~\cite{Pavon2003} autorzy przedstawiają metodologię rozwoju systemu wieloagentowego INGENIAS.
     Została ona zaprojektowana z myślą o budowie specyfikacji przyrostowo z zapewnieniem poprawności rozwoju.
     INGENIAS ulepsza oryginalne podejście z MESSAGE/UML poprzez dodanie nowego widoku oraz dostarczenie narzędzi do generowania kodu i dokumentacji systemu automatycznie ze specyfikacji.
@@ -358,10 +381,6 @@ singlelinecheck=off
         \item Model organizacji który opisuje jak komponenty systemu są ze sobą pogrupowane, jakie ograniczenia istnieją w interakcjach między agentami,
         \item Model środowiska który definiuje postrzeganie agentów jako elementów systemu oraz identyfikuje zasoby systemu.
     \end{enumerate}
-
-    \subsection{Wnioski z przeglądu metodologii}
-    \ldots
-
 
     W pracy z 2001 roku~\cite{Smirnov2002} autorzy przedstawiają technologię systemów wieloagentowych jako podstawę systemów Fuzji Wiedzy.
     Fuzje Wiedzy można zdefiniować jako integrację luźno powiązanych źródeł w połączone zasoby w celu uzupełnienia niedostatecznej wiedzy i uzyskania nowej.
