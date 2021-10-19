@@ -72,6 +72,7 @@ singlelinecheck=off
 
     \chapter{Źródło danych}\label{ch:źródło}
 
+
     \section{CAMEO}\label{sec:cameo}
     CAMEO - Conflict and Mediation Event Observations - jest schematem kodowania zdarzeń.
     Został stworzony w~Katedrze Nauk Politycznych Pennsylvania State University.
@@ -137,6 +138,7 @@ singlelinecheck=off
     Do oznaczania krajów wykorzystywane sa kody ISO-3166-Alpha3.
     Na przykład kod POL oznacza Polskę.
 
+
     \section{GDELT}\label{sec:gdelt}
     GDELT - Global Database of Events, Language, and Tone - to baza danych gromadząca informacje o notatkach o zdarzeniach politycznych.
     Jest to największa, najbardziej wszechstronna i~otwarta baza danych jaka powstała.
@@ -157,8 +159,8 @@ singlelinecheck=off
     Każde zdarzenie w bazie opisywane jest przy pomocy 58 cech.
     Najciekawsze z nich to:
     \begin{enumerate}
-        \item DATEADDED - to pole przechowuje datę dodania zdarzenia do głównej bazy danych w formacie  RRRRMMDDHHMMSS,
-            To pole jest odpowiednie dla tych którzy potrzebują dosępu do zdarzeń w wysokiej rozdzielczości czasowej,
+        \item DATEADDED - to pole przechowuje datę dodania zdarzenia do głównej bazy danych w formacie RRRRMMDDHHMMSS,
+        To pole jest odpowiednie dla tych którzy potrzebują dosępu do zdarzeń w wysokiej rozdzielczości czasowej,
         \item Actor1Code - pełny, surowy kod CAMEO dla pierwszego aktora (zawiera klasy geograficzne, etniczne, religijne),
         \item Actor2Code - pełny, surowy kod CAMEO dla drugiego aktora (zawiera klasy geograficzne, etniczne, religijne),
         \item QuadClass - kod zdarzenia pierwszego poziomu wg notacji CAMEO (najbardziej ogólny),
@@ -167,11 +169,11 @@ singlelinecheck=off
         \item EventCode - surowy kod zdarzenia wg notacji CAMEO (najbardziej szczegółowy),
         \item GoldsteinScale - ocena liczbowa od -10 do 10 odzwierciedlająca teoretyczny wpływ jaki dane zdarzenie ma na stabilność kraju,
         \item NumMentions - całkowita liczba wzmianek o wydarzeniu we wszystkich dokumentach źródłowych,
-            może być wykorzystane jako metoda oceny ważności wydarzenia,
+        może być wykorzystane jako metoda oceny ważności wydarzenia,
         \item NumSources - całkowita liczba źródeł informacji zawierających przynajmniej jedną wzmiankę o wydarzeniu,
         \item NumArticles - całkowita liczba dokumentów źródłowych zawierających przynajmniej jedną wzmiankę o wydarzeniu,
         \item AvgTone - średni ton wszystkich dokumentów zawierających przynajmniej jedną wzmiankę o wydarzeniu,
-            -100 oznacza ton skrajnie negatywny, 100 oznacza ton skrajnie pozytywny.
+        -100 oznacza ton skrajnie negatywny, 100 oznacza ton skrajnie pozytywny.
     \end{enumerate}
 
     Przykładowe zapytanie SQL wybiera zdarzenia ze stycznia 2021 w których aktorem numer 1 jest Polska:
@@ -220,6 +222,7 @@ singlelinecheck=off
     \end{itemize}
 
     W~zbiorze znajdują się dane od 1979 roku.
+
 
     \section{System Agentowy}
 %    todo Dlaczego system agentowy a nie obiektowy?
