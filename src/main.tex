@@ -1,5 +1,5 @@
 %! suppress = Makeatletter
-%! suppress = Makeatletter
+%! suppress = EnDash
 \documentclass[11pt]{report}
 
 \usepackage[T1]{fontenc}
@@ -56,8 +56,8 @@ singlelinecheck=off
             \hspace{0.3\textwidth}\=\\
             Autor: \>Michał Patyk\\
             Kierunek studiów:\> Informatyka\\
-            Opiekun pracy:\> dr inż. Robert Marcjan\\\\
-            Pomysłodawcą tematu pracy oraz długotrwałym\\ opiekunem był prof. dr hab. inż. Jarosław Koźlak
+            Opiekun pracy:\> dr inż.\@ Robert Marcjan\\\\
+            Pomysłodawcą tematu pracy oraz długotrwałym\\ opiekunem był prof.\@ dr hab.\@ inż.\@ Jarosław Koźlak
         \end{tabbing}
         \vspace{0.04\textheight}
         \center{Kraków 2021}
@@ -146,21 +146,21 @@ singlelinecheck=off
     W celu gromadzenia danych, każdego dnia przeszukiwane są doniesienia medialne w ponda 100 językach, ze wszystkich krajów.
     Główne zbiory danych dostępne dzisiaj przez GDELT to:
     GDELT 2.0 EVENT DATABASE oraz
-    GDELT 2.0 GLOBAL KNOWLEDGE GRAPH.
+    GDELT 2.0 GLOBAL KNOWLEDGE GRAPH\@.
     Na bieżąco wśród doniesień medialnych wyszukiwane są zdarzenia.
     Zostają one opisane przez aktorów, lokalizacje i~charakter aktywności, a także specyfikowane przez zestaw atrybutów.
     Zbiór danych jest dostępny jest jako surowe pliki danych na stronie Projektu ~\cite{gdelt}
-    oraz na platformie Google Cloud gdzie można z~niego korzystać przez Google BigQuery~\cite{BigQuery2014} przy pomocy zapytań SQL.
+    oraz na platformie Google Cloud gdzie można z~niego korzystać przez Google BigQuery~\cite{BigQuery2014} przy pomocy zapytań SQL\@.
 
-    Najbardziej aktualna baza GDELT v. 2.0 gromadzi wiadomości z artykułów co 15 minut.
+    Najbardziej aktualna baza GDELT v.\@ 2.0 gromadzi wiadomości z artykułów co 15 minut.
     Do bazy w Google BigQuery dodawane jest ponad 100 tysięcy wierszy dziennie.
     Aktualnie (stan na 15X2021r.) tabela gdelt-bq:gdeltv2.events zawiera prawie 600 milionów wierszy
-    i zajmuje ponad 240GB.
+    i zajmuje ponad 240GB\@.
     Każde zdarzenie w bazie opisywane jest przy pomocy 58 cech.
     Najciekawsze z nich to:
     \begin{enumerate}
         \item DATEADDED - to pole przechowuje datę dodania zdarzenia do głównej bazy danych w formacie RRRRMMDDHHMMSS,
-        To pole jest odpowiednie dla tych którzy potrzebują dosępu do zdarzeń w wysokiej rozdzielczości czasowej,
+        To pole jest odpowiednie dla tych którzy potrzebują dostępu do zdarzeń w wysokiej rozdzielczości czasowej,
         \item Actor1Code - pełny, surowy kod CAMEO dla pierwszego aktora (zawiera klasy geograficzne, etniczne, religijne),
         \item Actor2Code - pełny, surowy kod CAMEO dla drugiego aktora (zawiera klasy geograficzne, etniczne, religijne),
         \item QuadClass - kod zdarzenia pierwszego poziomu wg notacji CAMEO (najbardziej ogólny),
@@ -229,14 +229,14 @@ singlelinecheck=off
 
 
     \chapter{Przegląd dziedziny}\label{ch:przegląd-dziedziny}
-    W tym rozdziale w części~\ref{sec:wzorce} przenalizowane zostały prace dotyczące wzorców w zbiorach danych.
-    W części~\ref{sec:zastosowania} przeanalizowane zostały prace pokazującee możliwe zastosowania zbioru GDELT.
+    W tym rozdziale w części~\ref{sec:wzorce} przeanalizowane zostały prace dotyczące wzorców w zbiorach danych.
+    W części~\ref{sec:zastosowania} przeanalizowane zostały prace pokazujące możliwe zastosowania zbioru GDELT\@.
     W części~\ref{sec:systemy-agentowe} przeanalizowane zostały prace o systemach agentowych.
     W części~\ref{sec:metodologie-rozwoju-systemu-agentowego} przeanalizowane zostały metodologie rozwoju Systemu Agentowego.
 
 
     \section{Wzorce}\label{sec:wzorce}
-    W części~\ref{subsec:wzorce-w-sieciach-społecznościowych} przenalizowane zostały prace dotyczące wzorców w sieciach społecznościowych.
+    W części~\ref{subsec:wzorce-w-sieciach-społecznościowych} przeanalizowane zostały prace dotyczące wzorców w sieciach społecznościowych.
     W części~\ref{subsec:wzorce-gdelt} przeanalizowane zostały prace dotyczące wzorców w zbiorze GDELT\@.
 
     \subsection{Wzorce w sieciach społecznościowych}\label{subsec:wzorce-w-sieciach-społecznościowych}
@@ -268,7 +268,7 @@ singlelinecheck=off
     W pracy~\cite{Buckingham2020} autorzy przedstawiają możliwość wykorzystania danych z bazy danych GDELT
     do analizy wyzwań społecznych związanych z klimatem.
     Zrozumienie zmian zachowania aktorów i zmian sentymentu doniesień medialnych dotyczących zdarzeń może pomóc w zrozumieniu zmian społecznych.
-    Praca demonstruje, że niezbędnych w tym celu, solidnych danych mogą dostarczyć takie zbiory jak GDELT.
+    Praca demonstruje, że niezbędnych w tym celu, solidnych danych mogą dostarczyć takie zbiory jak GDELT\@.
     W pracy poruszany jest też temat trudności w szerokim wykorzystaniu tych danych ze względu na stronniczość mediów
     i idące za tym nacechowanie danych.
 
@@ -279,7 +279,7 @@ singlelinecheck=off
     Autorzy zwracają uwagę, że większa szybkość w zakresie dostępności danych może przyczynić się do bardziej efektywnej
     odpowiedzi na zdarzenia przez międzynarodowy establishment.
 
-    \subsection{Analiza obrazu Chin w masmediach}
+    \subsection{Analiza obrazu Chin w mass mediach}
     W pracy~\cite{Yuan2017} autorzy analizują wzorce siły powiązania pomiędzy Chinami i 15 krajami.
     Zaprezentowano skuteczność wykorzystania algorytmu dynamic time warping w pomiarze długookresowego podobieństwa
     wśród danych ze środków masowego przekazu.
@@ -288,7 +288,7 @@ singlelinecheck=off
 
 
     \section{Systemy Agentowe}\label{sec:systemy-agentowe}
-    Według definicji z książki Grharda Weissa Systemy Wieloagentowe~\cite{55066420130101} agent to system komputerowy który jest umieszczony w pewnym środowisku i jest zdolny do autonomicznych akcji w tym środowisku w celu osiągnięcia wyznaczonych mu celów.
+    Według definicji z książki Gerharda Weissa Systemy Wieloagentowe~\cite{55066420130101} agent to system komputerowy który jest umieszczony w pewnym środowisku i jest zdolny do autonomicznych akcji w tym środowisku w celu osiągnięcia wyznaczonych mu celów.
     Rysunek~\ref{fig:agent} przedstawia agenta w jego środowisku.
     \begin{figure}[!htp]
         \centering
@@ -308,7 +308,7 @@ singlelinecheck=off
     Możliwość negocjacji i kooperacji.
 
     Obiekt nie jest zdolny do proaktywnego zachowania i nie jest w stanie samodzielnie decydować, co zrobić w określonej sytuacji.
-    Autonomiczne komponenty oddelegowane do własnej kontroli mogą zostać wzbogacone o wyrafinowane umiejętności społeczne, to znaczy zdolność do podejmowania decyzji o zakresie i naturze ich interakcji w czasie wykonywania oraz inicjowania interakcji w sposób elastyczny (np. poprzez wyszukiwanie i negocjowanie świadczenia usług oraz dostarczania danych).
+    Autonomiczne komponenty oddelegowane do własnej kontroli mogą zostać wzbogacone o wyrafinowane umiejętności społeczne, to znaczy zdolność do podejmowania decyzji o zakresie i naturze ich interakcji w czasie wykonywania oraz inicjowania interakcji w sposób elastyczny (np.\@ poprzez wyszukiwanie i negocjowanie świadczenia usług oraz dostarczania danych).
 
 
     \section{Metodologie rozwoju Systemu Agentowego}\label{sec:metodologie-rozwoju-systemu-agentowego}
@@ -320,7 +320,7 @@ singlelinecheck=off
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=\linewidth]{fig/RIO approach.png}
-        \caption{Proces rozwoju w metodologii RIO. (źródło: A formal framework for multi-agent systems analysis and design \cite{S095741740200070220020101})}
+        \caption{Proces rozwoju w metodologii RIO. (źródło: A formal framework for multi-agent systems analysis and design~\cite{S095741740200070220020101})}
         \label{fig:rio}
     \end{figure}
     System jest postrzegany jako organizacja która składa się ze zbioru wchodzących w interakcję ról.
@@ -337,7 +337,7 @@ singlelinecheck=off
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=\linewidth]{fig/gaia models.png}
-        \caption{Zwiazek pomiędzy modelami Gaia. (źródło: The Gaia Methodology for Agent-Oriented Analysis and Design~\cite{Wooldridge2000a})}
+        \caption{Związek pomiędzy modelami Gaia. (źródło: The Gaia Methodology for Agent-Oriented Analysis and Design~\cite{Wooldridge2000a})}
         \label{fig:gaia}
     \end{figure}
     Celem etapu analizy jest rozwinięcie zrozumienia systemu i jego struktury.
@@ -356,11 +356,11 @@ singlelinecheck=off
     Reguły organizacyjne to ograniczenia które muszą być uwzględnione w globalnym zachowaniu organizacji.
     Struktura organizacyjna określa ogólną architekturę systemu.
 
-    \subsection{Rozrzeszenie medodologi Gaia - ROADMAP}
-    ROADMAP jest kolejnym rozszerzeniem metodologii GAIA.
+    \subsection{Rozszerzenie metodologi Gaia - ROADMAP}
+    ROADMAP jest kolejnym rozszerzeniem metodologii GAIA\@.
     Faza analizy jest rozszerzona tak by pokryć również specyfikację.
     Wprowadzono dodatkowe modele opisujące środowisko oraz wiedze agentów.
-    Rysunek~\ref{fig:roadmap} przedstawia strukturę modeli ROADMAP.
+    Rysunek~\ref{fig:roadmap} przedstawia strukturę modeli ROADMAP\@.
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=\linewidth]{fig/roadmap models.png}
@@ -371,7 +371,7 @@ singlelinecheck=off
     Pozwala określić właściwe zachowanie agentów.
 
     \subsection{Metodologia INGENIAS}
-    W pracy~\cite{Pavon2003} autorzy przedstawiają metodologię rozwoju systemu wieloagentowego INGENIAS.
+    W pracy~\cite{Pavon2003} autorzy przedstawiają metodologię rozwoju systemu wieloagentowego INGENIAS\@.
     Została ona zaprojektowana z myślą o budowie specyfikacji przyrostowo z zapewnieniem poprawności rozwoju.
     INGENIAS ulepsza oryginalne podejście z MESSAGE/UML poprzez dodanie nowego widoku oraz dostarczenie narzędzi do generowania kodu i dokumentacji systemu automatycznie ze specyfikacji.
     Generalnym podejściem INGENIAS do specyfikacji systemu wieloagentowego jest podział problemu na aspekty które tworzą różne widoki systemu.
@@ -542,7 +542,7 @@ singlelinecheck=off
             Opis                   & Ta rola obejmuje wyszukiwanie korelacji między krajami         \\
             & na podstawie danych pobranych od poszukiwaczy wzorców.         \\
             Protokoły i Aktywności & \textbf{sprawdzajWzorce, szukajKorelacji, poinformujGenerator} \\
-            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczWzorcow}         \\
+            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczWzorców}         \\
             & ~~~~~~\textit{wzorzec}                                         \\
             & \textbf{zmienia} \textit{zestawienie}                          \\
             Obowiązki              &                                                                \\
@@ -559,7 +559,7 @@ singlelinecheck=off
             Opis                   & Ta rola obejmuje tworzenie zestawień na podstawie                            \\
             & danych zebranych przez poszukiwaczy korelacji i trendów.                     \\
             Protokoły i Aktywności & \textbf{sprawdzajZestawienia}                                                \\
-            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczKorelacji, PoszukiwaczTrendow} \\
+            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczKorelacji, PoszukiwaczTrendów} \\
             & ~~~~~~\textit{zestawienie}                                                   \\
             & \textbf{zmienia} \textit{zestawienie}                                        \\
             Obowiązki              &                                                                              \\
@@ -615,7 +615,7 @@ singlelinecheck=off
     \paragraph{Symetria relacji między państwami}\label{symetria_relacji}
     Siła powiązania, zaproponowana w artykule \ldots, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
     Ponieważ siła powiązania nie jest znormalizowana przez liczbę zdarzeń dla kraju B, dlatego nie jest symetryczna.
-    Odzwierciedla to jak ważny dla kraju A jest kraj B.
+    Odzwierciedla to jak ważny dla kraju A jest kraj B\@.
     W trakcie eksploracji możliwe są zmiany miary symetrii np.:
     \begin{enumerate}
         \item poprzez wymnażanie przez liczbę wzmianek,
@@ -903,7 +903,7 @@ singlelinecheck=off
     \subsection{Event Root Code}
 
     \subsubsection{Bez progowania}
-    Wykresy~\ref{fig:Power-Client:ERC:POL-USA}, \ref{fig:Power-Client:ERC:POL-RUS} oraz~\ref{fig:Power-Client:ERC:POL-DEU} przedstawiają relacje klient-hegemon.
+    Wykresy~\ref{fig:Power-Client:ERC:POL-USA},~\ref{fig:Power-Client:ERC:POL-RUS} oraz~\ref{fig:Power-Client:ERC:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-USA EventRootCode count 2015-2020 - top 20.png}
@@ -925,7 +925,7 @@ singlelinecheck=off
         \label{fig:Power-Client:ERC:POL-DEU}
     \end{figure}
 
-    Wykresy~\ref{fig:Power-Client:ERC:POL-ESP}, \ref{fig:Power-Client:ERC:POL-CZE} oraz~\ref{fig:Power-Client:ERC:POL-HUN} przedstawiają relacje neutralne.
+    Wykresy~\ref{fig:Power-Client:ERC:POL-ESP},~\ref{fig:Power-Client:ERC:POL-CZE} oraz~\ref{fig:Power-Client:ERC:POL-HUN} przedstawiają relacje neutralne.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-ESP EventRootCode count 2015-2020 - top 20.png}
@@ -962,10 +962,10 @@ singlelinecheck=off
         \item \textit{YIELD}
         \item \textit{ENGAGE IN MATERIAL COOPERATION}
         \item \textit{PROVIDE AID}
-        \item \textit{MAKE PUBLIC CTATEMENT}
+        \item \textit{MAKE PUBLIC STATEMENT}
     \end{itemize}
 
-    Wykresy~\ref{fig:Power-Client:ERC:Goldstein:POL-USA}, \ref{fig:Power-Client:ERC:Goldstein:POL-RUS} oraz~\ref{fig:Power-Client:ERC:Goldstein:POL-DEU} przedstawiają relacje klient-hegemon.
+    Wykresy~\ref{fig:Power-Client:ERC:Goldstein:POL-USA},~\ref{fig:Power-Client:ERC:Goldstein:POL-RUS} oraz~\ref{fig:Power-Client:ERC:Goldstein:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-USA EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
@@ -987,7 +987,7 @@ singlelinecheck=off
         \label{fig:Power-Client:ERC:Goldstein:POL-DEU}
     \end{figure}
 
-    Wykresy~\ref{fig:Power-Client:ERC:Goldstein:POL-ESP}, \ref{fig:Power-Client:ERC:Goldstein:POL-CZE} oraz~\ref{fig:Power-Client:ERC:Goldstein:POL-HUN} przedstawiają relacje neutralne.
+    Wykresy~\ref{fig:Power-Client:ERC:Goldstein:POL-ESP},~\ref{fig:Power-Client:ERC:Goldstein:POL-CZE} oraz~\ref{fig:Power-Client:ERC:Goldstein:POL-HUN} przedstawiają relacje neutralne.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-ESP EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
@@ -1017,7 +1017,7 @@ singlelinecheck=off
     Pozwala określić ważność danego zdarzenia.
     Im więcej dyskusji o danym zdarzeniu, tym bardziej prawdopodobne, że jest ono istotne.
 
-    Wykresy~\ref{fig:Power-Client:ERC:Mentions:POL-USA}, \ref{fig:Power-Client:ERC:Mentions:POL-RUS} oraz~\ref{fig:Power-Client:ERC:Mentions:POL-DEU} przedstawiają relacje klient-hegemon.
+    Wykresy~\ref{fig:Power-Client:ERC:Mentions:POL-USA},~\ref{fig:Power-Client:ERC:Mentions:POL-RUS} oraz~\ref{fig:Power-Client:ERC:Mentions:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-USA EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
@@ -1039,7 +1039,7 @@ singlelinecheck=off
         \label{fig:Power-Client:ERC:Mentions:POL-DEU}
     \end{figure}
 
-    Wykresy~\ref{fig:Power-Client:ERC:Mentions:POL-ESP}, \ref{fig:Power-Client:ERC:Mentions:POL-CZE} oraz~\ref{fig:Power-Client:ERC:Mentions:POL-HUN} przedstawiają relacje neutralne.
+    Wykresy~\ref{fig:Power-Client:ERC:Mentions:POL-ESP},~\ref{fig:Power-Client:ERC:Mentions:POL-CZE} oraz~\ref{fig:Power-Client:ERC:Mentions:POL-HUN} przedstawiają relacje neutralne.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-ESP EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
@@ -1067,10 +1067,10 @@ singlelinecheck=off
     \paragraph{Wnioski}
     Kody główne zdarzeń wydają się być zbyt ogólne do wyróżniania relacji typu mocarstwo-klient.
 
-    \subsection{Event Base Code}\label{sec:event-base-code}
+    \subsection{Event Base Code}\label{subsec:event-base-code}
 
     \subsubsection{Bez progowania}
-    Wykresy~\ref{fig:Power-Client:EBC:POL-USA}, \ref{fig:Power-Client:EBC:POL-RUS} oraz~\ref{fig:Power-Client:EBC:POL-DEU} przedstawiają relacje klient-hegemon.
+    Wykresy~\ref{fig:Power-Client:EBC:POL-USA},~\ref{fig:Power-Client:EBC:POL-RUS} oraz~\ref{fig:Power-Client:EBC:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 - top 20.png}
@@ -1092,7 +1092,7 @@ singlelinecheck=off
         \label{fig:Power-Client:EBC:POL-DEU}
     \end{figure}
 
-    Wykresy~\ref{fig:Power-Client:EBC:POL-ESP}, \ref{fig:Power-Client:EBC:POL-CZE} oraz~\ref{fig:Power-Client:EBC:POL-HUN} przedstawiają relacje neutralne.
+    Wykresy~\ref{fig:Power-Client:EBC:POL-ESP},~\ref{fig:Power-Client:EBC:POL-CZE} oraz~\ref{fig:Power-Client:EBC:POL-HUN} przedstawiają relacje neutralne.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 - top 20.png}
@@ -1216,7 +1216,7 @@ singlelinecheck=off
     \end{figure}
     Na wykresie~\ref{fig:Power-Client:ERC:Goldstein:SumUp:Return release- not specified below} USA oraz Rosja są w jednej grupie,
     charakteryzującej się największą procentową ilością zdarzeń \textit{Return release- not specified below}.
-    Do tej samej grupy należy też Ukraina która oddziela od Niemycy od Rosji i USA.
+    Do tej samej grupy należy też Ukraina która oddziela Niemcy od Rosji i USA\@.
     Pomiędzy Rosją, a pozostałymi krajami jest wyraźna różnica.
     Grupa krajów z największą procentową ilością zdarzeń jest wyraźnie oddzielona od reszty krajów.
 
@@ -1227,7 +1227,7 @@ singlelinecheck=off
     Pozwala określić ważność danego zdarzenia.
     Im więcej dyskusji o danym zdarzeniu, tym bardziej prawdopodobne, że jest ono istotne.
 
-    Wykresy~\ref{fig:Power-Client:EBC:Mentions:POL-USA}, \ref{fig:Power-Client:EBC:Mentions:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Mentions:POL-DEU} przedstawiają relacje klient-hegemon.
+    Wykresy~\ref{fig:Power-Client:EBC:Mentions:POL-USA},~\ref{fig:Power-Client:EBC:Mentions:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Mentions:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
@@ -1249,7 +1249,7 @@ singlelinecheck=off
         \label{fig:Power-Client:EBC:Mentions:POL-DEU}
     \end{figure}
 
-    Wykresy~\ref{fig:Power-Client:EBC:Mentions:POL-ESP}, \ref{fig:Power-Client:EBC:Mentions:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Mentions:POL-HUN} przedstawiają relacje neutralne.
+    Wykresy~\ref{fig:Power-Client:EBC:Mentions:POL-ESP},~\ref{fig:Power-Client:EBC:Mentions:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Mentions:POL-HUN} przedstawiają relacje neutralne.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
@@ -1309,7 +1309,7 @@ singlelinecheck=off
     charakteryzującej się największą procentową ilością zdarzeń \textit{Use conventional military force- not specified below}.
     Dominacja Niemiec w tym zestawieniu jest najprawdopodobniej spowodowana kontrowersyjnymi kwestiami historycznymi
     które często pojawiają się w relacji Polski i Niemiec.
-    Drugie miejsce Hiszpani - która rozdziela Niemcy i USA - wymaga dalszej analizy.
+    Drugie miejsce Hiszpanii - która rozdziela Niemcy i USA - wymaga dalszej analizy.
 
     Pozostałe typy zdarzeń znacznie gorzej rozdzielają relacje klient-hegemon oraz neutralne wśród analizowanych krajów.
 
@@ -1318,7 +1318,7 @@ singlelinecheck=off
     Pozwala określić ważność danego zdarzenia.
     Im więcej dyskusji o danym zdarzeniu, tym bardziej prawdopodobne, że jest ono istotne.
 
-    Wykresy~\ref{fig:Power-Client:EBC:Mentions10:POL-USA}, \ref{fig:Power-Client:EBC:Mentions10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Mentions10:POL-DEU} przedstawiają relacje klient-hegemon.
+    Wykresy~\ref{fig:Power-Client:EBC:Mentions10:POL-USA},~\ref{fig:Power-Client:EBC:Mentions10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Mentions10:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
@@ -1340,7 +1340,7 @@ singlelinecheck=off
         \label{fig:Power-Client:EBC:Mentions10:POL-DEU}
     \end{figure}
 
-    Wykresy~\ref{fig:Power-Client:EBC:Mentions10:POL-ESP}, \ref{fig:Power-Client:EBC:Mentions10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Mentions10:POL-HUN} przedstawiają relacje neutralne.
+    Wykresy~\ref{fig:Power-Client:EBC:Mentions10:POL-ESP},~\ref{fig:Power-Client:EBC:Mentions10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Mentions10:POL-HUN} przedstawiają relacje neutralne.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
@@ -1385,7 +1385,7 @@ singlelinecheck=off
     Ocena od -100 (ekstremalnie negatywna) do 100 (ekstremalnie pozytywna).
     Ekstremalny ton sugeruje bardziej poważne zdarzenie.
 
-    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-USA}, \ref{fig:Power-Client:EBC:AvgToone10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-DEU} przedstawiają relacje klient-hegemon.
+    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-USA},~\ref{fig:Power-Client:EBC:AvgToone10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
@@ -1407,7 +1407,7 @@ singlelinecheck=off
         \label{fig:Power-Client:EBC:AvgToone10:POL-DEU}
     \end{figure}
 
-    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-ESP}, \ref{fig:Power-Client:EBC:AvgToone10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-HUN} przedstawiają relacje neutralne.
+    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-ESP},~\ref{fig:Power-Client:EBC:AvgToone10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-HUN} przedstawiają relacje neutralne.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
@@ -1469,7 +1469,7 @@ singlelinecheck=off
 
 
     \section{Klastrowanie}
-    Na podstawie miar wybranych w sekcji~\ref{sec:event-base-code} przeprowadzono klastrowanie.
+    Na podstawie miar wybranych w sekcji~\ref{subsec:event-base-code} przeprowadzono klastrowanie.
     Przed klastrowaniem dane poddane zostały standaryzacji poprzez usunięcie średniej i skalowanie do wariancji jednostkowej.
 
     \subsection{Polska}
@@ -1497,7 +1497,7 @@ singlelinecheck=off
     \end{table}
 
     Najciekawsze wydają się wyniki dla 5 klastrów.
-    Tabele przedstawiające krańcowe wartości miar w poszczeólnych klastrach znajdują się w dodatku~\ref{subsec:klastrowanie-kmeans---polska}.
+    Tabele przedstawiające krańcowe wartości miar w poszczególnych klastrach znajdują się w dodatku~\ref{subsec:klastrowanie-kmeans---polska}.
 
     Wykresy
     ~\ref{fig:density_Consult- not specified below_nummen>=5_pl},
@@ -1563,7 +1563,7 @@ singlelinecheck=off
     \end{table}
 
     Najciekawsze wydają się wyniki dla 3 klastrów.
-    Tabele przedstawiające krańcowe wartości miar w poszczeólnych klastrach znajdują się w dodatku~\ref{subsec:klastrowanie-kmeans---tajwan}.
+    Tabele przedstawiające krańcowe wartości miar w poszczególnych klastrach znajdują się w dodatku~\ref{subsec:klastrowanie-kmeans---tajwan}.
 
     Wykresy
     ~\ref{fig:density_Consult- not specified below_nummen>=5_tjw},
@@ -1629,7 +1629,7 @@ singlelinecheck=off
     \end{table}
 
     Najciekawsze wydają się wyniki dla 3 klastrów.
-    Tabele przedstawiające krańcowe wartości miar w poszczeólnych klastrach znajdują się w dodatku~\ref{subsec:klastrowanie-kmeans---syria}.
+    Tabele przedstawiające krańcowe wartości miar w poszczególnych klastrach znajdują się w dodatku~\ref{subsec:klastrowanie-kmeans---syria}.
 
     Wykresy
     ~\ref{fig:density_Consult- not specified below_nummen>=5_syr},
@@ -1686,9 +1686,9 @@ singlelinecheck=off
 
 
     \section{Prosody}
-    Do działania platformy SPADE niezbędny jest serwer XMPP.
+    Do działania platformy SPADE niezbędny jest serwer XMPP\@.
     Przykładem takiego oprogramowania na licencji otwarto-źródłowej jest Prosody.
-    Prosody~\cite{prosody} jest nowoczesnym serwerem komunikacyjnym XMPP.
+    Prosody~\cite{prosody} jest nowoczesnym serwerem komunikacyjnym XMPP\@.
     W celu jego instalacji w systemie operacyjnym Linux Debian lub Ubuntu należy skorzystać z polecenia:
     \begin{verbatim}
            sudo apt-get install prosody
@@ -1733,7 +1733,7 @@ singlelinecheck=off
 
     W SPADE do tworzenia wiadomości przeznaczona jest klasa \textit{Message},
     która pozwala na wprowadzenie metadanych do wiadomości.
-    Metadane w postaci słowników klucz, wartość są przydatne do uwzględnienia atrybutów FIPA.
+    Metadane w postaci słowników klucz, wartość są przydatne do uwzględnienia atrybutów FIPA\@.
 
     Funkcje \textbf{send} oraz \textbf{receive} są procesami asynchronicznymi dlatego należy je wywoływać z instrukcją \textit{await}.
     Ponieważ SPADE jest platformą do przesyłania wiadomości w czasie rzeczywistym,
@@ -1750,8 +1750,8 @@ singlelinecheck=off
 
 
     \section{fpdf2}
-    fpdf2 to minimalistyczna bilblioteka do tworzenia plików PDF w Python.
-    W celu zainstalowania bilbioteki fpdf2 należy skorzystać z polecenia:
+    fpdf2 to minimalistyczna biblioteka do tworzenia plików PDF w Python.
+    W celu zainstalowania biblioteki fpdf2 należy skorzystać z polecenia:
     \begin{verbatim}
         pip install fpdf2
     \end{verbatim}
@@ -1930,9 +1930,9 @@ singlelinecheck=off
     \subparagraph{Relacje istotne}
 %    todo przeredagować
     Wg pracy Jarosza.
-    Relacje znaczące to takie wydarzenia które posiadają co najmniej 50 wzmianek w mediach (NumMentions)//s. 33.
+    Relacje znaczące to takie wydarzenia które posiadają co najmniej 50 wzmianek w mediach (NumMentions)//s.\! 33.
 
-    Wzorzec Mocarstwo/Klient określony jako stosunek liczby wszystkich relacji znaczących Aktora 1 oraz liczby wszystkich znaczących relacji Aktora2 //s. 82.
+    Wzorzec Mocarstwo/Klient określony jako stosunek liczby wszystkich relacji znaczących Aktora 1 oraz liczby wszystkich znaczących relacji Aktora2 //s.\@ 82.
     \[ Ratio = \frac
     {\sum{Events\ country\ A\ (actor 1) (NumMentions > 50)}}
     {\sum{Events\ country\ B\ (actor 1) (NumMentions > 50)}}
@@ -2187,7 +2187,7 @@ singlelinecheck=off
         \item Znajdź relacje podobne do relacji POL-RUS (jakie relacje są najbardziej podobne) /relacja POL-RUS opisana zestawem miar/
         /czy system znajdzie coś zgodnego z intuicją czy raczej coś dziwnego/
         \item Jak Czechy są postrzegane w relacji z Polską?
-        \item Kto jest hegemonem dla Polski na podstawie miar lub podobieństwo do relacji POL-USA.
+        \item Kto jest hegemonem dla Polski na podstawie miar lub podobieństwo do relacji POL-USA\@.
     \end{itemize}
 
     \subsection{Sterowanie w oparciu o jaka miarę?}
@@ -2201,9 +2201,9 @@ singlelinecheck=off
 
     \subsection{Identyfikacja przynależności do klastrów w czasie}
     Czy kraj trafia ciągle do tego samego klastra?
-    - stabilność, oscylacja, pojedyńcza zmiana z A do B, pojedyńcze zaburzenie ABA
+    - stabilność, oscylacja, pojedyncza zmiana z A do B, pojedyncze zaburzenie ABA
 
-    \subsection{Poszukiwanie przejśc ABA w relacjach}
+    \subsection{Poszukiwanie przejść ABA w relacjach}
     W jaki terminie się znajdują.
 
     \subsection{Po automatycznym policzeniu miar -> klastrowanie}
