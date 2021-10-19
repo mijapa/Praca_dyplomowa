@@ -1468,7 +1468,295 @@ singlelinecheck=off
     \chapter{Ewaluacja}\label{ch:ewaluacja}
 
 
+    \section{Klastrowanie}
+    Na podstawie miar wybranych w sekcji~\ref{sec:event-base-code} przeprowadzono klastrowanie.
+    Przed klastrowaniem dane poddane zostały standaryzacji poprzez usunięcie średniej i skalowanie do wariancji jednostkowej.
+
+    \subsection{Polska}
+    W tabeli~\ref{tab:cluster_pl_agg} przedstawione zostały wyniki klastrowania aglomeracyjnego.
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_pl_agg.png}
+        \caption{Wyniki klastrowania aglomeracyjnego - Polska. (źródło: opracowanie własne)}
+        \label{tab:cluster_pl_agg}
+    \end{table}
+    Na rysunku~\ref{fig:cluster_pl_agg_dendrogram} przedstawiony został dendrogram do klastrowania aglomeracyjnego.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_pl_agg_dendrogram.png}
+        \caption{Wyniki klastrowania aglomeracyjnego - Polska. (źródło: opracowanie własne)}
+        \label{fig:cluster_pl_agg_dendrogram}
+    \end{figure}
+
+    W tabeli~\ref{tab:cluster_pl} przedstawione zostały wyniki klastrowania metodą kMeans.
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_pl.png}
+        \caption{Wyniki klastrowania. (źródło: opracowanie własne)}
+        \label{tab:cluster_pl}
+    \end{table}
+
+    Najciekawsze wydają się wyniki dla 5 klastrów.
+    Tabele~\ref{tab:cluster0_measures_pl},
+    ~\ref{tab:cluster1_measures_pl},
+    ~\ref{tab:cluster2_measures_pl},
+    ~\ref{tab:cluster3_measures_pl},
+    ~\ref{tab:cluster4_measures_pl}
+    przedstawiają krańcowe wartości miar w poszczególnych klastrach.
+
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster0_measures_pl.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster0_measures_pl}
+    \end{table}
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster1_measures_pl.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster1_measures_pl}
+    \end{table}
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster2_measures_pl.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster2_measures_pl}
+    \end{table}
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster3_measures_pl.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster3_measures_pl}
+    \end{table}
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster4_measures_pl.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster4_measures_pl}
+    \end{table}
+
+    Wykresy
+    ~\ref{fig:density_Consult- not specified below_nummen>=5_pl},
+    ~\ref{fig:density_Engage in negotiation_nummen>=5_pl},
+    ~\ref{fig:density_Make statement- not specified below_none_pl},
+    ~\ref{fig:density_Praise or endorse_nummen>=10_pl},
+    ~\ref{fig:density_Return release- not specified below_goldstein>=3_pl}
+    przedstawiają wykresy gęstości dla poszczególnych klastrów.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Consult- not specified below_nummen>=5_pl.png}
+        \caption{Wykres gęstości dla miary - Polska. (źródło: opracowanie własne)}
+        \label{fig:density_Consult- not specified below_nummen>=5_pl}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Engage in negotiation_nummen>=5_pl.png}
+        \caption{Wykres gęstości dla miary - Polska. (źródło: opracowanie własne)}
+        \label{fig:density_Engage in negotiation_nummen>=5_pl}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Make statement- not specified below_none_pl.png}
+        \caption{Wykres gęstości dla miary - Polska. (źródło: opracowanie własne)}
+        \label{fig:density_Make statement- not specified below_none_pl}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Praise or endorse_nummen>=10_pl.png}
+        \caption{Wykres gęstości dla miary - Polska. (źródło: opracowanie własne)}
+        \label{fig:density_Praise or endorse_nummen>=10_pl}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Return release- not specified below_goldstein>=3_pl.png}
+        \caption{Wykres gęstości dla miary - Polska. (źródło: opracowanie własne)}
+        \label{fig:density_Return release- not specified below_goldstein>=3_pl}
+    \end{figure}
+
+    \subsection{Tajwan}
+    W tabeli~\ref{tab:cluster_tjw_agg} przedstawione zostały wyniki klastrowania aglomeracyjnego.
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_tjw_agg.png}
+        \caption{Wyniki klastrowania aglomeracyjnego - Tajwan. (źródło: opracowanie własne)}
+        \label{tab:cluster_tjw_agg}
+    \end{table}
+    Na rysunku~\ref{fig:cluster_tjw_agg_dendrogram} przedstawiony został dendrogram do klastrowania aglomeracyjnego.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_tjw_agg_dendrogram.png}
+        \caption{Wyniki klastrowania aglomeracyjnego - Tajwan. (źródło: opracowanie własne)}
+        \label{fig:cluster_tjw_agg_dendrogram}
+    \end{figure}
+
+    W tabeli~\ref{tab:cluster_tjw} przedstawione zostały wyniki klastrowania metodą kMeans.
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_tjw.png}
+        \caption{Wyniki klastrowania. (źródło: opracowanie własne)}
+        \label{tab:cluster_tjw}
+    \end{table}
+
+    Najciekawsze wydają się wyniki dla 3 klastrów.
+    Tabele~\ref{tab:cluster0_measures_tjw},
+    ~\ref{tab:cluster1_measures_tjw},
+    ~\ref{tab:cluster2_measures_tjw}
+    przedstawiają krańcowe wartości miar w poszczególnych klastrach.
+
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster0_measures_tjw.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster0_measures_tjw}
+    \end{table}
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster1_measures_tjw.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster1_measures_tjw}
+    \end{table}
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster2_measures_tjw.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster2_measures_tjw}
+    \end{table}
+
+    Wykresy
+    ~\ref{fig:density_Consult- not specified below_nummen>=5_tjw},
+    ~\ref{fig:density_Engage in negotiation_nummen>=5_tjw},
+    ~\ref{fig:density_Make statement- not specified below_none_tjw},
+    ~\ref{fig:density_Praise or endorse_nummen>=10_tjw},
+    ~\ref{fig:density_Return release- not specified below_goldstein>=3_tjw}
+    przedstawiają wykresy gęstości dla poszczególnych klastrów.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Consult- not specified below_nummen>=5_tjw.png}
+        \caption{Wykres gęstości dla miary - Tajwan. (źródło: opracowanie własne)}
+        \label{fig:density_Consult- not specified below_nummen>=5_tjw}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Engage in negotiation_nummen>=5_tjw.png}
+        \caption{Wykres gęstości dla miary - Tajwan. (źródło: opracowanie własne)}
+        \label{fig:density_Engage in negotiation_nummen>=5_tjw}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Make statement- not specified below_none_tjw.png}
+        \caption{Wykres gęstości dla miary - Tajwan. (źródło: opracowanie własne)}
+        \label{fig:density_Make statement- not specified below_none_tjw}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Praise or endorse_nummen>=10_tjw.png}
+        \caption{Wykres gęstości dla miary - Tajwan. (źródło: opracowanie własne)}
+        \label{fig:density_Praise or endorse_nummen>=10_tjw}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Return release- not specified below_goldstein>=3_tjw.png}
+        \caption{Wykres gęstości dla miary - Tajwan. (źródło: opracowanie własne)}
+        \label{fig:density_Return release- not specified below_goldstein>=3_tjw}
+    \end{figure}
+
+    \subsection{Syria}
+    W tabeli~\ref{tab:cluster_tjw_agg} przedstawione zostały wyniki klastrowania aglomeracyjnego.
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_syr_agg.png}
+        \caption{Wyniki klastrowania aglomeracyjnego - Syria. (źródło: opracowanie własne)}
+        \label{tab:cluster_syr_agg}
+    \end{table}
+    Na rysunku~\ref{fig:cluster_syr_agg_dendrogram} przedstawiony został dendrogram do klastrowania aglomeracyjnego.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_syr_agg_dendrogram.png}
+        \caption{Wyniki klastrowania aglomeracyjnego - Syria. (źródło: opracowanie własne)}
+        \label{fig:cluster_syr_agg_dendrogram}
+    \end{figure}
+
+    W tabeli~\ref{tab:cluster_syr} przedstawione zostały wyniki klastrowania metodą kMeans.
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_syr_kmeans.png}
+        \caption{Wyniki klastrowania. (źródło: opracowanie własne)}
+        \label{tab:cluster_syr}
+    \end{table}
+
+    Najciekawsze wydają się wyniki dla 3 klastrów.
+    Tabele~\ref{tab:cluster0_measures_syr},
+    ~\ref{tab:cluster1_measures_syr},
+    ~\ref{tab:cluster2_measures_syr}
+    przedstawiają krańcowe wartości miar w poszczególnych klastrach.
+
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster0_measures_syr.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster0_measures_syr}
+    \end{table}
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster1_measures_syr.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster1_measures_syr}
+    \end{table}
+    \begin{table}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster2_measures_syr.png}
+        \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
+        \label{tab:cluster2_measures_syr}
+    \end{table}
+
+    Wykresy
+    ~\ref{fig:density_Consult- not specified below_nummen>=5_syr},
+    ~\ref{fig:density_Engage in negotiation_nummen>=5_syr},
+    ~\ref{fig:density_Make statement- not specified below_none_syr},
+    ~\ref{fig:density_Praise or endorse_nummen>=10_syr},
+    ~\ref{fig:density_Return release- not specified below_goldstein>=3_syr}
+    przedstawiają wykresy gęstości dla poszczególnych klastrów.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Consult- not specified below_nummen>=5_syr.png}
+        \caption{Wykres gęstości dla miary - Syria. (źródło: opracowanie własne)}
+        \label{fig:density_Consult- not specified below_nummen>=5_syr}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Engage in negotiation_nummen>=5_syr.png}
+        \caption{Wykres gęstości dla miary - Syria. (źródło: opracowanie własne)}
+        \label{fig:density_Engage in negotiation_nummen>=5_syr}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Make statement- not specified below_none_syr.png}
+        \caption{Wykres gęstości dla miary - Syria. (źródło: opracowanie własne)}
+        \label{fig:density_Make statement- not specified below_none_syr}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Praise or endorse_nummen>=10_syr.png}
+        \caption{Wykres gęstości dla miary - Syria. (źródło: opracowanie własne)}
+        \label{fig:density_Praise or endorse_nummen>=10_syr}
+    \end{figure}
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/density_Return release- not specified below_goldstein>=3_syr.png}
+        \caption{Wykres gęstości dla miary - Syria. (źródło: opracowanie własne)}
+        \label{fig:density_Return release- not specified below_goldstein>=3_syr}
+    \end{figure}
+
+
     \chapter{Podsumowanie}\label{ch:podsumowanie}
+
+    \inputencoding{utf8}
+    \newpage
+    \addcontentsline{toc}{chapter}{Bibliografia}
+    \printbibliography[title={Bibliografia}]
 
     \appendix
     \newpage
