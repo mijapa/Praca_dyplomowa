@@ -1466,6 +1466,75 @@ singlelinecheck=off
     \end{itemize}
 
 
+    \section{Prototyp systemu agentowego}
+    System agentowy składający się z:
+    \begin{itemize}
+        \item jednego agenta Generator Zestawień
+        \item jednego agenta Poszukiwacza Trendów
+%        todo sprawdź czy rzeczywiście 30 kombinacji
+        \item 30 agentów Poszukiwacz Wzorców - po jednym dla każdej kombinacji państw.
+    \end{itemize}
+
+    Generator Zestawień tworzy agenta Poszukiwacz Trendów.
+    Agent Poszukiwacz Trendów tworzy dla każdej pary krajów Poszukiwacza Wzorców.
+    Poszukiwacz Wzorców sprawdza symetrię/asymetrię relacji~\ref{symetria_relacji} pomiędzy parą krajów badając siłę powiązania miedzy nimi, w kolejnych okresach czasu.
+    Wyniki są zwracane do Poszukiwacza Trendów który analizuje zebrane dane szukając tendencji.
+    Ostateczne wyniki przekazywane są do Generatora Zestawień który przygotowuje raport końcowy.
+
+    \paragraph{Symetria relacji}
+    \[ Percentage = \frac
+    {\sum{Events\ country\ A\ (actor 1)\ with\ Country\ B\ (actor 2)}}
+    {\sum{Events\ country\ A\ (actor 1)}}
+    \]
+
+    \paragraph{Wzorzec Mocarstwo/Klient}
+
+    \subparagraph{Relacje istotne}
+%    todo przeredagować
+    Wg pracy Jarosza.
+    Relacje znaczące to takie wydarzenia które posiadają co najmniej 50 wzmianek w mediach (NumMentions)//s.\! 33.
+
+    Wzorzec Mocarstwo/Klient określony jako stosunek liczby wszystkich relacji znaczących Aktora 1 oraz liczby wszystkich znaczących relacji Aktora2 //s.\@ 82.
+    \[ Ratio = \frac
+    {\sum{Events\ country\ A\ (actor 1) (NumMentions > 50)}}
+    {\sum{Events\ country\ B\ (actor 1) (NumMentions > 50)}}
+    \]
+
+    \paragraph{Kraje do testów}
+    \begin{enumerate}
+        \item Polska
+        \item Niemcy
+        \item Rosja
+        \item Czechy
+        \item Słowacja
+        \item Ukraina
+    \end{enumerate}
+    6 krajów - 30 kombinacji
+
+    Zakres czasu jaki powinien być analizowany jest przekazywany z Generatora Zestawień.
+    Analizowane zostaną wszystkie kraje (z puli testowej)lub te wybrane przez Generator.
+    Analizowany jest tylko wzorzec symetria/asymetria.
+    Początkowo analiza prowadzona jest w miesięcznych przedziałach czasu.
+    Jeśli wyniki będą bardzo zaburzone, zwiększone zostaną analizowane przedziały czasu.
+    Jeśli wyniki będą stałe możliwe będzie przejście na mniejsze przedziały.
+    Diagram czynności prototypu został przedstawiony na rysunku~\ref{fig:diagram_czynności_top}.
+    Diagram czynności przedstawia logikę algorytmu w postaci sekwencji aktywności.
+    Upraszcza i ulepsza proces dzięki wyjaśnieniu skomplikowanych przypadków.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{fig/diagrams/Diagram czynności top ALL.pdf}
+        \caption{Diagram czynności systemu. (źródło: opracowanie własne)}
+        \label{fig:diagram_czynności_top}
+    \end{figure}
+
+    \subsection{Parametry konfiguracyjne}
+    Parametry konfiguracyjne mogą być podawane na wejście systemu.
+    Część parametrów może być określana w postaci przedziałów, z których system wybierze wartości.
+    Niektóre z parametrów mogą być dobierane w pełni automatycznie na zasadzie uczenia maszynowego.
+%    Manualne, pół-automatyczne, automatyczne.
+
+
     \chapter{Ewaluacja}\label{ch:ewaluacja}
 
 
@@ -1853,74 +1922,7 @@ singlelinecheck=off
     \end{table}
 
 
-    \chapter{Prototyp v1}
-    System agentowy składający się z:
-    \begin{itemize}
-        \item jednego agenta Generator Zestawień
-        \item jednego agenta Poszukiwacza Trendów
-%        todo sprawdź czy rzeczywiście 30 kombinacji
-        \item 30 agentów Poszukiwacz Wzorców - po jednym dla każdej kombinacji państw.
-    \end{itemize}
-
-    Generator Zestawień tworzy agenta Poszukiwacz Trendów.
-    Agent Poszukiwacz Trendów tworzy dla każdej pary krajów Poszukiwacza Wzorców.
-    Poszukiwacz Wzorców sprawdza symetrię/asymetrię relacji~\ref{symetria_relacji} pomiędzy parą krajów badając siłę powiązania miedzy nimi, w kolejnych okresach czasu.
-    Wyniki są zwracane do Poszukiwacza Trendów który analizuje zebrane dane szukając tendencji.
-    Ostateczne wyniki przekazywane są do Generatora Zestawień który przygotowuje raport końcowy.
-
-    \paragraph{Symetria relacji}
-    \[ Percentage = \frac
-    {\sum{Events\ country\ A\ (actor 1)\ with\ Country\ B\ (actor 2)}}
-    {\sum{Events\ country\ A\ (actor 1)}}
-    \]
-
-    \paragraph{Wzorzec Mocarstwo/Klient}
-
-    \subparagraph{Relacje istotne}
-%    todo przeredagować
-    Wg pracy Jarosza.
-    Relacje znaczące to takie wydarzenia które posiadają co najmniej 50 wzmianek w mediach (NumMentions)//s.\! 33.
-
-    Wzorzec Mocarstwo/Klient określony jako stosunek liczby wszystkich relacji znaczących Aktora 1 oraz liczby wszystkich znaczących relacji Aktora2 //s.\@ 82.
-    \[ Ratio = \frac
-    {\sum{Events\ country\ A\ (actor 1) (NumMentions > 50)}}
-    {\sum{Events\ country\ B\ (actor 1) (NumMentions > 50)}}
-    \]
-
-    \paragraph{Kraje do testów}
-    \begin{enumerate}
-        \item Polska
-        \item Niemcy
-        \item Rosja
-        \item Czechy
-        \item Słowacja
-        \item Ukraina
-    \end{enumerate}
-    6 krajów - 30 kombinacji
-
-    Zakres czasu jaki powinien być analizowany jest przekazywany z Generatora Zestawień.
-    Analizowane zostaną wszystkie kraje (z puli testowej)lub te wybrane przez Generator.
-    Analizowany jest tylko wzorzec symetria/asymetria.
-    Początkowo analiza prowadzona jest w miesięcznych przedziałach czasu.
-    Jeśli wyniki będą bardzo zaburzone, zwiększone zostaną analizowane przedziały czasu.
-    Jeśli wyniki będą stałe możliwe będzie przejście na mniejsze przedziały.
-    Diagram czynności prototypu został przedstawiony na rysunku~\ref{fig:diagram_czynności_top}.
-    Diagram czynności przedstawia logikę algorytmu w postaci sekwencji aktywności.
-    Upraszcza i ulepsza proces dzięki wyjaśnieniu skomplikowanych przypadków.
-
-    \begin{figure}[!ht]
-        \centering
-        \includegraphics[width=\linewidth]{fig/diagrams/Diagram czynności top ALL.pdf}
-        \caption{Diagram czynności systemu. (źródło: opracowanie własne)}
-        \label{fig:diagram_czynności_top}
-    \end{figure}
-
-
-    \section{Parametry konfiguracyjne}
-    Parametry konfiguracyjne mogą być podawane na wejście systemu.
-    Część parametrów może być określana w postaci przedziałów, z których system wybierze wartości.
-    Niektóre z parametrów mogą być dobierane w pełni automatycznie na zasadzie uczenia maszynowego.
-%    Manualne, pół-automatyczne, automatyczne.
+    \chapter{Prototyp v1 cd}
 
     \subsection{Tylko wybrane kraje}
     Lista krajów które będą analizowane jako jedyne.
