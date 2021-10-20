@@ -70,6 +70,7 @@ singlelinecheck=off
 
     \chapter{Wstęp}\label{ch:wstęp}
 
+
     \chapter{Źródło danych}\label{ch:źródło}
 
 
@@ -1849,58 +1850,6 @@ singlelinecheck=off
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster2_measures_syr.png}
         \caption{Wartości miar w klastrze. (źródło: opracowanie własne)}
         \label{tab:cluster2_measures_syr}
-    \end{table}
-
-
-    \chapter{table en}
-
-    \begin{table}[ht!]
-        \begin{tabular}{ll}
-            Role schema:             & Correlation Seeker                                          \\ \hline
-            Description              & This role includes finding correlations between countries   \\
-            & based on data collected from Pattern Seekers.               \\
-            Protocols and Activities & \textbf{checkPatterns, searchForCorrelation, tellGenerator} \\
-            Permissions              & \textbf{reads delivered} \textit{PatternSeeker}             \\
-            & ~~~~~~\textit{pattern}                                      \\
-            & \textbf{change} \textit{statement}                          \\
-            Responsibilities         &                                                             \\
-            ~~vitality               & \textbf{checkPatterns, searchForCorrelation, tellGenerator} \\
-            ~~security               & -                                                           \\
-        \end{tabular}
-        \caption{Correlation Seeker role schema. (source: own research)}
-    \end{table}
-
-    \begin{table}[ht!]
-        \begin{tabular}{ll}
-            Role schema:             & Comparison Generator                                               \\ \hline
-            Description              & This role includes creating comparisons from                       \\
-            & data collected by Correlation and Trend Seekers.                   \\
-            Protocols and Activities & \textbf{checkComparisons}                                          \\
-            Permissions              & \textbf{reads delivered} \textit{Correlation Seeker, Trend Seeker} \\
-            & ~~~~~~\textit{comparison}                                          \\
-            & \textbf{change} \textit{comparison}                                \\
-            Responsibilities         &                                                                    \\
-            ~~vitality               & \textbf{checkComparison}                                           \\
-            ~~security               & -                                                                  \\
-        \end{tabular}
-        \caption{Comparison Generator role schema. (source: own research)}
-    \end{table}
-
-    \begin{table}[ht!]
-        \begin{tabular}{ll}
-            Role schema:             & Pattern Seeker                              \\ \hline
-            Description              & This role includes pattern searching        \\
-            & among the data using a set of measures.     \\
-            & Patterns fall into two categories: internal \\
-            & and between countries.                      \\
-            Protocols and Activities & \textbf{SearchPatterns}                     \\
-            Permissions              & \textbf{reads} \textit{measures}            \\
-            & \textbf{change} \textit{pattern}            \\
-            Responsibilities         &                                             \\
-            ~~vitality               & \textbf{SearchPatterns}                     \\
-            ~~security               & -                                           \\
-        \end{tabular}
-        \caption{Pattern Seeker role schema. (source: own research)}
     \end{table}
 
 
