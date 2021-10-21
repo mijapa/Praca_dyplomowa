@@ -1467,12 +1467,12 @@ singlelinecheck=off
 
 
     \section{Prototyp systemu agentowego}
+
     System agentowy składający się z:
     \begin{itemize}
         \item jednego agenta Generator Zestawień
         \item jednego agenta Poszukiwacza Trendów
-%        todo sprawdź czy rzeczywiście 30 kombinacji
-        \item 30 agentów Poszukiwacz Wzorców - po jednym dla każdej kombinacji państw.
+        \item agentów Poszukiwacz Wzorców - po jednym dla każdej kombinacji państw.
     \end{itemize}
 
     Generator Zestawień tworzy agenta Poszukiwacz Trendów.
@@ -1481,15 +1481,25 @@ singlelinecheck=off
     Wyniki są zwracane do Poszukiwacza Trendów który analizuje zebrane dane szukając tendencji.
     Ostateczne wyniki przekazywane są do Generatora Zestawień który przygotowuje raport końcowy.
 
-    \paragraph{Symetria relacji}
+    \subsection{Poszukiwacze wzorców}
+    W kolejnych paragrafach opisane są poszczególne typy prowadzonych analiz.
+
+    \paragraph{Symetria siły powiązania}
+    Analiza siły powiązania między parami krajów.
+
+    Siła powiązania, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
+    Odzwierciedla to jak ważny dla kraju A jest kraj B\@.
+
+
     \[ Percentage = \frac
     {\sum{Events\ country\ A\ (actor 1)\ with\ Country\ B\ (actor 2)}}
     {\sum{Events\ country\ A\ (actor 1)}}
+    100 \%
     \]
 
     \paragraph{Wzorzec Mocarstwo/Klient}
+    Analiza wzorca Mocarstwo/Klient między parami krajów.
 
-    \subparagraph{Relacje istotne}
 %    todo przeredagować
     Wg pracy Jarosza.
     Relacje znaczące to takie wydarzenia które posiadają co najmniej 50 wzmianek w mediach (NumMentions)//s.\! 33.
@@ -1500,7 +1510,16 @@ singlelinecheck=off
     {\sum{Events\ country\ B\ (actor 1) (NumMentions > 50)}}
     \]
 
-    \paragraph{Kraje do testów}
+    \paragraph{Korelacja parami}
+%    todo przeredagować
+    Analiza korelacji siły powiązania pomiędzy parami krajów z 6 miesięcznym oknem.
+    Siła powiązania mówi nam jak jeden z krajów jest ważny dla drugiego.
+    Badając korelację siły powiązania możemy zorientować się jak bardzo zmiana postrzegania kraju A przez kraj B wpływa
+    na zmianę postrzegania kraju B przez kraj A\@.
+
+    Wyniki poszukiwania wzorców zostały opisane w sekcji~\ref{sec:poszukiwanie-wzorców}.
+
+    \paragraph{Testowane kraje}
     \begin{enumerate}
         \item Polska
         \item Niemcy
@@ -1512,11 +1531,9 @@ singlelinecheck=off
     6 krajów - 30 kombinacji
 
     Zakres czasu jaki powinien być analizowany jest przekazywany z Generatora Zestawień.
-    Analizowane zostaną wszystkie kraje (z puli testowej)lub te wybrane przez Generator.
-    Analizowany jest tylko wzorzec symetria/asymetria.
+    Analizowane zostaną wszystkie kraje z puli testowej przekazanej Generatorowi Zestawień.
     Początkowo analiza prowadzona jest w miesięcznych przedziałach czasu.
-    Jeśli wyniki będą bardzo zaburzone, zwiększone zostaną analizowane przedziały czasu.
-    Jeśli wyniki będą stałe możliwe będzie przejście na mniejsze przedziały.
+
     Diagram czynności prototypu został przedstawiony na rysunku~\ref{fig:diagram_czynności_top}.
     Diagram czynności przedstawia logikę algorytmu w postaci sekwencji aktywności.
     Upraszcza i ulepsza proces dzięki wyjaśnieniu skomplikowanych przypadków.
