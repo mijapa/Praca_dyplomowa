@@ -1547,16 +1547,24 @@ singlelinecheck=off
 
 
     \section{Badanie korelacji}
+%    todo rozbuduj
+    Agent Poszukiwacz Trendów na podstawie danych od Poszukiwaczy Wzorców poszukuje tendencji.
+    Wyniki poszukiwania korelacji zostały opisane w sekcji~\ref{sec:poszukiwanie-korelacji}.
 
     \subsection{Korelacja Spearmana, Pearsona i Kendalla}
 
     \subsection{Autokorelacja}
+    Autokorelacja opisuje w jakim stopniu kolejne wyrazy ciągu zależą od poprzednich w szeregu czasowym.
+    Analiza autokorelacji pozwala określić czy w szeregu czasowym występuje powtarzalność zjawisk.
+    Poszukiwacz Trendu Autokorelacji bada autokorelację siły połączenia poszczególnych krajów.
 
-    \subsection{Kroskorelacja}
+    \subsection{Korelacja krzyżowa}
+    Korelacja krzyżowa to pomiar korelacji dla różnych przemieszczeń.
+    Wyraźna szczytowa korelacja krzyżowa oznacza, że zmiana jednej siły połączenia pociąga za sobą drugą.
 
-    \subsection{Rolling median}
-
-    Wyniki poszukiwania korelacji zostały opisane w sekcji~\ref{sec:poszukiwanie-korelacji}.
+    \subsection{Korelacja krocząca}
+    Korelacja krocząca to korelacje pomiędzy dwoma szeregami czasowymi w przesuwającym się oknie.
+    Pozwala zbadać jak zmiana jednej siły połączenia wpływała na drugą w czasie.
 
 
     \section{Klastrowanie}
@@ -1568,8 +1576,103 @@ singlelinecheck=off
 
     \section{Poszukiwanie wzorców}\label{sec:poszukiwanie-wzorców}
 
+    \paragraph{Siła połączenia}
+    Siła połączenia odzwierciedla to w jakim stopniu jeden kraj jest zainteresowany drugim.
+    Wykres~\ref{fig:POL and RUSconnection 1M} przedstawia siłę połączenia pomiędzy Polską i Rosją w latach 2015-2020.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{../spade_proto/figures/symmetry/POL and RUSconnection 1M.png}
+        \caption{Wykres siły połączenia Polski i Rosji. (źródło: opracowanie własne)}
+        \label{fig:POL and RUSconnection 1M}
+    \end{figure}
+
+    Zdarzenia są agregowane miesięcznie.
+    Obserwujemy wyraźny wzrost zainteresowania Rosją przez Polskę na początku 2020 roku.
+    Taki wynik jest zgodny z zdarzeniami ze świata rzeczywistego.
+    W tym okresie odbywały się wybory parlamentarne w Rosji.
+
 
     \section{Poszukiwanie korelacji}\label{sec:poszukiwanie-korelacji}
+
+    \paragraph{Globalna korelacja Pearsona, Kendalla oraz Spearmana}
+    Wykres~\ref{fig:Connection strength pearson correlation 2015-2020} przedstawia korelację Pearsona siły połączenia miedzy parami krajów.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{../spade_proto/figures/correlation/Connection strength pearson correlation 2015-2020.png}
+        \caption{Diagram kolorów (heatmap) korelacji Pearsona siły połączenia. (źródło: opracowanie własne)}
+        \label{fig:Connection strength pearson correlation 2015-2020}
+    \end{figure}
+
+    Obserwujemy wysoki (ponad 0.8) współczynnik korelacji dla przeciwnych par (jak Polska-Niemcy oraz Niemcy-Polska).
+    Zauważalna (ponad 0.4) jest korelacja siły połączenia Niemiec i Rosji oraz Polski i Rosji.
+    Wyniki te są zgodne z intuicją.
+
+    Wykres~\ref{fig:Connection strength kendall correlation 2015-2020} przedstawia korelację Kendalla siły połączenia miedzy parami krajów.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{../spade_proto/figures/correlation/Connection strength kendall correlation 2015-2020.png}
+        \caption{Diagram kolorów (heatmap) korelacji Kendalla siły połączenia. (źródło: opracowanie własne)}
+        \label{fig:Connection strength kendall correlation 2015-2020}
+    \end{figure}
+
+    Wykres~\ref{fig:Connection strength spearman correlation 2015-2020} przedstawia korelację Spearmana siły połączenia miedzy parami krajów.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{../spade_proto/figures/correlation/Connection strength spearman correlation 2015-2020.png}
+        \caption{Diagram kolorów (heatmap) korelacji Spearmana siły połączenia. (źródło: opracowanie własne)}
+        \label{fig:Connection strength spearman correlation 2015-2020}
+    \end{figure}
+
+    Na obu wykresach obserwujemy ujemną korelację siły połączenia Rosja-Polska i Polska-Niemcy oraz Polska-Niemcy i Rosja-Polska.
+    Takie wyniki są zgodne z intuicją.
+
+    \paragraph{Autokorelacja Pearsona}
+    Wykres~\ref{fig:connection-strength-pol-to-deu-autocorrelation-2015-2020} przedstawia autokorelację Pearsona dla siły połączenia Polski i Niemiec w latach 2015-2020.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{../spade_proto/figures/autocorrelation/Connection strength POL to DEU autocorrelation 2015-2020.png}
+        \caption{Wykres autokorelacji siły połączenia Polski i Niemiec. (źródło: opracowanie własne)}
+        \label{fig:connection-strength-pol-to-deu-autocorrelation-2015-2020}
+    \end{figure}
+
+    Dolna oś przedstawia opóźnienie w miesiącach.
+    Obserwujemy szczyt około 18 miesięcy który sugeruje powtarzalność pewnych wydarzeń co półtora roku.
+
+    \paragraph{Korelacja Pearsona par krajów}
+    Wykres~\ref{fig:Connection strength DEU to POL and RUS to POL Pearson correlation with 6 months rolling 2015-2020} przedstawia korelację siły połączenia Niemiec i Polski oraz Rosji i Polski.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{../spade_proto/figures/auto_seek/connection strength/pairwise_rolling_correlation/Connection strength DEU to POL and RUS to POL Pearson correlation with 6 months rolling 2015-2020.png}
+        \caption{Wykres korelacji Pearsona siły połączenia Niemcy-Polska i Rosja-Polska z sześciomiesięcznym ruchomym oknem. (źródło: opracowanie własne)}
+        \label{fig:Connection strength DEU to POL and RUS to POL Pearson correlation with 6 months rolling 2015-2020}
+    \end{figure}
+
+    W dniach 8-9 lipca 2016 roku odbył się szczyt NATO w Warszawie.
+    W dniu 29 lipca 2016 roku papież Franciszek przekroczył bramę ze znakiem Arbeit macht frei odwiedzając
+    były obóz koncentracyjny Auschwitz-Birkenau.
+    W dniu 16 września 2016 roku odbyły się wybory parlamentarne w Rosji które wygrała partia Jedna Rosja.
+    Obserwujemy silną ujemną korelację siły połączenia Niemiec i Polski oraz Rosji i Polski,
+    co jest zgodne z intuicją.
+
+    \paragraph{Korelacja krzyżowa Pearsona}
+    Wykres~\ref{fig:Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020} przedstawia korelację krzyżową siły połączenia połączenia Niemiec i Polski oraz Polski i Niemiec w latach 2015-2020.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=\linewidth]{../spade_proto/figures/auto_seek/connection strength/cross_correlation/Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020.png}
+        \caption{Wykres korelacji krzyżowej Pearsona siły połączenia
+        Niemcy-Polska i Polska-Niemcy. (źródło: opracowanie własne)}
+        \label{fig:Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020}
+    \end{figure}
+
+    Szczytowa korelacja w około -1 miesięcznym przemieszczeniu oznacza, że zmiana znaczenia Niemiec dla Polski pociąga za sobą zmianę znaczenia Polski dla Niemiec.
+    Obserwacja ta jest zgodna z intuicją.
 
 
     \section{Klastrowanie}
