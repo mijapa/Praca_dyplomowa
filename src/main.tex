@@ -428,8 +428,7 @@ singlelinecheck=off
         \item progi,
         \item poziomy granulacji,
         \item wyszukiwanie korelacji,
-        \item wyszukiwanie trendów,
-        \item wykorzystanie dodatkowych źródeł informacji.
+        \item wyszukiwanie trendów.
     \end{enumerate}
 
     Na wyjściu systemu otrzymujemy zagregowane dane.
@@ -451,23 +450,12 @@ singlelinecheck=off
 
     \section{Wybór wzorców}\label{sec:wybór-wzorców}
 
-    \paragraph{GDELT}
 
-    sojusznik
-    nieprzyjaciel
-    symetria
-    asymetria
-    mocarstwo-klient
-
-    stabilna relacja
-    pojedyncze zaburzenie
-    oscylacja
-
-    \paragraph{Bank Światowy}
-
-    kraj rozwijający się
-    bogaty kraj
-    ubogi kraj
+    W wersji podstawowej systemu, na podstawie danych zgromadzonych w bazie danych GDELT będą wyszukiwane wzorce:
+    \begin{itemize}
+        \item symetria siły połączenia
+        \item mocarstwo-klient
+    \end{itemize}
 
 
     \section{Role i Interakcje}
@@ -499,32 +487,12 @@ singlelinecheck=off
             \begin{enumerate}
                 \item Poszukiwacz Wzorców Statycznych
                 \begin{enumerate}
-                    \item sojusznik
-                    \item nieprzyjaciel
                     \item symetria
-                    \item asymetria
                     \item mocarstwo-klient
-                \end{enumerate}
-                \item Poszukiwacz Wzorców Dynamicznych
-                \begin{enumerate}
-                    \item stabilna relacja
-                    \item pojedyncze zaburzenie
-                    \item oscylacja
-                \end{enumerate}
-                \item Poszukiwacz Wzorców Covid?
-            \end{enumerate}
-            \item Poszukiwacz wzorców w danych Banku Światowego
-            \begin{enumerate}
-                \item Poszukiwacz Wzorców Statycznych
-                \begin{enumerate}
-                    \item kraj rozwijający się
-                    \item bogaty kraj
-                    \item ubogi kraj
                 \end{enumerate}
             \end{enumerate}
         \end{enumerate}
         \item Poszukiwacz Korelacji
-        \item Poszukiwacz Trendów
         \item Generator Zestawień
     \end{enumerate}
 
@@ -1971,6 +1939,43 @@ singlelinecheck=off
     \subsection{Podobieństwo statyczne}
 
     \subsection{Podobieństwo zagregowane}
+
+    \subsection{Rozbudowa systemu agentowego}
+    \begin{enumerate}
+        \item Poszukiwacz wzorców
+        \begin{enumerate}
+            \item Poszukiwacz wzorców w danych GDELT
+            \begin{enumerate}
+                \item Poszukiwacz Wzorców Statycznych
+                \begin{enumerate}
+                    \item sojusznik
+                    \item nieprzyjaciel
+                    \item symetria
+                    \item asymetria
+                    \item mocarstwo-klient
+                \end{enumerate}
+                \item Poszukiwacz Wzorców Dynamicznych
+                \begin{enumerate}
+                    \item stabilna relacja
+                    \item pojedyncze zaburzenie
+                    \item oscylacja
+                \end{enumerate}
+                \item Poszukiwacz Wzorców Covid?
+            \end{enumerate}
+            \item Poszukiwacz wzorców w danych Banku Światowego
+            \begin{enumerate}
+                \item Poszukiwacz Wzorców Statycznych
+                \begin{enumerate}
+                    \item kraj rozwijający się
+                    \item bogaty kraj
+                    \item ubogi kraj
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+        \item Poszukiwacz Korelacji
+        \item Poszukiwacz Trendów
+        \item Generator Zestawień
+    \end{enumerate}
 
     \inputencoding{utf8}
     \newpage
