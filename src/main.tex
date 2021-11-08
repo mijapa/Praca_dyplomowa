@@ -391,21 +391,22 @@ singlelinecheck=off
 
 
     \chapter{Koncepcja}\label{ch:koncepcja}
-    Identyfikacja wzorców: opisujących państwa oraz relacje między państwami.
-    Stworzenie reguł wspomagających odnajdywanie wzorców.
+    System Agentowy zajmuje się analizą danych znajdujących się w bazie GDELT\@.
+    Identyfikowane są wzorce opisujące państwa oraz relacje między nimi.
+    Stworzone reguły wspomagają odnajdywanie wzorców.
 
     Wejściem systemu jest zadanie konfiguracyjne.
     Zadanie konfiguracyjne uruchamia system który szuka wzorców.
-    System zajmuje się:
+    Działanie systemu przebiega wg następujących punktów:
     \begin{enumerate}
-        \item rozdziałem zadań dla agentów,
-        \item wyszukiwaniem wzorców,
-        \item zbieraniem danych,
-        \item analizą,
-        \item generowaniem zestawień.
+        \item rozdział zadań dla agentów,
+        \item wyszukiwanie wzorców,
+        \item zbieranie danych,
+        \item analiza,
+        \item generowanie zestawień.
     \end{enumerate}
 
-    Grupy agentów profilowane w celu automatycznego wyszukiwania wzorców czasowych.
+    Grupy agentów profilowane są w celu automatycznego wyszukiwania wzorców czasowych.
     Zróżnicowanie agentów obejmuje:
     \begin{enumerate}
         \item progi,
@@ -417,18 +418,18 @@ singlelinecheck=off
     Na wyjściu systemu otrzymujemy zagregowane dane.
 
 
-    \section{Miary}\label{sec:miary}
-    Miary jakie zostaną wykorzystane do poszukiwania wzorców:
-    \begin{enumerate}
-        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1 (dalej oznaczone jako \textit{Events}),
-        \item[•] sumy liczby wzmianek (całkowitej liczby wzmianek o~tym wydarzeniu, we wszystkich dokumentach źródłowych podczas 15-minutowej aktualizacji, w~której zostało po raz pierwszy zauważone) w~analizowanym okresie, dla wydarzeń w~których dany kraj jest aktorem 1 (dalej oznaczone jako \textit{numMentions}),
-        \item[•] stosunku liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{material conflict} do liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{material cooperation} (dalej oznaczone jako \textit{materialConfCoop}),
-        \item[•] stosunku liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{verbal conflict} do liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{verbal cooperation} (dalej oznaczone jako \textit{verbalConfCoop}),
-        \item[•] średniego, dla wszystkich zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, średniego tonu (średni „ton” wszystkich dokumentów zawierających jedną lub więcej wzmianek o~tym wydarzeniu, podczas 15-minutowej aktualizacji, w~której zostało ono po raz pierwszy zauważone, waha się od -100 (skrajnie ujemny) do +100 (skrajnie dodatni)) (dalej oznaczone jako \textit{avgAvgTone}),
-        \item[•] średniej, dla wszystkich zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, miary Goldsteina (skala Goldsteina przypisuje wynik liczbowy od -10 do +10, wychwytując teoretyczny potencjalny wpływ, jaki rodzaj zdarzenia będzie miał na stabilność kraju) (dalej oznaczone jako \textit{avgGoldstein}),
-        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{event root code} jako \textit{fight} Fight (dalej oznaczone jako \textit{fightCount}),
-        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{event root code} jako \textit{Express intent to cooperate}  (dalej oznaczone jako \textit{expressCount}).
-    \end{enumerate}
+%    \section{Miary}\label{sec:miary}
+%    Miary jakie zostaną wykorzystane do poszukiwania wzorców:
+%    \begin{enumerate}
+%        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1 (dalej oznaczone jako \textit{Events}),
+%        \item[•] sumy liczby wzmianek (całkowitej liczby wzmianek o~tym wydarzeniu, we wszystkich dokumentach źródłowych podczas 15-minutowej aktualizacji, w~której zostało po raz pierwszy zauważone) w~analizowanym okresie, dla wydarzeń w~których dany kraj jest aktorem 1 (dalej oznaczone jako \textit{numMentions}),
+%        \item[•] stosunku liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{material conflict} do liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{material cooperation} (dalej oznaczone jako \textit{materialConfCoop}),
+%        \item[•] stosunku liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{verbal conflict} do liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{verbal cooperation} (dalej oznaczone jako \textit{verbalConfCoop}),
+%        \item[•] średniego, dla wszystkich zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, średniego tonu (średni „ton” wszystkich dokumentów zawierających jedną lub więcej wzmianek o~tym wydarzeniu, podczas 15-minutowej aktualizacji, w~której zostało ono po raz pierwszy zauważone, waha się od -100 (skrajnie ujemny) do +100 (skrajnie dodatni)) (dalej oznaczone jako \textit{avgAvgTone}),
+%        \item[•] średniej, dla wszystkich zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, miary Goldsteina (skala Goldsteina przypisuje wynik liczbowy od -10 do +10, wychwytując teoretyczny potencjalny wpływ, jaki rodzaj zdarzenia będzie miał na stabilność kraju) (dalej oznaczone jako \textit{avgGoldstein}),
+%        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{event root code} jako \textit{Fight} (dalej oznaczone jako \textit{fightCount}),
+%        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{event root code} jako \textit{Express intent to cooperate}  (dalej oznaczone jako \textit{expressCount}).
+%    \end{enumerate}
 
 
     \section{Wybór wzorców}\label{sec:wybór-wzorców}
@@ -463,8 +464,10 @@ singlelinecheck=off
     Działania to obliczenia związane z rolą, które mogą być przeprowadzone przez agenta bez interakcji z innymi.
     Protokoły definiują sposób w jaki role wchodzą w interakcję ze sobą.
 
+    W Systemie zostały przewidziane następujące role:
+
     \begin{enumerate}
-        \item Poszukiwacz wzorców
+        \item Poszukiwacz wzorców~\ref{tab:schemat roli Poszukiwacz Wzorców}
         \begin{enumerate}
             \item Poszukiwacz wzorców w danych GDELT
             \begin{enumerate}
@@ -475,33 +478,9 @@ singlelinecheck=off
                 \end{enumerate}
             \end{enumerate}
         \end{enumerate}
-        \item Poszukiwacz Korelacji
-        \item Generator Zestawień
+        \item Poszukiwacz Korelacji~\ref{tab:schemat roli poszukiwacz korelacji}
+        \item Generator Zestawień~\ref{tab:schemat roli Generator Zestawień}
     \end{enumerate}
-
-    \subsection{Interakcje}
-    W systemie zamkniętym wszyscy agenci są znani a priori i mają ze sobą współpracować, a zatem mogą sobie ufać podczas interakcji.
-    W metodologii GAIA model interakcji składa się ze zbioru definicji protokołów.
-    Protokół to wzorzec interakcji który został formalnie zdefiniowany i wyodrębniony.
-
-    \begin{enumerate}
-        \item Zgłoszenie znalezionej informacji przez agenta szukającego wzorców do agenta poszukującego korelacji i trendów.
-        \item Przekazanie informacji do agenta generującego zestawienia.
-    \end{enumerate}
-
-    \begin{table}[ht!]
-        \begin{tabular}{ll}
-            Schemat roli:          & nazwa roli                                          \\ \hline
-            Opis                   & krotki opis roli w języku polskim                   \\
-            Protokoły i Aktywności & protokoły i aktywności w których rola bierze udział \\
-            Uprawnienia            & prawa związane z rolą                               \\
-            Obowiązki              &                                                     \\
-            ~~żywotność            & obowiązki życiowe                                   \\
-            ~~bezpieczeństwo       & odpowiedzialność za bezpieczeństwo                  \\
-        \end{tabular}
-        \caption{Schemat opisu roli agenta w metodologii GAIA. (źródło: Opracowanie własne)}
-        \label{tab:schemat roli}
-    \end{table}
 
     \begin{table}[ht!]
         \begin{tabular}{ll}
@@ -555,20 +534,26 @@ singlelinecheck=off
         \label{tab:schemat roli Poszukiwacz Wzorców}
     \end{table}
 
+    \subsection{Interakcje}
+    W systemie zamkniętym wszyscy agenci są znani a priori i mają ze sobą współpracować, a zatem mogą sobie ufać podczas interakcji.
+    W metodologii GAIA model interakcji składa się ze zbioru definicji protokołów.
+    Protokół to wzorzec interakcji który został formalnie zdefiniowany i wyodrębniony.
+
+    Interakcje wyodrębnione w Systemie to:
+
+    \begin{enumerate}
+        \item zgłoszenie znalezionej informacji przez agenta szukającego wzorców do agenta poszukującego korelacji i trendów,
+        \item przekazanie informacji do agenta generującego zestawienia.
+    \end{enumerate}
+
     \subsection{Agenci}
-    Zadanie konfiguracyjne będzie określało na jakich krajach będzie skupiona uwaga systemu.
-    Dla każdego kraju powstanie agent mu odpowiadający który obliczy podstawowe miary.
-    Agenci przyjmujący role poszukiwaczy wzorców będą współpracować z agentami - krajami.
-
-    Na podstawie ogólnego schematu Poszukiwacz Wzorców zostaną wyspecyfikowani poszukiwacze wzorców lokalnych - wewnętrznych -
-    i globalnych - między państwami.
-    Analizowane będą wzorce statyczne i dynamiczne.
-
-    Agent związany z danym krajem może wstępnie badać relacje z innymi krajami i w razie potrzeby powołać agenta badającego relacje między krajami.
+    Zadanie konfiguracyjne określa na jakich krajach będzie skupiona uwaga systemu.
+    Pojedyńczy agent pełni rolę Generatora Zestawień, który tworzy Poszukiwaczy Korelacji.
+    Poszukiwacze Korelacji tworzą Poszukiwaczy Wzorców którzy przetwarzają dane pobrane z GDELT\@.
 
 
     \section{Współdziałanie agentów}
-    Na rysunku~\ref{fig:relacje} przedstawiony został schemat relacji ról agentów.
+    Na rysunku~\ref{fig:relacje} przedstawiony został schemat współdziałania agentów.
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=\linewidth]{fig/relacja ról.png}
@@ -577,35 +562,35 @@ singlelinecheck=off
     \end{figure}
 
 
-    \section{Eksploracja}
-
-    \paragraph{Symetria relacji między państwami}\label{symetria_relacji}
-    Siła powiązania, zaproponowana w artykule \ldots, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
-    Ponieważ siła powiązania nie jest znormalizowana przez liczbę zdarzeń dla kraju B, dlatego nie jest symetryczna.
-    Odzwierciedla to jak ważny dla kraju A jest kraj B\@.
-    W trakcie eksploracji możliwe są zmiany miary symetrii np.:
-    \begin{enumerate}
-        \item poprzez wymnażanie przez liczbę wzmianek,
-        \item wybór zdarzeń ważniejszych,
-        \item filtrowanie miarą goldsteina.
-    \end{enumerate}
-
-    Wykres~\ref{fig:POL-DEU-POL} przedstawia symetryczność siły połączenia Polski i~Niemiec w~czasie.
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/POL-DEU-POL.png}
-        \caption{Symetryczność siły połączenia Polski i~Niemiec w~czasie. (źródło: opracowanie własne)}
-        \label{fig:POL-DEU-POL}
-    \end{figure}
-
-
-    Wykres~\ref{fig:POL-RUS-POL} przedstawia symetryczność siły połączenia Polski i~Rosji w~czasie.
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/POL-RUS-POL.png}
-        \caption{Symetryczność siły połączenia Polski i~Rosji w~czasie. (źródło: opracowanie własne)}
-        \label{fig:POL-RUS-POL}
-    \end{figure}
+%    \section{Eksploracja}
+%
+%    \paragraph{Symetria relacji między państwami}\label{symetria_relacji}
+%    Siła powiązania, zaproponowana w artykule \ldots, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
+%    Ponieważ siła powiązania nie jest znormalizowana przez liczbę zdarzeń dla kraju B, dlatego nie jest symetryczna.
+%    Odzwierciedla to jak ważny dla kraju A jest kraj B\@.
+%    W trakcie eksploracji możliwe są zmiany miary symetrii np.:
+%    \begin{enumerate}
+%        \item poprzez wymnażanie przez liczbę wzmianek,
+%        \item wybór zdarzeń ważniejszych,
+%        \item filtrowanie miarą goldsteina.
+%    \end{enumerate}
+%
+%    Wykres~\ref{fig:POL-DEU-POL} przedstawia symetryczność siły połączenia Polski i~Niemiec w~czasie.
+%    \begin{figure}[!htp]
+%        \centering
+%        \includegraphics[width=\linewidth]{fig/POL-DEU-POL.png}
+%        \caption{Symetryczność siły połączenia Polski i~Niemiec w~czasie. (źródło: opracowanie własne)}
+%        \label{fig:POL-DEU-POL}
+%    \end{figure}
+%
+%
+%    Wykres~\ref{fig:POL-RUS-POL} przedstawia symetryczność siły połączenia Polski i~Rosji w~czasie.
+%    \begin{figure}[!htp]
+%        \centering
+%        \includegraphics[width=\linewidth]{fig/POL-RUS-POL.png}
+%        \caption{Symetryczność siły połączenia Polski i~Rosji w~czasie. (źródło: opracowanie własne)}
+%        \label{fig:POL-RUS-POL}
+%    \end{figure}
 
 
     \chapter{Realizacja}\label{ch:realizacja}
