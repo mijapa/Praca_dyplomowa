@@ -599,8 +599,8 @@ singlelinecheck=off
     \section{Wybór systemu agentowego}
 
     W języku Python istnieje wiele bibliotek do analizy danych oraz uczenia maszynowego.
-    Aby uniknąć potrzeby generowania powiązań z innymi językami platforma agentowa będzie również w Pythonie.
-    Poniżej przeanalizowano zalety i wady kilku wybranych platform w tym języku.
+    Aby uniknąć potrzeby generowania powiązań z innymi językami wybrano platformę agentową również w języku Python.
+    W tabeli~\ref{tab:porownanie} zebrane zostały cechy wybranych platform w tym języku.
 
     \begin{table}[]
         \begin{tabular}{l|ll}
@@ -624,29 +624,42 @@ singlelinecheck=off
 
     \subsection{Mesa}
     Mesa~\cite{Masad2015} to biblioteka do modelowania agentowego w Pythonie.
-    Pozwala na szybkie stworzenie modelu agentowego przy wykorzystaniu wbudowanych komponentów.
-    \href{https://github.com/projectmesa/mesa}{Project~Mesa~github}
-    Ostatnie zmiany na githubie 11 lutego 2021 (stan na 17 II 2021r.).
+    Pozwala na szybkie stworzenie modelu agentowego przy wykorzystaniu wbudowanych komponentów
+    Ostatnie zmiany wprowadzone w tej bibliotece, na jej stronie w serwisie GitHub \href{https://github.com/projectmesa/mesa}{Project~Mesa~github}, są datowane na 11 lutego 2021 (stan na 17 II 2021r.).
 
     \subsection{Python Agent DEvelopment framework}
     Framework PADE~\cite{Melo2019} umożliwia rozwój, wykonanie i zarządzanie wieloagentowymi systemami w rozproszonym środowisku.
-    \href{https://github.com/grei-ufc/pade}{Smart~Grids~Research~Group~-~UFC~github}
-    Ostatnie zmiany na githubie 4 lutego 2021 (stan na 17 II 2021r.).
+    Najnowsza aktualizacja tego framweorku, w serwisie GitHub~\href{https://github.com/grei-ufc/pade}{Smart~Grids~Research~Group~-~UFC~github} pochodzi z 4 lutego 2021 (stan na 17 II 2021r.).
 
     \subsection{Smart Python multi-Agent Development Environment}
     Platforma wieloagentowa SPADE jest oparta o XMPP\cite{Saint-Andre2007}.
-    \href{https://github.com/javipalanca/spade}{javipalanca~github}
-    Ostatnie zmiany na githubie 22 maja 2020 (stan na 17 II 2021r.).
+    Aktualna modyfikacja tej platformy, w serwisie GitHub~\href{https://github.com/javipalanca/spade}{javipalanca~github}, pochodzi z 22 maja 2020 (stan na 17 II 2021r.).
+
+    \subsection{Podsumowanie}
+    Do wykonania systemu wybrany został framework SPADE\@.
+    Pomimo tego, że poprawki w tej platformie wprowadzane są rzadziej niż w PADE, to zawiera ona dużo bogatszą dokumentację
+    oraz liczne przykłady użycia, co znacznie obniża próg wejścia do budowy systemu agentowego.
 
 
     \section{Analiza zdarzeń wewnętrznych USA}
-    W tym dodatku przedstawiona została analiza zdarzeń wewnętrznych w Stanach Zjednoczonych.
+    W tej sekcji przedstawiona została analiza zdarzeń wewnętrznych (takich w których jest ten sam pierwszy i drugi aktor) w Stanach Zjednoczonych.
+    To badanie ma na celu wykazanie czy podczas analizy krajów i relacji rozdzielane powinny być zdarzenia wewnętrzne oraz zewnętrzne.
 
-    \subsection{Kody bazowe (Event Base Codes)}
-    W tej części zastały porównane liczby kodów bazowych.
+    \subsection{Kody bazowe (Event Base Codes)}\label{subsec:kody-bazowenullevent-base-codesnull}
 
-    Wykres~\ref{fig:USA_inner_EBC} przedstawia liczbę liczbę zdarzeń wewnętrznych w USA z poszczególnymi kodami bazowymi.
-    Wykres~\ref{fig:USA_inner_EBCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi kodami bazowymi.
+    Liczba zdarzeń wewnętrznych \textit{Make a visit} w USA w latach 2015-2020 to około 810 tysięcy.
+    Zdarzeń zewnętrznych \textit{Make a visit} w USA w tym okresie było 3 razy więcej - około 2,4 miliona,
+    podczas gdy globalna liczba zdarzeń \textit{Make a visit} wynosiła około 41 milionów.
+
+    Na wykresach zostało przedstawionych 20 najliczniejszych Kodów bazowych.
+
+    Porównanie wykresów z kodami bazowymi przedstawiających liczbę zdarzeń:
+    \begin{itemize}
+        \item wewnętrznych w USA~\ref{fig:USA_inner_EBC},
+        \item pomiędzy USA i innymi krajami~\ref{fig:USA_not_inner_EBC},
+        \item globalnie~\ref{fig:GLOBAL_EBC},
+    \end{itemize}
+    wykazuje podobieństwo.
 
     \begin{figure}[!htp]
         \centering
@@ -655,15 +668,6 @@ singlelinecheck=off
         \label{fig:USA_inner_EBC}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/USA inner/EBCperc.png}
-        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
-        \label{fig:USA_inner_EBCperc}
-    \end{figure}
-
-    Wykres~\ref{fig:USA_not_inner_EBC} przedstawia liczbę liczbę zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami bazowymi.
-    Wykres~\ref{fig:USA_not_inner_EBCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami bazowymi.
 
     \begin{figure}[!htp]
         \centering
@@ -674,31 +678,13 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{fig/USA not inner/EBCperc.png}
-        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
-        \label{fig:USA_not_inner_EBCperc}
-    \end{figure}
-
-    Wykres~\ref{fig:GLOBAL_EBC} przedstawia globalną liczbę liczbę zdarzeń z poszczególnymi kodami bazowymi.
-    Wykres~\ref{fig:GLOBAL_EBCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi kodami bazowymi.
-
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{fig/GLOBAL//EBC.png}
         \caption{Liczba zdarzeń dla kodów bazowych od 2015 - top 20. (źródło: opracowanie własne)}
         \label{fig:GLOBAL_EBC}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/GLOBAL//EBCperc.png}
-        \caption{Procentowa liczba zdarzeń dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
-        \label{fig:GLOBAL_EBCperc}
-    \end{figure}
-
-    Liczba zdarzeń wewnętrznych \textit{Make a visit} w USA w latach 2015-2020 to około 810 tysięcy.
-    Zdarzeń zewnętrznych \textit{Make a visit} w USA w tym okresie było 3 razy więcej - około 2,4 miliona,
-    podczas gdy globalna liczba zdarzeń \textit{Make a visit} wynosiła około 41 milionów.
+    Procentowe udziały zdarzeń wewnętrznych i zewnętrznych USA oraz globalnych, w latach 2015-2020, zostały przedstawione
+    w dodatku~\ref{subsec:kody-bazowenullevent-base-codesnull2}.
 
     Zarówno dla zdarzeń wewnętrznych USA, jak i globalnych w pierwszej trójce występują zdarzenia:
     \begin{itemize}
@@ -712,11 +698,15 @@ singlelinecheck=off
     Takie wyniki mogą świadczyć o podobieństwie klasyfikacji bazowej (Base Codes) zdarzeń,
     niezależnie od tego czy są to zdarzenia wewnętrzne czy zewnętrzne.
 
-    \subsection{Kody podstawowe (Event Root Codes)}
+    \subsection{Kody podstawowe (Event Root Codes)}\label{subsec:kody-podstawowenullevent-root-codesnull}
 
-    Wykres~\ref{fig:USA_inner_ERC} przedstawia liczbę zdarzeń wewnętrznych w USA z poszczególnymi kodami podstawowymi.
-    Wykres~\ref{fig:USA_inner_ERCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi kodami podstawowymi.
-
+    Podobnie jak w przypadku kodów bazowych, porównanie wykresów z kodami bazowymi przedstawiających liczbę zdarzeń:
+    \begin{itemize}
+        \item wewnętrznych w USA~\ref{fig:USA_inner_ERC},
+        \item pomiędzy USA i innymi krajami~\ref{fig:USA_not_inner_ERC},
+        \item globalnie~\ref{fig:GLOBAL_ERC},
+    \end{itemize}
+    wykazuje podobieństwo.
 
     \begin{figure}[!htp]
         \centering
@@ -727,30 +717,10 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{fig/USA inner/ERCperc.png}
-        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla wszystkich kodów podstawowych od 2015. (źródło: opracowanie własne)}
-        \label{fig:USA_inner_ERCperc}
-    \end{figure}
-
-    Wykres~\ref{fig:USA_not_inner_ERC} przedstawia liczbę zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami podstawowymi.
-    Wykres~\ref{fig:USA_not_inner_ERCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami podstawowymi.
-
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{fig/USA not inner/ERC.png}
         \caption{Liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 20. (źródło: opracowanie własne)}
         \label{fig:USA_not_inner_ERC}
     \end{figure}
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/USA not inner/ERCperc.png}
-        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
-        \label{fig:USA_not_inner_ERCperc}
-    \end{figure}
-
-    Wykres~\ref{fig:GLOBAL_ERC} przedstawia globalną liczbę zdarzeń z poszczególnymi kodami podstawowymi.
-    Wykres~\ref{fig:GLOBAL_ERCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi kodami podstawowymi.
 
     \begin{figure}[!htp]
         \centering
@@ -759,12 +729,8 @@ singlelinecheck=off
         \label{fig:GLOBAL_ERC}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/GLOBAL/ERCperc.png}
-        \caption{Procentowa liczba zdarzeń dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
-        \label{fig:GLOBAL_ERCperc}
-    \end{figure}
+    Procentowe udziały zdarzeń wewnętrznych i zewnętrznych USA oraz globalnych, w latach 2015-2020, zostały przedstawione
+    w dodatku~\ref{subsec:kody-podstawowenullevent-root-codesnull2}.
 
     Liczba zdarzeń wewnętrznych \textit{Consult} w USA w latach 2015-2020 to około 2,5 miliona.
     Zdarzeń zewnętrznych \textit{Consult} w USA w tym okresie było 3 razy więcej - około 7,5 miliona,
@@ -779,10 +745,15 @@ singlelinecheck=off
 
     Takie wyniki wyraźnie świadczą o podobieństwie klasyfikacji podstawowej (Root Codes) zdarzeń.
 
-    \subsection{Czterokody (Quad Class)}
+    \subsection{Czterokody (Quad Class)}\label{subsec:czterokodynullquad-classnull}
 
-    Wykres~\ref{fig:USA_inner_QC} przedstawia liczbę zdarzeń wewnętrznych w USA z poszczególnymi czterokodami.
-    Wykres~\ref{fig:USA_inner_QCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi czterokodami.
+    W najwyższym poziomie agregacji typu zdarzeń przy porównaniu wykresów z kodami bazowymi przedstawiających liczbę zdarzeń:
+    \begin{itemize}
+        \item wewnętrznych w USA~\ref{fig:USA_inner_QC},
+        \item pomiędzy USA i innymi krajami~\ref{fig:USA_not_inner_QC},
+        \item globalnie~\ref{fig:GLOBAL_QC},
+    \end{itemize}
+    obserwujemy największe podobieństwo.
 
     \begin{figure}[!htp]
         \centering
@@ -791,15 +762,6 @@ singlelinecheck=off
         \label{fig:USA_inner_QC}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/USA inner/QCperc.png}
-        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla czterokodów od 2015 - top 10. (źródło: opracowanie własne)}
-        \label{fig:USA_inner_QCperc}
-    \end{figure}
-
-    Wykres~\ref{fig:USA_not_inner_QC} przedstawia liczbę zdarzeń pomiędzy USA i innymi krajami z poszczególnymi czterokodami.
-    Wykres~\ref{fig:USA_not_inner_QCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi czterokodami.
 
     \begin{figure}[!htp]
         \centering
@@ -808,15 +770,6 @@ singlelinecheck=off
         \label{fig:USA_not_inner_QC}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/USA not inner/QCperc.png}
-        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
-        \label{fig:USA_not_inner_QCperc}
-    \end{figure}
-
-    Wykres~\ref{fig:GLOBAL_QC} przedstawia globalną liczbę zdarzeń z poszczególnymi czterokodami.
-    Wykres~\ref{fig:GLOBAL_QCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi czterokodami.
 
     \begin{figure}[!htp]
         \centering
@@ -825,12 +778,8 @@ singlelinecheck=off
         \label{fig:GLOBAL_QC}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/GLOBAL/QCperc.png}
-        \caption{Procentowa liczba zdarzeń dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
-        \label{fig:GLOBAL_QCperc}
-    \end{figure}
+    Procentowe udziały zdarzeń wewnętrznych i zewnętrznych USA oraz globalnych, w latach 2015-2020, zostały przedstawione
+    w dodatku~\ref{subsec:czterokodynullquad-classnull2}.
 
     Liczba zdarzeń wewnętrznych \textit{Verbal Cooperation} w USA w latach 2015-2020 to około 6,5 miliona.
     Zdarzeń zewnętrznych \textit{Verbal Cooperation} w USA w tym okresie było 3 razy więcej - około 16 milionów,
@@ -847,15 +796,46 @@ singlelinecheck=off
 
     Takie wyniki wyraźnie świadczą o podobieństwie przyporządkowań zdarzeń do czterokodów (Quad Class).
 
+    \subsection{Podsumowanie}
+    Przeprowadzona analiza pokazuje duże podobieństwo pomiędzy zdarzeniami wewnętrznymi i zewnętrznymi dla USA oraz globalnymi.
+    Pozwala to przypuszczać, że podobna zależność występuje dla pozostałych krajów.
+    Z tego powodu, w dalszych pracach, zdarzenia wewnętrzne nie będą osobno rozważane.
 
-    \section{Analiza Power-Client}
+
+    \section{Analiza Power-Client}\label{sec:analiza-power-client}
     W tej części przedstawione zostaną wyniki wstępnej analizy mającej na celu wyłonienie miar
     do poszukiwań wzorca Power-Client.
 
-    \subsection{Event Root Code}
+    Dla Kodów głównych jak i Kodów bazowych pierwsza analiza została przeprowadzona w trzech wersjach:
+    \begin{itemize}
+        \item bez progowania,
+        \item z progiem skali Goldsteina >= 3,
+        \item z progiem liczby wzmianek >= 5.
+    \end{itemize}
+    Wybrane zostały następujące pary krajów:
+    \begin{itemize}
+        \item jako przykład relacja klient-hegemon:
+        \begin{itemize}
+            \item Polska-USA,
+            \item Polska-Rosja,
+            \item Polska-Niemcy,
+        \end{itemize}
+        \item jako przykład relacji neutralnych:
+        \begin{itemize}
+            \item Polska-Hiszpania,
+            \item Polska-Czechy,
+            \item Polska-Węgry.
+        \end{itemize}
+    \end{itemize}
+
+    Jeśli wyniki były zadowalające - wyraźna różnica pomiędzy układem zdarzeń - to tworzone zostały wykresy podsumowujące.
+    Na ostatnim etapie z wykresów podsumowujących wybierane były ręcznie te, zawierające przynajmniej 8 krajów, na których była widoczna najlepsza separacja relacji klient-hegemon od relacji neutralnych.
+    Kryterium wyboru była zauważalna separacja relacji klient-hegemon oraz neutralnych.
+
+    \subsection{Event Root Code}\label{subsec:event-root-code}
 
     \subsubsection{Bez progowania}
-    Wykresy~\ref{fig:Power-Client:ERC:POL-USA},~\ref{fig:Power-Client:ERC:POL-RUS} oraz~\ref{fig:Power-Client:ERC:POL-DEU} przedstawiają relacje klient-hegemon.
+
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-USA EventRootCode count 2015-2020 - top 20.png}
@@ -865,42 +845,20 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-RUS EventRootCode count 2015-2020 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:POL-RUS}
-    \end{figure}
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-DEU EventRootCode count 2015-2020 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:POL-DEU}
-    \end{figure}
-
-    Wykresy~\ref{fig:Power-Client:ERC:POL-ESP},~\ref{fig:Power-Client:ERC:POL-CZE} oraz~\ref{fig:Power-Client:ERC:POL-HUN} przedstawiają relacje neutralne.
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-ESP EventRootCode count 2015-2020 - top 20.png}
         \caption{Procentowa liczba zdarzeń POL-ESP wg kodów głównych. (źródło: opracowanie własne)}
         \label{fig:Power-Client:ERC:POL-ESP}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-CZE EventRootCode count 2015-2020 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:POL-CZE}
-    \end{figure}
+    Zarówno w przypadku relacji Polska-USA (wykres~\ref{fig:Power-Client:ERC:POL-USA}) jak i Polska-Hiszpania (wykres~\ref{fig:Power-Client:ERC:POL-ESP})
+    na pierwszym miejscu występują zdarzenia \textit{CONSULT}.
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-HUN EventRootCode count 2015-2020 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:POL-HUN}
-    \end{figure}
+    Pozostałe wykresy zostały dołączone w sekcji~\ref{subsubsec:erc:bez-progowania}.
 
     Na każdym z 6 wykresów, niezależnie od typu relacji, dominuje liczba zdarzeń \textit{CONSULT}.
     Dla relacji POL-USA oraz POL-RUS na drugim miejscu są zdarzenia \textit{MAKE PUBLIC STATEMENT}.
+
+    Taka obserwacja świadczy o tym, że Kody główne bez progowania nie nadają się do poszukiwania wzorca Power-Client.
 
     \subsubsection{Próg skala Goldsteina >=3}
     Skala Goldsteina przypisuje każdemu z kodów CAMEO numeryczną wartość od -10 do 10, przedstawia teoretyczny wpływ typu zdarzenia na stabilność kraju.
@@ -917,7 +875,6 @@ singlelinecheck=off
         \item \textit{MAKE PUBLIC STATEMENT}
     \end{itemize}
 
-    Wykresy~\ref{fig:Power-Client:ERC:Goldstein:POL-USA},~\ref{fig:Power-Client:ERC:Goldstein:POL-RUS} oraz~\ref{fig:Power-Client:ERC:Goldstein:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-USA EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
@@ -925,21 +882,7 @@ singlelinecheck=off
         \label{fig:Power-Client:ERC:Goldstein:POL-USA}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-RUS EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:Goldstein:POL-RUS}
-    \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-DEU EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:Goldstein:POL-DEU}
-    \end{figure}
-
-    Wykresy~\ref{fig:Power-Client:ERC:Goldstein:POL-ESP},~\ref{fig:Power-Client:ERC:Goldstein:POL-CZE} oraz~\ref{fig:Power-Client:ERC:Goldstein:POL-HUN} przedstawiają relacje neutralne.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-ESP EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
@@ -947,29 +890,27 @@ singlelinecheck=off
         \label{fig:Power-Client:ERC:Goldstein:POL-ESP}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-CZE EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:Goldstein:POL-CZE}
-    \end{figure}
+    Dla relacji Polska-USA (wykres~\ref{fig:Power-Client:ERC:Goldstein:POL-USA}) oraz Polska-Hiszpania (wykres~\ref{fig:Power-Client:ERC:Goldstein:POL-ESP})
+    pierwsze cztery pozycje pod względem procentowego udziału przedstawiają się w następującej kolejności:
+    \begin{itemize}
+        \item \textit{ENGAGE IN DIPLOMATIC COOPERATION}.
+        \item \textit{EXPRESS INTENT TO COOPERATE}.
+        \item \textit{APPEAL}.
+        \item \textit{CONSULT}.
+    \end{itemize}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-HUN EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:Goldstein:POL-HUN}
-    \end{figure}
+    Pozostałe wykresy zostały dołączone w sekcji~\ref{subsubsec:erc:próg-skala-goldsteina->=3}.
 
     Na każdym z 6 wykresów, niezależnie od typu relacji, dominuje liczba zdarzeń \textit{ENGAGE IN DIPLOMATIC COOPERATION}.
     Dla wszystkich relacji, z wyjątkiem POL-RUS, na drugim miejscu są zdarzenia \textit{EXPRESS INTENT TO COOPERATE}.
+
+    Powyższa analiza pokazuje, że Kody główne z progowaniem skali Goldsteina >=3 nie nadają się do poszukiwania wzorca Power-Client.
 
     \subsubsection{Próg ilość wzmianek >=5}
     Liczba wzmianek to całkowita liczba wystąpień informacji o danym zdarzeniu pośród dokumentów źródłowych.
     Pozwala określić ważność danego zdarzenia.
     Im więcej dyskusji o danym zdarzeniu, tym bardziej prawdopodobne, że jest ono istotne.
 
-    Wykresy~\ref{fig:Power-Client:ERC:Mentions:POL-USA},~\ref{fig:Power-Client:ERC:Mentions:POL-RUS} oraz~\ref{fig:Power-Client:ERC:Mentions:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-USA EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
@@ -979,50 +920,25 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-RUS EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:Mentions:POL-RUS}
-    \end{figure}
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-DEU EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:Mentions:POL-DEU}
-    \end{figure}
-
-    Wykresy~\ref{fig:Power-Client:ERC:Mentions:POL-ESP},~\ref{fig:Power-Client:ERC:Mentions:POL-CZE} oraz~\ref{fig:Power-Client:ERC:Mentions:POL-HUN} przedstawiają relacje neutralne.
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-ESP EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
         \caption{Procentowa liczba zdarzeń POL-ESP wg kodów głównych. (źródło: opracowanie własne)}
         \label{fig:Power-Client:ERC:Mentions:POL-ESP}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-CZE EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:Mentions:POL-CZE}
-    \end{figure}
+    Podobnie jak dla wersji bez progowania i z progowaniem miara Goldsteina, zarówno dla relacji Polska-USA (wykres~\ref{fig:Power-Client:ERC:Mentions:POL-USA}) jak i Polska-Hiszpania (wykres~\ref{fig:Power-Client:ERC:Mentions:POL-ESP})
+    typy zdarzeń ułożone są w bardzo podobnej kolejności.
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-HUN EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:ERC:Mentions:POL-HUN}
-    \end{figure}
+    Pozostałe wykresy zostały dołączone w sekcji~\ref{subsubsec:erc:bez-progowania}.
 
     Na każdym z 6 wykresów, niezależnie od typu relacji, dominuje liczba zdarzeń \textit{CONSULT}.
     Dla wszystkich relacji, z wyjątkiem POL-RUS, na drugim miejscu są zdarzenia \textit{ENGAGE IN DIPLOMATIC COOPERATION}.
 
-    \paragraph{Wnioski}
-    Kody główne zdarzeń wydają się być zbyt ogólne do wyróżniania relacji typu mocarstwo-klient.
+    \subsubsection{Wnioski}
+    Kody główne zdarzeń, niezależnie od progowania, wydają się być zbyt ogólne do wyróżniania relacji typu mocarstwo-klient.
 
     \subsection{Event Base Code}\label{subsec:event-base-code}
 
     \subsubsection{Bez progowania}
-    Wykresy~\ref{fig:Power-Client:EBC:POL-USA},~\ref{fig:Power-Client:EBC:POL-RUS} oraz~\ref{fig:Power-Client:EBC:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 - top 20.png}
@@ -1032,47 +948,23 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:POL-RUS}
-    \end{figure}
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:POL-DEU}
-    \end{figure}
-
-    Wykresy~\ref{fig:Power-Client:EBC:POL-ESP},~\ref{fig:Power-Client:EBC:POL-CZE} oraz~\ref{fig:Power-Client:EBC:POL-HUN} przedstawiają relacje neutralne.
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 - top 20.png}
         \caption{Procentowa liczba zdarzeń POL-ESP wg kodów głównych. (źródło: opracowanie własne)}
         \label{fig:Power-Client:EBC:POL-ESP}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:POL-CZE}
-    \end{figure}
+    Dla relacji Polska-USA (wykres~\ref{fig:Power-Client:EBC:POL-USA}) jak i Polska-Hiszpania (wykres~\ref{fig:Power-Client:EBC:POL-ESP})
+    różnice w kolejności kodów zdarzeń zaczynają się już od pierwszej pozycji.
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:POL-HUN}
-    \end{figure}
+    Pozostałe wykresy zostały dołączone w sekcji~\ref{subsubsec:ebc:bez-progowania}.
 
     Dla relacji POL-USA oraz POL-DEU na pierwszym miejscu występują zdarzenia \textit{Make a visit}, a następnie
     \textit{Host a visit} oraz \textit{Consult- not specific below}.
     Dla relacji POL-CZE oraz POL-HUN na pierwszym miejscu występują zdarzenia \textit{Consult - not specified below}.
 
-    \paragraph{Wybrane wykresy podsumowujące}
-    Ta sekcja przedstawia ręcznie wybrane wykresy podsumowujące zawierające przynajmniej 8 krajów.
-    Kryterium wyboru była zauważalna separacja relacji klient-hegemon oraz neutralnych.
+    \subsubsection{Wybrane wykresy podsumowujące}
+
+    Spośród 36 wykresów wybrane zostały dwa na których separacja relacji klient-hegemon i neutralnych jest wyraźna.
 
     \begin{figure}[!htp]
         \centering
@@ -1082,7 +974,7 @@ singlelinecheck=off
     \end{figure}
     Na wykresie~\ref{fig:Power-Client:ERC:SumUp:Engage in negotiation} Niemcy, USA oraz Rosja są w jednej grupie,
     charakteryzującej się najmniejszą procentową ilością zdarzeń \textit{Engage in negotiation}.
-    Na podstawie tego wykresu zbiorczego~\ref{fig:Power-Client:ERC:SumUp:Engage in negotiation}
+    Na podstawie tego wykresu zbiorczego~\textit{Engage in negotiation}
     jest bardzo dobry kandydatem na jedną z miar przy klastrowaniu.
 
     \begin{figure}[!htp]
@@ -1102,7 +994,6 @@ singlelinecheck=off
     Skala Goldsteina przypisuje każdemu z kodów CAMEO numeryczną wartość od -10 do 10, przedstawia teoretyczny wpływ typu zdarzenia na stabilność kraju.
     Ponieważ skala Goldsteina jest bezpośrednio związana z kodem CAMEO, dlatego filtrowanie wg skali Goldsteina odrzuca część kodów.
 
-    Wykresy~\ref{fig:Power-Client:EBC:Goldstein:POL-USA},~\ref{fig:Power-Client:EBC:Goldstein:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Goldstein:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
@@ -1112,43 +1003,19 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Goldstein:POL-RUS}
-    \end{figure}
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Goldstein:POL-DEU}
-    \end{figure}
-
-    Wykresy~\ref{fig:Power-Client:EBC:Goldstein:POL-ESP},~\ref{fig:Power-Client:EBC:Goldstein:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Goldstein:POL-HUN} przedstawiają relacje neutralne.
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
         \caption{Procentowa liczba zdarzeń POL-ESP wg kodów głównych. (źródło: opracowanie własne)}
         \label{fig:Power-Client:EBC:Goldstein:POL-ESP}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Goldstein:POL-CZE}
-    \end{figure}
+    Podobnie jak przy analizie bez progowania także przy progu skali Goldsteina >=3, dla relacji Polska-USA (wykres~\ref{fig:Power-Client:EBC:Goldstein:POL-USA}) jak i Polska-Hiszpania (wykres~\ref{fig:Power-Client:EBC:Goldstein:POL-ESP}),
+    różnice w kolejności kodów zdarzeń zaczynają się już od pierwszej pozycji.
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Goldstein:POL-HUN}
-    \end{figure}
+    Pozostałe wykresy zostały dołączone w sekcji~\ref{subsubsec:ebc:próg-skala-goldsteina->=3}.
 
-    \paragraph{Wybrane wykresy podsumowujące}
-    Ta sekcja przedstawia ręcznie wybrane wykresy podsumowujące zawierające przynajmniej 8 krajów.
-    Kryterium wyboru była zauważalna separacja relacji klient-hegemon oraz neutralnych.
+    \subsubsection{Wybrane wykresy podsumowujące}
+
+    Spośród 32 wykresów zostały wybrane 2.
 
     \begin{figure}[!htp]
         \centering
@@ -1179,7 +1046,6 @@ singlelinecheck=off
     Pozwala określić ważność danego zdarzenia.
     Im więcej dyskusji o danym zdarzeniu, tym bardziej prawdopodobne, że jest ono istotne.
 
-    Wykresy~\ref{fig:Power-Client:EBC:Mentions:POL-USA},~\ref{fig:Power-Client:EBC:Mentions:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Mentions:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
@@ -1189,45 +1055,22 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Mentions:POL-RUS}
-    \end{figure}
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Mentions:POL-DEU}
-    \end{figure}
-
-    Wykresy~\ref{fig:Power-Client:EBC:Mentions:POL-ESP},~\ref{fig:Power-Client:EBC:Mentions:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Mentions:POL-HUN} przedstawiają relacje neutralne.
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
         \caption{Procentowa liczba zdarzeń POL-ESP wg kodów głównych. (źródło: opracowanie własne)}
         \label{fig:Power-Client:EBC:Mentions:POL-ESP}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Mentions:POL-CZE}
-    \end{figure}
+    Przy progu ilości wzmianek >=5, dla relacji Polska-USA (wykres~\ref{fig:Power-Client:EBC:Mentions:POL-USA}) jak i Polska-Hiszpania (wykres~\ref{fig:Power-Client:EBC:Mentions:POL-ESP}),
+    obserwujemy podobieństwo na pierwszych dwóch miejscach.
+    Kolejne pozycje wyraźnie się różnią.
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Mentions:POL-HUN}
-    \end{figure}
+    Pozostałe wykresy zostały dołączone w sekcji~\ref{subsubsec:ebc:próg-ilość-wzmianek->=5}.
 
     Dla relacji POL-CZE oraz POL-HUN na pierwszym miejscu, z wyraźną przewagą, występują zdarzenia \textit{Consult - not specified below}.
 
-    \paragraph{Wybrane wykresy podsumowujące}
-    Ta sekcja przedstawia ręcznie wybrane wykresy podsumowujące zawierające przynajmniej 8 krajów.
-    Kryterium wyboru była zauważalna separacja relacji klient-hegemon oraz neutralnych.
+    \subsubsection{Wybrane wykresy podsumowujące}
+
+    Spośród 33 wykresów wybrane zostały 3.
 
     \begin{figure}[!htp]
         \centering
@@ -1266,11 +1109,7 @@ singlelinecheck=off
     Pozostałe typy zdarzeń znacznie gorzej rozdzielają relacje klient-hegemon oraz neutralne wśród analizowanych krajów.
 
     \subsubsection{Próg ilość wzmianek >=10}
-    Liczba wzmianek to całkowita liczba wystąpień informacji o danym zdarzeniu pośród dokumentów źródłowych.
-    Pozwala określić ważność danego zdarzenia.
-    Im więcej dyskusji o danym zdarzeniu, tym bardziej prawdopodobne, że jest ono istotne.
 
-    Wykresy~\ref{fig:Power-Client:EBC:Mentions10:POL-USA},~\ref{fig:Power-Client:EBC:Mentions10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Mentions10:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
@@ -1280,45 +1119,21 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Mentions10:POL-RUS}
-    \end{figure}
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Mentions10:POL-DEU}
-    \end{figure}
-
-    Wykresy~\ref{fig:Power-Client:EBC:Mentions10:POL-ESP},~\ref{fig:Power-Client:EBC:Mentions10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Mentions10:POL-HUN} przedstawiają relacje neutralne.
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
         \caption{Procentowa liczba zdarzeń POL-ESP wg kodów głównych. (źródło: opracowanie własne)}
         \label{fig:Power-Client:EBC:Mentions10:POL-ESP}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Mentions10:POL-CZE}
-    \end{figure}
+    Przy progu ilości wzmianek >=10, dla relacji Polska-USA (wykres~\ref{fig:Power-Client:EBC:Mentions10:POL-USA}) jak i Polska-Hiszpania (wykres~\ref{fig:Power-Client:EBC:Mentions10:POL-ESP}),
+    wykresy różnią się już na pierwszej pozycji.
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:Mentions10:POL-HUN}
-    \end{figure}
+    Pozostałe wykresy zostały dołączone w sekcji~\ref{subsubsec:ebc:próg-ilość-wzmianek->=10}.
 
     Dla relacji POL-CZE oraz POL-HUN na pierwszym miejscu występują zdarzenia \textit{Consult - not specified below}.
 
-    \paragraph{Wybrane wykresy podsumowujące}
-    Ta sekcja przedstawia ręcznie wybrane wykresy podsumowujące zawierające przynajmniej 8 krajów.
-    Kryterium wyboru była zauważalna separacja relacji klient-hegemon oraz neutralnych.
+    \subsubsection{Wybrane wykresy podsumowujące}
+
+    Spośród 36 wykresów wybrany został jeden.
 
     \begin{figure}[!htp]
         \centering
@@ -1337,7 +1152,6 @@ singlelinecheck=off
     Ocena od -100 (ekstremalnie negatywna) do 100 (ekstremalnie pozytywna).
     Ekstremalny ton sugeruje bardziej poważne zdarzenie.
 
-    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-USA},~\ref{fig:Power-Client:EBC:AvgToone10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-DEU} przedstawiają relacje klient-hegemon.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-USA EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
@@ -1347,46 +1161,21 @@ singlelinecheck=off
 
     \begin{figure}[!htp]
         \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:AvgToone10:POL-RUS}
-    \end{figure}
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:AvgToone10:POL-DEU}
-    \end{figure}
-
-    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-ESP},~\ref{fig:Power-Client:EBC:AvgToone10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-HUN} przedstawiają relacje neutralne.
-    \begin{figure}[!htp]
-        \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-ESP EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
         \caption{Procentowa liczba zdarzeń POL-ESP wg kodów głównych. (źródło: opracowanie własne)}
         \label{fig:Power-Client:EBC:AvgToone10:POL-ESP}
     \end{figure}
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:AvgToone10:POL-CZE}
-    \end{figure}
+    Przy progu średniego tonu >=10 lub <=10, dla relacji Polska-USA (wykres~\ref{fig:Power-Client:EBC:AvgToone10:POL-USA}) jak i Polska-Hiszpania (wykres~\ref{fig:Power-Client:EBC:AvgToone10:POL-ESP}),
+    wykresy różnią się już na pierwszej pozycji.
 
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
-        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
-        \label{fig:Power-Client:EBC:AvgToone10:POL-HUN}
-    \end{figure}
+    Pozostałe wykresy zostały dołączone w sekcji~\ref{subsubsec:ebc:próg-średniego-tonu->=10-lub-<=-10}.
 
     Dla relacji klient-hegemon w pierwszej trójce utrzymują się zdarzenia \textit{Accuse - not specified below}.
     Dla relacji POL-ESP oraz POL-CZE na pierwszym miejscu występują zdarzenia \textit{Use conventional military force - not specified below}.
 
-    \paragraph{Wybrane wykresy podsumowujące}
-    Ta sekcja przedstawia ręcznie wybrane wykresy podsumowujące zawierające przynajmniej 8 krajów.
-    Kryterium wyboru była zauważalna separacja relacji klient-hegemon oraz neutralnych.
+    \subsubsection{Wybrane wykresy podsumowujące}
+    Spośród 57 wykresów wybrany został jeden.
 
     \begin{figure}[!htp]
         \centering
@@ -1402,8 +1191,10 @@ singlelinecheck=off
     \textit{Accuse- not specified below} jest jedynym typem zdarzeń który dobrze rozdziela relacje klient-hegemon od neutralnych
     przy progowaniu średniego tonu >=10 oraz <=-10.
 
-    \paragraph{Wnioski}
+    \subsubsection{Wnioski}
     Kody bazowe zdarzeń wydają się być bardziej odpowiednie do wyróżniania relacji typu mocarstwo-klient, niż kody podstawowe.
+
+    \subsection{Podsumowanie}
 
     Wykresy podsumowujące pokazały, że do klastrowania w celu poszukiwania wzorca klient-hegemon najlepiej nadają się zdarzenia:
     \begin{itemize}
@@ -2030,6 +1821,372 @@ singlelinecheck=off
 
 
     \chapter{Dodatkowe wyniki}
+
+
+    \section{Analiza zdarzeń wewnętrznych USA}
+
+    \subsection{Kody bazowe (Event Base Codes)}\label{subsec:kody-bazowenullevent-base-codesnull2}
+    Wykres~\ref{fig:USA_inner_EBCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi kodami bazowymi.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/EBCperc.png}
+        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_EBCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:USA_not_inner_EBCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami bazowymi.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/EBCperc.png}
+        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_EBCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:GLOBAL_EBCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi kodami bazowymi.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL//EBCperc.png}
+        \caption{Procentowa liczba zdarzeń dla kodów bazowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_EBCperc}
+    \end{figure}
+
+    \subsection{Kody podstawowe (Event Root Codes)}\label{subsec:kody-podstawowenullevent-root-codesnull2}
+
+    Wykres~\ref{fig:USA_inner_ERCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi kodami podstawowymi.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/ERCperc.png}
+        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla wszystkich kodów podstawowych od 2015. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_ERCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:USA_not_inner_ERCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi kodami podstawowymi.
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/ERCperc.png}
+        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_ERCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:GLOBAL_ERCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi kodami podstawowymi.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL/ERCperc.png}
+        \caption{Procentowa liczba zdarzeń dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_ERCperc}
+    \end{figure}
+
+    \subsection{Czterokody (Quad Class)}\label{subsec:czterokodynullquad-classnull2}
+
+    Wykres~\ref{fig:USA_inner_QCperc} przedstawiają procentowy udział zdarzeń wewnętrznych w USA z poszczególnymi czterokodami.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA inner/QCperc.png}
+        \caption{Procentowa liczba zdarzeń wewnętrznych USA dla czterokodów od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_inner_QCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:USA_not_inner_QCperc} przedstawiają procentowy udział zdarzeń pomiędzy USA i innymi krajami z poszczególnymi czterokodami.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/USA not inner/QCperc.png}
+        \caption{Procentowa liczba zdarzeń zewnętrznych USA dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:USA_not_inner_QCperc}
+    \end{figure}
+
+    Wykres~\ref{fig:GLOBAL_QCperc} przedstawiają globalny procentowy udział zdarzeń z poszczególnymi czterokodami.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{fig/GLOBAL/QCperc.png}
+        \caption{Procentowa liczba zdarzeń dla kodów podstawowych od 2015 - top 10. (źródło: opracowanie własne)}
+        \label{fig:GLOBAL_QCperc}
+    \end{figure}
+
+
+    \section{Analiza Power-Client}
+
+    \subsection{Event Root Code}
+
+    \subsubsection{Bez progowania}\label{subsubsec:erc:bez-progowania}
+
+    Wykresy~\ref{fig:Power-Client:ERC:POL-RUS} oraz~\ref{fig:Power-Client:ERC:POL-DEU} przedstawiają relacje klient-hegemon.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-RUS EventRootCode count 2015-2020 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-DEU EventRootCode count 2015-2020 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:ERC:POL-CZE} oraz~\ref{fig:Power-Client:ERC:POL-HUN} przedstawiają relacje neutralne.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-CZE EventRootCode count 2015-2020 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-HUN EventRootCode count 2015-2020 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:POL-HUN}
+    \end{figure}
+
+    \subsubsection{Próg skala Goldsteina >=3}\label{subsubsec:erc:próg-skala-goldsteina->=3}
+
+    Wykresy~\ref{fig:Power-Client:ERC:Goldstein:POL-RUS} oraz~\ref{fig:Power-Client:ERC:Goldstein:POL-DEU} przedstawiają relacje klient-hegemon.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-RUS EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:Goldstein:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-DEU EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:Goldstein:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:ERC:Goldstein:POL-CZE} oraz~\ref{fig:Power-Client:ERC:Goldstein:POL-HUN} przedstawiają relacje neutralne.
+
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-CZE EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:Goldstein:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-HUN EventRootCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:Goldstein:POL-HUN}
+    \end{figure}
+
+    \subsubsection{Próg ilość wzmianek >=5}\label{subsubsec:erc:próg-ilość-wzmianek->=5}
+    Liczba wzmianek to całkowita liczba wystąpień informacji o danym zdarzeniu pośród dokumentów źródłowych.
+    Pozwala określić ważność danego zdarzenia.
+    Im więcej dyskusji o danym zdarzeniu, tym bardziej prawdopodobne, że jest ono istotne.
+
+    Wykresy~\ref{fig:Power-Client:ERC:Mentions:POL-RUS} oraz~\ref{fig:Power-Client:ERC:Mentions:POL-DEU} przedstawiają relacje klient-hegemon.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-RUS EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:Mentions:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-DEU EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:Mentions:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:ERC:Mentions:POL-CZE} oraz~\ref{fig:Power-Client:ERC:Mentions:POL-HUN} przedstawiają relacje neutralne.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-CZE EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:Mentions:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventRootCode/POL-HUN EventRootCode count 2015-2020 with mentions >=5 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:ERC:Mentions:POL-HUN}
+    \end{figure}
+
+    \subsection{Event Base Code}
+
+    \subsubsection{Bez progowania}\label{subsubsec:ebc:bez-progowania}
+
+    Wykresy~\ref{fig:Power-Client:EBC:POL-RUS} oraz~\ref{fig:Power-Client:EBC:POL-DEU} przedstawiają relacje klient-hegemon.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:EBC:POL-CZE} oraz~\ref{fig:Power-Client:EBC:POL-HUN} przedstawiają relacje neutralne.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:POL-HUN}
+    \end{figure}
+
+    \subsubsection{Próg skala Goldsteina >=3}\label{subsubsec:ebc:próg-skala-goldsteina->=3}
+    Wykresy~\ref{fig:Power-Client:EBC:Goldstein:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Goldstein:POL-DEU} przedstawiają relacje klient-hegemon.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Goldstein:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Goldstein:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:EBC:Goldstein:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Goldstein:POL-HUN} przedstawiają relacje neutralne.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Goldstein:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with Goldstein Scale >=3 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Goldstein:POL-HUN}
+    \end{figure}
+
+    \subsubsection{Próg ilość wzmianek >=5}\label{subsubsec:ebc:próg-ilość-wzmianek->=5}
+
+    Wykresy~\ref{fig:Power-Client:EBC:Mentions:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Mentions:POL-DEU} przedstawiają relacje klient-hegemon.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Mentions:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Mentions:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:EBC:Mentions:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Mentions:POL-HUN} przedstawiają relacje neutralne.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Mentions:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with mentions >=5 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Mentions:POL-HUN}
+    \end{figure}
+
+    \subsubsection{Próg ilość wzmianek >=10}\label{subsubsec:ebc:próg-ilość-wzmianek->=10}
+
+    Wykresy~\ref{fig:Power-Client:EBC:Mentions10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:Mentions10:POL-DEU} przedstawiają relacje klient-hegemon.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Mentions10:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Mentions10:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:EBC:Mentions10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:Mentions10:POL-HUN} przedstawiają relacje neutralne.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Mentions10:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with mentions >=10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:Mentions10:POL-HUN}
+    \end{figure}
+
+    \subsubsection{Próg średniego tonu >=10 lub <=-10}\label{subsubsec:ebc:próg-średniego-tonu->=10-lub-<=-10}
+
+    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-RUS} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-DEU} przedstawiają relacje klient-hegemon.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-RUS EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-RUS wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-RUS}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-DEU EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-DEU wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-DEU}
+    \end{figure}
+
+    Wykresy~\ref{fig:Power-Client:EBC:AvgToone10:POL-CZE} oraz~\ref{fig:Power-Client:EBC:AvgToone10:POL-HUN} przedstawiają relacje neutralne.
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-CZE EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-CZE wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-CZE}
+    \end{figure}
+
+    \begin{figure}[!htp]
+        \centering
+        \includegraphics[width=\linewidth]{../Power-Client pre analysis/fig_EventBaseCode/POL-HUN EventBaseCode count 2015-2020 with AvgTone >=10 or AvgTone <=-10 - top 20.png}
+        \caption{Procentowa liczba zdarzeń POL-HUN wg kodów głównych. (źródło: opracowanie własne)}
+        \label{fig:Power-Client:EBC:AvgToone10:POL-HUN}
+    \end{figure}
 
 
     \section{Krańcowe wartości miar w klastrach Power-Client}
