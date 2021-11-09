@@ -1213,64 +1213,28 @@ singlelinecheck=off
     System agentowy składający się z:
     \begin{itemize}
         \item jednego agenta Generator Zestawień
-        \item jednego agenta Poszukiwacza Trendów
+        \item jednego agenta Poszukiwacza Korelacji
         \item agentów Poszukiwacz Wzorców - po jednym dla każdej kombinacji państw.
+        \item jednego agenta Poszukiwacza Klastrów
     \end{itemize}
 
-    Generator Zestawień tworzy agenta Poszukiwacz Trendów.
-    Agent Poszukiwacz Trendów tworzy dla każdej pary krajów Poszukiwacza Wzorców.
-    Poszukiwacz Wzorców sprawdza symetrię/asymetrię relacji~\ref{symetria_relacji} pomiędzy parą krajów badając siłę powiązania miedzy nimi, w kolejnych okresach czasu.
-    Wyniki są zwracane do Poszukiwacza Trendów który analizuje zebrane dane szukając tendencji.
+    Generator Zestawień tworzy agenta Poszukiwacz Korelacji.
+%    todo w tej chwili tworzy dwa rodzaje Poszukiwaczy Trendów 1. korelacja 2. klastrowanie
+    Agent Poszukiwacz Korelacji tworzy dla każdej pary krajów Poszukiwacza Wzorców.
+    Poszukiwacz Wzorców sprawdza symetrię/asymetrię relacji pomiędzy parą krajów badając siłę powiązania miedzy nimi, w kolejnych okresach czasu.
+    Wyniki są zwracane do Poszukiwacza Korelacji który analizuje zebrane dane szukając korelacji.
+    Agent Poszukiwacz Klastrów przyporządkowuje analizowane kraje do grup.
     Ostateczne wyniki przekazywane są do Generatora Zestawień który przygotowuje raport końcowy.
 
-    \subsection{Poszukiwacze wzorców}
-    W kolejnych paragrafach opisane są poszczególne typy prowadzonych analiz.
-
-    \paragraph{Symetria siły powiązania}
-    Analiza siły powiązania między parami krajów.
-
-    Siła powiązania, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
-    Odzwierciedla to jak ważny dla kraju A jest kraj B\@.
-
-
-    \[ Percentage = \frac
-    {\sum{Events\ country\ A\ (actor 1)\ with\ Country\ B\ (actor 2)}}
-    {\sum{Events\ country\ A\ (actor 1)}}
-    100 \%
-    \]
-
-    \paragraph{Wzorzec Mocarstwo/Klient}
-    Analiza wzorca Mocarstwo/Klient między parami krajów.
-
-%    todo przeredagować
-    Wg pracy Jarosza.
-    Relacje znaczące to takie wydarzenia które posiadają co najmniej 50 wzmianek w mediach (NumMentions)//s.\! 33.
-
-    Wzorzec Mocarstwo/Klient określony jako stosunek liczby wszystkich relacji znaczących Aktora 1 oraz liczby wszystkich znaczących relacji Aktora2 //s.\@ 82.
-    \[ Ratio = \frac
-    {\sum{Events\ country\ A\ (actor 1) (NumMentions > 50)}}
-    {\sum{Events\ country\ B\ (actor 1) (NumMentions > 50)}}
-    \]
-
-    \paragraph{Korelacja parami}
-%    todo przeredagować
-    Analiza korelacji siły powiązania pomiędzy parami krajów z 6 miesięcznym oknem.
-    Siła powiązania mówi nam jak jeden z krajów jest ważny dla drugiego.
-    Badając korelację siły powiązania możemy zorientować się jak bardzo zmiana postrzegania kraju A przez kraj B wpływa
-    na zmianę postrzegania kraju B przez kraj A\@.
-
-    Wyniki poszukiwania wzorców zostały opisane w sekcji~\ref{sec:poszukiwanie-wzorców}.
-
-    \paragraph{Testowane kraje}
+    Analizowane kraje to:
     \begin{enumerate}
-        \item Polska
-        \item Niemcy
-        \item Rosja
-        \item Czechy
-        \item Słowacja
-        \item Ukraina
+        \item Polska,
+        \item Niemcy,
+        \item Rosja,
+        \item Czechy,
+        \item Słowacja,
+        \item Ukraina.
     \end{enumerate}
-    6 krajów - 30 kombinacji
 
     Zakres czasu jaki powinien być analizowany jest przekazywany z Generatora Zestawień.
     Analizowane zostaną wszystkie kraje z puli testowej przekazanej Generatorowi Zestawień.
@@ -1287,30 +1251,94 @@ singlelinecheck=off
         \label{fig:diagram_czynności_top}
     \end{figure}
 
+    \subsection{Poszukiwacze wzorców}
+    W kolejnych podsekcjach opisane są poszczególne typy prowadzonych przez poszukiwaczy wzorców analiz.
+    Wyniki poszukiwania wzorców zostały opisane w sekcji~\ref{sec:poszukiwanie-wzorców}.
 
-    \section{Badanie korelacji}
+    \subsubsection{Symetria siły powiązania}
+    Analiza siły powiązania między parami krajów.
+
+    Siła powiązania, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a krajem B, do liczby wszystkich zdarzeń w których kraj A jest aktorem 1.
+    Odzwierciedla to jak ważny dla kraju A jest kraj B\@.
+
+
+    \[ Percentage = \frac
+    {\sum{Events\ country\ A\ (actor 1)\ with\ Country\ B\ (actor 2)}}
+    {\sum{Events\ country\ A\ (actor 1)}}
+    100 \%
+    \]
+
+    \subsubsection{Wzorzec Mocarstwo/Klient}
+    Analiza wzorca Mocarstwo/Klient między parami krajów.
+
+    Relacje znaczące, w pracy Jarosza~\cite{Jarosz2020}, to takie wydarzenia które posiadają co najmniej 50 wzmianek w mediach (NumMentions). %s.\@ 33.
+
+    Wzorzec Mocarstwo/Klient określony jako stosunek liczby wszystkich relacji znaczących Aktora 1 oraz liczby wszystkich znaczących relacji Aktora2. %s.\@ 82.
+    \[ Ratio = \frac
+    {\sum{Events\ country\ A\ (actor 1) (NumMentions > 50)}}
+    {\sum{Events\ country\ B\ (actor 1) (NumMentions > 50)}}
+    \]
+
+    \subsection{Badanie korelacji}
 %    todo rozbuduj
-    Agent Poszukiwacz Trendów na podstawie danych od Poszukiwaczy Wzorców poszukuje tendencji.
+    Agent Poszukiwacz Korelacji na podstawie danych od Poszukiwaczy Wzorców poszukuje korelacji.
     Wyniki poszukiwania korelacji zostały opisane w sekcji~\ref{sec:poszukiwanie-korelacji}.
 
-    \subsection{Korelacja Spearmana, Pearsona i Kendalla}
+    \subsubsection{Korelacja Spearmana, Pearsona i Kendalla}
 
-    \subsection{Autokorelacja}
+    Przeprowadzono analizę trzech współczynników korelacji:
+    \begin{itemize}
+        \item klasyczny (korelacja liniowa):
+        \begin{itemize}
+            \item Pearsona - określa poziom zależności liniowej,
+        \end{itemize}
+        \item nieparametryczne:
+        \begin{itemize}
+            \item Spearmana - pomiar siły i kierunku powiązania między dwiema zmiennymi,
+            \item Kendalla - pomiar powiązania porządkowego.
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection{Autokorelacja Pearsona}
     Autokorelacja opisuje w jakim stopniu kolejne wyrazy ciągu zależą od poprzednich w szeregu czasowym.
     Analiza autokorelacji pozwala określić czy w szeregu czasowym występuje powtarzalność zjawisk.
     Poszukiwacz Trendu Autokorelacji bada autokorelację siły połączenia poszczególnych krajów.
 
-    \subsection{Korelacja krzyżowa}
+    \subsubsection{Korelacja krzyżowa Pearsona}
     Korelacja krzyżowa to pomiar korelacji dla różnych przemieszczeń.
     Wyraźna szczytowa korelacja krzyżowa oznacza, że zmiana jednej siły połączenia pociąga za sobą drugą.
 
-    \subsection{Korelacja krocząca}
+    \subsubsection{Korelacja krocząca Pearsona}
     Korelacja krocząca to korelacje pomiędzy dwoma szeregami czasowymi w przesuwającym się oknie.
     Pozwala zbadać jak zmiana jednej siły połączenia wpływała na drugą w czasie.
 
+    \subsection{Klastrowanie}
 
-    \section{Klastrowanie}
-    Wyniki klastrowania zostały opisane w sekcji~\ref{sec:poszukiwanie-korelacji}.
+    Specjalny Agent Klastrujący pracuje na danych przez siebie zebranych.
+    Wykorzystane zostały dwie metody klastrowania:
+    \begin{itemize}
+        \item k-średnich,
+%        \item DBSCAN,
+%        \item spektralne,
+        \item aglomeracyjne.
+    \end{itemize}
+
+    Wyniki klastrowania zostały opisane w sekcji~\ref{sec:klastrowanie}.
+
+    \subsubsection{K-średnich}
+    Metoda klastrowania k-średnich jest jedna z najszybszych.
+    Jej wadą jest wpadanie w minima lokalne.
+    Klastrowanie zostało przeprowadzone wielokrotnie z zadaną różną ilością klastrów.
+
+%    \subsubsection{DBSCAN}
+%    \subsubsection{Spektralne}
+
+    \subsubsection{Aglomeracyjne}
+    Klastrowanie Aglomeracyne łączy rekursywnie pary grup danych.
+    Przy łączeniu wykorzystywana jest odległość połączenia.
+    Jako metryka używana do obliczeń powiązania wykorzystana została odległość euklidesowa.
+    Klastrownie zostało przeprowadzone wielokrotnie z różnymi progami dystansu powyżej którego klastry nie są łączone.
+    Zaletą klastrowania aglomeracyjnego jest możliwość przestawienia jego wyników w postaci dendrogramu.
 
 
     \chapter{Ewaluacja}\label{ch:ewaluacja}
