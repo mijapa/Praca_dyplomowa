@@ -1,26 +1,16 @@
 import itertools
 import json
-from io import StringIO
 
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sn
 from spade.agent import Agent
 from spade.behaviour import OneShotBehaviour, CyclicBehaviour
 from spade.message import Message
 
-from spade_proto.auxiliary import string_to_list
 from spade_proto.pattern_seeker_connection_strength import PatternSeeker
-
-import pandas as pd
-
 from spade_proto.pattern_seeker_cooperate import PatternSeekerCooperate
 from spade_proto.pattern_seeker_cooperate_numMen5 import PatternSeekerCooperateNumMen5
-from spade_proto.pattern_seeker_cooperate_times_goldstein import PatternSeekerCooperateTimesGoldstein
-from spade_proto.pattern_seeker_cooperate_times_mentions import PatternSeekerCooperateTimesNumMen
-from spade_proto.pattern_seeker_fight import PatternSeekerFight
-from spade_proto.pattern_seeker_fight_vs_all import PatternSeekerFightVsAll
-from spade_proto.pattern_seeker_power_client import PatternSeekerPowerClient
-
-import seaborn as sn
-import matplotlib.pyplot as plt
 
 
 class CorrelationSeeker(Agent):
@@ -275,7 +265,7 @@ class CorrelationSeeker(Agent):
                 ax.set_xticklabels([int(item - months_lag) for item in ax.get_xticks()]);
                 plt.legend()
                 ax.figure.set_size_inches(15, 6)
-                ax.set(ylabel='Percentage')
+                ax.set(ylabel='Correlation')
 
                 path = f'figures/auto_seek/{res_name}/cross_correlation'
                 import pathlib
