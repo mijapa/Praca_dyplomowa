@@ -1346,7 +1346,7 @@ singlelinecheck=off
 
     \section{Poszukiwanie wzorców}\label{sec:poszukiwanie-wzorców}
 
-    \paragraph{Siła połączenia}
+    \subsection{Siła połączenia}
     Siła połączenia odzwierciedla to w jakim stopniu jeden kraj jest zainteresowany drugim.
     Wykres~\ref{fig:POL and RUSconnection 1M} przedstawia siłę połączenia pomiędzy Polską i Rosją w latach 2015-2020.
 
@@ -1365,7 +1365,7 @@ singlelinecheck=off
 
     \section{Poszukiwanie korelacji}\label{sec:poszukiwanie-korelacji}
 
-    \paragraph{Globalna korelacja Pearsona, Kendalla oraz Spearmana}
+    \subsection{Globalna korelacja Pearsona, Kendalla oraz Spearmana}
     Wykres~\ref{fig:Connection strength pearson correlation 2015-2020} przedstawia korelację Pearsona siły połączenia miedzy parami krajów.
 
     \begin{figure}[!ht]
@@ -1379,16 +1379,12 @@ singlelinecheck=off
     Zauważalna (ponad 0.4) jest korelacja siły połączenia Niemiec i Rosji oraz Polski i Rosji.
     Wyniki te są zgodne z intuicją.
 
-    Wykres~\ref{fig:Connection strength kendall correlation 2015-2020} przedstawia korelację Kendalla siły połączenia miedzy parami krajów.
-
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=\linewidth]{../spade_proto/figures/correlation/Connection strength kendall correlation 2015-2020.png}
         \caption{Diagram kolorów (heatmap) korelacji Kendalla siły połączenia. (źródło: opracowanie własne)}
         \label{fig:Connection strength kendall correlation 2015-2020}
     \end{figure}
-
-    Wykres~\ref{fig:Connection strength spearman correlation 2015-2020} przedstawia korelację Spearmana siły połączenia miedzy parami krajów.
 
     \begin{figure}[!ht]
         \centering
@@ -1397,11 +1393,14 @@ singlelinecheck=off
         \label{fig:Connection strength spearman correlation 2015-2020}
     \end{figure}
 
-    Na obu wykresach obserwujemy ujemną korelację siły połączenia Rosja-Polska i Polska-Niemcy oraz Polska-Niemcy i Rosja-Polska.
+    Na wykresie przedstawiającym współczynnik korelacji Spearmana~\ref{fig:Connection strength spearman correlation 2015-2020}
+    oraz Kendalla~\ref{fig:Connection strength kendall correlation 2015-2020}
+    obserwujemy ujemną korelację siły połączenia Rosja-Polska i Polska-Niemcy oraz Polska-Niemcy i Rosja-Polska.
     Takie wyniki są zgodne z intuicją.
 
-    \paragraph{Autokorelacja Pearsona}
-    Wykres~\ref{fig:connection-strength-pol-to-deu-autocorrelation-2015-2020} przedstawia autokorelację Pearsona dla siły połączenia Polski i Niemiec w latach 2015-2020.
+    \subsection{Autokorelacja Pearsona}
+    Na dolnej osi wykresu~\ref{fig:connection-strength-pol-to-deu-autocorrelation-2015-2020} przedstawiającego
+    autokorelację Pearsona dla siły połączenia Polski i Niemiec w latach 2015-2020 znajduje się opóźnienie w miesiącach.
 
     \begin{figure}[!ht]
         \centering
@@ -1410,11 +1409,13 @@ singlelinecheck=off
         \label{fig:connection-strength-pol-to-deu-autocorrelation-2015-2020}
     \end{figure}
 
-    Dolna oś przedstawia opóźnienie w miesiącach.
-    Obserwujemy szczyt około 18 miesięcy który sugeruje powtarzalność pewnych wydarzeń co półtora roku.
+    Obserwujemy szczyt współczynnika korelacji około 18 miesięcy, który sugeruje powtarzalność pewnych wydarzeń co półtora roku.
 
-    \paragraph{Korelacja Pearsona par krajów}
-    Wykres~\ref{fig:Connection strength DEU to POL and RUS to POL Pearson correlation with 6 months rolling 2015-2020} przedstawia korelację siły połączenia Niemiec i Polski oraz Rosji i Polski.
+    \subsection{Korelacja Pearsona par krajów}
+    Czerwonym kolorem na wykres~\ref{fig:Connection strength DEU to POL and RUS to POL Pearson correlation with 6 months rolling 2015-2020}
+    oznaczony został współczynnik korelacji siły połączenia Niemiec i Polski oraz Rosji i Polski (wartości na lewej osi).
+    Dodatkowo kolorem niebieskim oznaczona została siła połączenia Niemiec i Polski, a pomarańczowym siła połączenia Rosji i Polski (wartości na prawej osi).
+    Dane są agregowane w trzymiesięcznych okresach.
 
     \begin{figure}[!ht]
         \centering
@@ -1423,19 +1424,19 @@ singlelinecheck=off
         \label{fig:Connection strength DEU to POL and RUS to POL Pearson correlation with 6 months rolling 2015-2020}
     \end{figure}
 
-    W dniach 8-9 lipca 2016 roku odbył się szczyt NATO w Warszawie.
+    Pierwszy wzrost współczynnika korelacji obserwujemy w okolicach połowy 2016 roku.
     W dniu 29 lipca 2016 roku papież Franciszek przekroczył bramę ze znakiem Arbeit macht frei odwiedzając
     były obóz koncentracyjny Auschwitz-Birkenau.
     W dniu 16 września 2016 roku odbyły się wybory parlamentarne w Rosji które wygrała partia Jedna Rosja.
-    Obserwujemy silną ujemną korelację siły połączenia Niemiec i Polski oraz Rosji i Polski,
-    co jest zgodne z intuicją.
+    W dniach 8-9 lipca 2016 roku odbył się szczyt NATO w Warszawie.
+    Wyraźne zainteresowanie przez Polskę Niemcami oraz Rosją w tym okresie jest zgodne z intuicją.
 
-    \paragraph{Korelacja krzyżowa Pearsona}
+    \subsection{Korelacja krzyżowa Pearsona}
     Wykres~\ref{fig:Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020} przedstawia korelację krzyżową siły połączenia połączenia Niemiec i Polski oraz Polski i Niemiec w latach 2015-2020.
 
     \begin{figure}[!ht]
         \centering
-        \includegraphics[width=\linewidth]{../spade_proto/figures/auto_seek/connection strength/cross_correlation/Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020.png}
+        \includegraphics[width=\linewidth]{../spade_proto/figures/auto_seek/connection strength/cross_correlation/Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020 1M.png}
         \caption{Wykres korelacji krzyżowej Pearsona siły połączenia
         Niemcy-Polska i Polska-Niemcy. (źródło: opracowanie własne)}
         \label{fig:Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020}
@@ -1445,25 +1446,41 @@ singlelinecheck=off
     Obserwacja ta jest zgodna z intuicją.
 
 
-    \section{Klastrowanie}
+    \section{Klastrowanie}\label{sec:klastrowanie}
     Na podstawie miar wybranych w sekcji~\ref{subsec:event-base-code} przeprowadzono klastrowanie.
     Przed klastrowaniem dane poddane zostały standaryzacji poprzez usunięcie średniej i skalowanie do wariancji jednostkowej.
+    Klastrowanie zostało przeprowadzone na trzech grupach krajów o znanej specyfice:
+    \begin{itemize}
+        \item Polska oraz Białoruś, Czechy, Niemcy, Hiszpania, Węgry, Włochy, Litwa, Rosja, Słowacja, Ukraina, Stany Zjednoczone,
+        \item Tajwan oraz Chiny, Japonia, Korea Północna, Korea Południowa, Rosja, Stany Zjednoczone,
+        \item Syria oraz Iran, Irak, Izrael, Rosja, Turcja, Stany Zjednoczone.
+    \end{itemize}
 
     \subsection{Polska}
-    W tabeli~\ref{tab:cluster_pl_agg} przedstawione zostały wyniki klastrowania aglomeracyjnego.
+    Wyniki klastrowania algomeracyjnego zostały przedstawione w tabeli~\ref{tab:cluster_pl_agg}.
     \begin{table}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_pl_agg.png}
         \caption{Wyniki klastrowania aglomeracyjnego - Polska. (źródło: opracowanie własne)}
         \label{tab:cluster_pl_agg}
     \end{table}
-    Na rysunku~\ref{fig:cluster_pl_agg_dendrogram} przedstawiony został dendrogram do klastrowania aglomeracyjnego.
+
+    Najbardziej zadowalające wyniki to te dla punktu odcięcia równego 3 (przedostatnie z prawej strony).
+    W tym klastrowaniu relacje (1) Polski ze Stanami Zjednoczonymi, Rosją oraz Niemcami znalazły się w jednej grupie,
+    co jest zgodne z intuicją.
+    Możemy określić relacje w tej grupie jako Klient-Hegemon.
+    Kolejna wyróżniająca się w tym klastrowaniu grupa (0) składa z relacji Polski z Czechami, Węgrami, Litwą i Słowacją.
+    Możemy określić relacje w tej grupie jako Neutralne.
+
+    Na wykresie~\ref{fig:cluster_pl_agg_dendrogram} przedstawiony został dendrogram do klastrowania aglomeracyjnego.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_pl_agg_dendrogram.png}
         \caption{Wyniki klastrowania aglomeracyjnego - Polska. (źródło: opracowanie własne)}
         \label{fig:cluster_pl_agg_dendrogram}
     \end{figure}
+    Zastanawiające jest połączenie w jedną grupę relacji Polska-Ukraina oraz Polska-Hiszpania i Polska-Włochy.
+    Wszystkie z pierwszych powstałych grup, widocznych u dołu dendrogramu, są zgodne z rzeczywistymi relacjami krajów.
 
     W tabeli~\ref{tab:cluster_pl} przedstawione zostały wyniki klastrowania metodą kMeans.
     \begin{table}[!htp]
@@ -1473,13 +1490,11 @@ singlelinecheck=off
         \label{tab:cluster_pl}
     \end{table}
 
-    Najciekawsze wydają się wyniki dla 5 klastrów.
-    Tabele przedstawiające krańcowe wartości miar w poszczególnych klastrach znajdują się w dodatku~\ref{subsec:wartości-miar-w-klastrowaniu-kmeans---polska}.
-
+    Najciekawsze wydają się wyniki dla 5 klastrów, gdzie relacje Polski z Niemcami, Rosją i Stanami Zjednoczonymi znalazły się w jednym klastrze.
+    Tabele przedstawiające krańcowe wartości miar w klastrowaniu k-means dla poszczególnych klastrów znajdują się w dodatku~\ref{subsec:wartości-miar-w-klastrowaniu-kmeans---polska}.
     Wykresy gęstości miar w poszczególnych klastrach zostały przedstawione w dodatku~\ref{subsec:gęstośc-miar-w-poszczególnych-klastrach---polska}.
 
     \subsection{Tajwan}
-
     W tabeli~\ref{tab:cluster_tjw_agg} przedstawione zostały wyniki klastrowania aglomeracyjnego.
     \begin{table}[!htp]
         \centering
@@ -1487,7 +1502,17 @@ singlelinecheck=off
         \caption{Wyniki klastrowania aglomeracyjnego - Tajwan. (źródło: opracowanie własne)}
         \label{tab:cluster_tjw_agg}
     \end{table}
-    Na rysunku~\ref{fig:cluster_tjw_agg_dendrogram} przedstawiony został dendrogram do klastrowania aglomeracyjnego.
+    Wynik dla punktu odcięcia równego 4 są najciekawsze.
+    Podczas klastrowania z tym parametrem powstały ciekawe grupy relacji:
+    \begin{itemize}
+        \item (0) Tajwan-Chiny, Tajwan-Rosja, Tajwan-Stany Zjednoczone,
+        \item (1) Tajwan-Japonia, Tajwan-Korea Południowa,
+        \item (2) Tajwan-Korea Północna.
+    \end{itemize}
+
+
+    Dendrogram~\ref{fig:cluster_tjw_agg_dendrogram} wyraźnie pokazuje odmienność relacji Tajwan-Korea Północna od pozostałych,
+    co jest zgodne ze stanem faktycznym relacji między tymi państwami.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_tjw_agg_dendrogram.png}
@@ -1495,7 +1520,9 @@ singlelinecheck=off
         \label{fig:cluster_tjw_agg_dendrogram}
     \end{figure}
 
-    W tabeli~\ref{tab:cluster_tjw} przedstawione zostały wyniki klastrowania metodą kMeans.
+
+    Przy klastrowaniu metodą k-średnich~\ref{tab:cluster_tjw} najciekawsze wydają się wyniki dla 3 klastrów.
+    Przy takiej liczbie relacje trafiają do grup w ten sam sposób co dla klastrowania aglomeracyjnego z progiem odcięcia równym 4.
     \begin{table}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_tjw.png}
@@ -1503,21 +1530,29 @@ singlelinecheck=off
         \label{tab:cluster_tjw}
     \end{table}
 
-    Najciekawsze wydają się wyniki dla 3 klastrów.
-    Tabele przedstawiające krańcowe wartości miar w poszczególnych klastrach znajdują się w dodatku~\ref{subsec:wartości-miar-w-klastrowaniu-kmeans---tajwan}.
 
-    Wykresy gęstości miar w poszczególnych klastrach zostały przedstawione w dodatku~\ref{subsec:gęstośc-miar-w-poszczególnych-klastrach---tajwan}.
+    Krańcowe wartości miar w poszczególnych klastrach przedstawione są w tabelach
+    znajdujących się w dodatku~\ref{subsec:wartości-miar-w-klastrowaniu-kmeans---tajwan}.
+
+    Wykresy gęstości miar w poszczególnych klastrach znalazły się w dodatku~\ref{subsec:gęstośc-miar-w-poszczególnych-klastrach---tajwan}.
 
     \subsection{Syria}
 
-    W tabeli~\ref{tab:cluster_tjw_agg} przedstawione zostały wyniki klastrowania aglomeracyjnego.
+    Spośród wyników klastrowania aglomeracyjnego przedstawionych w tabeli~\ref{tab:cluster_tjw_agg} najbardziej pożądane wydają się
+    te dla progów 3 i 4.
     \begin{table}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_syr_agg.png}
         \caption{Wyniki klastrowania aglomeracyjnego - Syria. (źródło: opracowanie własne)}
         \label{tab:cluster_syr_agg}
     \end{table}
-    Na rysunku~\ref{fig:cluster_syr_agg_dendrogram} przedstawiony został dendrogram do klastrowania aglomeracyjnego.
+    W tym przypadku w jednej grupie (2) znalazły się relacje wrogie Syria-Irak oraz Syria-Izrael.
+    W kolejnej grupie (0) są relacje Syria-Turcja oraz Syria-Stany Zjednoczone.
+    Możemy określić te relacje jako Klient-Hegemon.
+
+
+    Na wykresie~\ref{fig:cluster_syr_agg_dendrogram} przedstawiającym dendrogram obserwujemy, że relacje
+    Syria-Turcja i Syria-Stany Zjednoczone są wyraźnie oddalone od pozostałych.
     \begin{figure}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_syr_agg_dendrogram.png}
@@ -1525,18 +1560,18 @@ singlelinecheck=off
         \label{fig:cluster_syr_agg_dendrogram}
     \end{figure}
 
-    W tabeli~\ref{tab:cluster_syr} przedstawione zostały wyniki klastrowania metodą kMeans.
+    Metoda k-średnich daje najlepsze wyniki, przedstawione w tabeli ~\ref{tab:cluster_syr}, dla 3 klastrów.
     \begin{table}[!htp]
         \centering
         \includegraphics[width=\linewidth]{../Power-Client pre analysis/cluster_syr_kmeans.png}
         \caption{Wyniki klastrowania. (źródło: opracowanie własne)}
         \label{tab:cluster_syr}
     \end{table}
+    Przy tej konfiguracji ponownie w tej samej grupie znalazły się relacje wrogie Syria-Irak oraz Syria-Izrael.
 
-    Najciekawsze wydają się wyniki dla 3 klastrów.
-    Tabele przedstawiające krańcowe wartości miar w poszczególnych klastrach znajdują się w dodatku~\ref{subsec:wartości-miar-w-klastrowaniu-kmeans---syria}.
+    W dodatku~\ref{subsec:wartości-miar-w-klastrowaniu-kmeans---syria} znalazły się tabele przedstawiające krańcowe wartości miar w poszczególnych klastrach.
 
-    Wykresy gęstości miar w poszczególnych klastrach zostały przedstawione w dodatku~\ref{subsec:gęstośc-miar-w-poszczególnych-klastrach---syria}.
+    Gęstości miar w poszczególnych klastrach zostały przedstawione na wykresach w dodatku~\ref{subsec:gęstośc-miar-w-poszczególnych-klastrach---syria}.
 
 
     \chapter{Podsumowanie}\label{ch:podsumowanie}
