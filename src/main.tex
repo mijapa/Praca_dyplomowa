@@ -1598,192 +1598,30 @@ singlelinecheck=off
     \chapter{Podsumowanie}\label{ch:podsumowanie}
 
 
-    \section{Propozycje dalszego rozwoju}
-    Do przeredagowania.
-%    todo Do przeredagowania.
+    \section{Wnioski}\label{sec:wnioski}
+%    todo do napisania dopiero
+%    Przeprowadzona analiza danych ze zbioru GDELT pozwoliła na wybranie takiego wektora cech który umożliwił skuteczny podział państw - aktorów - na grupy.
+%    Kraje podobne do siebie trafiły do właściwych klastrów w~oparciu o~cechy z~notatek prasowych.
+%    Udało się wykazać związek powstałych klastrów z~rzeczywistymi cechami państw.
+%    W~klastrach pojawiają się anomalie.
+%    Propozycja zmiany wektora została przedstawiona w~części~\ref{sec:dalsze-kierunki-rozwoju}.
 
-    \subsection{Tylko wybrane kraje}
-    Lista krajów które będą analizowane jako jedyne.
+%    Na podstawie wyników opisanych w rozdziale~\ref{ch:ewaluacja} można powiedzieć, że.
+    Otrzymane wynik wskazują na duży potencjał drzemiący w bazie danych GDELT\@.
+    W trakcie pracy pojawiało się wiele interesujących wątków i pomysłów na dalsze badania, niestety wykraczające poza ramy tego opracowania.
+    Część z nich została opisana w sekcji~\ref{sec:dalsze-kierunki-rozwoju}.
+    Wiele z wykresów uzyskanych podczas automatycznej eksploracji z wykorzystaniem systemu agentowego nie zostało poddanych wnikliwej analizie
+    ani przedstawionych w tej pracy ze względu na ograniczenia czasowe.
+    Cele pracy~\ref{sec:cele-pracy} którymi były aliza wydarzeń politycznych i poszukiwanie wzorców zostały osiągnięte.
+    Zaproponowany system agentowy jest dobrą podstawą do dalszego rozwoju i stwarza wiele możliwości szerszej eksploracji danych z GDELT\@.
 
-    \subsection{Kraje szczególnego zainteresowania}
-    Lista krajów dla których system będzie starał się znaleźć najwięcej informacji.
 
-    \subsection{Zdarzenia szczególnego zainteresowania}
-    Podane w formie dat główne punkty w pobliżu których system powinien przeprowadzać poszukiwania.
-
-    \subsection{Wielkość okna czasowego}
-    Rozmiar przedziałów czasu w jakich agregowane będą analizowane dane.
-    Poziomy granulacji czasu:
-    \begin{itemize}
-        \item tydzień,
-        \item miesiąc,
-        \item rok.
-    \end{itemize}
-    Okno czasowe może być zmieniane przez system wg.~\ref{subsec:przedziały-czasowe}.
-
-    \subsection{Punkt stopu poszukiwań}
-%    W którym momencie który agent powinien zaprzestawać dalszej analizy?
-    Cyklicznie sprawdzane warunki pozwalające określić czy dalsze przeszukiwanie jest zasadne.
-
-    \subsection{Data początku i końca analizy}
-    Przedział czasu określający badany przez system okres.
-
-    \subsection{Progi dla danego kraju/relacji}\label{subsec:progi-dla-danego-kraju/relacji}
-    Progi pozwolą na odrzucenie poszukiwań w mało interesujących obszarach.
-    Mogą być dobierane ręcznie, pół-automatycznie, lub automatycznie.
-    Możliwe do wyboru progi:
-    \begin{itemize}
-        \item liczba zdarzeń (pokazuje aktywność podmiotów z danego kraju - ZAKRES),
-        \item liczba wzmianek (pokazuje, że dane działanie było uznane za ważne - WAGA),
-        \item liczba źródeł,
-        \item średni średni ton,
-        \item miara Goldsteina
-        \item stosunek liczby zdarzeń (pokazuje jak nastawione jest dane państwo).
-        \item liczba silnych relacji kooperacyjnych,
-        \item liczba silnych relacji wrogich.
-    \end{itemize}
-
-    \subsection{Podpowiedź prawdopodobnego wyniku}\label{subsec:podpowiedź-prawdopodobnego-wyniku}
-    Podpowiedzi dla systemu pochodzące z pliku konfiguracyjnego.
-    W celu poprawy weryfikacji podpowiadane są prawdopodobne wyniki jakie chcemy otrzymać,
-    np.: Izrael - Iran -> wrogowie, USA - Polska -> mocarstwo - klient.
-
-    \subsubsection{Klastrowanie państw}
-    Łączenie podobnych państw w grupy na podstawie wybranych miar.
-    Wyodrębnienie państw:
-    \begin{itemize}
-        \item silnych,
-        \item bogatych,
-        \item aktywnych politycznie
-        \item związanych z przemocą
-        \item o wyraźnie podwyższonych nakładach na opiekę zdrowotną / zbrojenia
-        \item \ldots
-    \end{itemize}
-
-    \paragraph{Przykład}
-
-    Grupowanie państw w~klastry z wykorzystaniem wektora cech z~bazy GDELT oraz algorytmu klastrowania k-średnich.
-    Wektor danych dla każdego kraju składa się z:
-    \begin{enumerate}
-        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1,
-        \item[•] sumy liczby wzmianek (całkowitej liczby wzmianek o~tym wydarzeniu, we wszystkich dokumentach źródłowych podczas 15-minutowej aktualizacji, w~której zostało po raz pierwszy zauważone) w~analizowanym okresie, dla wydarzeń w~których dany kraj jest aktorem 1,
-        \item[•] stosunku liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{material conflict} do liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{material cooperation},
-        \item[•] stosunku liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{verbal conflict} do liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{quad class} jako \textit{verbal cooperation},
-        \item[•] średniego, dla wszystkich zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, średniego tonu (średni „ton” wszystkich dokumentów zawierających jedną lub więcej wzmianek o~tym wydarzeniu, podczas 15-minutowej aktualizacji, w~której zostało ono po raz pierwszy zauważone, waha się od -100 (skrajnie ujemny) do +100 (skrajnie dodatni)),
-        \item[•] średniej, dla wszystkich zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, miary Goldsteina (skala Goldsteina przypisuje wynik liczbowy od -10 do +10, wychwytując teoretyczny potencjalny wpływ, jaki rodzaj zdarzenia będzie miał na stabilność kraju),
-        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{event root code} jako \textit{fight} Fight,
-        \item[•] liczby zdarzeń w~analizowanym okresie, w~których dany kraj jest aktorem 1, oznaczonych \textit{event root code} jako \textit{Express intent to cooperate}.
-    \end{enumerate}
-    Wykorzystane dane pochodzą ze stycznia 2020 roku.
-    Przed dokonaniem klasteryzacji odrzucone zostały wydarzenia z~kodami krajów cameo niezgodnymi z~kodami ISO 3166-1 alfa-3~\cite{iso_alfa3}.
-
-    Wykres~\ref{fig:clust10std} przedstawia mapę z~naniesionymi wynikami klasteryzacji ustandaryzowanych próbek.
-    Każda grupa krajów otrzymała inny kolor.
-    Zauważalne są skupiska geograficzne krajów należących do danego klastra.
-
-    \begin{figure}[!htp]
-        \centering
-        \includegraphics[width=\linewidth]{fig/pp/10clusterMap_std.png}
-        \caption{Mapa z~wynikami klasteryzacji. (źródło: opracowanie własne)}
-        \label{fig:clust10std}
-    \end{figure}
-
-    \paragraph{Korelacja z danymi zewnętrznymi}
-    \begin{itemize}
-        \item zmiany następują z opóźnieniem,
-        \item zmiany następują jednocześnie,
-        \item jak często (procentowo) trafiają do tego samego klastra,
-        \item jak często (procentowo) trafiają do różnych klastrów ale zmiana zachodzi w tym samym czasie.
-        Dynamika relacji.
-        Uchwycenie podobieństwa w zachowaniu.
-        Powiązanie zmiany relacji (np.: sojusznik ->wróg) z wydarzeniami.
-        \item procentowa (w czasie) przynależność do tego samego,
-        \item jak często zmiana klastra przez oba państwa występuje w tych samych tygodniach.
-        \item korelacja miedzy miarami, a stanem gospodarczym
-        \item powiązanie zmiany relacji z wydarzeniami
-        \item powiązanie z kursem giełdowym?
-    \end{itemize}
-
-    \subsection{Porównanie państw}
-    Porównywanie wybranych państw.
-
-    \subsection{Porównywanie relacji}
-    Porównywanie wybranych relacji.
-
-    \subsection{Ważne wydarzenia}
-    Daty ważnych wydarzeń podawane w formie pliku na wejście jako punkt zaczepienia do poszukiwań w koło tej daty.
-
-    \subsection{Przedziały czasowe}\label{subsec:przedziały-czasowe}
-    Jeśli są mocne zmiany zachowań dla szerokiego przedziału, zmniejsz przedział aby uniknąć lokalnych fluktuacji.
-    Jeśli jest stała wartość dla relacji to zacznij badać dla mniejszego przedziału.
-
-    \subsection{Agregacja}
-    Poszukiwacz wzorców może mieć miarę zagregowaną na różnych poziomach.
-
-    \subsection{Badanie relacji odwrotnej}
-    Dla tej samej relacji zamieniamy Aktora 1 i Aktora 2.
-    W niektórych przypadkach może to stanowić redundancję która ułatwi dalsze obliczenia.
-
-    \subsection{Mało zdarzeń - informacja dodatkowa}
-    Zwracanie dodatkowej informacji do poszukiwacza o tym, że analizowanych wydarzeń jest mało.
-
-    \subsubsection{Zaprzestanie poszukiwań}
-    Poszukiwacz trendów może decydować o zaprzestaniu poszukiwania relacji gdy zdarzeń jest zbyt mało.
-
-    \subsection{Dużo zdarzeń - informacja dodatkowa}
-    Zwracanie dodatkowej informacji do poszukiwacza o tym, że analizowanych wydarzeń jest dużo.
-
-    \subsubsection{Histogram}
-    Generowanie dodatkowego histogramu gdy danych zdarzeń jest bardzo dużo.
-
-    \subsubsection{Uruchomienie poszukiwań korelacji}
-    Ewentualne uruchomienie poszukiwań korelacji gdy zdarzeń jest bardzo dużo.
-
-    \subsection{Inteligentna selekcja wyników}
-    Selekcja wyników będzie podstawą do dalszej eksploracji.
-
-    \subsection{Kraje szczególnego zainteresowania}
-    Wskazanie w konfiguracji jakie kraje są szczególnie interesujące.
-
-    \subsection{Reset systemu w przypadku niezadowalającej odpowiedzi}
-    Reset systemu z nowymi parametrami.
-
-    \subsection{Komunikacja z agentami wyższego rzędu tylko w przypadku znalezienia istotnych informacji}
-
-    \subsection{Filtrowanie relacji/krajów na podstawie wartości progowej}
-    Relacje krajów europejskich z krajami azjatyckimi mają małe znaczenie i powinny zostać odfiltrowane.
-    Progi - patrz~\ref{subsec:progi-dla-danego-kraju/relacji}.
-
-    \subsection{Wykorzystanie analogii}
-    Coś ciekawego w jednym państwie/relacji może być wskazówką do poszukiwania w drugim/drugiej.
-
-    \subsection{Poszukiwacz Wzorców Wewnętrznych}
-    Dedykowany agent zajmujący się poszukiwaniem wzorców wewnątrz kraju.
-    Agent związany z krajem może wstępnie badać relacje z innymi krajami
-    i powołać agenta który będzie odpowiadał za badanie tych relacji.
-    Takie działanie pozwoli ograniczyć liczbę badanych relacji, odrzucić relacje niepożądane.
-
-    \subsection{Badanie reakcji sojuszników USA na pogorszenie relacji danego państwa ze Stanami}
-
-    \subsection{Identyfikacja relacji wrogich}
-    Czy są stabilne?
-    Przewidywanie dalszego przebiegu relacji.
-
-    \subsection{Identyfikacja przynależności do klastrów w czasie}
-    Jak zmienia się przynależność kraju do klastrów?
-    Czy kraj trafia ciągle do tego samego klastra?
-    - stabilność, oscylacja, pojedyncza zmiana z A do B, pojedyncze zaburzenie ABA
-
-    \subsection{Poszukiwanie przejść ABA w relacjach}
-    W jakim terminie się znajdują.
-
-    \subsection{Badanie dynamiki}
-
-    \subsection{Podobieństwo statyczne}
-
-    \subsection{Podobieństwo zagregowane}
+    \section{Dalsze kierunki rozwoju}\label{sec:dalsze-kierunki-rozwoju}
+    Poniżej przedstawiono propozycje dalszych kierunków rozwoju pracy.
 
     \subsection{Rozbudowa systemu agentowego}
+    Pierwszą z propozycji jest rozbudowa systemu agentowego o kolejne elementy.
+
     \begin{enumerate}
         \item Poszukiwacz wzorców
         \begin{enumerate}
@@ -1819,6 +1657,50 @@ singlelinecheck=off
         \item Poszukiwacz Trendów
         \item Generator Zestawień
     \end{enumerate}
+
+    \subsection{Progi dla danego kraju/relacji}\label{subsec:progi-dla-danego-kraju/relacji}
+    Progi pozwolą na odrzucenie poszukiwań w mało interesujących obszarach.
+    Mogą być dobierane ręcznie, pół-automatycznie, lub automatycznie.
+    Możliwe do wyboru progi:
+    \begin{itemize}
+        \item liczba zdarzeń (pokazuje aktywność podmiotów z danego kraju - ZAKRES),
+        \item liczba wzmianek (pokazuje, że dane działanie było uznane za ważne - WAGA),
+        \item liczba źródeł,
+        \item średni średni ton,
+        \item miara Goldsteina
+        \item stosunek liczby zdarzeń (pokazuje jak nastawione jest dane państwo).
+        \item liczba silnych relacji sojuszniczych,
+        \item liczba silnych relacji wrogich.
+    \end{itemize}
+
+    \subsection{Badanie przynależności do klastrów}
+    Zarówno w odniesieniu do krajów jak i relacji możliwe jest badanie przynależności do klastrów.
+
+    \begin{itemize}
+        \item zmiany następują z opóźnieniem,
+        \item zmiany następują jednocześnie,
+        \item jak często (procentowo) trafiają do tego samego klastra,
+        \item jak często (procentowo) trafiają do różnych klastrów ale zmiana zachodzi w tym samym czasie.
+        \item powiązanie zmiany relacji (np.: sojusznik ->wróg) z wydarzeniami,
+        \item procentowa (w czasie) przynależność do tego samego klastra,
+        \item jak często zmiana klastra przez oba państwa występuje w tych samych tygodniach,
+        \item korelacja miedzy miarami, a stanem gospodarczym,
+        \item powiązanie zmiany relacji z wydarzeniami,
+        \item powiązanie z kursem giełdowym.
+    \end{itemize}
+
+    \subsection[Filtrowanie relacji]{Filtrowanie relacji/krajów na podstawie wartości progowej}
+    Relacje krajów europejskich z krajami azjatyckimi mają małe znaczenie i powinny zostać odfiltrowane.
+
+    \subsection{Poszukiwacz Wzorców Wewnętrznych}
+    Dedykowany agent zajmujący się poszukiwaniem wzorców wewnątrz kraju.
+    Agent związany z krajem może wstępnie badać relacje z innymi krajami
+    i powołać agenta który będzie odpowiadał za badanie tych relacji.
+    Takie działanie pozwoli ograniczyć liczbę badanych relacji, odrzucić relacje niepożądane.
+
+%    \subsection{Badanie korelacji z danymi zewnętrznymi}
+%    WHO
+%    Bank Światowy
 
     \inputencoding{utf8}
     \newpage
