@@ -1661,6 +1661,21 @@ singlelinecheck=off
 %    Propozycja zmiany wektora została przedstawiona w~części~\ref{sec:dalsze-kierunki-rozwoju}.
 
 %    Na podstawie wyników opisanych w rozdziale~\ref{ch:ewaluacja} można powiedzieć, że.
+    Przeprowadzone badania pokazują, że siła połączenia pomiędzy parami krajów dobrze odzwierciedla ich wzajemne zainteresowanie.
+    Czas w którym zachodzą gwałtowne zmiany siły połączenia może być dobrym punktem do dalszych eksploracji.
+
+    Badanie korelacji siły połączenia przyniosło zadowalające rezultaty dla każdego z analizowanych rodzajów korelacji:
+    \begin{itemize}
+        \item korelacja Pearsona, Kendalla oraz Spearmana,
+        \item autokorelacja Pearsona,
+        \item korelacja Pearsona dla par krajów,
+        \item korelacja krzyżowa Pearsona.
+    \end{itemize}
+
+    Zgodne z oczekiwaniami są też efekty klastrowania krajów w poszukiwaniu relacji klient-hegemon.
+    Wybór w analizie Power-Client miar do klastrowania okazał się właściwy.
+    W każdej z trzech analizowanych grup krajów udało się zidentyfikować klaster relacji klient-hegemon oraz klaster relacji neutralnych.
+
     Otrzymane wynik wskazują na duży potencjał drzemiący w bazie danych GDELT\@.
     W trakcie pracy pojawiało się wiele interesujących wątków i pomysłów na dalsze badania, niestety wykraczające poza ramy tego opracowania.
     Część z nich została opisana w sekcji~\ref{sec:dalsze-kierunki-rozwoju}.
@@ -1673,88 +1688,95 @@ singlelinecheck=off
     \section{Dalsze kierunki rozwoju}\label{sec:dalsze-kierunki-rozwoju}
     Poniżej przedstawiono propozycje dalszych kierunków rozwoju pracy.
 
-    \subsection{Rozbudowa systemu agentowego}
-    Pierwszą z propozycji jest rozbudowa systemu agentowego o kolejne elementy.
+    System Agentowy można rozbudować o kolejne typy agentów np.: szukające wzorców w danych Banku Światowego.
+    Dodanie agentów dedykowanych poszukiwaniu wzorców wewnątrz kraju pozwoli na wcześniejsze odrzucenie relacji niepożądanych.
+    Dodanie elementów uczenia maszynowego poskutkuje zwiększeniem autonomii agentów.
+    Wprowadzenie nowych progów miar pozwoli na odrzucenie poszukiwań w mało interesujących obszarach.
+    Zarówno w odniesieniu do krajów jak i relacji możliwe jest badanie przynależności do klastrów w czasie.
 
-    \begin{enumerate}
-        \item Poszukiwacz wzorców
-        \begin{enumerate}
-            \item Poszukiwacz wzorców w danych GDELT
-            \begin{enumerate}
-                \item Poszukiwacz Wzorców Statycznych
-                \begin{enumerate}
-                    \item sojusznik
-                    \item nieprzyjaciel
-                    \item symetria
-                    \item asymetria
-                    \item mocarstwo-klient
-                \end{enumerate}
-                \item Poszukiwacz Wzorców Dynamicznych
-                \begin{enumerate}
-                    \item stabilna relacja
-                    \item pojedyncze zaburzenie
-                    \item oscylacja
-                \end{enumerate}
-                \item Poszukiwacz Wzorców Covid?
-            \end{enumerate}
-            \item Poszukiwacz wzorców w danych Banku Światowego
-            \begin{enumerate}
-                \item Poszukiwacz Wzorców Statycznych
-                \begin{enumerate}
-                    \item kraj rozwijający się
-                    \item bogaty kraj
-                    \item ubogi kraj
-                \end{enumerate}
-            \end{enumerate}
-        \end{enumerate}
-        \item Poszukiwacz Korelacji
-        \item Poszukiwacz Trendów
-        \item Generator Zestawień
-    \end{enumerate}
+    Dostosowanie systemu może pozwolić na analizę aktywności rynków giełdowych oraz zachowań w mediach społecznościowych.
 
-    \subsection{Progi dla danego kraju/relacji}\label{subsec:progi-dla-danego-kraju/relacji}
-    Progi pozwolą na odrzucenie poszukiwań w mało interesujących obszarach.
-    Mogą być dobierane ręcznie, pół-automatycznie, lub automatycznie.
-    Możliwe do wyboru progi:
-    \begin{itemize}
-        \item liczba zdarzeń (pokazuje aktywność podmiotów z danego kraju - ZAKRES),
-        \item liczba wzmianek (pokazuje, że dane działanie było uznane za ważne - WAGA),
-        \item liczba źródeł,
-        \item średni średni ton,
-        \item miara Goldsteina
-        \item stosunek liczby zdarzeń (pokazuje jak nastawione jest dane państwo).
-        \item liczba silnych relacji sojuszniczych,
-        \item liczba silnych relacji wrogich.
-    \end{itemize}
 
-    \subsection{Badanie przynależności do klastrów}
-    Zarówno w odniesieniu do krajów jak i relacji możliwe jest badanie przynależności do klastrów.
-
-    \begin{itemize}
-        \item zmiany następują z opóźnieniem,
-        \item zmiany następują jednocześnie,
-        \item jak często (procentowo) trafiają do tego samego klastra,
-        \item jak często (procentowo) trafiają do różnych klastrów ale zmiana zachodzi w tym samym czasie.
-        \item powiązanie zmiany relacji (np.: sojusznik ->wróg) z wydarzeniami,
-        \item procentowa (w czasie) przynależność do tego samego klastra,
-        \item jak często zmiana klastra przez oba państwa występuje w tych samych tygodniach,
-        \item korelacja miedzy miarami, a stanem gospodarczym,
-        \item powiązanie zmiany relacji z wydarzeniami,
-        \item powiązanie z kursem giełdowym.
-    \end{itemize}
-
-    \subsection[Filtrowanie relacji]{Filtrowanie relacji/krajów na podstawie wartości progowej}
-    Relacje krajów europejskich z krajami azjatyckimi mają małe znaczenie i powinny zostać odfiltrowane.
-
-    \subsection{Poszukiwacz Wzorców Wewnętrznych}
-    Dedykowany agent zajmujący się poszukiwaniem wzorców wewnątrz kraju.
-    Agent związany z krajem może wstępnie badać relacje z innymi krajami
-    i powołać agenta który będzie odpowiadał za badanie tych relacji.
-    Takie działanie pozwoli ograniczyć liczbę badanych relacji, odrzucić relacje niepożądane.
-
-%    \subsection{Badanie korelacji z danymi zewnętrznymi}
-%    WHO
-%    Bank Światowy
+%    \subsection{Rozbudowa systemu agentowego}
+%    Pierwszą z propozycji jest rozbudowa systemu agentowego o kolejne elementy.
+%
+%    \begin{enumerate}
+%        \item Poszukiwacz wzorców
+%        \begin{enumerate}
+%            \item Poszukiwacz wzorców w danych GDELT
+%            \begin{enumerate}
+%                \item Poszukiwacz Wzorców Statycznych
+%                \begin{enumerate}
+%                    \item sojusznik
+%                    \item nieprzyjaciel
+%                    \item symetria
+%                    \item asymetria
+%                    \item mocarstwo-klient
+%                \end{enumerate}
+%                \item Poszukiwacz Wzorców Dynamicznych
+%                \begin{enumerate}
+%                    \item stabilna relacja
+%                    \item pojedyncze zaburzenie
+%                    \item oscylacja
+%                \end{enumerate}
+%                \item Poszukiwacz Wzorców Covid?
+%            \end{enumerate}
+%            \item Poszukiwacz wzorców w danych Banku Światowego
+%            \begin{enumerate}
+%                \item Poszukiwacz Wzorców Statycznych
+%                \begin{enumerate}
+%                    \item kraj rozwijający się
+%                    \item bogaty kraj
+%                    \item ubogi kraj
+%                \end{enumerate}
+%            \end{enumerate}
+%        \end{enumerate}
+%        \item Poszukiwacz Korelacji
+%        \item Poszukiwacz Trendów
+%        \item Generator Zestawień
+%    \end{enumerate}
+%
+%    \subsection{Progi dla danego kraju/relacji}\label{subsec:progi-dla-danego-kraju/relacji}
+%    Progi pozwolą na odrzucenie poszukiwań w mało interesujących obszarach.
+%    Mogą być dobierane ręcznie, pół-automatycznie, lub automatycznie.
+%    Możliwe do wyboru progi:
+%    \begin{itemize}
+%        \item liczba zdarzeń (pokazuje aktywność podmiotów z danego kraju - ZAKRES),
+%        \item liczba wzmianek (pokazuje, że dane działanie było uznane za ważne - WAGA),
+%        \item liczba źródeł,
+%        \item średni średni ton,
+%        \item miara Goldsteina
+%        \item stosunek liczby zdarzeń (pokazuje jak nastawione jest dane państwo).
+%        \item liczba silnych relacji sojuszniczych,
+%        \item liczba silnych relacji wrogich.
+%    \end{itemize}
+%
+%    \subsection{Badanie przynależności do klastrów}
+%    Zarówno w odniesieniu do krajów jak i relacji możliwe jest badanie przynależności do klastrów.
+%
+%    \begin{itemize}
+%        \item zmiany następują z opóźnieniem,
+%        \item zmiany następują jednocześnie,
+%        \item jak często (procentowo) trafiają do tego samego klastra,
+%        \item jak często (procentowo) trafiają do różnych klastrów ale zmiana zachodzi w tym samym czasie.
+%        \item powiązanie zmiany relacji (np.: sojusznik ->wróg) z wydarzeniami,
+%        \item procentowa (w czasie) przynależność do tego samego klastra,
+%        \item jak często zmiana klastra przez oba państwa występuje w tych samych tygodniach,
+%        \item korelacja miedzy miarami, a stanem gospodarczym,
+%        \item powiązanie zmiany relacji z wydarzeniami,
+%        \item powiązanie z kursem giełdowym.
+%    \end{itemize}
+%
+%    \subsection{Poszukiwacz Wzorców Wewnętrznych}
+%    Dedykowany agent zajmujący się poszukiwaniem wzorców wewnątrz kraju.
+%    Agent związany z krajem może wstępnie badać relacje z innymi krajami
+%    i powołać agenta który będzie odpowiadał za badanie tych relacji.
+%    Takie działanie pozwoli ograniczyć liczbę badanych relacji, odrzucić relacje niepożądane.
+%
+%%    \subsection{Badanie korelacji z danymi zewnętrznymi}
+%%    WHO
+%%    Bank Światowy
+%
 
     \inputencoding{utf8}
     \newpage
