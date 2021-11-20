@@ -80,7 +80,7 @@ singlelinecheck=off
 
     Mnogość źródeł danych o~zdarzeniach politycznych jest wręcz przytłaczająca.
     Budowa systemu pozyskującego i~kategoryzującego takie dane jest sama w~sobie dużym wyzwaniem.
-    Z pomocą przychodzą bazy danych do~których zbierane są notatki o~zdarzeniach politycznych.
+    Z pomocą przychodzą bazy danych, do~których zbierane są notatki o~zdarzeniach politycznych.
 
 
     Jednym ze źródeł takich informacji jest GDELT\@.
@@ -88,16 +88,16 @@ singlelinecheck=off
     Wszelkie zdarzenia opisane są poprzez aktorów, lokalizacje i~charakter aktywności, co~jest wyszczególnione poprzez zestaw atrybutów.
     Analiza atrybutów zapewni lepsze poznanie specyfiki krajów.
     Rozpoznanie wzorców może pozwolić na~automatyczną odpowiedź na~zdarzenia, przewidywanie, a~także wykrywanie zdarzeń nietypowych.
-    Zebrane w~bazie GDELT dane umożliwiają określenie relacji miedzy podmiotami.
+    Zebrane w~bazie GDELT dane umożliwiają określenie relacji między podmiotami.
     Na~ich podstawie możliwe jest poszukiwanie powiązań oraz badanie charakteru podmiotów.
 
     Coraz częściej mamy problem z~nadmiarem ilości danych.
     Tak jest też w~przypadku GDELT\@.
     Mnogość danych sprawia dużą trudność przy ich wykorzystaniu.
-    Podmiotów jest tak dużo, że nie jesteśmy wstanie efektywnie badać wielu relacji i~ich charakterystyk.
+    Podmiotów jest tak dużo, że nie jesteśmy w stanie efektywnie badać wielu relacji i~ich charakterystyk.
     Brak jest narzędzi do~automatycznej analizy danych zgromadzonych w~bazie GDELT\@.
 
-    Przeanalizowane prace naukowe pokazują, że informacji o~zdarzeniach politycznych zgromadzone w~GDELT,
+    Przeanalizowane prace naukowe pokazują, że informacje o~zdarzeniach politycznych zgromadzone w~GDELT,
     pozwalają na~skuteczne wyciąganie wniosków dotyczących świata rzeczywistego.
 
     Próba szerszego zrozumienia otaczającej nas rzeczywistości zawsze stanowi wyzwanie.
@@ -153,7 +153,7 @@ singlelinecheck=off
     \subsubsection{Root Codes}
     Root Codes - kody główne - dzielą zdarzenia na~20 klas.
     Kody zdarzeń są ujednolicone pod~względem kolejności numerycznej głównych kategorii.
-    Klasy są uporządkowane rosnąco w~pod względem współpracy (kategorie 01 do~09) oraz pod~względem konfliktu
+    Klasy są uporządkowane rosnąco pod względem współpracy (kategorie 01 do~09) oraz pod~względem konfliktu
     (kategorie od~10 do~20).
 
     \subsubsection{Base Codes}
@@ -170,17 +170,17 @@ singlelinecheck=off
 
 
     \section{GDELT}\label{sec:gdelt}
-    GDELT - Global Database of Events, Language, and Tone~\cite{gdelt} - to~baza danych gromadząca informacje o~notatkach o~zdarzeniach politycznych.
-    Jest to~największa, najbardziej wszechstronna i~otwarta baza danych jaka powstała.
+    GDELT - Global Database of Events, Language, and Tone~\cite{gdelt} - to~baza danych gromadząca informacje o~notatkach dot.~zdarzeń politycznych.
+    Jest to~największa, najbardziej wszechstronna i~otwarta baza danych, jaka powstała.
     Wczesne poszukiwania prowadzące do~stworzenia GDELT zostały opisane przez Philipa Schrodta w~dokumencie~\cite{Schrodt2010} w~styczniu 2010 r.
-    W celu gromadzenia danych, każdego dnia przeszukiwane są doniesienia medialne w~ponda 100 językach, ze wszystkich krajów.
+    W celu gromadzenia danych, każdego dnia przeszukiwane są doniesienia medialne w~ponad 100 językach, ze wszystkich krajów.
     Główne zbiory danych dostępne dzisiaj przez GDELT to:
     GDELT 2.0 EVENT DATABASE oraz
     GDELT 2.0 GLOBAL KNOWLEDGE GRAPH\@.
-    Na~bieżąco wśród doniesień medialnych wyszukiwane są zdarzenia.
+    Na~bieżąco, wśród doniesień medialnych wyszukiwane są zdarzenia.
     Zostają one opisane przez aktorów, lokalizacje i~charakter aktywności, a~także specyfikowane przez zestaw atrybutów.
-    Zbiór danych jest dostępny jest jako surowe pliki danych na~stronie Projektu ~\cite{gdelt}
-    oraz na~platformie Google Cloud gdzie można z~niego korzystać przez Google BigQuery~\cite{BigQuery2014} przy pomocy zapytań SQL\@.
+    Zbiór danych jest dostępny jako surowe pliki danych na~stronie Projektu ~\cite{gdelt}
+    oraz na~platformie Google Cloud, gdzie można z~niego korzystać przez Google BigQuery~\cite{BigQuery2014} przy pomocy zapytań SQL\@.
 
     Najbardziej aktualna baza GDELT v.\@ 2.0 gromadzi wiadomości z~artykułów co~15 minut.
     Do bazy w~Google BigQuery dodawane jest ponad 100 tysięcy wierszy dziennie.
@@ -189,24 +189,23 @@ singlelinecheck=off
     Każde zdarzenie w~bazie opisywane jest przy pomocy 58 cech.
     Najciekawsze z~nich to:
     \begin{enumerate}
-        \item DATEADDED - to~pole przechowuje datę dodania zdarzenia do~głównej bazy danych w~formacie RRRRMMDDHHMMSS,
-        To pole jest odpowiednie dla tych którzy potrzebują dostępu do~zdarzeń w~wysokiej rozdzielczości czasowej,
+        \item DATEADDED - to~pole przechowuje datę dodania zdarzenia do~głównej bazy danych w~formacie RRRRMMDDHHMMSS, jest odpowiednie dla tych, którzy potrzebują dostępu do~zdarzeń w~wysokiej rozdzielczości czasowej,
         \item Actor1Code - pełny, surowy kod CAMEO dla pierwszego aktora (zawiera klasy geograficzne, etniczne, religijne),
         \item Actor2Code - pełny, surowy kod CAMEO dla drugiego aktora (zawiera klasy geograficzne, etniczne, religijne),
         \item QuadClass - kod zdarzenia pierwszego poziomu wg notacji CAMEO (najbardziej ogólny),
         \item EventRootCode - kod zdarzenia drugiego poziomu wg notacji CAMEO,
         \item EventBaseCode - kod zdarzenia trzeciego poziomu wg notacji CAMEO,
         \item EventCode - surowy kod zdarzenia wg notacji CAMEO (najbardziej szczegółowy),
-        \item GoldsteinScale - ocena liczbowa od~-10 do~10 odzwierciedlająca teoretyczny wpływ jaki dane zdarzenie ma na~stabilność kraju,
+        \item GoldsteinScale - ocena liczbowa od~-10 do~10 odzwierciedlająca teoretyczny wpływ, jaki dane zdarzenie ma na~stabilność kraju,
         \item NumMentions - całkowita liczba wzmianek o~wydarzeniu we wszystkich dokumentach źródłowych,
-        może być wykorzystane jako metoda oceny ważności wydarzenia,
+        może być wykorzystana jako metoda oceny ważności wydarzenia,
         \item NumSources - całkowita liczba źródeł informacji zawierających przynajmniej jedną wzmiankę o~wydarzeniu,
         \item NumArticles - całkowita liczba dokumentów źródłowych zawierających przynajmniej jedną wzmiankę o~wydarzeniu,
         \item AvgTone - średni ton wszystkich dokumentów zawierających przynajmniej jedną wzmiankę o~wydarzeniu,
         -100 oznacza ton skrajnie negatywny, 100 oznacza ton skrajnie pozytywny.
     \end{enumerate}
 
-    Przykładowe zapytanie SQL wybiera zdarzenia ze stycznia 2021 w~których aktorem numer 1 jest Polska:
+    Przykładowe zapytanie SQL wybiera zdarzenia ze stycznia 2021, w~których aktorem numer 1 jest Polska:
 
     \begin{verbatim}
     select MonthYear, Actor1Code, Actor1Name, Actor1CountryCode,
@@ -255,7 +254,7 @@ singlelinecheck=off
 
 
     \chapter{Przegląd dziedziny}\label{ch:przegląd-dziedziny}
-    W tym rozdziale w~części~\ref{sec:wzorce} przedstawiono osiągnięcia dotyczące wzorców w~zbiorach danych.
+    W tym rozdziale, w~części~\ref{sec:wzorce}, przedstawiono osiągnięcia dotyczące wzorców w~zbiorach danych.
     Prace pokazujące możliwe zastosowania zbioru GDELT przeanalizowane zostały w~części~\ref{sec:zastosowania}.
     W części~\ref{sec:systemy-agentowe} przedstawiono badania dotyczące systemów agentowych.
     Metodologie rozwoju systemu agentowego przeanalizowane zostały w~części~\ref{sec:metodologie-rozwoju-systemu-agentowego}.
@@ -267,10 +266,10 @@ singlelinecheck=off
 
     \subsection{Wzorce w~sieciach społecznościowych}\label{subsec:wzorce-w-sieciach-społecznościowych}
     W pracy ``Patterns of frequent user interactions in blogosphere''~\cite{10.1093/jigpal/jzaa042} autorzy identyfikują i~kategoryzują wzorce opisujące interakcje między użytkownikami w~sieciach społecznościowych.
-    Uwaga została skupiona na~wzorcach w~których występują częste interakcje dwóch lub więcej użytkowników oraz na~pozycji społecznej tych użytkowników w~sieci.
+    Uwaga została skupiona na~wzorcach, w~których występują częste interakcje dwóch lub więcej użytkowników oraz na~pozycji społecznej tych użytkowników w~sieci.
     Zbiór danych został podzielony na~N okien czasowych.
     Lista postów była eksportowana dla każdego okna, a~na jej podstawie tworzono słownik.
-    Przy pomocy słownika analizowano relacje miedzy użytkownikami.
+    Przy pomocy słownika analizowano relacje między użytkownikami.
 
     Częste lub nietypowe wzorce zachowań użytkowników mediów społecznościowych
     zostały zbadane w~pracy ``Odkrywanie ukrytych informacji w~mediach społecznościowych''~\cite{Skwara2019}.
@@ -283,12 +282,12 @@ singlelinecheck=off
     Głównymi wyszczególnionymi elementami relacji są powtarzalność oraz intensywność.
     Wzorce statyczne przedstawione w~pracy to: sojusznik, nieprzyjaciel, symetria, asymetria, istotność, mocarstwo-klient.
     Rozpoznane wzorce dynamiczne to: stabilna relacja, jedyna zmiana, pojedyncze zaburzenie, oscylacja, wzajemność, podobny ciąg dopasowań, zależność w~czasie.
-    Dodatkowe wzorce dynamiczne dotyczące COVID-19 które znalazły się w~pracy to: spadek nastrojów, nowa normalność, gratulacje, skupienie na~walce.
+    Dodatkowe wzorce dynamiczne dotyczące COVID-19, które znalazły się w~pracy to: spadek nastrojów, nowa normalność, gratulacje, skupienie na~walce.
 
 
     \section{Zastosowania}\label{sec:zastosowania}
-    Framework oparty na~ważności pozwalający na~charakteryzowanie
-    i~wyodrębnianie zmieniających się wzorców w~sieciach przedstawiających notatki prasowe został zaproponowany
+    Framework oparty na~ważności, pozwalający na~charakteryzowanie
+    i~wyodrębnianie zmieniających się wzorców w~sieciach przedstawiających notatki prasowe, został zaproponowany
     w~pracy\cite{Yan2012}.
     Zdefiniowano dwa wskaźniki istotności, aby scharakteryzować ewolucję i~odkryć zmiany topologii o~doniosłym znaczeniu.
     Cały proces znajdowania zachowań dynamicznych jest kierowany przez punktację istotności.
@@ -296,29 +295,29 @@ singlelinecheck=off
     \subsection{Analiza zmian w~środowisku}
     W badaniu~\cite{Buckingham2020} autorzy przedstawiają możliwość wykorzystania danych z~bazy danych GDELT
     do~analizy wyzwań społecznych związanych z~klimatem.
-    Zrozumienie zmian zachowania aktorów i~zmian sentymentu doniesień medialnych dotyczących zdarzeń może pomóc w~zrozumieniu zmian społecznych.
+    Poznanie zmian zachowania aktorów i~zmian sentymentu doniesień medialnych dotyczących zdarzeń może pomóc w~zrozumieniu zmian społecznych.
     Praca demonstruje, że niezbędnych w~tym celu, solidnych danych mogą dostarczyć takie zbiory jak GDELT\@.
     W pracy poruszany jest też temat trudności w~szerokim wykorzystaniu tych danych ze względu na~stronniczość mediów
     i~idące za tym nacechowanie danych.
 
     \subsection{Monitorowanie sytuacji kryzysowych}
-    Autorzy badają potencjał monitorowani i~zrozumienia sytuacji kryzysowych poprzez analizę szeregów czasowych i~dużych zbiorów danych
+    Autorzy badają potencjał monitorowanis i~zrozumienia sytuacji kryzysowych poprzez analizę szeregów czasowych i~dużych zbiorów danych
     w~pracy pt.\@ ``Utilizing remote sensing and big data to~quantify conflict intensity: The Arab Spring as a~case study''~\cite{Levin2018}.
     Przebadanie zależności pomiędzy newsami gromadzonymi w~dużych zbiorach danych oraz wydarzeniami z~rzeczywistości pokazuje,
-    że cześć metryk szybko reaguje na~zdarzenia związana z~przemocą.
+    że część metryk szybko reaguje na~zdarzenia związana z~przemocą.
     Zwrócono uwagę, że większa szybkość w~zakresie dostępności danych może przyczynić się do~bardziej efektywnej
     odpowiedzi na~zdarzenia przez międzynarodowy establishment.
 
     \subsection{Analiza obrazu Chin w~mass mediach}
-    Praca~\cite{Yuan2017} przedstawia analizę wzorców siły powiązania pomiędzy Chinami i~15 krajami.
+    Praca~\cite{Yuan2017} przedstawia analizę wzorca siły powiązania pomiędzy Chinami i~15 krajami.
     Zaprezentowano skuteczność wykorzystania algorytmu dynamic time warping w~pomiarze długookresowego podobieństwa
     wśród danych ze środków masowego przekazu.
-    Autorzy pokazują, że wzorce wydobyte z~danych GDELT mogą być zweryfikowane przy pomocy innych zbirów danych,
+    Autorzy pokazują, że wzorce wydobyte z~danych GDELT mogą być zweryfikowane przy pomocy innych zbiorów danych,
     takich jak dane historyczne odnośnie zdarzeń oraz handlu.
 
 
     \section{Systemy Agentowe}\label{sec:systemy-agentowe}
-    Według definicji z~książki Gerharda Weissa Systemy Wieloagentowe~\cite{55066420130101} agent to~system komputerowy który jest umieszczony w~pewnym środowisku i~jest zdolny do~autonomicznych akcji w~tym środowisku w~celu osiągnięcia wyznaczonych mu celów.
+    Według definicji z~książki Gerharda Weissa Systemy Wieloagentowe~\cite{55066420130101} agent to~system komputerowy, który jest umieszczony w~pewnym środowisku i~jest zdolny do~autonomicznych akcji w~tym środowisku dla osiągnięcia wyznaczonych mu celów.
     Rysunek~\ref{fig:agent} przedstawia agenta w~jego środowisku.
 
     \begin{figure}[tp]
@@ -329,14 +328,14 @@ singlelinecheck=off
     \end{figure}
 
     Główną różnicą między agentami i~obiektami jest stopień autonomiczności.
-    Agenci nie wykonują nawzajem swoich metod ale raczej żądają wykonania czynności.
-    Są zdolni reagowania, proaktywności i~zachowań społecznych.
+    Agenci nie wykonują nawzajem swoich metod, ale raczej żądają wykonania czynności.
+    Są zdolni do reagowania, proaktywności i~zachowań społecznych.
     Agent na~podstawie swoich przekonań podejmuje najlepsze według niego decyzje.
 
     \subsection{Zalety Systemu Wieloagentowego}
-    Główną zaletą wykorzystania systemu agentowego według Gerharda Weissa~\cite{55066420130101} jest możliwość samodzielnego decydowania przez system o~tym co~powinien zrobić w~celu osiągnięcia celów mu wyznaczonych.
-    Agenci którzy mogą działać w~zmieniającym się, nieprzewidywalnym środowisku gdzie wykonywane akcje mogą się nie powieść nazywani są agentami inteligentnymi.
-    Kolejna zaletą SA jest utrzymywanie równowagi między skupieniem na~celu i~reagowaniem na~bodźce.
+    Główną zaletą wykorzystania systemu agentowego według Gerharda Weissa~\cite{55066420130101} jest możliwość samodzielnego decydowania przez system o~tym, co~powinien zrobić dla osiągnięcia celów mu wyznaczonych.
+    Agenci, którzy mogą działać w~zmieniającym się nieprzewidywalnym środowisku, gdzie wykonywane akcje mogą się nie powieść, nazywani są agentami inteligentnymi.
+    Kolejną zaletą SA jest utrzymywanie równowagi między skupieniem na~celu i~reagowaniem na~bodźce.
     Możliwość negocjacji i~kooperacji.
 
     Obiekt nie jest zdolny do~proaktywnego zachowania i~nie jest w~stanie samodzielnie decydować, co~zrobić w~określonej sytuacji.
@@ -358,16 +357,16 @@ singlelinecheck=off
         \label{fig:rio}
     \end{figure}
 
-    System jest postrzegany jako organizacja która składa się ze zbioru wchodzących w~interakcję ról.
+    System jest postrzegany jako organizacja, która składa się ze zbioru wchodzących w~interakcję ról.
     Role złożone powinny być dekomponowane na~prostsze.
     Proces projektowania, przedstawiony na~rysunku~\ref{fig:rio}, składa się z~dwóch etapów: agentyfikacji i~projektowania architektonicznego.
     Agentyfikacja to~przypisanie roli do~agentów.
     Na~tym etapie nie robi się założeń co~do~architektury agentów.
-    Dopiero etap projektowania architektonicznego kładzie naciska na~wewnętrzną architekturę agenta.
+    Dopiero etap projektowania architektonicznego kładzie nacisk na~wewnętrzną architekturę agenta.
 
     \subsection{Metodologia Gaia}
     Metodologia analizy i~projektowania systemu agentowego Gaia, opisana w~pracy~\cite{Wooldridge2000a},
-    została założona na~bazie widzenia systemu wieloagentowego jako organizacji obliczeniowej składającej się z~wielu oddziałujących ze sobą ról.
+    została założona na~bazie widzenia systemu wieloagentowego jako organizacji obliczeniowej, składającej się z~wielu oddziałujących ze sobą ról.
     Proces analizy i~projektowania, przedstawiony na~rysunku~\ref{fig:gaia}, może być postrzegany
     jako przyrostowe budowanie coraz bardziej złożonych modeli systemu, który ma być stworzony.
 
@@ -379,7 +378,7 @@ singlelinecheck=off
     \end{figure}
 
     Celem etapu analizy jest rozwinięcie zrozumienia systemu i~jego struktury.
-    Podczas etapu projektowania Gaia skupia się na~tym jak agenci mają kooperować aby zrealizować cele systemu oraz czego wymaga się od~każdego agenta, aby to~osiągnąć.
+    Podczas etapu projektowania Gaia skupia się na~tym, jak agenci mają kooperować dla zrealizowania celów systemu oraz czego wymaga się od~każdego agenta, aby to~osiągnąć.
 
     \subsection{Metodologia Gaia w~wersji 2}
     GAIA v2~\cite{Zambonelli2003} jest oficjalnym rozszerzeniem metodologii.
@@ -393,12 +392,12 @@ singlelinecheck=off
         \label{fig:gaia_v2}
     \end{figure}
 
-    Reguły organizacyjne to~ograniczenia które muszą być uwzględnione w~globalnym zachowaniu organizacji.
+    Reguły organizacyjne to~ograniczenia, które muszą być uwzględnione w~globalnym zachowaniu organizacji.
     Struktura organizacyjna określa ogólną architekturę systemu.
 
     \subsection{Rozszerzenie metodologi Gaia - ROADMAP}
     ROADMAP~\cite{Juan2002a} jest kolejnym rozszerzeniem metodologii GAIA\@.
-    Faza analizy jest rozszerzona tak by pokryć również specyfikację.
+    Faza analizy jest rozszerzona tak, by pokryć również specyfikację.
     Wprowadzono dodatkowe modele opisujące środowisko oraz wiedzę agentów.
     Rysunek~\ref{fig:roadmap} przedstawia strukturę modeli ROADMAP\@.
 
@@ -409,19 +408,19 @@ singlelinecheck=off
         \label{fig:roadmap}
     \end{figure}
 
-    Hierarchia ról pełni podobną role do~struktury i~ról organizacyjnych w~GAIA v2.
+    Hierarchia ról pełni podobne zadanie do~struktury i~ról organizacyjnych w~GAIA v2.
     Pozwala określić właściwe zachowanie agentów.
 
     \subsection{Metodologia INGENIAS}
     Metodologię rozwoju systemu wieloagentowego INGENIAS autorzy przedstawili w~pracy pt.\@ ``Agent oriented software engineering with INGENIAS''~\cite{Pavon2003}.
-    Metodologia ta ostała zaprojektowana z~myślą o~budowie specyfikacji przyrostowo z~zapewnieniem poprawności rozwoju.
+    Metodologia ta została zaprojektowana z~myślą o~budowie specyfikacji przyrostowo, z~zapewnieniem poprawności rozwoju.
     INGENIAS ulepsza oryginalne podejście z~MESSAGE/UML poprzez dodanie nowego widoku oraz dostarczenie narzędzi do~generowania kodu i~dokumentacji systemu automatycznie ze specyfikacji.
     Generalnym podejściem INGENIAS do~specyfikacji systemu wieloagentowego jest podział problemu na~aspekty, które tworzą różne widoki systemu.
     Każdy rodzaj widoku jest opisany z~wykorzystaniem języka meta-modelującego.
     INGENIAS wyróżnia pięć metamodeli opisujących widoki, które muszą zostać wykorzystane przy opisie systemu:
     \begin{enumerate}
         \item Model agenta, który opisuje pojedynczego agenta, jego zadania, cele, początkowy stan oraz role,
-        \item Model interakcji, który opisuje jakie interakcje mogą zajść między agentami,
+        \item Model interakcji, który opisuje interakcje mogące zajść między agentami,
         \item Model zadań i~celów, który opisuje relację między zadaniami i~celami oraz ich strukturami,
         \item Model organizacji, który opisuje jak komponenty systemu są ze sobą pogrupowane, jakie ograniczenia istnieją w~interakcjach między agentami,
         \item Model środowiska, który definiuje postrzeganie agentów jako elementów systemu oraz identyfikuje zasoby systemu.
@@ -431,7 +430,7 @@ singlelinecheck=off
     \section{Fuzja wiedzy}
 
     Technologia systemów wieloagentowych jako podstawa systemów Fuzji Wiedzy została przedstawiona w~pracy z~2001 roku~\cite{Smirnov2002}.
-    Fuzje Wiedzy można zdefiniować jako integrację luźno powiązanych źródeł, w~połączone zasoby, w~celu uzupełnienia niedostatecznej wiedzy i~uzyskania nowej.
+    Fuzje Wiedzy można zdefiniować jako integrację luźno powiązanych źródeł w~połączone zasoby, w~celu uzupełnienia niedostatecznej wiedzy i~uzyskania nowej.
     Korzystanie z~inteligentnych agentów zwiększa wydajność i~interoperacyjność systemu, ponieważ agenci mogą działać w~środowisku rozproszonym,
     niezależnie od~użytkownika, i~wykorzystywać ontologie do~reprezentacji i~wymiany wiedzy.
 
@@ -442,7 +441,7 @@ singlelinecheck=off
     Stworzone reguły wspomagają odnajdywanie wzorców.
 
     Wejściem systemu jest zadanie konfiguracyjne.
-    Zadanie konfiguracyjne uruchamia system który szuka wzorców.
+    Zadanie konfiguracyjne uruchamia system, który szuka wzorców.
     Działanie systemu przebiega wg następujących punktów:
     \begin{enumerate}
         \item rozdział zadań dla agentów,
@@ -488,13 +487,13 @@ singlelinecheck=off
     \end{enumerate}
     Obowiązki determinują funkcjonalność i~są podzielone na~dwa typy:
     \begin{enumerate}
-        \item właściwości żywotności - opisują te stany które agent musi wywołać, coś zostanie zrobione,
-        \item właściwości bezpieczeństwa - sprawdzają po każdym wykonaniu czy~stan jest akceptowalny.
+        \item właściwości żywotności - opisują te stany, które agent musi wywołać, coś zostanie zrobione,
+        \item właściwości bezpieczeństwa - sprawdzają po każdym wykonaniu, czy~stan jest akceptowalny.
     \end{enumerate}
     Uprawnienia to~prawa związane z~rolą.
-    Identyfikują zasoby które sa dostępne dla danej roli w~celu realizacji obowiązków.
+    Identyfikują zasoby, które są dostępne dla danej roli w~celu realizacji obowiązków.
     Działania to~obliczenia związane z~rolą, które mogą być przeprowadzone przez agenta bez interakcji z~innymi.
-    Protokoły definiują sposób w~jaki role wchodzą w~interakcję ze sobą.
+    Protokoły definiują sposób, w~jaki role wchodzą w~interakcję ze sobą.
 
     W Systemie zostały przewidziane następujące role:
 
@@ -516,11 +515,11 @@ singlelinecheck=off
 
     \begin{table}[ht!]
         \begin{tabular}{ll}
-            Schemat roli:          & PoszukiwaczKorelacji                                           \\ \hline
+            Schemat roli:          & Poszukiwacz Korelacji                                           \\ \hline
             Opis                   & Ta rola obejmuje wyszukiwanie korelacji między krajami         \\
             & na~podstawie danych pobranych od~poszukiwaczy wzorców.         \\
             Protokoły i~Aktywności & \textbf{sprawdzajWzorce, szukajKorelacji, poinformujGenerator} \\
-            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczWzorców}         \\
+            Uprawnienia            & \textbf{czyta dostarczone} \textit{Poszukiwacz Wzorców}         \\
             & ~~~~~~\textit{wzorzec}                                         \\
             & \textbf{zmienia} \textit{zestawienie}                          \\
             Obowiązki              &                                                                \\
@@ -537,7 +536,7 @@ singlelinecheck=off
             Opis                   & Ta rola obejmuje tworzenie zestawień na~podstawie                            \\
             & danych zebranych przez poszukiwaczy korelacji i~trendów.                     \\
             Protokoły i~Aktywności & \textbf{sprawdzajZestawienia}                                                \\
-            Uprawnienia            & \textbf{czyta dostarczone} \textit{PoszukiwaczKorelacji, PoszukiwaczTrendów} \\
+            Uprawnienia            & \textbf{czyta dostarczone} \textit{Poszukiwacz Korelacji, Poszukiwacz Klastrów} \\
             & ~~~~~~\textit{zestawienie}                                                   \\
             & \textbf{zmienia} \textit{zestawienie}                                        \\
             Obowiązki              &                                                                              \\
@@ -569,7 +568,7 @@ singlelinecheck=off
     \subsection{Interakcje}
     W systemie zamkniętym wszyscy agenci są znani a~priori i~mają ze sobą współpracować, a~zatem mogą sobie ufać podczas interakcji.
     W metodologii GAIA model interakcji składa się ze zbioru definicji protokołów.
-    Protokół to~wzorzec interakcji który został formalnie zdefiniowany i~wyodrębniony.
+    Protokół to~wzorzec interakcji, który został formalnie zdefiniowany i~wyodrębniony.
 
     Interakcje wyodrębnione w~Systemie to:
 
@@ -579,9 +578,9 @@ singlelinecheck=off
     \end{enumerate}
 
     \subsection{Agenci}
-    Zadanie konfiguracyjne określa na~jakich krajach będzie skupiona uwaga systemu.
+    Zadanie konfiguracyjne określa, na~jakich krajach będzie skupiona uwaga systemu.
     Pojedynczy agent pełni rolę Generatora Zestawień, który tworzy Poszukiwaczy Korelacji.
-    Poszukiwacze Korelacji tworzą Poszukiwaczy Wzorców którzy przetwarzają dane pobrane z~GDELT\@.
+    Poszukiwacze Korelacji tworzą Poszukiwaczy Wzorców, którzy przetwarzają dane pobrane z~GDELT\@.
 
 
     \section{Współdziałanie agentów}
@@ -647,14 +646,14 @@ singlelinecheck=off
 
 
     \section{Analiza zdarzeń wewnętrznych USA}
-    W tej sekcji przedstawiona została analiza zdarzeń wewnętrznych (takich w~których jest ten sam pierwszy i~drugi aktor) w~Stanach Zjednoczonych.
-    To badanie ma na~celu wykazanie czy~podczas analizy krajów i~relacji rozdzielane powinny być zdarzenia wewnętrzne oraz zewnętrzne.
+    W tej sekcji przedstawiona została analiza zdarzeń wewnętrznych (takich, w~których jest ten sam pierwszy i~drugi aktor) w~Stanach Zjednoczonych.
+    To badanie ma na~celu wykazanie, czy~podczas analizy krajów i~relacji rozdzielane powinny być zdarzenia wewnętrzne oraz zewnętrzne.
 
     \subsection{Kody bazowe (Event Base Codes)}\label{subsec:kody-bazowenullevent-base-codesnull}
 
     Liczba zdarzeń wewnętrznych \textit{Make a~visit} w~USA w~latach 2015-2020 to~około 810 tysięcy.
     Zdarzeń zewnętrznych \textit{Make a~visit} w~USA w~tym okresie było 3 razy więcej - około 2,4 miliona,
-    podczas gdy globalna liczba zdarzeń \textit{Make a~visit} wynosiła około 41 milionów.
+    podczas, gdy globalna liczba zdarzeń \textit{Make a~visit} wynosiła około 41 milionów.
 
     Na~wykresach zostało przedstawionych 20 najliczniejszych Kodów bazowych.
 
@@ -867,7 +866,7 @@ singlelinecheck=off
 
     \subsubsection{Próg skala Goldsteina >=3}
     Skala Goldsteina przypisuje każdemu z~kodów CAMEO numeryczną wartość od~-10 do~10, przedstawia teoretyczny wpływ typu zdarzenia na~stabilność kraju.
-    Ponieważ skala Goldsteina jest bezpośrednio związana z~kodem CAMEO, dlatego filtrowanie wg skali Goldsteina odrzuca cześć kodów.
+    Ponieważ skala Goldsteina jest bezpośrednio związana z~kodem CAMEO, dlatego filtrowanie wg skali Goldsteina odrzuca część kodów.
     Kody CAMEO dla skali Goldsteina >=3 to:
     \begin{itemize}
         \item \textit{ENGAGE IN DIPLOMATIC COOPERATION}
@@ -970,7 +969,7 @@ singlelinecheck=off
 
     \subsubsection{Wybrane wykresy podsumowujące}
 
-    Spośród 36 wykresów wybrane zostały dwa na~których separacja relacji klient-hegemon i~neutralnych jest wyraźna.
+    Spośród 36 wykresów wybrane zostały dwa, na~których separacja relacji klient-hegemon i~neutralnych jest wyraźna.
 
     \begin{figure}[tp]
         \centering
@@ -1016,7 +1015,7 @@ singlelinecheck=off
         \label{fig:Power-Client:EBC:Goldstein:POL-ESP}
     \end{figure}
 
-    Podobnie jak przy analizie bez progowania także przy progu skali Goldsteina >=3, dla relacji Polska-USA (wykres~\ref{fig:Power-Client:EBC:Goldstein:POL-USA}) jak i~Polska-Hiszpania (wykres~\ref{fig:Power-Client:EBC:Goldstein:POL-ESP}),
+    Podobnie jak przy analizie bez progowania, także przy progu skali Goldsteina >=3, dla relacji Polska-USA (wykres~\ref{fig:Power-Client:EBC:Goldstein:POL-USA}) jak i~Polska-Hiszpania (wykres~\ref{fig:Power-Client:EBC:Goldstein:POL-ESP}),
     różnice w~kolejności kodów zdarzeń zaczynają się już od~pierwszej pozycji.
 
     Pozostałe wykresy zostały dołączone w~sekcji~\ref{subsubsec:ebc:próg-skala-goldsteina->=3}.
@@ -1045,7 +1044,7 @@ singlelinecheck=off
 
     Na~wykresie~\ref{fig:Power-Client:ERC:Goldstein:SumUp:Return release- not specified below} USA oraz Rosja są w~jednej grupie,
     charakteryzującej się największą procentową ilością zdarzeń \textit{Return release- not specified below}.
-    Do tej samej grupy należy też Ukraina która oddziela Niemcy od~Rosji i~USA\@.
+    Do tej samej grupy należy też Ukraina, która oddziela Niemcy od~Rosji i~USA\@.
     Pomiędzy Rosją, a~pozostałymi krajami jest wyraźna różnica.
     Grupa krajów z~największą procentową ilością zdarzeń jest wyraźnie oddzielona od~reszty krajów.
 
@@ -1091,7 +1090,7 @@ singlelinecheck=off
 
     Na~wykresie~\ref{fig:Power-Client:ERC:Mentions:SumUp:Consult- not specified below} Niemcy, USA oraz Rosja są w~grupie,
     charakteryzującej się niską procentową ilością zdarzeń \textit{Consult- not specified below}.
-    Grupa to~nie jest wyraźnie oddzielona od~pozostałych.
+    Grupa ta~nie jest wyraźnie oddzielona od~pozostałych.
     Należą do~niej też Włochy i~Hiszpania - tak jak w~przypadku zdarzeń~\textit{Express intent to~cooperate- not specified below}
     na~wykresie~\ref{fig:Power-Client:ERC:Goldstein:SumUp:Express intent to cooperate- not specified below}.
 
@@ -1115,7 +1114,7 @@ singlelinecheck=off
 
     Na~wykresie~\ref{fig:Power-Client:ERC:Goldstein:SumUp:Use conventional military force- not specified below} Niemcy, USA oraz Rosja są w~grupie,
     charakteryzującej się największą procentową ilością zdarzeń \textit{Use conventional military force- not specified below}.
-    Dominacja Niemiec w~tym zestawieniu jest najprawdopodobniej spowodowana kontrowersyjnymi kwestiami historycznymi
+    Dominacja Niemiec w~tym zestawieniu jest najprawdopodobniej spowodowana kontrowersyjnymi kwestiami historycznymi,
     które często pojawiają się w~relacji Polski i~Niemiec.
     Drugie miejsce Hiszpanii - która rozdziela Niemcy i~USA - wymaga dalszej analizy.
 
@@ -1158,7 +1157,7 @@ singlelinecheck=off
     Na~wykresie~\ref{fig:Power-Client:ERC:Mentions10:SumUp:Praise or endorse} Niemcy, USA oraz Rosja są w~grupie,
     charakteryzującej się niską procentową ilością zdarzeń \textit{Praise or endorse}.
 
-    \textit{Praise or endorse} jest jedynym typem zdarzeń który dobrze rozdziela relacje klient-hegemon od~neutralnych
+    \textit{Praise or endorse} jest jedynym typem zdarzeń, który dobrze rozdziela relacje klient-hegemon od~neutralnych
     przy progowaniu liczby wzmianek >=10.
 
     \subsubsection{Próg średniego tonu >=10 lub <=-10}
@@ -1236,9 +1235,9 @@ singlelinecheck=off
     Generator Zestawień tworzy agenta Poszukiwacz Korelacji.
     Agent Poszukiwacz Korelacji tworzy dla każdej pary krajów Poszukiwacza Wzorców.
     Poszukiwacz Wzorców sprawdza symetrię/asymetrię relacji pomiędzy parą krajów badając siłę powiązania miedzy nimi, w~kolejnych okresach czasu.
-    Wyniki są zwracane do~Poszukiwacza Korelacji który analizuje zebrane dane szukając korelacji.
+    Wyniki są zwracane do~Poszukiwacza Korelacji, który analizuje zebrane dane szukając korelacji.
     Agent Poszukiwacz Klastrów przyporządkowuje analizowane kraje do~grup.
-    Ostateczne wyniki przekazywane są do~Generatora Zestawień który przygotowuje raport końcowy.
+    Ostateczne wyniki przekazywane są do~Generatora Zestawień, który przygotowuje raport końcowy.
 
     Analizowane kraje to:
     \begin{enumerate}
@@ -1261,7 +1260,7 @@ singlelinecheck=off
     \subsubsection{Symetria siły powiązania}
     Analiza siły powiązania między parami krajów.
 
-    Siła powiązania, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a~krajem B, do~liczby wszystkich zdarzeń w~których kraj A jest aktorem 1.
+    Siła powiązania, obliczana jest jako stosunek liczby zdarzeń pomiędzy krajem A, a~krajem B, do~liczby wszystkich zdarzeń, w~których kraj A jest aktorem 1.
     Odzwierciedla to~jak ważny dla kraju A jest kraj B\@.
 
 
@@ -1274,7 +1273,7 @@ singlelinecheck=off
     \subsubsection{Wzorzec Mocarstwo/Klient}
     Analiza wzorca Mocarstwo/Klient między parami krajów.
 
-    Relacje znaczące, w~pracy Jarosza~\cite{Jarosz2020}, to~takie wydarzenia które posiadają co~najmniej 50 wzmianek w~mediach (NumMentions).\@ %s.\@ 33.
+    Relacje znaczące, w~pracy Jarosza~\cite{Jarosz2020}, to~takie wydarzenia, które posiadają co~najmniej 50 wzmianek w~mediach (NumMentions).\@ %s.\@ 33.
 
     Wzorzec Mocarstwo/Klient określony jako stosunek liczby wszystkich relacji znaczących Aktora 1 oraz liczby wszystkich znaczących relacji Aktora2. %s.\@ 82.
     \[ Ratio = \frac
@@ -1302,8 +1301,8 @@ singlelinecheck=off
     \end{itemize}
 
     \subsubsection{Autokorelacja Pearsona}
-    Autokorelacja opisuje w~jakim stopniu kolejne wyrazy ciągu zależą od~poprzednich w~szeregu czasowym.
-    Analiza autokorelacji pozwala określić czy~w~szeregu czasowym występuje powtarzalność zjawisk.
+    Autokorelacja opisuje, w~jakim stopniu kolejne wyrazy ciągu zależą od~poprzednich w~szeregu czasowym.
+    Analiza autokorelacji pozwala określić, czy~w~szeregu czasowym występuje powtarzalność zjawisk.
     Poszukiwacz Trendu Autokorelacji bada autokorelację siły połączenia poszczególnych krajów.
 
     \subsubsection{Korelacja krzyżowa Pearsona}
@@ -1339,7 +1338,7 @@ singlelinecheck=off
     Klastrowanie Aglomeracyjne łączy rekursywnie pary grup danych.
     Przy łączeniu wykorzystywana jest odległość połączenia.
     Jako metryka używana do~obliczeń powiązania wykorzystana została odległość euklidesowa.
-    Klastrowanie zostało przeprowadzone wielokrotnie z~różnymi progami dystansu powyżej którego klastry nie są łączone.
+    Klastrowanie zostało przeprowadzone wielokrotnie z~różnymi progami dystansu, powyżej którego klastry nie są łączone.
     Zaletą klastrowania aglomeracyjnego jest możliwość przestawienia jego wyników w~postaci dendrogramu.
 
 
@@ -1349,7 +1348,7 @@ singlelinecheck=off
     \section{Poszukiwanie wzorców}\label{sec:poszukiwanie-wzorców}
 
     \subsection{Siła połączenia}
-    Siła połączenia odzwierciedla to~w~jakim stopniu jeden kraj jest zainteresowany drugim.
+    Siła połączenia odzwierciedla to,~w~jakim stopniu jeden kraj jest zainteresowany drugim.
     Wykres~\ref{fig:POL and RUS connection 1M} przedstawia siłę połączenia pomiędzy Polską i~Rosją w~latach 2015-2020.
 
     \begin{figure}[!ht]
@@ -1429,7 +1428,7 @@ singlelinecheck=off
     Pierwszy wzrost współczynnika korelacji obserwujemy w~okolicach połowy 2016 roku.
     W dniu 29 lipca 2016 roku papież Franciszek przekroczył bramę ze znakiem Arbeit macht frei odwiedzając
     były obóz koncentracyjny Auschwitz-Birkenau.
-    W dniu 16 września 2016 roku odbyły się wybory parlamentarne w~Rosji które wygrała partia Jedna Rosja.
+    W dniu 16 września 2016 roku odbyły się wybory parlamentarne w~Rosji, które wygrała partia Jedna Rosja.
     W dniach 8-9 lipca 2016 roku odbył się szczyt NATO w~Warszawie.
     Wyraźne zainteresowanie przez Polskę Niemcami oraz Rosją w~tym okresie jest zgodne z~intuicją.
 
@@ -1593,7 +1592,7 @@ singlelinecheck=off
 
     \section{Wnioski}\label{sec:wnioski}
     Przeprowadzone badania pokazują, że siła połączenia pomiędzy parami krajów dobrze odzwierciedla ich wzajemne zainteresowanie.
-    Czas w~którym zachodzą gwałtowne zmiany siły połączenia może być dobrym punktem do~dalszych eksploracji.
+    Czas, w~którym zachodzą gwałtowne zmiany siły połączenia może być dobrym punktem do~dalszych eksploracji.
 
     Badanie korelacji siły połączenia przyniosło zadowalające rezultaty dla każdego z~analizowanych rodzajów korelacji:
     \begin{itemize}
