@@ -97,7 +97,7 @@ singlelinecheck=off
     Brak jest narzędzi do~automatycznej analizy danych zgromadzonych w~bazie GDELT\@.
 
     Przeanalizowane prace naukowe pokazują, że informacje o~zdarzeniach politycznych zgromadzone w~GDELT,
-    pozwalają na~skuteczne wyciąganie wniosków dotyczących świata rzeczywistego.
+    pozwalają na~diagnozowanie świata rzeczywistego i skuteczne wyciąganie wniosków.
 
     Próba szerszego zrozumienia otaczającej nas rzeczywistości zawsze stanowi wyzwanie.
     GDELT daje w~tym zakresie duże nadzieje.
@@ -303,7 +303,7 @@ singlelinecheck=off
     Autorzy badają potencjał monitorowanis i~zrozumienia sytuacji kryzysowych poprzez analizę szeregów czasowych i~dużych zbiorów danych
     w~pracy pt.\@ ``Utilizing remote sensing and big data to~quantify conflict intensity: The Arab Spring as a~case study''~\cite{Levin2018}.
     Przebadanie zależności pomiędzy newsami gromadzonymi w~dużych zbiorach danych oraz wydarzeniami z~rzeczywistości pokazuje,
-    że część metryk szybko reaguje na~zdarzenia związana z~przemocą.
+    że część metryk szybko reaguje na~zdarzenia związane z~przemocą.
     Zwrócono uwagę, że większa szybkość w~zakresie dostępności danych może przyczynić się do~bardziej efektywnej
     odpowiedzi na~zdarzenia przez międzynarodowy establishment.
 
@@ -334,6 +334,7 @@ singlelinecheck=off
     \subsection{Zalety Systemu Wieloagentowego}
     Główną zaletą wykorzystania systemu agentowego według Gerharda Weissa~\cite{55066420130101} jest możliwość samodzielnego decydowania przez system o~tym, co~powinien zrobić dla osiągnięcia celów mu wyznaczonych.
     Agenci, którzy mogą działać w~zmieniającym się nieprzewidywalnym środowisku, gdzie wykonywane akcje mogą się nie powieść, nazywani są agentami inteligentnymi.
+
     Kolejną zaletą SA jest utrzymywanie równowagi między skupieniem na~celu i~reagowaniem na~bodźce.
     Możliwość negocjacji i~kooperacji.
 
@@ -377,6 +378,7 @@ singlelinecheck=off
     \end{figure}
 
     Celem etapu analizy jest rozwinięcie zrozumienia systemu i~jego struktury.
+
     Podczas etapu projektowania Gaia skupia się na~tym, jak agenci mają kooperować dla zrealizowania celów systemu oraz czego wymaga się od~każdego agenta, aby to~osiągnąć.
 
     \subsection{Metodologia Gaia w~wersji 2}
@@ -413,6 +415,8 @@ singlelinecheck=off
     \subsection{Metodologia INGENIAS}
     Metodologię rozwoju systemu wieloagentowego INGENIAS autorzy przedstawili w~pracy pt.\@ ``Agent oriented software engineering with INGENIAS''~\cite{Pavon2003}.
     Metodologia ta została zaprojektowana z~myślą o~budowie specyfikacji przyrostowo, z~zapewnieniem poprawności rozwoju.
+    \enlargethispage{1\baselineskip}
+
     INGENIAS ulepsza oryginalne podejście z~MESSAGE/UML poprzez dodanie nowego widoku oraz dostarczenie narzędzi do~generowania kodu i~dokumentacji systemu automatycznie ze specyfikacji.
     Generalnym podejściem INGENIAS do~specyfikacji systemu wieloagentowego jest podział problemu na~aspekty, które tworzą różne widoki systemu.
     Każdy rodzaj widoku jest opisany z~wykorzystaniem języka meta-modelującego.
@@ -486,7 +490,7 @@ singlelinecheck=off
     \end{enumerate}
     Obowiązki determinują funkcjonalność i~są podzielone na~dwa typy:
     \begin{enumerate}
-        \item właściwości żywotności - opisują te stany, które agent musi wywołać, coś zostanie zrobione,
+        \item właściwości żywotności - opisują te stany, które agent musi wywołać; coś zostanie zrobione,
         \item właściwości bezpieczeństwa - sprawdzają po każdym wykonaniu, czy~stan jest akceptowalny.
     \end{enumerate}
     Uprawnienia to~prawa związane z~rolą.
@@ -739,6 +743,7 @@ singlelinecheck=off
     Zdarzeń zewnętrznych \textit{Consult} w~USA w~tym okresie było 3 razy więcej - około 7,5 miliona,
     podczas gdy globalna liczba zdarzeń \textit{Consult} wynosiła około 140 milionów.
 
+    \goodbreak
     Zarówno dla zdarzeń wewnętrznych USA, zewnętrznych USA jak i~globalnych pierwsza trójka wygląda następująco:
     \begin{enumerate}
         \item \textit{Consult},
@@ -855,6 +860,7 @@ singlelinecheck=off
 
     Zarówno w~przypadku relacji Polska-USA (wykres~\ref{fig:Power-Client:ERC:POL-USA}) jak i~Polska-Hiszpania (wykres~\ref{fig:Power-Client:ERC:POL-ESP})
     na~pierwszym miejscu występują zdarzenia \textit{CONSULT}.
+    \enlargethispage{1\baselineskip}
 
     Pozostałe wykresy zostały dołączone w~sekcji~\ref{subsubsec:erc:bez-progowania}.
 
@@ -998,6 +1004,7 @@ singlelinecheck=off
 
     \subsubsection{Próg skala Goldsteina >=3}
     Skala Goldsteina przypisuje każdemu z~kodów CAMEO numeryczną wartość od~-10 do~10, przedstawia teoretyczny wpływ typu zdarzenia na~stabilność kraju.
+
     Ponieważ skala Goldsteina jest bezpośrednio związana z~kodem CAMEO, dlatego filtrowanie wg skali Goldsteina odrzuca część kodów.
 
     \begin{figure}[tp]
@@ -1031,7 +1038,8 @@ singlelinecheck=off
     \end{figure}
 
     Na~wykresie~\ref{fig:Power-Client:ERC:Goldstein:SumUp:Express intent to cooperate- not specified below} Niemcy, USA oraz Rosja są w~jednej grupie,
-    charakteryzującej się niską procentową ilością zdarzeń \textit{Express intent to~cooperate- not specified belo}.
+    charakteryzującej się niską procentową ilością zdarzeń \textit{Express intent to~cooperate- not specified below}.
+    \enlargethispage{1\baselineskip}
     Do tej samej grupy należą też Hiszpania i~Włochy.
 
     \begin{figure}[tp]
@@ -1046,6 +1054,7 @@ singlelinecheck=off
     Do tej samej grupy należy też Ukraina, która oddziela Niemcy od~Rosji i~USA\@.
     Pomiędzy Rosją, a~pozostałymi krajami jest wyraźna różnica.
     Grupa krajów z~największą procentową ilością zdarzeń jest wyraźnie oddzielona od~reszty krajów.
+    \enlargethispage{1\baselineskip}
 
     Pozostałe typy zdarzeń znacznie gorzej rozdzielają relacje klient-hegemon oraz neutralne wśród analizowanych krajów.
 
@@ -1157,7 +1166,7 @@ singlelinecheck=off
     charakteryzującej się niską procentową ilością zdarzeń \textit{Praise or endorse}.
 
     \textit{Praise or endorse} jest jedynym typem zdarzeń, który dobrze rozdziela relacje klient-hegemon od~neutralnych
-    przy progowaniu liczby wzmianek >=10.
+    przy progowaniu liczby wzmianek~>=10.
 
     \subsubsection{Próg średniego tonu >=10 lub <=-10}
     Średni ton to~średnia dla wszystkich dokumentów zawierających wzmiankę o~danym wydarzeniu.
@@ -1184,6 +1193,7 @@ singlelinecheck=off
     Pozostałe wykresy zostały dołączone w~sekcji~\ref{subsubsec:ebc:próg-średniego-tonu->=10-lub-<=-10}.
 
     Dla relacji klient-hegemon w~pierwszej trójce utrzymują się zdarzenia \textit{Accuse - not specified below}.
+
     Dla relacji POL-ESP oraz POL-CZE na~pierwszym miejscu występują zdarzenia \textit{Use conventional military force - not specified below}.
 
     \subsubsection{Wybrane wykresy podsumowujące}
@@ -1201,7 +1211,7 @@ singlelinecheck=off
     W tej grupie znalazła sie też Ukraina.
     Rosja jest bardzo wyraźnie oddalona od~pozostałych krajów.
 
-    \textit{Accuse- not specified below} jest jedynym typem zdarzeń który dobrze rozdziela relacje klient-hegemon od~neutralnych
+    \textit{Accuse- not specified below} jest jedynym typem zdarzeń, który dobrze rozdziela relacje klient-hegemon od~neutralnych
     przy progowaniu średniego tonu >=10 oraz <=-10.
 
     \subsubsection{Wnioski}
@@ -1432,7 +1442,7 @@ singlelinecheck=off
     Wyraźne zainteresowanie przez Polskę Niemcami oraz Rosją w~tym okresie jest zgodne z~intuicją.
 
     \subsection{Korelacja krzyżowa Pearsona}
-    Wykres~\ref{fig:Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020} przedstawia korelację krzyżową siły połączenia połączenia Niemiec i~Polski oraz Polski i~Niemiec w~latach 2015-2020.
+    Wykres~\ref{fig:Connection strength DEU to POL and POL to DEU Pearson cross correlation 2015-2020} przedstawia korelację krzyżową siły połączenia Niemiec i~Polski oraz Polski i~Niemiec w~latach 2015-2020.
 
     \begin{figure}[!ht]
         \centering
@@ -1496,6 +1506,7 @@ singlelinecheck=off
 
     Najciekawsze wydają się wyniki dla 5 klastrów, gdzie relacje Polski z~Niemcami, Rosją i~Stanami Zjednoczonymi znalazły się w~jednym klastrze.
     Tabele przedstawiające krańcowe wartości miar w~klastrowaniu k-means dla poszczególnych klastrów znajdują się w~dodatku~\ref{subsec:wartości-miar-w-klastrowaniu-kmeans---polska}.
+    \enlargethispage{2\baselineskip}
     Wykresy gęstości miar w~poszczególnych klastrach zostały przedstawione w~dodatku~\ref{subsec:gęstośc-miar-w-poszczególnych-klastrach---polska}.
 
     \subsection{Tajwan}
@@ -1571,6 +1582,7 @@ singlelinecheck=off
     \end{figure}
 
     Metoda k-średnich daje najlepsze wyniki, przedstawione w~tabeli ~\ref{tab:cluster_syr}, dla 3 klastrów.
+    \enlargethispage{1\baselineskip}
 
     \begin{table}[tp]
         \centering
@@ -1610,7 +1622,7 @@ singlelinecheck=off
     Część z~nich została opisana w~sekcji~\ref{sec:dalsze-kierunki-rozwoju}.
     Wiele z~wykresów uzyskanych podczas automatycznej eksploracji z~wykorzystaniem systemu agentowego nie zostało poddanych wnikliwej analizie,
     ani przedstawionych w~tej pracy ze względu na~ograniczenia czasowe.
-    Cele pracy~\ref{sec:cele-pracy}, którymi była analiza wydarzeń politycznych i~poszukiwanie wzorców, zostały osiągnięte.
+    Cele pracy~\ref{sec:cele-pracy}, którymi były analiza wydarzeń politycznych i~poszukiwanie wzorców, zostały osiągnięte.
     Zaproponowany system agentowy jest dobrą podstawą do~dalszego rozwoju i~stwarza wiele możliwości szerszej eksploracji danych z~GDELT\@.
 
 
